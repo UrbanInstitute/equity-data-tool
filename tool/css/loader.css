@@ -1,0 +1,527 @@
+/********************************************/
+/************* LOADER TEXT *****************/
+/******************************************/
+
+#loaderContainer{
+    color: #353535;
+    width: 100%;
+    height: 1000px;
+    background: white;
+    position: absolute;
+    text-align: 0;
+    top: 0px;
+    display: none;
+}
+.hiddenSection{
+    display: none !important;
+}
+.loaderHeader{
+    font-weight: bold;
+}
+h2.loaderHeader{
+    font-size: 40px;
+    margin-top: 52px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+h3.loaderSubHeader{
+    font-size: 30px;
+    font-weight: 100;
+    text-align: center;
+    margin-top: -10px;
+}
+.loaderHeader span.weak{
+    font-weight: normal;
+}
+.loaderSection p{
+    font-size: 24px;
+    line-height: 146%;
+    text-align: center;
+    font-weight: 300;
+}
+.inputLabel{
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.loaderNote.text{
+    font-size: 16px;
+    font-style: italic;
+    width: 320px;
+    line-height: 146%;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+/********************************************/
+/************* LOADER LAYOUT ****************/
+/********************************************/
+
+#fileInput, #fileSubmit{
+    display: none
+}
+#loaderContainer{
+    background: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 6;
+}
+.loaderSection{
+    position: absolute;
+    display: none;
+    width: 880px;
+    background: white;
+    top: 0px;
+    left: calc(50% - 440px);
+    z-index: 6;
+}
+.loaderSection.active{
+    display: block;
+}
+.advancedButtonRow{
+    display: table;
+    margin: 0 auto;
+    clear: both;
+}
+.advancedButtonRow .button{
+    width: 130px;
+    text-align: center;
+}
+.cancelButton{
+    margin-right: 50px;
+}
+#uploadErrors{
+    display: none;
+    color: #D02828;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    margin-top: 56px;
+    margin-bottom: 56px;
+}
+
+#weightError{
+    display: none;
+    color: #D02828;
+    font-style: italic;
+    width: 366px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -4px;
+    margin-bottom: 56px;
+    padding-left: 30px;
+}
+.errorX{
+    width: 21px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 8px;
+}
+#weightError .errorX{
+    position: relative;
+    top: -14px;
+}
+.errorText{
+    display: inline-block;
+}
+#weightError .errorText{
+    width: 319px;
+    text-align: left;
+}
+#uploadErrorContent, #weightErrorContent{
+    display: inline-block;
+    margin: 0 auto;
+    width: auto;
+}
+
+/********************************************/
+/************* HOME ****************/
+/********************************************/
+.buildings.loader{
+    width: 350px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 68px;
+}
+#sampleButton{
+    margin-right: 46px;
+}
+#homeButtonRow{
+    display: table;
+    margin: 0 auto;
+    margin-top: 14px;
+    margin-bottom: 122px;
+}
+.loaderHome{
+    max-width: 860px;
+    margin: 0 auto;
+    line-height: 146%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 100;
+}
+/********************************************/
+/************* UPLOAD DATA ****************/
+/********************************************/
+
+#uploadInstructionContainer{
+    position: relative;
+}
+#dropbox {
+    display: inline-block;
+    width: 280px;
+    height: 186px;
+    cursor: pointer;
+    position: absolute;
+    top: 43px;
+}
+#innerDropbox{
+    border: 2px dashed #FCE39E;
+    position: relative;
+    top: 9px;
+    left: 9px;
+    width: calc(100% - 22px);
+    height: calc(100% - 22px);
+}
+#dropbox.active #innerDropbox{
+    border: 2px dashed #98CF90;
+}
+#dropboxIcon{
+    width: 65px;
+    margin: 0 auto;
+    margin-top: -35px;
+    display: block;
+}
+#dropboxClick{
+    font-weight: 900;
+    font-size: 20px;
+    margin-top: 18px;
+    line-height: 24px;
+    text-align: center;
+    width: 100%;
+    color: #1696d2;
+}
+#dropboxDrag{
+    font-size: 20px;
+    line-height: 24px;
+    width: calc(100% - 20px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#dropboxDrag.filename{
+    font-style: italic;
+}
+
+#uploadInstructions{
+    display: inline-block;
+    width: calc(100% - 316px);
+    margin-left: 50px;
+    position: relative;
+    left: 260px;
+}
+.instructionRow{
+    margin-bottom: 16px;
+}
+.instructionRow img{
+    width: 21px;
+    margin-right: 8px;
+    position: relative;
+    top: 4px;
+}
+.instructionRow span{
+    font-size: 16px;
+}
+#uploadLatLonContainer.hidden{
+    /*display: none;*/
+}
+
+#uploadLatLonContainer{
+    display: block;
+    margin: 0 auto;
+    width: 610px;
+}
+#uploadLatLonContainer h4{
+    font-size: 22px;
+    margin-bottom: 28px;
+    margin-top: 50px;
+}
+#latContainer, #lonContainer{
+    display: inline-block;
+    float: left;
+    width: 287px;
+}
+#latContainer{
+    margin-right: 35px;
+}
+#uploadLatLonContainer .ui-selectmenu-button.ui-button{
+    display: inline-block;
+    float: left;
+    width: 190px;
+}
+#uploadLatLonContainer .inputLabel{
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-right: 10px;
+    top: 16px;
+}
+#uploadButtonContainer{
+    position: relative;
+    display: block;
+    clear: both;
+    width: 439px;
+    margin: 0 auto;
+    margin-top: 160px;
+}
+#advancedOptions-button{
+    width: 197px;
+    height: 46px;
+    color: #1696d2;
+    border: 2px solid #1696d2;
+    background: #fff;
+    display: inline-block;
+}
+
+#advancedOptions-button .ui-selectmenu-text{
+    opacity: 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: #1696d2;
+    top: 9px;
+    width: 134px;
+}
+#advancedTextOverlay{
+    position: absolute;
+    z-index: 2;
+    font-size: 18px;
+    font-weight: 400;
+    color: #1696d2;
+    top: 13px;
+    left: 16px;
+    pointer-events: none;
+}
+#advancedTextOverlay img{
+    width: 20px;
+    margin-left: 4px;
+}
+#runButton{
+    margin-left: 61px;
+    top: -13px;
+    position: relative;
+    width: 128px;
+    text-align: center;
+}
+
+
+
+/********************************************/
+/************* WEIGHT DATA ****************/
+/********************************************/
+#weightMenuContainer{
+    display: table;
+    margin: 0 auto;
+    width: 334px;
+}
+#weightSelect-button{
+    max-width: 334px;
+}
+
+
+
+/********************************************/
+/************* SET BASELINE ****************/
+/********************************************/
+#baselineOptions, #baselineInstructions{
+    display: inline-block;
+    float: left;
+    /*width: 50%;*/
+    margin-bottom: 12px;
+}
+#baselineOptions{
+    width: 60%;
+}
+#baselineInstructions{
+    width: 40%;
+}
+.baselineRow{
+    cursor: pointer;
+    margin-left: 18px;
+    margin-bottom: 20px;
+}
+.baselineRadio{
+    display: inline-block;
+}
+.baselineText{
+    display: inline-block;
+    font-size: 18px;
+    margin-left: 10px;
+    position: relative;
+    top: -4px;
+}
+.baselineInstructionRow img{
+    width: 40px;
+    display: inline-block;
+    margin-right: 25px;
+    float: left;
+    position: relative;
+    top: 28px;
+}
+.baselineInstructionRow div{
+    font-size: 18px;
+    display: inline-block;
+    width: calc(100% - 110px);
+    height: 134px;
+    line-height: 1.7;
+}
+.baselineInstructionRow div span{
+    color: #1696d2;
+    font-weight: bold;
+    border-bottom: 2px dotted;
+    padding-bottom: 4px;
+}
+#whatsthiswhatsthis{
+    font-size: 14px;
+    font-style: italic;
+    margin-left: 16px;
+    position: relative;
+    top: -2px;
+}
+
+
+/********************************************/
+/************** ADD FILTERS *****************/
+/********************************************/
+#filterControls, #filterListContainer{
+    display: inline-block;
+    float: left;
+    width: calc(50% - 10px);
+}
+#filterControls{
+    margin-right: 20px;
+}
+.filterContainer{
+    display: none;
+}
+.filterContainer.active{
+    display: block;
+}
+#numericSelect, #textSelect{
+    height: 45px;
+    border: 1px solid #D2D2D2;
+    display: inline-block;
+    margin-bottom: 50px;
+    top: 3px;
+    position: relative;
+    width: 211px;
+    padding-left: 20px;
+    font-family: Lato;
+    font-size: 18px;
+}
+
+#numComSel-button, #textComSel-button{
+    display: inline-block;
+    height: 45px;
+    width: 73px;
+    margin-bottom: 0px;
+    margin-right: 9px;
+}
+
+#numComSel-button .ui-selectmenu-text, #textComSel-button .ui-selectmenu-text{
+    width: 41px;
+    margin-right: 0px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    top: 4px;
+    font-weight: bold;
+}
+#numComSel-menu .ui-menu-item, #textComSel-menu .ui-menu-item{    
+    font-size: 24px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+
+}
+
+input[type=date]{
+    height: 45px;
+    padding-left: 10px;
+    font-family: Lato;
+    text-transform: uppercase;
+    color: #696969;
+    border: 1px solid #d2d2d2;
+}
+#startDateContainer, #dateTo, #endDateContainer{
+    display: inline-block;
+    margin-right: 10px;
+}
+#dateRangeRow{
+    cursor: pointer;
+}
+#dateRangeBox{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #1696d2;
+    margin-top: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    margin-right: 7px;
+    cursor: pointer;
+    background: #fff;
+}
+#dateRangeBox.active{
+   color: #1696d2; 
+}
+.endDateComponent.hidden{
+    display: none !important;
+}
+#addButton{
+    font-size: 16px;
+    font-weight: bold;
+    color: #1696d2;
+    cursor: pointer;
+    border-bottom: 2px solid;
+    width: 138px;
+    padding-bottom: 1px;
+    margin-top: 25px;
+    margin-bottom: 24px;
+}
+#addButton.disabled{
+    color: #9D9D9D;
+    pointer-events: none;
+}
+.filterTag{
+    background: #ececec;
+    width: 290px;
+    padding: 13px 15px;
+    margin-bottom: 18px;
+    display: none;
+    position: relative;
+}
+.filterTag.visible{
+    display: block;
+}
+.filterTagText{
+    width: 270px;
+    overflow: ellipses;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.closeTag{
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    cursor: pointer;
+}
+.closeTag img{
+    width: 100%;
+}

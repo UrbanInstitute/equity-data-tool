@@ -1,0 +1,498 @@
+<!-- #dropbox
+
+
+list of all filters
+id = "currentFilterDatumContainer" class = "filterDatum current" (a hidden div that has bound data for the currently selected doohicky) -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+  <title>How Much Does Your School Contribute to Segregation?</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1">
+
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" type="text/css" href="css/vendor/jquery-ui.css">
+
+  <link rel="stylesheet" type="text/css" href="css/global.css"/>
+  <link rel="stylesheet" type="text/css" href="css/urban-header.css"/>
+  <link rel="stylesheet" type="text/css" href="css/loader.css"/>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic,900,900italic" rel="stylesheet" type="text/css">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@urbaninstitute">
+  <meta name="twitter:creator" content="@urbaninstitute">
+  <meta name="twitter:title" content="How Segregated Are Schools in Your District?">
+  <meta name="twitter:description" content="Some segregation measures look only at a school's racial composition and not at how it compares with its district. Learn more about a better measure.">
+  <meta name="twitter:image" content="https://apps.urban.org/features/school-segregation-index/images/social.jpg">
+  <meta property="og:title" content="How Segregated Are Schools in Your District?" />
+  <meta property="og:description" content="Some segregation measures look only at a school's racial composition and not at how it compares with its district. Learn more about a better measure." />
+  <meta property="og:image" content="https://apps.urban.org/features/school-segregation-index/images/social.jpg" />
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:url" content="https://urbn.is/2zUJjCf">
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "headline": "How Segregated Are Schools in Your District?",
+  "url": "https://apps.urban.org/features/school-segregation-index",
+  "thumbnailUrl": "https://apps.urban.org/features/school-segregation-index/images/social.jpg",
+  "dateCreated": "2020-06-20T04:00:00.000Z",
+  "articleSection": "Interactive Feature",
+  "creator": ["Tomas Monarrez","Carina Chien","David Hinson","Brian Kisida","JoElla Carman","Emily Peiffer","Matthew Chingos","Ben Chartoff"],
+  "keywords": ["Education and Training"]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MKBD2W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKBD2W');</script>
+<!-- End Google Tag Manager -->
+
+<div id = "isMobile"></div>
+<div id = "isPhone"></div>
+<div id = "isShort"></div>
+<div id = "paramsData"></div>
+<div id = "csvProperties"></div>
+
+<!-- START HEADER -->
+<div id="header-pinned" class="no-touch">
+   <a target="_blank" href="https://www.urban.org" title="Home" rel="home" class="site-logo"></a>
+<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features</a></span></div>
+<div class="share-icons">
+    <div class="shareThisP">
+        <span onclick="toggle_visibility('shareBox');">
+                <div class="shareThisB"></div>
+            </span>
+        <div class="shareThisW" id="shareBox">
+
+            <div class="addthis_toolbox addthis_default_style  "addthis:title="" addthis:url="">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//urbn.is/sci" target="_blank" class="addthis_button_facebook at300b" title="Facebook" onclick="toggle_visibility('shareBox');"><span class="at4-icon aticon-facebook" style="background-color: rgb(48, 88, 145);"><span class="at_a11y">Share on facebook</span></span></a>
+
+                <a href="https://twitter.com/intent/tweet?text=How%20much%20does%20your%20school%20contribute%20to%20segregation%3F%20%40urbaninstitute%27s%20Segregation%20Contribution%20Index%20measures%20how%20much%20individual%20schools%20contribute%20to%20racial%20segregation%20in%20their%20broader%20systems.%20https%3A%2F%2Furbn.is%2Fsci" target="_blank" class="addthis_button_twitter at300b" title="Tweet" onclick="toggle_visibility('shareBox');"><span class="at4-icon aticon-twitter" style="background-color: rgb(44, 168, 210);"><span class="at_a11y">Share on twitter</span></span></a>
+
+                <a href="mailto:%20?Subject=New Urban Institute interactive&amp;Body=Hi! I thought you'd be interested in this new interactive from the Urban Institute: &ldquo;How Much Does Your School Contribute to Segregation?&rdquo; https://urbn.is/sci" target="_blank" class="addthis_button_email at300b" target="_blank" title="Email" onclick="toggle_visibility('shareBox');"><span class="at4-icon aticon-email" style="background-color: rgb(115, 138, 141);"><span class="at_a11y">Share on email</span></span></a>
+                <div class="atclear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="headerimage" id="heroimage">
+  <div class="wrapper headerwrapper">
+  </div>
+</div>
+<!-- END HEADER -->
+
+<!-- START MAIN CONTENT -->
+<div class="container">
+
+<!-- START LOADER HOME CARD -->
+<div class = "loaderHome">
+    <img class = "buildings loader" src = "images/buildings.png">
+    <h2 class = "loaderHeader">Evaluating Equity Data Tool</h2>
+    <h3 class = "loaderSubHeader">Measuring Spatial Disparities in Your City</h3>
+
+    <p>How can cities ensure that resources are equitably distributed to all residents? We created this data tool to help city officials, community organizations, and residents quickly assess spatial and demographic disparities in their cities.</p>
+
+    <p><em>Are wi-fi hotspots unevenly located in your city? Do all residents have equitable access to bike share stations? Does your dataset accurately reflect your city’s population? What groups or neighborhoods are underrepresented?</em></p>
+
+    <p>This tool can reveal biases in the datasets policymakers use to make decisions or illustrate disparities in how resources are distributed throughout the city. Check out our case studies to see what this tool can do, try a sample dataset, or upload your own data.</p>
+
+    <div id = "homeButtonRow">
+        <div id = "sampleButton" class = "button blue">Use sample data</div>
+        <div id = "userButton" class = "button blue">Upload your own data</div>
+    </div>
+</div>
+<!-- END LOADER HOME CARD -->
+
+
+<!-- START LOADER SECTION -->
+    <div id = "loaderContainer">
+
+        <div class = "loaderSection sample">
+            <form name = "sampleDataForm" id = "sampleDataForm">
+                <input type="file" id="sampleInput">
+            </form>
+            <div class = "sample data backButton">
+                <img src = "images/backArrow.png">
+                <div>Back</div>
+            </div>
+            <div class = "startOver">
+                <div>Start over</div>
+                <img src = "images/startOver.png">
+            </div>
+            <h2 class = "loaderHeader">sample dataaaa</h2>
+        </div>
+
+<!-- START LOADER USER DATA CARD -->
+        <div class = "loaderSection user">
+            <form name = "userDataForm" id = "userDataForm">
+                <input type="file" id="fileInput">
+            </form>
+            <div class = "user data backButton">
+                <img src = "images/backArrow.png">
+                <div>Back</div>
+            </div>
+            <div class = "startOver">
+                <div>Start over</div>
+                <img src = "images/startOver.png">
+            </div>
+            <h2 class = "loaderHeader">Upload my data</h2>
+            <p><em>Upload a CSV of geographic point data to see how well your dataset represents your city’s population.</em></p>
+            <div id = "uploadInstructionContainer">
+                <div id = "dropbox">
+                    <div id = "innerDropbox">
+                        <img src = "images/upload.png" id = "dropboxIcon">
+                        <div id = "dropboxClick">Choose a file</div>
+                        <div id = "dropboxDrag">or drag it here</div>
+                    </div>
+                </div>
+
+                <div id = "uploadInstructions">
+                    <h3 class = "loaderHeader">Instructions</h3>
+                    <div class = "instructionRow"><img src = "images/check.png"><span>Your CSV must have unique column headers.</span></div>
+                    <div class = "instructionRow"><img src = "images/check.png"><span>Two columns must correspond to longitude and latitude.</span></div>
+                    <div class = "instructionRow"><img src = "images/check.png"><span>Your file size must not exceed 2GB.</span></div>
+
+                    <div class = "instructionNote"><strong>Note:</strong> <em>The tool can only analyze data for US cities and for one city at a time. If your file contains data from multiple cities, only the most frequently appearing city in the data will be analyzed.</em></div>
+                </div>
+            </div>
+            <div id = "uploadErrors">
+                <div id = "uploadErrorContent">
+                    <img class = "errorX" src = "images/errorX.png">
+                    <div class = "errorText"></div>
+                </div>
+            </div>
+            <div id = "uploadLatLonContainer" class="hiddenSection hideOption">
+                <h4 class = "loaderHeader">Which columns in your file represent latitude and longitude?</h4>
+                <div id = "latContainer">
+                    <div class = "inputLabel">Latitude</div>
+                    <select id = "latSelect"></select>
+                </div>
+                <div id = "lonContainer">
+                    <div class = "inputLabel">Longitude</div>
+                    <select id = "lonSelect"></select>
+                </div>
+            </div>
+            <div id = "uploadButtonContainer" class = "hiddenSection hideOption">
+                <div id = "advancedTextOverlay">Advanced options <img src = "images/menuArrow.png"></div>
+                <select id = "advancedOptions">
+                    <option value = "filters">Filter data</option>
+                    <option value = "weight">Weight data</option>
+                    <option value = "baseline">Set baseline</option>
+                </select>
+                <div id = "runButton" class = "button blue">Run analysis</div>
+            </div>
+        </div>
+<!-- END LOADER USER DATA CARD -->
+
+<!-- START LOADER FILTER DATA CARD -->
+        <div class = "loaderSection filters">
+            <div class = "filter advanced backButton">
+                <img src = "images/backArrow.png">
+                <div>Back</div>
+            </div>
+            <div class = "startOver">
+                <div>Start over</div>
+                <img src = "images/startOver.png">
+            </div>
+            <h2 class = "loaderHeader">Advanced options: <span class = "weak">Filter data</span></h2>
+            <p>Use filters to focus on the data you want to see. For help with these advanced options, see our <a>Frequently Asked Questions.</a></p>
+
+            <div id = "filterColumnContainer">
+                <div id = "filterControls">
+                    <div id = "columnSelectContainer">
+                        <h3 class = "loaderHeader">Choose a column to filter by</h3>
+                        <select id = "columnSelect"></select>
+                    </div>
+
+                    <div class = "filterContainer number">
+                        <select class = "numeric compareSelect" id = "numComSel">
+                            <option value = "<">&lt;</option>
+                            <option value = "<=">&le;</option>
+                            <option value = ">">&gt;</option>
+                            <option value = ">=">&ge;</option>
+                            <option value = "==">=</option>
+                            <option value = "!=">&ne;</option>
+                        </select>
+                        <input id = "numericSelect" type="number">
+                    </div>
+
+                    <div class = "filterContainer string">
+                        <select class = "text compareSelect" id = "textComSel">
+                            <option value = "==">=</option>
+                            <option value = "!=">&ne;</option>
+                        </select>
+                        <input id = "textSelect">
+                        <div class = "loaderNote text">List one or more values separated by commas (e.g., elementary,middle). The values are case-sensitive and must match the data exactly.</div>
+                    </div>
+
+                    <div class = "filterContainer date">
+                        <div id = "dateSelectRow">
+                            <div id = "startDateContainer">
+                                <div class = "inputLabel">Start date</div>
+                                <input type="date" id = "startDateSelect">
+                            </div>
+                            <div id = "dateTo" class = "endDateComponent">
+                                to
+                            </div>
+                            <div id = "endDateContainer" class = "endDateComponent">
+                                <div class = "inputLabel">End date</div>
+                                <input type="date" id = "endDateSelect">
+                            </div>
+                        </div>
+                        <div id = "dateRangeRow">
+                            <div id = "dateRangeBox" class = "active">
+                                &check;
+                            </div>
+                            <span>Date range</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id = "filterListContainer">
+                    <div id = "addButton" class = "disabled">+ add another filter</div>
+                    <diiv id = "filterList">
+                    </diiv>
+
+                </div>
+            </div>
+            <div class = "advancedButtonRow">
+                <div class = "button white cancelButton filter">Cancel</div>
+                <div class = "button blue saveButton filter">Save</div>
+            </div>
+
+        </div>
+<!-- END LOADER FILTER DATA CARD -->
+
+<!-- START LOADER WEIGHT CARD -->
+        <div class = "loaderSection weight">
+            <div class = "weight advanced backButton">
+                <img src = "images/backArrow.png">
+                <div>Back</div>
+            </div>
+            <div class = "startOver">
+                <div>Start over</div>
+                <img src = "images/startOver.png">
+            </div>
+            <h2 class = "loaderHeader">Advanced options: <span class = "weak">Weight data</span></h2>
+            <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of public parks, if you choose “square footage” as your weight column, higher-square-footage parks will be given more weight in assessing representativeness.</em></p>
+            <p><em>For help using this tool, see our <a href = "">FAQ</a>.</em></p>
+
+            <div id = "weightMenuContainer">
+                <h3 class = "loaderHeader">Choose a weight column</h3>
+                <select id = "weightSelect"></select>
+            </div>
+
+            <div id = "weightError">
+                <div id = "weightErrorContent">
+                    <img class = "errorX" src = "images/errorX.png">
+                    <div class = "errorText"></div>
+                </div>
+            </div>
+
+            <div class = "advancedButtonRow">
+                <div class = "button white cancelButton weight">Cancel</div>
+                <div class = "button blue saveButton weight">Save</div>
+            </div>
+        </div>
+<!-- END LOADER WEIGHT CARD -->
+
+<!-- START LOADER BASELINE CARD -->
+        <div class = "loaderSection baseline">
+            <div class = "baseline advanced backButton">
+                <img src = "images/backArrow.png">
+                <div>Back</div>
+            </div>
+            <div class = "startOver">
+                <div>Start over</div>
+                <img src = "images/startOver.png">
+            </div>
+            <h2 class = "loaderHeader">Advanced options: <span class = "weak">Set baseline</span></h2>
+            <p><em>The tool compares your dataset with your city’s total population, but you can choose a different baseline for comparison. For help using this tool, see our <a href = "">FAQ</a>.</em>
+            <div id = "baselineColumnContainer">
+                <div id = "baselineOptions">
+                    <h3 class = "loaderHeader">Set your baseline</h3>
+                    <div class = "baselineRow active total" data-baseline="total">
+                        <div class = "baselineRadio">
+                            <img class = "radio large checked active" src = "images/checkedRadio.png">
+                            <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
+                        </div>
+                        <div class = "baselineText">Total population</div>
+                    </div>
+                    <div class = "baselineRow lowIncome" data-baseline="lowIncome">
+                        <div class = "baselineRadio">
+                            <img class = "radio large checked" src = "images/checkedRadio.png">
+                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
+                        </div>                        
+                        <div class = "baselineText">Low-income population</div>
+                    </div>
+                    <div class = "baselineRow daytime" data-baseline="daytime">
+                        <div class = "baselineRadio">
+                            <img class = "radio large checked" src = "images/checkedRadio.png">
+                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
+                        </div>    
+                        <div class = "baselineText">Daytime (commuter-adjusted) population<a id = "whatsthiswhatsthis" href = "https://www.census.gov/topics/employment/commuting/guidance/calculations.html" target = "_blank">what is this?</a></div>
+                    </div>
+                    <div class = "baselineRow noBroadband" data-baseline="noBroadband">
+                        <div class = "baselineRadio">
+                            <img class = "radio large checked" src = "images/checkedRadio.png">
+                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
+                        </div>    
+                        <div class = "baselineText">Population without access to broadband</div>
+                    </div>
+                    <div class = "baselineRow foreignBorn" data-baseline="foreignBorn">
+                        <div class = "baselineRadio">
+                            <img class = "radio large checked" src = "images/checkedRadio.png">
+                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
+                        </div>
+                        <div class = "baselineText">Foreign-born population</div>
+                    </div>
+                </div>
+
+                <div id = "baselineInstructions">
+                    <h3 class = "loaderHeader">The tool will display the following:</h3>
+                    <div class = "baselineInstructionRow">
+                        <img src = "images/map-icon.png">
+                        <div>The geographic distribution of your data compared with the city&rsquo;s <span class="inlineBaselineText">total population</span></div>
+                    </div>
+                    <div class = "baselineInstructionRow">
+                        <img src = "images/bar-icon.png">
+                        <div>The demographic distribution of your data compared with the city&rsquo;s <span class="inlineBaselineText">total population</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "advancedButtonRow">
+                <div class = "button white cancelButton baseline">Cancel</div>
+                <div class = "button blue saveButton baseline">Save</div>
+            </div>
+        </div>
+<!-- END LOADER BASELINE CARD -->
+    </div>
+<!-- END LOADER SECTION -->
+</div>
+<!-- END MAIN CONTENT -->
+
+
+    <footer>
+
+     <div class="content">
+
+
+                    <h5>ABOUT</h5>
+                    <a href = "" target = "_blank">
+                      <div class = "button clear footer readResearchButton">FREQUENTLY ASKED QUESTIONS</div>
+                    </a>
+                    <a href = "" target = "_blank">
+                      <div class = "button clear footer readResearchButton">TECHNICAL APPENDIX</div>
+                    </a>
+                    <a href = "" target = "_blank">
+                      <div class = "button clear footer readResearchButton">READ THE THING</div>
+                    </a>
+                    <p>
+                    We use “Hispanic” to be consistent with terminology used by the American Community Survey, but recognize that this term may not be the preferred identifier for many. We remain committed to employing inclusive language whenever possible.</p>
+
+                    <p>
+                    For help using this tool or for guidance designing and implementing equitable technology programs, contact <a href = "mailto:anarayanan@urban.org">anarayanan@urban.org</a>.
+                    </p>
+                   
+                    <h5>Project credits</h5>
+                    <div class="urbanstatement">This feature was supported by a grant from the Mastercard Impact Fund, in collaboration with the <a href = "https://www.mastercardcenter.org/" target = "_blank">Mastercard Center for Inclusive Growth</a>. We are grateful to them and to all our funders, who make it possible for Urban to advance its mission. The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of our experts. More information on our funding principles is available <a href = "https://www.urban.org/support" target = "_blank">here</a>. Read our terms of service <a href = "https://www.urban.org/terms-service" target = "_blank">here</a>.</div>
+
+                    <h3 class="job">Research</h3>
+                    <a href = "https://www.urban.org/author/ajjit-narayanan" target = "_blank">Ajjit Narayanan</a>, <a href = "https://www.urban.org/author/alena-stern" target = "_blank">Alena Stern</a>, and <a href = "https://www.urban.org/author/graham-macdonald" target = "_blank">Graham MacDonald</a>
+
+                    <h3 class="job">Design</h3>
+                    Allison Feldman
+
+                    <h3 class="job">Development</h3>
+                    Ajjit Narayanan, Ben Chartoff, and Dave D’Orio
+
+                    <h3 class="job">Editing</h3>
+                    Fiona Blackshaw
+
+                    <h3 class="job">Writing</h3>
+                    Serena Lei
+
+
+
+                    <div class="credits"> <a href="" target="_blank">View this project on GitHub.</a></div>
+
+
+    </div>
+  </footer>
+
+
+<script src="js/vendor/es6-promise.min.js"></script>
+<script src="js/vendor/es6-promise.auto.min.js"></script>
+<script src="js/vendor/fetch.min.js"></script>
+
+<script src="js/vendor/jquery-2.2.1.min.js"></script>
+<script src="js/vendor/jquery-ui.1.12.1.min.js"></script>
+
+<script src="js/vendor/mapbox-gl.1.7.0.js"></script>
+
+<script src="js/vendor/d3-dispatch.v1.min.js"></script>
+<script src="js/vendor/d3.5.15.0.min.js"></script>
+
+<script src="js/vendor/file-wrapper.min.js"></script>
+<script src="js/vendor/line-navigator.min.js"></script> 
+
+<script src="js/getters.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/loaderEvents.js"></script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () { 
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),  m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m) 
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); 
+    ga('create', 'UA-57529944-1', 'auto'); 
+    ga('send', 'pageview');
+</script>
+
+<!-- START Parse.ly Include: Standard -->
+<div id="parsely-root" style="display: none">
+  <span id="parsely-cfg" data-parsely-site="urban.org"></span>
+</div>
+<script>
+    (function(s, p, d) {
+      var h=d.location.protocol, i=p+"-"+s,
+          e=d.getElementById(i), r=d.getElementById(p+"-root"),
+          u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+          :"static."+p+".com";
+      if (e) return;
+      e = d.createElement(s); e.id = i; e.async = true;
+      e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+    })("script", "parsely", document);
+</script>
+<!-- END Parse.ly Include: Standard -->
+
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+body, html{
+    margin: 0px;
+}
+body, svg{
+    font-family: Lato;
+    color: #353535;
+}
+a{
+    color: #1696d2;
+}
+.button{
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+.button.footer{
+    background: none;
+    color: #353535;
+    border: 1px solid #353535;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.button.footer:hover{
+    color: #fff;
+    border: 1px solid #12719E;
+    background: #12719E;  
+}
+.button.white{
+    color: #1696d2;
+    border: 2px solid #1696d2;
+    background: #fff;
+}
+.button.white:hover{
+    border: 2px solid #12719E;
+    color: #12719E;  
+}
+.button.blue{
+    color: #fff;
+    border: 2px solid #1696d2;
+    background: #1696d2;
+}
+.button.blue:hover{
+    border: 2px solid #12719E;
+    background: #12719E;
+}
+.button.disabled{
+    background: #d2d2d2;
+    border: 2px solid #dcdbdb;
+    color: #9d9d9d;
+    pointer-events: none;
+}
+.backButton{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    background: white;
+    border-top: 30px solid white;
+    border-left: 24px solid white;
+    background: white;
+    z-index: 10000;
+    width: 140px;
+}
+.backButton img{
+    height: 20px;
+    display: inline-block;
+}
+.backButton div{
+    font-size: 24px;
+    color: #1696d2;
+    display: inline-block;
+    position: absolute;
+    top: -6px;
+    margin-left: 11px;
+}
+.startOver{
+    position: fixed;
+    border-top: 30px solid #fff;
+    right: 0px;
+    top: 0px;
+    border-right: 30px solid #fff;
+    background: #fff;
+    cursor: pointer;
+}
+.startOver div{
+    color: #696969;
+    font-size: 24px;
+    display: inline-block;
+    float: left;
+}
+.startOver img{
+    display: inline-block;
+    float: left;
+    width: 20px;
+    margin-left: 10px;
+    position: relative;
+    top: 7px;
+}
+.radio.large{
+    width: 20px;
+}
+.radio{
+    display: none;
+}
+.radio.active{
+    display: inline-block;
+}
+#header-pinned{
+    border-bottom: none !important;
+}
+#header-pinned .share-icons .shareThisP{
+    border-left: none !important;
+}
+
+
+
+
+/********************************************/
+/************* LOADER TEXT ****************/
+/******************************************/
+
+footer {
+    position: relative;
+    background-color: #f1f2f2;
+    margin-top: 130px;
+    padding-bottom: 25px;
+    bottom: 0;
+    overflow: hidden;
+    height:auto;
+    z-index: 10;
+
+}
+
+
+
+footer .content{
+    width: calc(100% - 40px);
+    max-width: 750px;
+}
+
+
+h5 {
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#left {
+    float: left;
+    width: 45%;
+    padding-left: 0px;
+    padding-right:0px;
+}
+
+#right {
+    margin: 0 auto;
+    width: 500px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 50px;
+    font-size:14px;
+    line-height: 1.3;
+}
+
+.footerButton{
+    float: left;
+    width: 135px;
+    border: 1px solid #333;
+    cursor: pointer;
+    font: 13px Lato;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none !important;
+    color: #333 !important;
+    margin-top: 5px;
+}
+.footerButton:hover{
+    background: #fdbf11;
+    color: #fff !important;
+}
+.footerButton.researchButton{
+    margin-left: 15px;
+}
+.footerTopP{
+    clear: both;
+    padding-top: 14px;
+}
+#learnMore{
+    display: inline-block;
+    padding-bottom: 33px;
+    padding-top: 9px;
+}
+#learnMore a{
+  display: inline-block;
+  line-height: 20px;
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px !important;
+}
+
+footer h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+footer h3, footer h4{
+    font-weight: 700;
+    margin-top: 60px;
+}
+
+.credits {
+    font-size: 14px;
+    margin-top: 1em;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.job {
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 20px;
+}
+
+.urbanstatement {
+  font-style: italic;
+  color: #848081;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+
+footer{
+  display: block;
+    float: left;
+    width: 100%;
+}
+footer p{
+  clear: both;
+}
+.footerButton{
+  margin-bottom: 30px;
+}
+.readResearchButton{
+  margin-right: 10px;
+}
+.content{
+    width:1100px;
+    margin: 0 auto;
+    padding: 0px 30px;
+
+}
+form{
+    display: none;
+}
