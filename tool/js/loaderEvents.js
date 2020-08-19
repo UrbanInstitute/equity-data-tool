@@ -63,10 +63,26 @@ function handleFiles(inputFiles){
         }
         d3.select("#csvProperties").datum({"size": fileSize, "cols": csvCols })
 
+        const p = Object.assign({}, defaultParams)
+        d3.select("#paramsData").datum(p)
+
         populateDropdowns(colNames)
-        d3.selectAll(".hideOption").classed("hiddenSection",false)
+        d3.selectAll(".hideOption.user").classed("hiddenSection",false)
         hideLoaderError()
     });
+
+}
+function selectSampleData(sample){
+    var colNames = ["testNum", "testText", "testDate"]
+    var csvCols = {"testNum" : "number", "testText": "string", "testDate": "date"}
+    var fileSize = 1000
+
+    const p = Object.assign({}, defaultParams)
+    d3.select("#paramsData").datum(p)
+
+    populateDropdowns(colNames)
+    d3.select("#csvProperties").datum({"size": fileSize, "cols": csvCols })
+    d3.selectAll(".hideOption.sample").classed("hiddenSection",false)
 
 }
 function guessLatLon(colNames, l){
@@ -290,6 +306,16 @@ inputElement.addEventListener("change", handleFiles, false);
 
 
 
+d3.selectAll(".sampleRect").on("click", function(){
+    d3.selectAll(".sampleRect").classed("active", false)
+    d3.select(this).classed("active", true)
+
+    var sample;
+    if(d3.select(this).classed("three11")) sample = "three11"
+    else if(d3.select(this).classed("hotspots")) sample = "hotspots"
+    else if(d3.select(this).classed("bike")) sample = "bike"
+    selectSampleData(sample)
+})
 
 
 
@@ -307,16 +333,29 @@ inputElement.addEventListener("change", handleFiles, false);
 
 
 
-$('#advancedOptions')
+$('#advancedOptionsUser')
     .selectmenu({
         select: function(event, d){
             showLoaderSection(d.item.value)
         },
         open: function(){
-            d3.select("#advancedTextOverlay img").style("transform","rotate(180deg)")
+            d3.select("#advancedTextOverlayUser img").style("transform","rotate(180deg)")
         },
         close: function(){
-            d3.select("#advancedTextOverlay img").style("transform","rotate(0deg)")
+            d3.select("#advancedTextOverlayUser img").style("transform","rotate(0deg)")
+        }
+    })
+
+$('#advancedOptionsSample')
+    .selectmenu({
+        select: function(event, d){
+            showLoaderSection(d.item.value)
+        },
+        open: function(){
+            d3.select("#advancedTextOverlaySample img").style("transform","rotate(180deg)")
+        },
+        close: function(){
+            d3.select("#advancedTextOverlaySample img").style("transform","rotate(0deg)")
         }
     })
 
@@ -411,56 +450,11 @@ d3.selectAll(".cancelButton").on("click", function(){
 
 // click run analysis
 // PULL THE LEVER KRONK
-d3.select("#runButton").on("click", function(){
-  // var submitId = getDatasetType() + "Submit"
-  // document.getElementById(submitId).click()
+d3.selectAll(".runButton").on("click", function(){
   runAnalysis()
 })
 
 
-function runAnalysis() {
-    
-    // console.log(event, JSON.toString(getParams()))
-    // event.preventDefault();
-  // log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
-  var datasetType = getDatasetType(),
-        params = getParams()
-        postURL = "http://httpbin.org/post",
-        formData = new FormData();
-
-    if(datasetType == "user"){
-        formData.append("file", $("#fileInput").prop("files")[0])
-    }else{
-        formData.append("file", "specialIndicator")
-    }
-
-    for(var k in params){
-        if(params.hasOwnProperty(k)){
-            if(k != "filters"){
-                formData.append(k, params[k])
-            }else{
-                formData.append(k, JSON.stringify(params[k]))
-            }
-            
-        }
-    }
-
-    console.log(formData)
-
-    $.ajax({
-        url: postURL,
-        method: "POST",
-        contentType: false,
-        processData: false,
-        data:formData,
-        success: function(msg, status, jqXHR){
-            console.log(msg)
-        }
-    });
-
-
-  
-}
 
 
 

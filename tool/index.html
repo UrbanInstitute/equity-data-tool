@@ -117,8 +117,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p>This tool can reveal biases in the datasets policymakers use to make decisions or illustrate disparities in how resources are distributed throughout the city. Check out our case studies to see what this tool can do, try a sample dataset, or upload your own data.</p>
 
     <div id = "homeButtonRow">
-        <div id = "sampleButton" class = "button blue">Use sample data</div>
-        <div id = "userButton" class = "button blue">Upload your own data</div>
+        <div id = "sampleButton" class = "button blue sample">Use sample data</div>
+        <div id = "userButton" class = "button blue user">Upload your own data</div>
     </div>
 </div>
 <!-- END LOADER HOME CARD -->
@@ -126,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START LOADER SECTION -->
     <div id = "loaderContainer">
-
+<!-- START LOADER SAMPLE DATA CARD -->
         <div class = "loaderSection sample">
             <form name = "sampleDataForm" id = "sampleDataForm">
                 <input type="file" id="sampleInput">
@@ -139,8 +139,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div>Start over</div>
                 <img src = "images/startOver.png">
             </div>
-            <h2 class = "loaderHeader">sample dataaaa</h2>
+            <h2 class = "loaderHeader">Use sample data</h2>
+            <p><em>Choose a sample dataset to explore how the tool works. For help using this tool, see our <a href = "" target = "_blank">FAQ</a>.</em></p>
+
+            <div id = "sampleCardContainer">
+                <div class = "sampleCard s1">
+                    <div class = "sampleRect red hotspots draw-border">
+                        <div class = "sampleName sampleInner">Public wi-fi hotspots</div>
+                        <div class = "sampleCity sampleInner">in City, State</div>
+                        <img class = "sampleImg sampleInner wifi" src = "images/sample-hotspots.png">
+                    </div>
+                    <a href = "" class = "sampleDownload">Download the data</a>
+                </div>
+                <div class = "sampleCard s2">
+                    <div class = "sampleRect blue three11 draw-border">
+                        <div class = "sampleName sampleInner">311 requests</div>
+                        <div class = "sampleCity sampleInner">in City, State</div>
+                        <img class = "sampleImg sampleInner three11" src = "images/sample-311.png">
+                    </div>
+                    <a href = "" class = "sampleDownload">Download the data</a>
+                </div>
+                <div class = "sampleCard s3">
+                    <div class = "sampleRect green bike draw-border">
+                        <div class = "sampleName sampleInner">Bike share stations</div>
+                        <div class = "sampleCity sampleInner">in City, State</div>
+                        <img class = "sampleImg sampleInner bike" src = "images/sample-bike.png">
+                    </div>
+                    <a href = "" class = "sampleDownload">Download the data</a>
+                </div>                
+            </div>
+            <div id = "sampleButtonContainer" class = "hiddenSection hideOption sample">
+                <div id = "advancedTextOverlaySample">Advanced options <img src = "images/menuArrow.png"></div>
+                <select id = "advancedOptionsSample">
+                    <option value = "filters">Filter data</option>
+                    <option value = "weight">Weight data</option>
+                    <option value = "baseline">Set baseline</option>
+                </select>
+                <div class = "runButton user button blue">Run analysis</div>
+            </div>
         </div>
+<!-- END LOADER SAMPLE DATA CARD -->
 
 <!-- START LOADER USER DATA CARD -->
         <div class = "loaderSection user">
@@ -181,7 +219,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <div class = "errorText"></div>
                 </div>
             </div>
-            <div id = "uploadLatLonContainer" class="hiddenSection hideOption">
+            <div id = "uploadLatLonContainer" class="hiddenSection hideOption user">
                 <h4 class = "loaderHeader">Which columns in your file represent latitude and longitude?</h4>
                 <div id = "latContainer">
                     <div class = "inputLabel">Latitude</div>
@@ -192,14 +230,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <select id = "lonSelect"></select>
                 </div>
             </div>
-            <div id = "uploadButtonContainer" class = "hiddenSection hideOption">
-                <div id = "advancedTextOverlay">Advanced options <img src = "images/menuArrow.png"></div>
-                <select id = "advancedOptions">
+            <div id = "uploadButtonContainer" class = "hiddenSection hideOption user">
+                <div id = "advancedTextOverlayUser">Advanced options <img src = "images/menuArrow.png"></div>
+                <select id = "advancedOptionsUser">
                     <option value = "filters">Filter data</option>
                     <option value = "weight">Weight data</option>
                     <option value = "baseline">Set baseline</option>
                 </select>
-                <div id = "runButton" class = "button blue">Run analysis</div>
+                <div class = "runButton user button blue">Run analysis</div>
             </div>
         </div>
 <!-- END LOADER USER DATA CARD -->
@@ -387,6 +425,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         </div>
 <!-- END LOADER BASELINE CARD -->
+
+
+
+<!-- START LOADING SCREEN  CARD -->
+        <div class = "loaderSection loading">
+            <h2 class = "loaderHeader">Sit tight! We’re analyzing your data. </h2>
+            <p><em>Processing [number] of [number] rows of data</em></p>
+
+            <div id = "loadingContainer">
+                <img class = "loadingImg l1" src = "images/loading1.png">
+                <img class = "loadingImg l2" src = "images/loading2.png">
+                <img class = "loadingImg l3" src = "images/loading3.png">
+                <img class = "loadingImg l4" src = "images/loading4.png">
+                <img class = "loadingImg l5" src = "images/loading5.png">
+                <img class = "loadingImg l6" src = "images/loading6.png">
+                <img class = "loadingImg l7" src = "images/loading7.png">
+                <img class = "loadingImg l8" src = "images/loading8.png">
+                <img class = "loadingImg l9" src = "images/loading9.png">
+                <img class = "loadingImg l10" src = "images/loading10.png">
+            </div>
+            
+        </div>
+<!-- END LOADING SCREEN  CARD -->
     </div>
 <!-- END LOADER SECTION -->
 </div>
@@ -459,6 +520,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="js/getters.js"></script>
 <script src="js/loader.js"></script>
+<script src="js/callAPI.js"></script>
 <script src="js/loaderEvents.js"></script>
 
 <script>

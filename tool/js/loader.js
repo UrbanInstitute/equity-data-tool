@@ -4,7 +4,8 @@ function setCSVProperties(){
 
 
 function setDatasetType(datasetType){
-
+  d3.selectAll(".activeDatasetType").classed("activeDatasetType", false)
+  d3.select("#" + datasetType + "Button").classed("activeDatasetType", true)
 }
 function updateParams(param, value){
   var params = getParams();
@@ -48,12 +49,12 @@ function loaderError(error, errorType){
       .html(error)
     return false;
   }
-  d3.select("#runButton").classed("disabled", true)
+  d3.select(".user.runButton").classed("disabled", true)
 }
 function hideLoaderError(errorType){
   if(errorType != "weight"){
     d3.select("#uploadErrors").style("display","none")
-    d3.select("#runButton").classed("disabled", false)
+    d3.select(".user.runButton").classed("disabled", false)
   }
 
   d3.select("#weightError").style("display","none")
@@ -191,11 +192,13 @@ function startOver(){
   setLoaderBaseline("total")
   populateDropdowns([])
 
-  d3.select("#paramsData").datum(defaultParams)
+  const p = Object.assign({}, defaultParams)
+  d3.select("#paramsData").datum(p)
   showLoaderSection("home")
 }
 function init(){
-  d3.select("#paramsData").datum(defaultParams)
-  showLoaderSection("user")
+  const p = Object.assign({}, defaultParams)
+  d3.select("#paramsData").datum(p)
+  showLoaderSection("home")
 }
 init()

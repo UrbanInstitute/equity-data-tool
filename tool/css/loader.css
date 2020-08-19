@@ -271,7 +271,7 @@ h3.loaderSubHeader{
     margin-right: 10px;
     top: 16px;
 }
-#uploadButtonContainer{
+#uploadButtonContainer, #sampleButtonContainer{
     position: relative;
     display: block;
     clear: both;
@@ -279,7 +279,7 @@ h3.loaderSubHeader{
     margin: 0 auto;
     margin-top: 160px;
 }
-#advancedOptions-button{
+#advancedOptionsUser-button, #advancedOptionsSample-button{
     width: 197px;
     height: 46px;
     color: #1696d2;
@@ -288,7 +288,7 @@ h3.loaderSubHeader{
     display: inline-block;
 }
 
-#advancedOptions-button .ui-selectmenu-text{
+#advancedOptionsUser-button .ui-selectmenu-text, #advancedOptionsSample-button .ui-selectmenu-text{
     opacity: 0;
     font-size: 18px;
     font-weight: 400;
@@ -296,7 +296,7 @@ h3.loaderSubHeader{
     top: 9px;
     width: 134px;
 }
-#advancedTextOverlay{
+#advancedTextOverlayUser, #advancedTextOverlaySample{
     position: absolute;
     z-index: 2;
     font-size: 18px;
@@ -306,11 +306,11 @@ h3.loaderSubHeader{
     left: 16px;
     pointer-events: none;
 }
-#advancedTextOverlay img{
+#advancedTextOverlayUser img, #advancedTextOverlaySample img{
     width: 20px;
     margin-left: 4px;
 }
-#runButton{
+.runButton{
     margin-left: 61px;
     top: -13px;
     position: relative;
@@ -523,5 +523,184 @@ input[type=date]{
     cursor: pointer;
 }
 .closeTag img{
+    width: 100%;
+}
+
+
+/********************************************/
+/************** SAMPLE DATA *****************/
+/********************************************/
+
+/************** BORDER ANIMATION *****************/
+.draw-border.red{
+  box-shadow: inset 0 0 0 4px #F1AAA9;
+  color: #F1AAA9;
+}
+.draw-border.red:hover, .draw-border.red.active {
+  color: #E25552;
+}
+.draw-border.red.active {
+    box-shadow: inset 0 0 0 4px #E25552;
+}
+.draw-border.red:hover::before, .draw-border.red:hover::after, .draw-border.red.active::before, .draw-border.red:hover::after {
+  border-color: #E25552;
+}  
+
+.draw-border.green{
+  box-shadow: inset 0 0 0 4px #98CF90;
+  color: #98CF90;
+}
+.draw-border.green:hover, .draw-border.green.active {
+  color: #408941;
+}
+.draw-border.green.active{
+  box-shadow: inset 0 0 0 4px #408941;
+}
+.draw-border.green:hover::before, .draw-border.green:hover::after, .draw-border.green.active::before, .draw-border.green.active::after  {
+  border-color: #408941;
+}  
+
+.draw-border.blue{
+  box-shadow: inset 0 0 0 4px #73BFE2;
+  color: #73BFE2;
+}
+.draw-border.blue:hover, .draw-border.blue.active {
+  color: #12719E;
+}
+.draw-border.blue.active {
+  box-shadow: inset 0 0 0 4px #12719E;
+}
+.draw-border.blue:hover::before, .draw-border.blue:hover::after, .draw-border.blue.active::before, .draw-border.blue.active::after {
+  border-color: #12719E;
+}  
+
+.draw-border {
+  -webkit-transition: color 0.25s 0.0833333333s;
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+}
+.draw-border::before, .draw-border::after {
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  right: 0;
+}
+.draw-border::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+}
+.draw-border::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+}
+
+.draw-border:hover::before, .draw-border:hover::after {
+  -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+}
+.draw-border:hover::before {
+  -webkit-transition-delay: 0s, 0s, 0.25s;
+          transition-delay: 0s, 0s, 0.25s;
+}
+.draw-border:hover::after {
+  -webkit-transition-delay: 0s, 0.25s, 0s;
+          transition-delay: 0s, 0.25s, 0s;
+}
+/************** END BORDER ANIMATION *****************/
+.loaderSection.sample{
+    width: 945px;
+}
+#sampleButtonContainer {
+    margin-top: 71px;
+}
+.sampleCard{
+    display: inline-block;
+}
+.sampleCard.s2{
+    margin-right: 76px;
+}
+.sampleCard.s1{
+    margin-right: 76px;
+}
+.sampleRect{
+    background: white;
+    cursor: pointer;
+    border: none;
+    width: 260px;
+    height: 85px;
+    position: relative;
+}
+.sampleInner{
+    pointer-events: none;
+}
+.sampleName{
+    position: absolute;
+    top: 19px;
+    left: 16px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.sampleCity{
+    left: 16px;
+    position: absolute;
+    top: 45px;
+}
+.sampleImg{
+    position: absolute;
+    z-index: 2;
+}
+.sampleImg.wifi{
+    height: 67px;
+    right: -12px;
+    top: 10px;
+}
+.sampleImg.three11{
+    height: 60px;
+    top: 10px;
+    right: 10px;
+}
+.sampleImg.bike{
+    position: absolute;
+    height: 71px;
+    right: 13px;
+    top: -11px;
+}
+.sampleDownload{
+    width: 260px;
+    text-align: center;
+    color: #1696d2;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: 400;
+    margin-left: 67.6px;
+    top: 20px;
+    position: relative;
+}
+
+
+
+
+/********************************************/
+/************ LOADING SCREEN ****************/
+/********************************************/
+
+#loadingContainer{
+    width: 544px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.loadingImg{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
     width: 100%;
 }

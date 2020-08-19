@@ -1,6 +1,6 @@
 function getDatasetType(){
   // return "sample" or "user"
-  return "user"
+  return (d3.select(".activeDatasetType").classed("user")) ? "user" : "sample"
 }
 function getParams(){
   return  d3.select("#paramsData").datum()
