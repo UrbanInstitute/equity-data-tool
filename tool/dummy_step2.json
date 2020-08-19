@@ -1,0 +1,26 @@
+{
+    "updates": {
+        "started_processing": true,
+        "num_rows_file": 470,
+        "num_rows_processed": 200,
+        "num_rows_filtered_out": 2,
+        "city_used": "Washington city",
+        "sjoin_started": true,
+        "finished": false,
+        "errors": false
+    },
+    "warnings": {
+        "multiple_cities_flag": false,
+        "null_rows_filtered": 0,
+        "user_rows_fitlered": 1,
+        "out_of_city_rows_filtered": 0,
+        "multiple_cities_list": []
+    },
+    "error_messages": {
+        "data_readin_error": false,
+        "filter_coltypes_mismatch": false,
+        "weight_coltypes_mismatch": false,
+        "all_rows_filtered": false,
+        "pts_not_in_us_city": false
+    }
+}

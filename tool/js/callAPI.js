@@ -39,7 +39,7 @@ function runAnalysis() {
         success: function(msg, status, jqXHR){
             console.log(msg)
             showLoadingScreen();
-            statusIntervId = setInterval(checkStatus, 2000, msg)
+            statusIntervId = setInterval(loopStatus, 2000, msg)
         }
     }); 
 }
@@ -57,29 +57,49 @@ function showErrorScreen(){
 
 }
 
-function checkStatus(msg){
+var tmpCount = 0;
+function loopStatus(msg){
     console.log("checking status")
     console.log(msg)
     console.log("\n\n")
     // ping the status api
     // check updates.finished
-    var status = {"updates": {"finished": false } }
-    if(status.updates.finished){
-        hideLoadingScreen()
-        clearInterval(buildingIntervId);
-        clearInterval(statusIntervId);
-    }
+    var tmpURLS = ["dummy_step1.json", "dummy_step2.json", "dummy_step3.json", "dummy_finished.json"]
+    var statusURL = tmpURLS[tmpCount]
+    $.ajax({
+        url: statusURL,
+        method: "GET",
+        dataType:"json",
+        success: function(status){
+            checkStatus(status)
+        }
+    }); 
 
-    //if error
-    if(false){
+    tmpCount += 1;
+
+}
+
+
+function checkStatus(status){
+    if(status.updates.errors){
         clearInterval(buildingIntervId);
         clearInterval(statusIntervId);
         showErrorScreen()
     }
+    else if(status.updates.finished){
+        d3.select("#num_rows_processed").text(status.updates.num_rows_processed)
+        d3.select("#num_rows_file").text(status.updates.num_rows_file)
+
+        hideLoadingScreen()
+        clearInterval(buildingIntervId);
+        clearInterval(statusIntervId);
+    }
+    else{
+        d3.select("#num_rows_processed").text(status.updates.num_rows_processed)
+        d3.select("#num_rows_file").text(status.updates.num_rows_file)
+    }
+
 }
-
-
-
 
 
 function loopBuildings() {
