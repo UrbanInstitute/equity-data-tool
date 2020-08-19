@@ -33,7 +33,7 @@ h3.loaderSubHeader{
 .loaderHeader span.weak{
     font-weight: normal;
 }
-.loaderSection p{
+.loaderSection p, #loadingStatusContainer{
     font-size: 24px;
     line-height: 146%;
     text-align: center;
@@ -695,7 +695,7 @@ input[type=date]{
     width: 544px;
     position: relative;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 .loadingImg{
     position: absolute;
@@ -703,4 +703,7 @@ input[type=date]{
     left: 0px;
     opacity: 0;
     width: 100%;
+}
+.loaderSectionStatus{
+    display: none;
 }

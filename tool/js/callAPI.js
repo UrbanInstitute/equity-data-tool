@@ -38,13 +38,16 @@ function runAnalysis() {
         data:formData,
         success: function(msg, status, jqXHR){
             console.log(msg)
-            showLoadingScreen();
+            showLoadingScreen();            
             statusIntervId = setInterval(loopStatus, 2000, msg)
         }
     }); 
 }
 
 function showLoadingScreen(){
+    d3.selectAll(".loaderSectionStatus").style("display","none")
+    d3.select("#statusLoading").style("display","block")
+
     showLoaderSection("loading")
     loopBuildings();
 }
@@ -59,9 +62,6 @@ function showErrorScreen(){
 
 var tmpCount = 0;
 function loopStatus(msg){
-    console.log("checking status")
-    console.log(msg)
-    console.log("\n\n")
     // ping the status api
     // check updates.finished
     var tmpURLS = ["dummy_step1.json", "dummy_step2.json", "dummy_step3.json", "dummy_finished.json"]
@@ -87,6 +87,9 @@ function checkStatus(status){
         showErrorScreen()
     }
     else if(status.updates.finished){
+        d3.selectAll(".loaderSectionStatus").style("display","none")
+        d3.select("#statusDone").style("display","block")
+
         d3.select("#num_rows_processed").text(status.updates.num_rows_processed)
         d3.select("#num_rows_file").text(status.updates.num_rows_file)
 
@@ -95,6 +98,9 @@ function checkStatus(status){
         clearInterval(statusIntervId);
     }
     else{
+        d3.selectAll(".loaderSectionStatus").style("display","none")
+        d3.select("#statusProcessing").style("display","block")
+
         d3.select("#num_rows_processed").text(status.updates.num_rows_processed)
         d3.select("#num_rows_file").text(status.updates.num_rows_file)
     }
