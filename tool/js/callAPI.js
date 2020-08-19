@@ -10,7 +10,7 @@ function runAnalysis() {
   // log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
   var datasetType = getDatasetType(),
         params = getParams()
-        postURL = "http://httpbin.org/post",
+        postURL = "https://httpbin.org/post",
         formData = new FormData();
 
     if(datasetType == "user"){
