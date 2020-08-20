@@ -52,8 +52,23 @@ function showLoadingScreen(){
     loopBuildings();
 }
 
-function hideLoadingScreen(){
+function showResults(fileId){
+    d3.select("#resultsContainer").style("display", "block")
+    d3.select("#loaderContainer").style("display", "none")
+    d3.select("#loaderContainer").style("display", "none")
+    d3.select(".loaderHome").style("display","none")
+
+    drawResultsData(fileId)
     
+}
+
+function drawResultsData(fileId){
+    var jsonURL = "dummy_data.json"
+    console.log(fileId)
+
+    d3.json(jsonURL).then(function(data) {
+      drawBarChart(data.demographic_bias_data)
+    })
 }
 
 function showErrorScreen(){
@@ -93,7 +108,8 @@ function checkStatus(status){
         d3.select("#num_rows_processed").text(status.updates.num_rows_processed)
         d3.select("#num_rows_file").text(status.updates.num_rows_file)
 
-        hideLoadingScreen()
+        var tmpFileId = "foo"
+        showResults(tmpFileId);
         clearInterval(buildingIntervId);
         clearInterval(statusIntervId);
     }

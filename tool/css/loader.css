@@ -140,7 +140,7 @@ h3.loaderSubHeader{
 /********************************************/
 /************* HOME ****************/
 /********************************************/
-.buildings.loader{
+.buildings.loader, .buildings.results{
     width: 350px;
     margin: 0 auto;
     display: block;

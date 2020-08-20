@@ -147,6 +147,9 @@ function showDefaultControls(){
 }
 function showLoaderSection(loaderSection){
   var params = getParams()
+  d3.select("#resultsContainer").style("display", "none")
+  d3.select(".loaderHome").style("display","block")
+
   if(loaderSection == "filters"){
     var currentFilters = params.filters
     populateFilters(currentFilters)

@@ -455,7 +455,7 @@ d3.selectAll(".runButton").on("click", function(){
 })
 
 
-
+showResults();
 
 
 // const sampleForm = document.getElementById('sampleDataForm');

@@ -1,0 +1,89 @@
+#barCategories{
+    float: left;
+    display: inline-block;
+    margin-left: 100px;
+}
+#barChart{
+    float: left;
+    display: inline-block;    
+}
+
+.barCategoryRow{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.barCategoryRadio{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: red;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+}
+.barCategoryLabel{
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.bar_full_name{
+    font-size: 12px;
+}
+
+
+.barCategoryRow.education .barCategoryRadio{
+    background: #1696d2;
+}
+.barCategoryRow.race .barCategoryRadio{
+    background: #fdbf11;
+}
+.barCategoryRow.income .barCategoryRadio{
+    background: #000000;
+}
+.barCategoryRow.immigration .barCategoryRadio{
+    background: #55b748;
+}
+.barCategoryRow.other .barCategoryRadio{
+    background: #ec008b;
+}
+
+
+
+.barDot.education{
+    fill: #1696d2;
+}
+.barDot.race{
+    fill: #fdbf11;
+}
+.barDot.income{
+    fill: #000000;
+}
+.barDot.immigration{
+    fill: #55b748;
+}
+.barDot.other{
+    fill: #ec008b;
+}
+
+
+
+.lollipop{
+    stroke-width: 2px;
+}
+.lollipop.education{
+    stroke: #1696d2;
+}
+.lollipop.race{
+    stroke: #fdbf11;
+}
+.lollipop.income{
+    stroke: #000000;
+}
+.lollipop.immigration{
+    stroke: #55b748;
+}
+.lollipop.other{
+    stroke: #ec008b;
+}
