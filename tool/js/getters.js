@@ -58,3 +58,32 @@ function getCurrentFilter(){
 
     // return ["foo"]
 }
+
+function getBarWidth(){
+    var margin = getBarMargins();
+    return 800 - margin.left - margin.right;
+}
+function getBarHeight(data){
+    var margin = getBarMargins();
+    // var h = (typeof(data) == "undefined") ? 500 : (500/21) * data.length
+    var scalar = (typeof(data) == "undefined") ? 21 : data.length
+    return ((700 - margin.top - margin.bottom)/21) * scalar;
+}
+function getBarMargins(){
+    return {top: 50, right: 80, bottom: 0, left: 80}
+}
+function getBarX(data){
+    var width = getBarWidth()
+    return d3.scaleLinear()
+        .range([0,width])
+        .domain(d3.extent(data, function(d){ return d.diff_data_city; }));
+
+}
+function getBarY(data){
+    var height = getBarHeight(data)
+    var margin = getBarMargins();
+    return d3.scaleBand()
+        .rangeRound([height,margin.top])
+        .padding(0.2)
+        .domain(data.map(function(d) { return d.census_var; }));
+}

@@ -1,89 +1,148 @@
+/********************************************/
+/********** INDICATOR SELECTION *************/
+/********************************************/
 #barCategories{
     float: left;
     display: inline-block;
-    margin-left: 100px;
+    width: 330px;
+    margin-right: 35px;
 }
-#barChart{
-    float: left;
-    display: inline-block;    
+.resultsCopy.bars{
+    margin-bottom: 30px;
+    width: 100%;
 }
-
 .barCategoryRow{
     margin-bottom: 10px;
     cursor: pointer;
 }
-.barCategoryRadio{
+.barCategoryCheck{
+    display: inline-block;
+    position: relative;
     width: 20px;
     height: 20px;
-    border-radius: 100%;
-    background: red;
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
+    border: 1px solid #353535;
     top: 3px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    background: #fff;
+    margin-right: 9px;
+}
+.barCategoryRow.active .barCategoryCheck{
+    color: #1696d2;
+    border: 1px solid #1696d2;
+}
+.barCategoryRow:hover .barCategoryCheck{
+    color: #fdbf11;
+    border: 1px solid #fdbf11;
 }
 .barCategoryLabel{
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
+    display: inline-block;
+}
+.barCategoryDescription{
+    font-style: italic;
+    margin-left: 34px;
+}
+.barCategoryDescription span{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-style: normal;
+    top: -3px;
+    position: relative;
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background: #353535;
     display: inline-block;
 }
 
+
+
+
+/********************************************/
+/************* CHART PARTS ******************/
+/********************************************/
+#barChartContainer{
+    float: left;
+    display: inline-block;
+    width: 935px;
+    position: relative;
+
+}
+#barChart{
+    float: left;
+    display: inline-block;    
+    top: -110px;
+    position: relative;
+}
+.overunder{
+    display: inline-block;
+    float: left;
+    transform-origin: top left;
+    transform: rotate(-90deg);
+    top: 598px;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 22px;
+    letter-spacing: 5px;
+    font-weight: 900;
+    color: #f1aaa9;
+    left: 20px;
+}
+.overunder.over{
+    float: revert;
+    top: 20px;
+    right: -180px;
+    left: auto;
+    position: absolute;
+    transform: rotate(90deg);
+    color: #a2d4ec;
+}
+
+
 .bar_full_name{
-    font-size: 12px;
+    font-size: 14px;
+}
+.bar_full_name.background{
+    fill: #fdbf11;
+    opacity: 0;
+}
+.bar_full_name.hover{
+    opacity: 1; 
 }
 
-
-.barCategoryRow.education .barCategoryRadio{
-    background: #1696d2;
-}
-.barCategoryRow.race .barCategoryRadio{
-    background: #fdbf11;
-}
-.barCategoryRow.income .barCategoryRadio{
-    background: #000000;
-}
-.barCategoryRow.immigration .barCategoryRadio{
-    background: #55b748;
-}
-.barCategoryRow.other .barCategoryRadio{
-    background: #ec008b;
-}
-
-
-
-.barDot.education{
+.barDot{
     fill: #1696d2;
 }
-.barDot.race{
-    fill: #fdbf11;
+.barDot.underRepresented{
+    fill: #e25552;
 }
-.barDot.income{
-    fill: #000000;
+.barDot.hover{
+    stroke: #fdbf11;
+    stroke-width: 4px;
 }
-.barDot.immigration{
-    fill: #55b748;
-}
-.barDot.other{
-    fill: #ec008b;
-}
-
-
-
 .lollipop{
+    stroke: #a2d4ec;
     stroke-width: 2px;
 }
-.lollipop.education{
-    stroke: #1696d2;
+.lollipop.underRepresented{
+    stroke: #f1aaa9;
 }
-.lollipop.race{
-    stroke: #fdbf11;
+.lollipop.background{
+    stroke: #fce39e;
+    stroke-width: 8px;
+    opacity: 0;
 }
-.lollipop.income{
-    stroke: #000000;
+.lollipop.background.hover{
+    opacity: 1;
 }
-.lollipop.immigration{
-    stroke: #55b748;
+.lollipop.foreground.hover{
+    stroke-width: 4px;
 }
-.lollipop.other{
-    stroke: #ec008b;
+.tick line{
+    stroke: #dedddd;
+    stroke-width: .5px;
 }

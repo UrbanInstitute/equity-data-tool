@@ -26,7 +26,7 @@ h2.loaderHeader{
 }
 h3.loaderSubHeader{
     font-size: 30px;
-    font-weight: 100;
+    font-weight: 300;
     text-align: center;
     margin-top: -10px;
 }
@@ -161,7 +161,7 @@ h3.loaderSubHeader{
     line-height: 146%;
     text-align: center;
     font-size: 24px;
-    font-weight: 100;
+    font-weight: 300;
 }
 /********************************************/
 /************* UPLOAD DATA ****************/
