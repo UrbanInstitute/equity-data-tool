@@ -2,7 +2,7 @@
 /**************** LAYOUT ********************/
 /********************************************/
 
-#resultsContainer{
+.resultsContainer.wrapper{
     display: none;
     max-width: 1400px;
     margin: 0 auto;
@@ -12,10 +12,37 @@
     display: block;
     margin: 0 auto;
 }
-#resultsFigures{
+#resultsFiguresBottom, #resultsFiguresTop{
     width: calc(100% - 100px);
     margin-left: 50px;
     display: inline-block;
+}
+#resultsDivider{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #E88E2D;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.resultsHeader.maps{
+    display: inline-block;
+}
+#baselineSelect-button{
+    display: inline-block;
+    top: 10px;
+}
+#baselineSelect-button.pop{
+    max-width: 194px;
+}
+#baselineSelect-button.under_poverty_line{
+    max-width: 248px;
+}
+#baselineSelect-button.no_bband{
+    max-width: 384px;
+}
+#baselineSelect-button.foreign_born{
+    max-width: 257px;
 }
 
 /********************************************/
@@ -35,4 +62,37 @@
 }
 .resultsCopy{
     font-size: 16px;
+}
+
+/********************************************/
+/*************** SUMMARY ********************/
+/********************************************/
+.summaryContainer{
+    display: none;
+}
+.summaryContainer.clone{
+    position: fixed;
+    top: -10000px;
+    left: -10000px;
+}
+.headerX{
+    float: right;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    cursor: pointer;
+}
+.headX.vert{
+    width: 2px;
+    height: 25px;
+    background: #1696d2;
+    position: absolute;
+    left: 11.5px;
+}
+.headX.hor{
+    width: 25px;
+    height: 2px;
+    background: #1696d2;
+    position: absolute;
+    top: 11.5px;
 }

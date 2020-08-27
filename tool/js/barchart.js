@@ -4,6 +4,7 @@
 
 function drawBarChart(data){
 // console.log(data)
+d3.selectAll("#barChart svg").remove()
 var margin = getBarMargins(),
 width = getBarWidth(),
 height = getBarHeight();
@@ -40,7 +41,9 @@ var y = getBarY(data)
 svg
   .append("g")
   .attr("transform", "translate(0,50)")      
-  .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0));
+  .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0).tickFormat(function(t){
+    return t + "%"
+  }));
 
 
 svg.selectAll(".lollipop.background")
@@ -116,7 +119,7 @@ svg.append("line")
 .attr("x1", x(0))
 .attr("x2", x(0))
 .attr("y1", 0 + margin.top)
-.attr("y2", height - margin.top)
+.attr("y2", height)
 .attr("stroke", "#3a403d")
 .attr("stroke-width", "1px");
 
@@ -143,6 +146,7 @@ function updateBars(category, hide){
             .transition()
             .attr("x1", x(0))
             .attr("x2", x(0))
+//TO DO fix opacity transition if interrtupted
         d3.selectAll(".bar_full_name." + category)
             .classed("active", false)
             .transition()

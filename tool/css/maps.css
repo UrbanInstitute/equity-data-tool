@@ -1,0 +1,185 @@
+/********************************************/
+/**************** MAP LAYOUT ****************/
+/********************************************/
+
+
+
+.sliderMap{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#mapComparison * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#mapSlideContainer{
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    width: 800px;
+    height: 500px;
+}
+#mapComparison{
+    /*display: none;*/
+}
+#diffMap{
+    
+}
+#mapComparison, #diffMap{
+    width: 800px;
+    height: 500px;
+    position: relative;
+    display: inline-block;
+    float: left;
+}
+/********************************************/
+/**************** CONTROLS ******************/
+/********************************************/
+
+#mapControls{
+    width: 330px;
+    display: inline-block;
+    margin-right: 70px;
+    float: left;
+}
+.controlContainer{
+    position: relative;
+    margin-bottom: 22px;
+    cursor: pointer;
+}
+.radioContainer{
+    position: absolute;
+}
+.controlName{
+    left: 32px;
+    position: relative;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+.controlDescription{
+    left: 32px;
+    position: relative;
+    line-height: 146%;
+    font-style: italic;
+}
+.radio.large{
+    width: 20px;
+}
+.radio.checked{
+    display: none;
+}
+.radio.unchecked{
+    display: inline-block;
+}
+.controlContainer.active .radio.checked{
+    display: inline-block;
+}
+.controlContainer.active .radio.unchecked{
+    display: none;
+}
+
+
+
+
+
+/********************************************/
+/*************** TOOLTIP ********************/
+/********************************************/
+.mapboxgl-popup-content{
+    border-radius: 0px;
+    font-family: Lato;
+    width: fit-content;
+    padding-bottom: 0px;
+    content: #353535;
+}
+.mapboxgl-popup-content .tt-name{
+    white-space: normal;
+    line-height: 100%;
+    font-size: 12px;
+    font-family: Lato;
+    font-style: italic;
+    color: #9d9d9d;
+    text-transform: uppercase;
+    margin-bottom: 8px; 
+}
+.tt-contains{
+    font-size: 14px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+.tt-row{
+    font-size: 14px;
+}
+.tt-val{
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    width: 69px;
+    text-align: right;
+    margin-right: 9px;
+}
+.tt-val.baseline{
+    border-bottom: 1px solid black;
+    padding-bottom: 2px;
+}
+.tt-val.baseline span{
+    float: left;
+    font-size: 22px;
+    font-weight: normal;
+}
+.tt-text{
+    display: inline-block;
+    float: left;
+}
+.tt-row{
+    display: flex;
+    margin-bottom: 4px;
+    clear: both;
+}
+.tt-diff-row{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+    height: 28px;
+    padding-top: 6px;
+    left: -10px;
+    position: relative;
+    padding-left: 10px;
+    width: calc(100% + 10px);
+}
+
+
+.tt-contains.slider{
+    font-weight: normal;
+}
+.tt-val.slider{
+    border-bottom: 5px solid rgb(133, 199, 230);
+    float: none;
+    width: auto;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 18px;
+    font-weight: 900;
+}
+.tt-text.slider{
+    margin-top: -4px;
+    padding-bottom: 13px;
+    max-width: 180px;
+    white-space: normal;
+}
+.tt-noSigDiff{
+    width: 193px;
+    white-space: normal;
+    line-height: 16px;
+    font-size: 14px;
+    font-style: italic;
+    padding-bottom: 12px;
+    color: #9d9d9d;
+}

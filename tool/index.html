@@ -25,8 +25,9 @@ id = "currentFilterDatumContainer" class = "filterDatum current" (a hidden div t
   <link rel="stylesheet" type="text/css" href="css/loader.css"/>
   <link rel="stylesheet" type="text/css" href="css/results.css"/>
   <link rel="stylesheet" type="text/css" href="css/barchart.css"/>
+  <link rel="stylesheet" type="text/css" href="css/maps.css"/>
 
-
+  <link rel="stylesheet" href="css/vendor/mapbox-gl-compare.0.4.0.css" type="text/css"/>
   <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic,900,900italic" rel="stylesheet" type="text/css">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -106,17 +107,67 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- START MAIN CONTENT -->
 <div class="container">
 
-<div id = resultsContainer>
+<div class = "resultsContainer wrapper">
     <div id = "resultsHeader">
         <img class = "buildings results" src = "images/buildings.png">
         <h2 class = "loaderHeader">Evaluating Equity Data Tool</h2>
         <h3 class = "loaderSubHeader">Measuring Spatial Disparities in Your City</h3>
         <p class = "results intro">How can cities ensure that resources are equitably distributed to all residents? We created this tool to help city officials and community organizations quickly assess spatial disparities in their data.</p>
+     <div class = "summaryContainer visible">
+     </div>
+     <div class = "summaryContainer clone">
+     </div>
+
     </div>
 
-    <div id = "resultsFigures">
-        <div class = "resultsHeader bars">Demographic distribution of your data compared with the city’s total population</div>
+    <div id = "resultsFiguresTop">
+        <div class = "resultsHeader maps">Geographic distribution of your data compared with the city’s</div>
 
+        <select id = "baselineSelect">
+            <option value = "pop">Total population</option> 
+            <option value = "under_poverty_line">Low-income population</option> 
+            <option value = "no_bband">Population without access to broadband</option> 
+            <option value = "foreign_born">Foreign-born population</option>       
+        </select>
+
+        <div id = "mapContainer">
+            <div id = "mapControls">
+                <div class = "controlContainer diff active">
+                    <div class = "radioContainer">
+                        <img class = "radio large checked" src = "images/checkedRadio.png">
+                        <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
+                    </div>
+                    <div class = "controlName">Disparity Score</div>
+                    <div class = "controlDescription">See which census tracts are over- and underrepresented in your data</div>
+                </div>
+                <div class = "controlContainer compare">
+                    <div class = "radioContainer">
+                        <img class = "radio large checked" src = "images/checkedRadio.png">
+                        <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
+                    </div>
+                    <div class = "controlName">Score Breakdown</div>
+                    <div class = "controlDescription">See your data side by side with the city’s <span id = "controlBaselineName">total population</span></div>
+                </div>
+            </div>
+
+            <div id = "mapSlideContainer">
+                <div id = "diffMap"></div>
+
+                <div id="mapComparison">
+                    <div id="baselineMap" class="sliderMap"></div>
+                    <div id="dataMap" class="sliderMap"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id = "resultsDivider" class = "resultsContainer divider"></div>
+
+<div class = "resultsContainer wrapper">
+    <div id = "resultsFiguresBottom">
+        <div class = "resultsHeader bars">Demographic distribution of your data compared with the city’s total population</div>
 
         <div id = "barCategories">
             <div class = "resultsCopy bars">Choose demographic categories to see which groups are over- and underrepresented in your data</div>
@@ -221,7 +272,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <select id = "advancedOptionsSample">
                     <option value = "filters">Filter data</option>
                     <option value = "weight">Weight data</option>
-                    <option value = "baseline">Set baseline</option>
+                    <!-- <option value = "baseline">Set baseline</option> -->
                 </select>
                 <div class = "runButton user button blue">Run analysis</div>
             </div>
@@ -283,7 +334,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <select id = "advancedOptionsUser">
                     <option value = "filters">Filter data</option>
                     <option value = "weight">Weight data</option>
-                    <option value = "baseline">Set baseline</option>
+                    <!-- <option value = "baseline">Set baseline</option> -->
                 </select>
                 <div class = "runButton user button blue">Run analysis</div>
             </div>
@@ -417,35 +468,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div id = "baselineColumnContainer">
                 <div id = "baselineOptions">
                     <h3 class = "loaderHeader">Set your baseline</h3>
-                    <div class = "baselineRow active total" data-baseline="total">
+                    <div class = "baselineRow active pop" data-baseline="pop">
                         <div class = "baselineRadio">
                             <img class = "radio large checked active" src = "images/checkedRadio.png">
                             <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
                         </div>
                         <div class = "baselineText">Total population</div>
                     </div>
-                    <div class = "baselineRow lowIncome" data-baseline="lowIncome">
+                    <div class = "baselineRow lowincome" data-baseline="lowincome">
                         <div class = "baselineRadio">
                             <img class = "radio large checked" src = "images/checkedRadio.png">
                             <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
                         </div>                        
                         <div class = "baselineText">Low-income population</div>
                     </div>
-                    <div class = "baselineRow daytime" data-baseline="daytime">
-                        <div class = "baselineRadio">
-                            <img class = "radio large checked" src = "images/checkedRadio.png">
-                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
-                        </div>    
-                        <div class = "baselineText">Daytime (commuter-adjusted) population<a id = "whatsthiswhatsthis" href = "https://www.census.gov/topics/employment/commuting/guidance/calculations.html" target = "_blank">what is this?</a></div>
-                    </div>
-                    <div class = "baselineRow noBroadband" data-baseline="noBroadband">
+                    <div class = "baselineRow nobband" data-baseline="nobband">
                         <div class = "baselineRadio">
                             <img class = "radio large checked" src = "images/checkedRadio.png">
                             <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
                         </div>    
                         <div class = "baselineText">Population without access to broadband</div>
                     </div>
-                    <div class = "baselineRow foreignBorn" data-baseline="foreignBorn">
+                    <div class = "baselineRow foreignborn" data-baseline="foreignborn">
                         <div class = "baselineRadio">
                             <img class = "radio large checked" src = "images/checkedRadio.png">
                             <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
@@ -575,9 +619,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="js/globals.js"></script>
 <script src="js/getters.js"></script>
 <script src="js/barchart.js"></script>
+<script src="js/summary.js"></script>
 <script src="js/loader.js"></script>
 <script src="js/callAPI.js"></script>
 <script src="js/loaderEvents.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+
+<script src="js/mapping.js"></script>
 
 <script>
     (function (i, s, o, g, r, a, m) {

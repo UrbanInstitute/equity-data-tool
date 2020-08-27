@@ -147,7 +147,7 @@ function showDefaultControls(){
 }
 function showLoaderSection(loaderSection){
   var params = getParams()
-  d3.select("#resultsContainer").style("display", "none")
+  d3.selectAll(".resultsContainer").style("display", "none")
   d3.select(".loaderHome").style("display","block")
 
   if(loaderSection == "filters"){
@@ -180,8 +180,8 @@ function showLoaderSection(loaderSection){
 
 const defaultParams = {
     "filters":[],
-    "weight":"",
-    "baseline":"total",
+    "weight": null,
+    "baseline":"pop",
     "lat_column": "",
     "lon_column": "",
     "year": 2018
@@ -192,7 +192,7 @@ function startOver(){
   d3.selectAll(".hideOption").classed("hiddenSection",true)
   d3.select("#dropboxClick").text("Choose a file")
   d3.select("#dropboxDrag").text("or drag it here").classed("filename", false)
-  setLoaderBaseline("total")
+  setLoaderBaseline("pop")
   populateDropdowns([])
 
   const p = Object.assign({}, defaultParams)

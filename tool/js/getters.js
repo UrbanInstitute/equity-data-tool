@@ -1,19 +1,18 @@
 function getDatasetType(){
   // return "sample" or "user"
-  return (d3.select(".activeDatasetType").classed("user")) ? "user" : "sample"
+  return (d3.select(".activeDatasetType").node() == null || d3.select(".activeDatasetType").classed("user") ) ? "user" : "sample"
 }
 function getParams(){
   return  d3.select("#paramsData").datum()
 }
 function getWeight(){
-    return d3.select("#weightSelect").node().value
+    return (d3.select("#weightSelect").node().value == "") ? null : d3.select("#weightSelect").node().value;
 }
 function getBaseline(){
-    return d3.select(".baselineRadio .radio.checked.active").node().parentNode.parentNode.getAttribute("data-baseline")
+    return d3.select("#baselineSelect").node().value
 }
 function getBaselineText(baseline){
-    if(baseline == "daytime") return "Daytime (commuter-adjusted) population"
-    else return d3.select(".baselineRow." + baseline + " .baselineText").text()
+    return d3.select("#baselineSelect option[value=" + baseline + "]").text()
 }
 function getCSVProperties(){
   return  d3.select("#csvProperties").datum()
@@ -70,7 +69,7 @@ function getBarHeight(data){
     return ((700 - margin.top - margin.bottom)/21) * scalar;
 }
 function getBarMargins(){
-    return {top: 50, right: 80, bottom: 0, left: 80}
+    return {top: 50, right: 150, bottom: 0, left: 80}
 }
 function getBarX(data){
     var width = getBarWidth()
@@ -86,4 +85,10 @@ function getBarY(data){
         .rangeRound([height,margin.top])
         .padding(0.2)
         .domain(data.map(function(d) { return d.census_var; }));
+}
+
+
+
+function getMapHeight(){
+    return 500;
 }

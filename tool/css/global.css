@@ -8,6 +8,9 @@ body, svg{
 a{
     color: #1696d2;
 }
+select{
+    display: none;
+}
 .button{
     font-size: 18px;
     font-weight: 400;
@@ -99,15 +102,7 @@ a{
     position: relative;
     top: 7px;
 }
-.radio.large{
-    width: 20px;
-}
-.radio{
-    display: none;
-}
-.radio.active{
-    display: inline-block;
-}
+
 #header-pinned{
     border-bottom: none !important;
 }

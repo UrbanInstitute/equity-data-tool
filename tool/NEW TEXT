@@ -1,0 +1,44 @@
+Loader errors
+You may only upload a single file
+An error occured reading your CSV
+
+
+Loader statuses
+Uploading data...
+Wrapping up...
+
+
+Summary stats
+N total rows in your data
+N rows removed by filters
+N rows removed with null or missing weight columns
+N rows removed with null or missing latitude and/or longitude columns
+N rows removed with null or missing filter columns
+
+
+
+
+
+
+
+Errors
+
+if filter all
+- back to filter page
+
+all other cases
+- start over
+- back to data page
+
+
+
+Warnings
+
+
+
+
+
+
+
+1 preselected filters
+1 preselected weights

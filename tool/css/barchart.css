@@ -34,8 +34,10 @@
     border: 1px solid #1696d2;
 }
 .barCategoryRow:hover .barCategoryCheck{
-    color: #fdbf11;
     border: 1px solid #fdbf11;
+}
+.barCategoryRow.active:hover .barCategoryCheck{
+    color: #fdbf11;
 }
 .barCategoryLabel{
     font-weight: bold;
@@ -95,11 +97,11 @@
 .overunder.over{
     float: revert;
     top: 20px;
-    right: -180px;
+    right: -110px;
     left: auto;
     position: absolute;
     transform: rotate(90deg);
-    color: #a2d4ec;
+    color: #bcdeb4;
 }
 
 
@@ -115,7 +117,7 @@
 }
 
 .barDot{
-    fill: #1696d2;
+    fill: #55b748;
 }
 .barDot.underRepresented{
     fill: #e25552;
@@ -125,7 +127,7 @@
     stroke-width: 4px;
 }
 .lollipop{
-    stroke: #a2d4ec;
+    stroke: #bcdeb4;
     stroke-width: 2px;
 }
 .lollipop.underRepresented{
@@ -145,4 +147,8 @@
 .tick line{
     stroke: #dedddd;
     stroke-width: .5px;
+}
+.tick text{
+    font-family: Lato;
+    font-size: 13px;
 }

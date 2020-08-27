@@ -28,7 +28,7 @@ var barCategories = {  "pct_bach":{
     "category": "Race/ethnicity",
     "class": "race"
   },
-  "pct_smaller_races":{
+  "pct_other_races":{
     "full_name": "All other races and ethnicities",
     "category": "Race/ethnicity",
     "class": "race"
@@ -106,3 +106,4 @@ var barCategories = {  "pct_bach":{
 }
 
 const BAR_DOT_RADIUS = 8;
+const MAP_BINS = 8;

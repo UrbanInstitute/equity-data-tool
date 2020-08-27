@@ -37,9 +37,8 @@ function runAnalysis() {
         processData: false,
         data:formData,
         success: function(msg, status, jqXHR){
-            console.log(msg)
             showLoadingScreen();            
-            statusIntervId = setInterval(loopStatus, 2000, msg)
+            statusIntervId = setInterval(loopStatus, 500, msg)
         }
     }); 
 }
@@ -53,7 +52,7 @@ function showLoadingScreen(){
 }
 
 function showResults(fileId){
-    d3.select("#resultsContainer").style("display", "block")
+    d3.selectAll(".resultsContainer").style("display", "block")
     d3.select("#loaderContainer").style("display", "none")
     d3.select("#loaderContainer").style("display", "none")
     d3.select(".loaderHome").style("display","none")
@@ -64,10 +63,11 @@ function showResults(fileId){
 
 function drawResultsData(fileId){
     var jsonURL = "dummy_data.json"
-    console.log(fileId)
-
+    var params = getParams()
     d3.json(jsonURL).then(function(data) {
-      drawBarChart(data.demographic_bias_data)
+      drawBarChart(data.results.result.demographic_bias_data)
+      drawMaps(data.results.result.bbox, data.results.result.geo_bias_data.features, data.results.result.bounds)
+      populateSummaries(data.results.result.messages, params)
     })
 }
 
