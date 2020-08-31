@@ -8,12 +8,21 @@ d3.selectAll(".controlContainer").on("click", function(){
     if(d3.select(this).classed("diff")){
         d3.select("#diffMap")
             .transition()
+            .duration(1000)
             .style("margin-top", "0px")
-        // d3.select("#mapComparison").style("display", "none")
+        d3.select(".mapLegend.diff")
+            .transition()
+            .duration(1000)
+            .style("margin-top", "0px")
     }else{
         d3.select("#diffMap")
             .transition()
+            .duration(1000)
             .style("margin-top", -1*getMapHeight() + "px")
+        d3.select(".mapLegend.diff")
+            .transition()
+            .duration(1000)
+            .style("margin-top", -1*MAP_LEGEND_HEIGHT + "px")
     }
 })
 
@@ -177,7 +186,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 "case",
                 ["==",['boolean', ['get', 'sig_diff_' + baseline]],true],
                     [
-                        "interpolate",
+                        "interpolate-hcl",
                         ["linear"],
                         ["get", "diff_" + baseline],
                         diffMin,
@@ -208,14 +217,137 @@ function drawMaps(bbox, geojsonData, bounds){
             }
         }, "road");        
 
-        var ttPercent = d3.format(".2%")
+        
 
+        var legendPercent = d3.format(".1%")
+        var diffColors = ["#6e1614","#db2b27","#e9807d","#f8d5d4","#d5d5d4","#dcedd9","#98cf90","#55b748","#2c5c2d"]
+        var compareColors = ["#cfe8f3","#a2d4ec","#73bfe2","#46abdb","#1696d2","#12719e","#0a4c6a","#062635"]
+
+
+        var legendWidth = 400,
+            legendHeight = 20,
+            legendMargin = 18;
+
+
+        var diffSvg = d3.select(".mapLegend.diff").append("svg")
+            .attr("width", legendWidth + 2*legendMargin)
+            .attr("height", legendHeight + 50)
+        
+        var diffDefs = diffSvg.append("defs")
+
+        var diffNA = d3.select(".mapLegend.diff")
+            .append("div")
+            .attr("id", "diffNA")
+
+        diffNA.append("div")
+            .attr("id", "diffNAText")
+            .text("No significant difference")
+        diffNA.append("div")
+            .attr("id", "diffNARect")
+            .style("height", legendHeight + "px")
+
+
+        diffDefs.append("linearGradient")
+            .attr("id", "gradient-diff-colors")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "100%").attr("y2", "0%")
+            .selectAll("stop") 
+            .data(diffColors)                  
+            .enter().append("stop") 
+            .attr("offset", function(d,i) { return i/(diffColors.length-1); })   
+            .attr("stop-color", function(d) { return d; });
+
+        diffSvg.append("rect")
+            .attr("class", "legendRect")
+            .attr("x", legendMargin)
+            .attr("y", 30)
+            .attr("width", legendWidth)
+            .attr("height", legendHeight)
+            .style("fill", "url(#gradient-diff-colors)");
+    
+
+        var colorRangeDiff = d3.range(0, 1, 1.0 / (diffColors.length - 1));
+        colorRangeDiff.push(1);
+           
+        var colorInterpolateDiff = d3.scaleLinear()
+            .domain([diffMin,diffMax])
+            .range([0,1]);
+
+        diffSvg.selectAll(".legendStop.diff")
+            .data(diffColors)
+            .enter()
+            .append("text")
+            .attr("class", function(d,i){
+                return "legendStop diff " + "lsDiff" + i
+            })
+            .attr("text-anchor", "middle")
+            .attr("y", 20)
+            .attr("x", function(d,i){
+                return legendMargin + ((i*diffStep)/(2*diffMax)) * legendWidth
+            })
+            .text(function(d,i){
+                return legendPercent(diffMin + i*diffStep)
+            })
+
+
+        var compareSvg = d3.select(".mapLegend.compare").append("svg")
+            .attr("width", legendWidth + 2*legendMargin)
+            .attr("height", legendHeight + 50)
+        
+        var compareDefs = compareSvg.append("defs")
+
+        compareDefs.append("linearGradient")
+            .attr("id", "gradient-compare-colors")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "100%").attr("y2", "0%")
+            .selectAll("stop") 
+            .data(compareColors)                  
+            .enter().append("stop") 
+            .attr("offset", function(d,i) { return i/(compareColors.length-1); })   
+            .attr("stop-color", function(d) { return d; });
+
+        compareSvg.append("rect")
+            .attr("class", "legendRect")
+            .attr("x", legendMargin)
+            .attr("y", 30)
+            .attr("width", legendWidth)
+            .attr("height", legendHeight)
+            .style("fill", "url(#gradient-compare-colors)");
+    
+
+        var colorRangeCompare = d3.range(0, 1, 1.0 / (compareColors.length - 1));
+        colorRangeCompare.push(1);
+           
+        var colorInterpolateCompare = d3.scaleLinear()
+            .domain([comparisonMin,comparisonMax])
+            .range([0,1]);
+
+        compareSvg.selectAll(".legendStop.compare")
+            .data(diffColors)
+            .enter()
+            .append("text")
+            .attr("class", function(d,i){
+                return "legendStop compare " + "lsCompare" + i
+            })
+            .attr("text-anchor", "middle")
+            .attr("y", 20)
+            .attr("x", function(d,i){
+                return legendMargin + ((i*comparisonStep)/(comparisonMax)) * legendWidth
+            })
+            .text(function(d,i){
+                return legendPercent(comparisonMin + i*comparisonStep)
+            })
+
+
+
+        var ttPercent = d3.format(".2%")
         var popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: false
         });
          
         diffMap.on('mousemove', 'diffLayer', function(e) {
+
             diffMap.getCanvas().style.cursor = 'pointer';
             var coordinates = e.lngLat;
             var p = e.features[0].properties
@@ -223,8 +355,6 @@ function drawMaps(bbox, geojsonData, bounds){
             var colors = e.features[0].layer.paint["fill-color"][2]
             var diffVal = p["diff_" + getBaseline()]
             var diffColor, textColor;
-
-            console.log(p["sig_diff_" + getBaseline()])
 
             for(var i = 3; i < colors.length; i+= 2){
                 if(diffVal > colors[i] && diffVal <= colors[i+2]){
@@ -236,6 +366,18 @@ function drawMaps(bbox, geojsonData, bounds){
             }
 
             if(p["sig_diff_" + getBaseline()]){
+
+                var rangeMouse = getRange(getBaseline(), bounds, "diff"),
+                    mouseMax = rangeMouse[1];
+
+
+                d3.select("#pointUp")
+                    .style("display", "block")
+                    .transition()
+                    .style("left", function(){
+                        return (legendWidth * (mouseMax + diffVal) / (2*mouseMax)) + "px"
+                    })
+
                 var repText = (p["diff_" + getBaseline()] < 0) ? "underrepresented" : "overrepresented"
                 var description =   "<div class = 'tt-name'>" + p.NAME + "</div>" + 
                                     "<div class = 'tt-contains'>" + "This tract contains:" + "</div>" + 
@@ -252,6 +394,13 @@ function drawMaps(bbox, geojsonData, bounds){
                                         "<div class = 'tt-text diff'>" + repText + "</div>" + 
                                     "</div>"
             }else{
+
+                d3.select("#pointUp")
+                    .style("display", "block")
+                    .transition()
+                    .style("left", "450px")
+
+
                 var description = "<div class = 'tt-name'>" + p.NAME + "</div>" + 
                                   "<div class = 'tt-noSigDiff'>" + "There is not a statically significant difference between your data and the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>"
             }
@@ -274,6 +423,9 @@ function drawMaps(bbox, geojsonData, bounds){
         diffMap.on('mouseleave', 'diffLayer', function() {
             diffMap.getCanvas().style.cursor = '';
             popup.remove();
+
+            d3.select("#pointUp")
+                .style("display", "none")
         });
 
 
@@ -317,12 +469,25 @@ function drawMaps(bbox, geojsonData, bounds){
 
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverBaseline",true)
 
+            var rangeMouseBaseline = getRange(getBaseline(), bounds, "compare"),
+                mouseMaxBaseline = rangeMouseBaseline[1];
+
+            d3.select("#pointUp")
+                .style("display", "block")
+                .transition()
+                .style("left", function(){
+                    return (legendWidth * (baselineVal) / (mouseMaxBaseline)) + "px"
+                })
+
         }); 
          
         baselineMap.on('mouseleave', 'baselineLayer', function() {
             baselineMap.getCanvas().style.cursor = '';
             popup.remove();
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverBaseline",false)
+
+            d3.select("#pointUp")
+                .style("display", "none")
         });
 
 
@@ -364,12 +529,25 @@ function drawMaps(bbox, geojsonData, bounds){
 
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverData",true)
 
+            var rangeMouseData = getRange(getBaseline(), bounds, "compare"),
+                mouseMaxData = rangeMouseData[1];
+
+            d3.select("#pointUp")
+                .style("display", "block")
+                .transition()
+                .style("left", function(){
+                    return (legendWidth * (dataVal) / (mouseMaxData)) + "px"
+                })
+
         }); 
          
         dataMap.on('mouseleave', 'dataLayer', function() {
             dataMap.getCanvas().style.cursor = '';
             popup.remove();
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverData",false)
+
+            d3.select("#pointUp")
+                .style("display", "none")
         });
 
 
@@ -455,12 +633,22 @@ function drawMaps(bbox, geojsonData, bounds){
                         ]
                     );
 
+                    for(var i = 0; i < 9; i++){
+                        d3.select(".lsCompare" + i)
+                            .text(legendPercent(comparisonMin + i*comparisonStep))
+                    }
 
                     var rangeDiff = getRange(d.item.value, bounds, "diff")
 
                     var diffMin = rangeDiff[0],
                         diffMax = rangeDiff[1],
                         diffStep = diffMax/4
+
+                    for(var i = 0; i < 9; i++){
+                        d3.select(".lsDiff" + i)
+                            .text(legendPercent(diffMin + i*diffStep))
+                    }
+
 
                     diffMap.setPaintProperty("diffLayer", 
                         'fill-color', [

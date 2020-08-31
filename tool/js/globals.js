@@ -107,3 +107,4 @@ var barCategories = {  "pct_bach":{
 
 const BAR_DOT_RADIUS = 8;
 const MAP_BINS = 8;
+const MAP_LEGEND_HEIGHT = 74;

@@ -183,3 +183,51 @@
     padding-bottom: 12px;
     color: #9d9d9d;
 }
+
+
+
+
+
+/********************************************/
+/***************** LEGENDS ******************/
+/********************************************/
+#legendSlideContainer{
+    white-space: nowrap;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: visible;
+    width: 800px;
+    height: 74px;
+    left: -18px;
+}
+.mapLegend{
+    height: 74px;
+}
+.legendStop, #diffNAText{
+    font-size: 12px;
+    font-weight: bold;
+}
+#diffNARect{
+    background: #9d9d9d;
+    width: 25px;
+}
+#diffNA{
+    display: block;
+    float: left;
+    margin-left: 22px;
+    margin-top: 7px;
+}
+#diffNAText{
+    margin-bottom: 7.5px;
+}
+#pointUp{
+    width: 18px;
+    position: absolute;
+    top: 40px;
+    margin-left: 11px;
+    display: none;
+}
+.mapLegend.diff svg{
+    display: inline-block;
+    float: left;
+}
