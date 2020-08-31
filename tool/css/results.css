@@ -68,7 +68,7 @@
 /*************** SUMMARY ********************/
 /********************************************/
 .summaryContainer{
-    display: none;
+    /*display: none;*/
 }
 .summaryContainer.clone{
     position: fixed;

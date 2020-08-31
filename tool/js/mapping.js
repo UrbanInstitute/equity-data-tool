@@ -48,24 +48,50 @@ function getRange(baseline, bounds, mapType){
 
 
 function drawMaps(bbox, geojsonData, bounds){
+    d3.selectAll(".mapboxgl-canvas").remove()
+    d3.selectAll(".mapboxgl-canary").remove()
+    d3.selectAll(".mapboxgl-control-container").remove()
+    d3.selectAll(".mapboxgl-popup").remove()
+    d3.selectAll(".mapboxgl-canvas-container").remove()
+    d3.selectAll(".mapboxgl-compare").remove()
 
+    
     var baselineMap = new mapboxgl.Map({
         container: 'baselineMap',
         style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb/draft',
-        bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]])
+        bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
+        attributionControl: false
     });
 
     var dataMap = new mapboxgl.Map({
         container: 'dataMap',
         style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb/draft',
-        bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]])
+        bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
+        attributionControl: false
     });
 
     var diffMap = new mapboxgl.Map({
         container: 'diffMap',
         style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb/draft',
-        bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]])
+        bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
+        attributionControl: false
     });
+
+    // var navDiff = new mapboxgl.NavigationControl({"showCompass": false});
+    // var navBaseline = new mapboxgl.NavigationControl({"showCompass": false});
+    // var navData = new mapboxgl.NavigationControl({"showCompass": false});
+
+    diffMap
+        .addControl(new mapboxgl.NavigationControl({"showCompass": false}), 'top-right')
+        .addControl(new mapboxgl.AttributionControl({compact: true}));
+    baselineMap
+        .addControl(new mapboxgl.NavigationControl({"showCompass": false}), 'top-right')
+        .addControl(new mapboxgl.AttributionControl({compact: true}));
+    dataMap
+        .addControl(new mapboxgl.NavigationControl({"showCompass": false}), 'top-right')
+        .addControl(new mapboxgl.AttributionControl({compact: true}));
+
+
 
 
     var baseline = getParams().baseline
@@ -171,6 +197,7 @@ function drawMaps(bbox, geojsonData, bounds){
             // mousemove: true
         });
 
+
         var rangeDiff = getRange(baseline, bounds, "diff")
 
         var diffMin = rangeDiff[0],
@@ -228,6 +255,8 @@ function drawMaps(bbox, geojsonData, bounds){
             legendHeight = 20,
             legendMargin = 18;
 
+        d3.selectAll(".mapLegend").selectAll("svg").remove()
+        d3.selectAll(".mapLegend").selectAll("div").remove()
 
         var diffSvg = d3.select(".mapLegend.diff").append("svg")
             .attr("width", legendWidth + 2*legendMargin)

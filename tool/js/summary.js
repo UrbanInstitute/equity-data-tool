@@ -2,6 +2,8 @@ function populateSummaries(messages, params){
     console.log(messages, params)
     var datasetType = getDatasetType()
     var container = d3.selectAll(".summaryContainer")
+    container.selectAll("*").remove()
+    
     var header = container.append("div")
         .attr("class","summaryHeader")
     var headName = header.append("div")
@@ -20,6 +22,21 @@ function populateSummaries(messages, params){
     headX.append("div")
         .attr("class", "headX hor")
         // .text(messages.updates.city_used)
+
+
+
+    headX.on("click", function(){
+        if(d3.select(this).classed("closed")){
+            d3.select(this).classed("closed", false)
+                .transition()
+                .style("transform", "rotate(45deg)")
+        }else{
+            d3.select(this).classed("closed", true)
+                .transition()
+                .style("transform", "rotate(0deg)")
+
+        }
+    })
 
 }
 

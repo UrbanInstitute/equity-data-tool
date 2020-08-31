@@ -10,7 +10,7 @@ function runAnalysis() {
   // log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
   var datasetType = getDatasetType(),
         params = getParams()
-        postURL = "https://httpbin.org/post",
+        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
         formData = new FormData();
 
     if(datasetType == "user"){
@@ -37,6 +37,7 @@ function runAnalysis() {
         processData: false,
         data:formData,
         success: function(msg, status, jqXHR){
+            console.log(msg)
             showLoadingScreen();            
             statusIntervId = setInterval(loopStatus, 500, msg)
         }

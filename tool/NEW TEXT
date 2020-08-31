@@ -16,6 +16,13 @@ N rows removed with null or missing latitude and/or longitude columns
 N rows removed with null or missing filter columns
 
 
+Map tooltip
+This tract contains X% of your data points
+Y % of the city's total populatioin
+Z% overrepresented/underrepresented
+
+(or just x/y for slider map)
+
 
 
 
@@ -42,3 +49,8 @@ Warnings
 
 1 preselected filters
 1 preselected weights
+
+map legend
+"No significant difference"
+"There is not a statistically signif..."
+
