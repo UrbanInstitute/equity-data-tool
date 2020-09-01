@@ -3,7 +3,7 @@ function populateSummaries(messages, params){
     var datasetType = getDatasetType()
     var container = d3.selectAll(".summaryContainer")
     container.selectAll("*").remove()
-    
+
     var header = container.append("div")
         .attr("class","summaryHeader")
     var headName = header.append("div")
@@ -40,3 +40,17 @@ function populateSummaries(messages, params){
 
 }
 
+d3.select(".resultsNav.startOverResults").on("click", startOver)
+
+$('#advancedOptionsHeader')
+    .selectmenu({
+        select: function(event, d){
+            showLoaderSection(d.item.value)
+        },
+        open: function(){
+            d3.select("#advancedTextOverlayNav img").style("transform","rotate(180deg)")
+        },
+        close: function(){
+            d3.select("#advancedTextOverlayNav img").style("transform","rotate(0deg)")
+        }
+    })

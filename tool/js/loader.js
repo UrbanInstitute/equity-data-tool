@@ -180,12 +180,12 @@ function showLoaderSection(loaderSection){
 
 const defaultParams = {
     "filters":[
-{
-"filter_column": "caller race",
-"filter_comparison": "<",
-"filter_type": "number",
-"filter_val": 1
-}
+// {
+// "filter_column": "caller race",
+// "filter_comparison": "<",
+// "filter_type": "number",
+// "filter_val": 1
+// }
     ],
     "weight": "foo",
     "baseline":"pop",

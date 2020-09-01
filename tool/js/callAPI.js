@@ -2,7 +2,7 @@ var buildingIntervId;
 var statusIntervId;
 var buildingIndex = 0;
 
-
+var tmpCount = 0;
 function runAnalysis() {
     
     // console.log(event, JSON.toString(getParams()))
@@ -11,6 +11,7 @@ function runAnalysis() {
   var datasetType = getDatasetType(),
         params = getParams()
         postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
+        // postURL = "https://httpbin.org/post"
         formData = new FormData();
 
     if(datasetType == "user"){
@@ -33,12 +34,19 @@ function runAnalysis() {
     $.ajax({
         url: postURL,
         method: "POST",
-        contentType: false,
+        contentType: 'multipart/form-data',
         processData: false,
         data:formData,
+        crossDomain: true,
+    beforeSend: function (xhr) {
+        /* Authorization header */
+        xhr.setRequestHeader("Authorization", "Token " + "");
+        xhr.setRequestHeader("X-Mobile", "true");
+    },        
         success: function(msg, status, jqXHR){
             console.log(msg)
-            showLoadingScreen();            
+            showLoadingScreen();    
+            tmpCount = 0;        
             statusIntervId = setInterval(loopStatus, 500, msg)
         }
     }); 
@@ -76,7 +84,6 @@ function showErrorScreen(){
 
 }
 
-var tmpCount = 0;
 function loopStatus(msg){
     // ping the status api
     // check updates.finished

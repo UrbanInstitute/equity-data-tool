@@ -53,21 +53,21 @@ var barCategories = {  "pct_bach":{
     "category": "Education",
     "class": "education"
   },
-  "pct_foreign_born":{
-    "full_name": "Foreign-born residents",
-    "category": "Immigration",
-    "class": "immigration"
-  },
-  "pct_non_english":{
-    "full_name": "Language other than English spoken at home",
-    "category": "Immigration",
-    "class": "immigration"
-  },
-  "pct_spanish_speaking":{
-    "full_name": "Spanish spoken at home",
-    "category": "Immigration",
-    "class": "immigration"
-  },
+  // "pct_foreign_born":{
+  //   "full_name": "Foreign-born residents",
+  //   "category": "Immigration",
+  //   "class": "immigration"
+  // },
+  // "pct_non_english":{
+  //   "full_name": "Language other than English spoken at home",
+  //   "category": "Immigration",
+  //   "class": "immigration"
+  // },
+  // "pct_spanish_speaking":{
+  //   "full_name": "Spanish spoken at home",
+  //   "category": "Immigration",
+  //   "class": "immigration"
+  // },
   "pct_renters":{
     "full_name": "Renters ",
     "category": "Other Demographics",

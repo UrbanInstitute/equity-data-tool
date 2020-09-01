@@ -108,6 +108,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="container">
 
 <div class = "resultsContainer wrapper">
+    <div id = "resultsNav">
+      <div class = "resultsNav faq"><a href = "" target = "_blank">FAQ</a></div>
+      <div class = "resultsNav startOverResults">Start over</div>
+      <div id = "advancedTextOverlayNav">Advanced options <img src = "images/menuArrowNav.png"></div>
+      <select id = "advancedOptionsHeader" class = "resultsNav">
+          <option value = "filters">Filter data</option>
+          <option value = "weight">Weight data</option>
+          <!-- <option value = "baseline">Set baseline</option> -->
+      </select>  
+    </div>
     <div id = "resultsHeader">
         <img class = "buildings results" src = "images/buildings.png">
         <h2 class = "loaderHeader">Evaluating Equity Data Tool</h2>
@@ -624,10 +634,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="js/globals.js"></script>
 <script src="js/getters.js"></script>
 <script src="js/barchart.js"></script>
-<script src="js/summary.js"></script>
 <script src="js/loader.js"></script>
 <script src="js/callAPI.js"></script>
 <script src="js/loaderEvents.js"></script>
+<script src="js/resultsPage.js"></script>
+
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
 
 <script src="js/mapping.js"></script>

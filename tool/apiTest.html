@@ -1,0 +1,84 @@
+<html>
+<head>
+<style>
+    #container{
+        font-size: 16px;
+        margin-top: 20px;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: block;
+        width: fit-content;
+        font-family: lato;
+    }
+    #run{
+        margin-top: 20px;
+        text-transform: uppercase;
+        background: #1696d2;
+        width: fit-content;
+        padding: 10px;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div id = "container">
+    <div id = "instructions">Upload a file</div>
+    <input type="file" id = "fileInput">
+    <div id = "run" onclick=>Run test</div>
+</div>
+<script src="js/vendor/jquery-2.2.1.min.js"></script>
+
+<script>
+const TOKEN = ""
+
+
+
+function runAnalysis() {
+
+    var params = {"foo": "bar", "filters": [{"baz": "boo"}] },
+        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
+        // postURL = "https://httpbin.org/post"
+        formData = new FormData();
+
+    formData.append("file", $("#fileInput").prop("files")[0])
+
+
+    for(var k in params){
+        if(params.hasOwnProperty(k)){
+            if(k != "filters"){
+                formData.append(k, params[k])
+            }else{
+                formData.append(k, JSON.stringify(params[k]))
+            }
+            
+        }
+    }
+
+    $.ajax({
+        url: postURL,
+        method: "POST",
+        contentType: 'multipart/form-data',
+        processData: false,
+        data:formData,
+        crossDomain: true,
+        beforeSend: function (xhr) {
+            /* Authorization header */
+            xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+            xhr.setRequestHeader("X-Mobile", "true");
+        },        
+        success: function(msg, status, jqXHR){
+            console.log(msg)
+            showLoadingScreen();    
+            tmpCount = 0;        
+            statusIntervId = setInterval(loopStatus, 500, msg)
+        }
+    }); 
+}
+
+
+
+$("#run").click(runAnalysis)
+
+</script>
+</body>
+</body>
