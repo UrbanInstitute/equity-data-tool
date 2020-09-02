@@ -137,21 +137,21 @@ function drawMaps(bbox, geojsonData, bounds){
                 ["linear"],
                 ["get", "data_prop"],
                 comparisonMin,
-                "#cfe8f3",
+                "#dcedd9",
                 comparisonMin + comparisonStep,
-                "#a2d4ec",
+                "#bcdeb4",
                 comparisonMin + comparisonStep*2,
-                "#73bfe2",
+                "#98cf90",
                 comparisonMin + comparisonStep*3,
-                "#46abdb",
+                "#78c26d",
                 comparisonMin + comparisonStep*4,
-                "#1696d2",
+                "#55b748",
                 comparisonMin + comparisonStep*5,
-                "#12719e",
+                "#408941",
                 comparisonMin + comparisonStep*6,
-                "#0a4c6a",
+                "#2c5c2d",
                 comparisonMin + comparisonStep*7,
-                "#062635"
+                "#1a2e19"
             ]
             ,
             'fill-opacity': 1
@@ -169,21 +169,21 @@ function drawMaps(bbox, geojsonData, bounds){
                 ["linear"],
                 ["get", baseline + "_prop"],
                 comparisonMin,
-                "#cfe8f3",
+                "#dcedd9",
                 comparisonMin + comparisonStep,
-                "#a2d4ec",
+                "#bcdeb4",
                 comparisonMin + comparisonStep*2,
-                "#73bfe2",
+                "#98cf90",
                 comparisonMin + comparisonStep*3,
-                "#46abdb",
+                "#78c26d",
                 comparisonMin + comparisonStep*4,
-                "#1696d2",
+                "#55b748",
                 comparisonMin + comparisonStep*5,
-                "#12719e",
+                "#408941",
                 comparisonMin + comparisonStep*6,
-                "#0a4c6a",
+                "#2c5c2d",
                 comparisonMin + comparisonStep*7,
-                "#062635"
+                "#1a2e19"
             ]
             ,
             'fill-opacity': 1
@@ -211,29 +211,29 @@ function drawMaps(bbox, geojsonData, bounds){
             'fill-outline-color': "#696969", 
             'fill-color': [
                 "case",
-                ["==",['boolean', ['get', 'sig_diff_' + baseline]],true],
+                ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
                     [
                         "interpolate-hcl",
                         ["linear"],
                         ["get", "diff_" + baseline],
                         diffMin,
-                        "#6e1614",
+                        "#ca5800",
                         diffMin + diffStep,
-                        "#db2b27",
+                        "#fdbf11",
                         diffMin + diffStep*2,
-                        "#e9807d",
+                        "#fdd870",
                         diffMin + diffStep*3,
-                        "#f8d5d4",
+                        "#fff2cf",
                         diffMin + diffStep*4,
                         "#d5d5d4",
                         diffMin + diffStep*5,
-                        "#dcedd9",
+                        "#cfe8f3",
                         diffMin + diffStep*6,
-                        "#98cf90",
+                        "#73bfe2",
                         diffMin + diffStep*7,
-                        "#55b748",
+                        "#1696d2",
                         diffMin + diffStep*8,
-                        "#2c5c2d"
+                        "#0a4c6a"
                     ]
                     
                 ,
@@ -247,8 +247,8 @@ function drawMaps(bbox, geojsonData, bounds){
         
 
         var legendPercent = d3.format(".1%")
-        var diffColors = ["#6e1614","#db2b27","#e9807d","#f8d5d4","#d5d5d4","#dcedd9","#98cf90","#55b748","#2c5c2d"]
-        var compareColors = ["#cfe8f3","#a2d4ec","#73bfe2","#46abdb","#1696d2","#12719e","#0a4c6a","#062635"]
+        var diffColors = ["#ca5800","#fdbf11","#fdd870","#fff2cf","#d5d5d4","#cfe8f3","#73bfe2","#1696d2","#0a4c6a"]
+        var compareColors = ["#DCEDD9","#BCDEB4","#98CF90","#78C26D","#55B748","#408941","#2C5C2D","#1A2E19"]
 
 
         var legendWidth = 400,
@@ -389,12 +389,12 @@ function drawMaps(bbox, geojsonData, bounds){
                 if(diffVal > colors[i] && diffVal <= colors[i+2]){
                     diffColor = d3.interpolateRgb(colors[i+1], colors[i+3])( (diffVal - colors[i])/(colors[i+2] - colors[i]))
                     colors[i+1]
-                    textColor = (i <= 7 || i >= 15 ) ? "#fff" : "#353535"
+                    textColor = (i <= 5 || i >= 15 ) ? "#fff" : "#353535"
                     break;
                 }
             }
 
-            if(p["sig_diff_" + getBaseline()]){
+            if(p["sig_diff_" + getBaseline()] == "TRUE"){
 
                 var rangeMouse = getRange(getBaseline(), bounds, "diff"),
                     mouseMax = rangeMouse[1];
@@ -440,7 +440,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 .setHTML(description)
                 .addTo(diffMap);
 
-            if(d3.select(".mapboxgl-popup").classed("mapboxgl-popup-anchor-bottom") && p["sig_diff_" + getBaseline()]){
+            if(d3.select(".mapboxgl-popup").classed("mapboxgl-popup-anchor-bottom") && p["sig_diff_" + getBaseline()] == "TRUE"){
                 d3.select(".mapboxgl-popup-tip").style("border-top-color", diffColor)
             }
             else{
@@ -620,21 +620,21 @@ function drawMaps(bbox, geojsonData, bounds){
                             ["linear"],
                             ["get", d.item.value + "_prop"],
                             comparisonMin,
-                            "#cfe8f3",
+                            "#dcedd9",
                             comparisonMin + comparisonStep,
-                            "#a2d4ec",
+                            "#bcdeb4",
                             comparisonMin + comparisonStep*2,
-                            "#73bfe2",
+                            "#98cf90",
                             comparisonMin + comparisonStep*3,
-                            "#46abdb",
+                            "#78c26d",
                             comparisonMin + comparisonStep*4,
-                            "#1696d2",
+                            "#55b748",
                             comparisonMin + comparisonStep*5,
-                            "#12719e",
+                            "#408941",
                             comparisonMin + comparisonStep*6,
-                            "#0a4c6a",
+                            "#2c5c2d",
                             comparisonMin + comparisonStep*7,
-                            "#062635"
+                            "#1a2e19"
                         ]
                     );
 
@@ -644,21 +644,21 @@ function drawMaps(bbox, geojsonData, bounds){
                             ["linear"],
                             ["get", "data_prop"],
                             comparisonMin,
-                            "#cfe8f3",
+                            "#dcedd9",
                             comparisonMin + comparisonStep,
-                            "#a2d4ec",
+                            "#bcdeb4",
                             comparisonMin + comparisonStep*2,
-                            "#73bfe2",
+                            "#98cf90",
                             comparisonMin + comparisonStep*3,
-                            "#46abdb",
+                            "#78c26d",
                             comparisonMin + comparisonStep*4,
-                            "#1696d2",
+                            "#55b748",
                             comparisonMin + comparisonStep*5,
-                            "#12719e",
+                            "#408941",
                             comparisonMin + comparisonStep*6,
-                            "#0a4c6a",
+                            "#2c5c2d",
                             comparisonMin + comparisonStep*7,
-                            "#062635"
+                            "#1a2e19"
                         ]
                     );
 
@@ -682,29 +682,29 @@ function drawMaps(bbox, geojsonData, bounds){
                     diffMap.setPaintProperty("diffLayer", 
                         'fill-color', [
                             "case",
-                            ["==",['boolean', ['get', 'sig_diff_' + d.item.value]],true],
+                            ["==",['string', ['get', 'sig_diff_' + d.item.value]],"TRUE"],
                                 [
                                     "interpolate",
                                     ["linear"],
                                     ["get", "diff_" + d.item.value],
                                     diffMin,
-                                    "#6e1614",
+                                    "#ca5800",
                                     diffMin + diffStep,
-                                    "#db2b27",
+                                    "#fdbf11",
                                     diffMin + diffStep*2,
-                                    "#e9807d",
+                                    "#fdd870",
                                     diffMin + diffStep*3,
-                                    "#f8d5d4",
+                                    "#fff2cf",
                                     diffMin + diffStep*4,
                                     "#d5d5d4",
                                     diffMin + diffStep*5,
-                                    "#dcedd9",
+                                    "#cfe8f3",
                                     diffMin + diffStep*6,
-                                    "#98cf90",
+                                    "#73bfe2",
                                     diffMin + diffStep*7,
-                                    "#55b748",
+                                    "#1696d2",
                                     diffMin + diffStep*8,
-                                    "#2c5c2d"
+                                    "#0a4c6a"
                                 ]
                                 
                             ,

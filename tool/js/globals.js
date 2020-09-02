@@ -28,7 +28,7 @@ var barCategories = {  "pct_bach":{
     "category": "Race/ethnicity",
     "class": "race"
   },
-  "pct_other_races":{
+  "pct_all_other_races":{
     "full_name": "All other races and ethnicities",
     "category": "Race/ethnicity",
     "class": "race"
@@ -53,21 +53,11 @@ var barCategories = {  "pct_bach":{
     "category": "Education",
     "class": "education"
   },
-  // "pct_foreign_born":{
-  //   "full_name": "Foreign-born residents",
-  //   "category": "Immigration",
-  //   "class": "immigration"
-  // },
-  // "pct_non_english":{
-  //   "full_name": "Language other than English spoken at home",
-  //   "category": "Immigration",
-  //   "class": "immigration"
-  // },
-  // "pct_spanish_speaking":{
-  //   "full_name": "Spanish spoken at home",
-  //   "category": "Immigration",
-  //   "class": "immigration"
-  // },
+  "pct_limited_eng_hh":{
+    "full_name": "Limited English Proficiency Households",
+    "category": "Other Demographics",
+    "class": "other"
+  },
   "pct_renters":{
     "full_name": "Renters ",
     "category": "Other Demographics",
@@ -75,13 +65,13 @@ var barCategories = {  "pct_bach":{
   },
   "pct_seniors":{
     "full_name": "Seniors (65+)",
-    "category": "Other Demographics",
-    "class": "other"
+    "category": "Age",
+    "class": "age"
   },
   "pct_children":{
     "full_name": "Children (under 18)",
-    "category": "Other Demographics",
-    "class": "other"
+    "category": "Age",
+    "class": "age"
   },
   "pct_veterans":{
     "full_name": "Veterans",
@@ -106,5 +96,6 @@ var barCategories = {  "pct_bach":{
 }
 
 const BAR_DOT_RADIUS = 8;
+const BAR_LABEL_SCOOTCH = 9;
 const MAP_BINS = 8;
 const MAP_LEGEND_HEIGHT = 74;

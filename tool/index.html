@@ -136,8 +136,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <select id = "baselineSelect">
             <option value = "pop">Total population</option> 
             <option value = "under_poverty_line">Low-income population</option> 
-            <option value = "no_bband">Population without access to broadband</option> 
-            <option value = "foreign_born">Foreign-born population</option>       
+            <option value = "no_bband">Population of households without broadband Internet access</option> 
+            <option value = "cb_renter_hh">Population of cost burdened renter households</option>
+            <option value = "seniors">Senior population</option>       
         </select>
 
         <div id = "mapContainer">
@@ -196,15 +197,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <div class = "barCategoryRow education active" data-category="education">
                 <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Education</div>
-                <div class = "barCategoryDescription">Residents with a Bachelor’s degree<span></span>Residents with less than a High School diploma<span></span>Residents without broadband internet access</div>
+                <div class = "barCategoryDescription">Residents with a Bachelor’s degree<span></span>Residents with less than a High School diploma</div>
             </div>
-            <div class = "barCategoryRow immigration active" data-category="immigration">
-                <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Immigration</div>
-                <div class = "barCategoryDescription">Foreign-born residents<span></span>Language other than English spoken at home<span></span>Spanish spoken at home</div>                
+            <div class = "barCategoryRow age active" data-category="age">
+                <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Age</div>
+                <div class = "barCategoryDescription">Seniors (65+)<span></span>Children (under 18)</div>
             </div>
             <div class = "barCategoryRow other active" data-category="other">
                 <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Other Demographics</div>
-                <div class = "barCategoryDescription">Renters<span></span>Seniors (65+)<span></span>Children (under 18)<span></span>Veterans<span></span>AResidents with a dissability<span></span>Uninsured residents</div>
+                <div class = "barCategoryDescription">Renters<span></span>Veterans<span></span>Residents with a dissability<span></span>Uninsured residents<span></span>Limited English Proficiency Households<span></span>Residents without broadband internet access</div>
             </div>
         </div>
 
@@ -335,13 +336,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <div id = "uploadLatLonContainer" class="hiddenSection hideOption user">
                 <h4 class = "loaderHeader">Which columns in your file represent latitude and longitude?</h4>
-                <div id = "latContainer">
-                    <div class = "inputLabel">Latitude</div>
-                    <select id = "latSelect"></select>
-                </div>
                 <div id = "lonContainer">
                     <div class = "inputLabel">Longitude</div>
                     <select id = "lonSelect"></select>
+                </div>
+                <div id = "latContainer">
+                    <div class = "inputLabel">Latitude</div>
+                    <select id = "latSelect"></select>
                 </div>
             </div>
             <div id = "uploadButtonContainer" class = "hiddenSection hideOption user">
@@ -490,7 +491,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>
                         <div class = "baselineText">Total population</div>
                     </div>
-                    <div class = "baselineRow lowincome" data-baseline="lowincome">
+                    <div class = "baselineRow under_poverty_line" data-baseline="under_poverty_line">
                         <div class = "baselineRadio">
                             <img class = "radio large checked" src = "images/checkedRadio.png">
                             <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
@@ -502,7 +503,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <img class = "radio large checked" src = "images/checkedRadio.png">
                             <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
                         </div>    
-                        <div class = "baselineText">Population without access to broadband</div>
+                        <div class = "baselineText">Population of households without broadband Internet access</div>
                     </div>
                     <div class = "baselineRow foreignborn" data-baseline="foreignborn">
                         <div class = "baselineRadio">

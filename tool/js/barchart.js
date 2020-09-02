@@ -55,8 +55,8 @@ return "lollipop background active chartPart " + barCategories[d.census_var]["cl
 })
 .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
 .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
-.attr("y1", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
-.attr("y2", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
+.attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
+.attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 
 
 
@@ -69,8 +69,8 @@ return "lollipop foreground active chartPart " + barCategories[d.census_var]["cl
 })
 .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
 .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
-.attr("y1", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
-.attr("y2", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
+.attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
+.attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 
 svg.selectAll(".barDot")
 .data(data)
@@ -80,7 +80,7 @@ var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented
 return "barDot active chartPart " + barCategories[d.census_var]["class"] + overunder
 })
 .attr("cx", function(d){ return x(d.diff_data_city); })
-.attr("cy", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
+.attr("cy", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 .attr("r", BAR_DOT_RADIUS)
 
 
@@ -95,8 +95,8 @@ var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented
 return "bar_full_name background active chartPart " + barCategories[d.census_var]["class"] + overunder
 })
 .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
-.attr("y", function(d){ return y(d.census_var); })
-.attr("dy", y.bandwidth() - 6)
+.attr("y", function(d){ return y(d.census_var) + margin.top; })
+.attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
 .style("filter","url(#textShadow)")
 .attr("text-anchor", function(d){ return d.diff_data_city < 0 ? "start" : "end"; })
 .html(function(d){ return barCategories[d.census_var]["full_name"]; });
@@ -110,8 +110,8 @@ var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented
 return "bar_full_name foreground active chartPart " + barCategories[d.census_var]["class"] + overunder
 })
 .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
-.attr("y", function(d){ return y(d.census_var); })
-.attr("dy", y.bandwidth() - 6)
+.attr("y", function(d){ return y(d.census_var) + margin.top; })
+.attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
 .attr("text-anchor", function(d){ return d.diff_data_city < 0 ? "start" : "end"; })
 .html(function(d){ return barCategories[d.census_var]["full_name"]; });
 
@@ -158,45 +158,47 @@ function updateBars(category, hide){
                 })
 
                 // console.log(clone, data)
-                var y = getBarY(clone)
+                var y = getBarY(clone),
+                    margin = getBarMargins()
 
                 d3.selectAll(".barDot.active")
                 .transition()
-                .attr("cy", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
+                .attr("cy", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 
                 d3.selectAll(".lollipop.active")
                 .transition()
-                .attr("y1", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
-                .attr("y2", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
+                .attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
+                .attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
                 // console.log(clone)
 
 
                 d3.selectAll(".bar_full_name.active")
                 .transition()
-                .attr("y", function(d){ return y(d.census_var); })
-                .attr("dy", y.bandwidth() - 6)
+                .attr("y", function(d){ return y(d.census_var) + margin.top; })
+                .attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
             })
     }else{
         d3.selectAll(".chartPart." + category).classed("active", true)
         var clone = d3.selectAll(".barDot.active").data().slice(0)
         
-        var y = getBarY(clone)
+        var y = getBarY(clone),
+            margin = getBarMargins()
 
         d3.selectAll(".barDot.active")
         .transition()
-        .attr("cy", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
+        .attr("cy", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 
         d3.selectAll(".lollipop.active")
         .transition()
-        .attr("y1", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
-        .attr("y2", function(d){ return y(d.census_var) + y.bandwidth()*.5; })
+        .attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
+        .attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
         // console.log(clone)
 
 
         d3.selectAll(".bar_full_name.active")
         .transition()
-        .attr("y", function(d){ return y(d.census_var); })
-        .attr("dy", y.bandwidth() - 6)
+        .attr("y", function(d){ return y(d.census_var) + margin.top; })
+        .attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
         .on("end", function(){
             d3.selectAll(".barDot." + category)
                 .transition()

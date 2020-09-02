@@ -1,3 +1,10 @@
+Add summary stats on results page
+Update the sample data section to include info about preselected weight/filter/baseline
+fix bar category text
+fix bar small number of category height
+
+
+
 
 
 

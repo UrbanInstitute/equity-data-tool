@@ -39,11 +39,15 @@
     max-width: 248px;
 }
 #baselineSelect-button.no_bband{
-    max-width: 384px;
+    max-width: 535px;
 }
-#baselineSelect-button.foreign_born{
-    max-width: 257px;
+#baselineSelect-button.cb_renter_hh{
+    max-width: 430px;
 }
+#baselineSelect-button.seniors{
+    max-width: 199px;
+}
+
 
 /********************************************/
 /***************** TEXT *********************/

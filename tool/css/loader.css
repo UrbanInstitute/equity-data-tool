@@ -256,7 +256,7 @@ h3.loaderSubHeader{
     float: left;
     width: 287px;
 }
-#latContainer{
+#lonContainer{
     margin-right: 35px;
 }
 #uploadLatLonContainer .ui-selectmenu-button.ui-button{

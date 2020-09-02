@@ -91,7 +91,7 @@
     font-size: 22px;
     letter-spacing: 5px;
     font-weight: 900;
-    color: #f1aaa9;
+    color: #e88e2d;
     left: 20px;
 }
 .overunder.over{
@@ -101,7 +101,7 @@
     left: auto;
     position: absolute;
     transform: rotate(90deg);
-    color: #bcdeb4;
+    color: #73bfe2;
 }
 
 
@@ -117,21 +117,21 @@
 }
 
 .barDot{
-    fill: #55b748;
+    fill: #1696d2;
 }
 .barDot.underRepresented{
-    fill: #e25552;
+    fill: #ca5800;
 }
 .barDot.hover{
     stroke: #fdbf11;
     stroke-width: 4px;
 }
 .lollipop{
-    stroke: #bcdeb4;
+    stroke: #46abdb;
     stroke-width: 2px;
 }
 .lollipop.underRepresented{
-    stroke: #f1aaa9;
+    stroke: #e88e2d;
 }
 .lollipop.background{
     stroke: #fce39e;

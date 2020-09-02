@@ -60,8 +60,11 @@
     content: "Low-income population";
 }
 .mapboxgl-compare .compare-swiper-vertical.no_bband::after{
-    content: "Population without access to broadband";
+    content: "population of households without broadband Internet access";
 }
-.mapboxgl-compare .compare-swiper-vertical.foreign_born::after{
-    content: "Foreign-born population";
+.mapboxgl-compare .compare-swiper-vertical.cb_renter_hh::after{
+    content: "population of cost burdened renter households ";
+}
+.mapboxgl-compare .compare-swiper-vertical.seniors::after{
+    content: "Senior population";
 }

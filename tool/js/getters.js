@@ -65,11 +65,13 @@ function getBarWidth(){
 function getBarHeight(data){
     var margin = getBarMargins();
     // var h = (typeof(data) == "undefined") ? 500 : (500/21) * data.length
-    var scalar = (typeof(data) == "undefined") ? 21 : data.length
-    return ((700 - margin.top - margin.bottom)/21) * scalar;
+    
+    var scalar = (typeof(data) == "undefined") ? 19 : data.length
+    // console.log(data, scalar, margin.top, margin.bottom, (700 - margin.top - margin.bottom)/19, scalar*(700 - margin.top - margin.bottom)/19)
+    return ((700 - margin.top - margin.bottom)/19) * scalar;
 }
 function getBarMargins(){
-    return {top: 50, right: 150, bottom: 0, left: 80}
+    return {top: 50, right: 100, bottom: 0, left: 100}
 }
 function getBarX(data){
     var width = getBarWidth()
@@ -81,9 +83,10 @@ function getBarX(data){
 function getBarY(data){
     var height = getBarHeight(data)
     var margin = getBarMargins();
+    console.log(height, margin.top)
     return d3.scaleBand()
-        .rangeRound([height,margin.top])
-        .padding(0.2)
+        .rangeRound([height,0])
+        .padding(.2)
         .domain(data.map(function(d) { return d.census_var; }));
 }
 

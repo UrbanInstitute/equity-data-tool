@@ -10,8 +10,8 @@ function runAnalysis() {
   // log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
   var datasetType = getDatasetType(),
         params = getParams()
-        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
-        // postURL = "https://httpbin.org/post"
+        // postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
+        postURL = "https://httpbin.org/post"
         formData = new FormData();
 
     if(datasetType == "user"){
@@ -40,7 +40,7 @@ function runAnalysis() {
         crossDomain: true,
     beforeSend: function (xhr) {
         /* Authorization header */
-        xhr.setRequestHeader("Authorization", "Token " + "");
+        xhr.setRequestHeader("Authorization", "Token " + "4b7aa32e17731af9e97d0d2edd061f1b46d7d117");
         xhr.setRequestHeader("X-Mobile", "true");
     },        
         success: function(msg, status, jqXHR){
