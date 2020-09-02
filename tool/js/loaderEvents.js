@@ -98,7 +98,7 @@ function selectSampleData(sample){
     d3.selectAll(".deetRow").remove()
     var sampleParamType;
 
-    if(defaultParams.baseline != "total_pop"){
+    if(defaultParams.baseline != "pop"){
         sampleParamType = "baseline"
         var deetRow = d3.select(".sampleDeetContainer").append("div")
             .attr("class", "deetRow")

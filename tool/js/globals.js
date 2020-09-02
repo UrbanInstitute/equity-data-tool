@@ -95,10 +95,10 @@ var barCategories = {  "pct_bach":{
   }
 }
 
-const defaultParams = {
+var defaultParams = {
     "filters":[],
     "weight": "",
-    "baseline":"total_pop",
+    "baseline": "pop",
     "lat_column": "",
     "lon_column": "",
     "year": 2018
@@ -130,7 +130,7 @@ const sampleParams = {
         "defaultParams" : {
             "filters": [],
             "weight": "capacity",
-            "baseline": "total_pop",
+            "baseline": "pop",
             "lat_column": "lat",
             "lon_column": "lon"
           }
@@ -198,7 +198,7 @@ const sampleParams = {
               }
           ],
           "weight": "",
-          "baseline": "total_pop",
+          "baseline": "pop",
           "lat_column": "latitude",
           "lon_column": "longitude"
         }

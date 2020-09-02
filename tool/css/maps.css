@@ -219,13 +219,25 @@
 }
 #diffNAText{
     margin-bottom: 7.5px;
+    position: relative;
+    top: 48px;    
 }
 #pointUp{
-    width: 18px;
-    position: absolute;
-    top: 40px;
-    margin-left: 11px;
     display: none;
+    position: absolute;
+    top: 3px;
+}
+#pointUp img{
+    width: 24px;
+    top: 40px;
+    margin-left: 5px;
+}
+#pointUpText{
+    font-size: 12px;
+    font-weight: bold;
+    position: relative;
+    top: 13px;
+    text-align: center;
 }
 .mapLegend.diff svg{
     display: inline-block;

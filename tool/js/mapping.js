@@ -406,6 +406,8 @@ function drawMaps(bbox, geojsonData, bounds){
                     .style("left", function(){
                         return (legendWidth * (mouseMax + diffVal) / (2*mouseMax)) + "px"
                     })
+                d3.select("#pointUpText").text(ttPercent(diffVal))
+
 
                 var repText = (p["diff_" + getBaseline()] < 0) ? "underrepresented" : "overrepresented"
                 var description =   "<div class = 'tt-name'>" + p.NAME + "</div>" + 
@@ -427,7 +429,8 @@ function drawMaps(bbox, geojsonData, bounds){
                 d3.select("#pointUp")
                     .style("display", "block")
                     .transition()
-                    .style("left", "450px")
+                    .style("left", "454px")
+                d3.select("#pointUpText").text("")
 
 
                 var description = "<div class = 'tt-name'>" + p.NAME + "</div>" + 
@@ -507,6 +510,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 .style("left", function(){
                     return (legendWidth * (baselineVal) / (mouseMaxBaseline)) + "px"
                 })
+            d3.select("#pointUpText").text(ttPercent(baselineVal))
 
         }); 
          
@@ -567,6 +571,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 .style("left", function(){
                     return (legendWidth * (dataVal) / (mouseMaxData)) + "px"
                 })
+            d3.select("#pointUpText").text(ttPercent(dataVal))
 
         }); 
          
