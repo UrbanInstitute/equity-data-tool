@@ -620,6 +620,10 @@ input[type=date]{
 #sampleButtonContainer {
     margin-top: 71px;
 }
+#sampleCardContainer{
+    width: fit-content;
+    margin: 0 auto;
+}
 .sampleCard{
     display: inline-block;
     float: left;
