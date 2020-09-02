@@ -10,7 +10,7 @@ function populateSummaries(messages, params){
         .attr("class","summaryHeadName")
     headName.append("span")
         .attr("class", "summaryStrong")
-        .text("SUMMARY:")
+        .text("SUMMARY: ")
     headName.append("span")
         .html(function(){
             return (datasetType == "user") ? "Your data from " + messages.updates.city_used : "Name of sample data set"
@@ -23,6 +23,44 @@ function populateSummaries(messages, params){
         .attr("class", "headX hor")
         // .text(messages.updates.city_used)
 
+// N total rows in your data
+// N rows removed by filters
+// N rows removed with null or missing weight columns
+// N rows removed with null or missing latitude and/or longitude columns
+// N rows removed with null or missing filter columns
+
+    var fRow = container.append("div").attr("class","paramRow")
+
+    // fRow.append("img").attr("src", "images/check.png")
+    fRow.append("div").html("<span>Filters:</span> none")
+    fRow.append("div").html("<span>Weight column:</span> none")
+
+
+    container.append("div")
+        .attr("class","summaryRows")
+        .html("<span>" + messages.updates.num_rows_file + "</span> total rows in your data")
+
+    container.append("div")
+        .attr("class","summaryRows")
+        .html("<span>" + messages.updates.num_filter_rows_dropped + "</span> rows removed by filters")
+
+    container.append("div")
+        .attr("class","summaryRows")
+        .html("<span>" + messages.warnings.num_null_weight_rows_dropped + "</span> rows removed with null or missing weight columns")
+
+    container.append("div")
+        .attr("class","summaryRows")
+        .html("<span>" + messages.warnings.num_null_filter_rows_dropped + "</span> rows removed with null or missing filter columns")
+
+    container.append("div")
+        .attr("class","summaryRows")
+        .html("<span>" + messages.warnings.num_null_latlon_rows_dropped + "</span> rows removed with null or missing latitude and/or longitude columns")
+
+    container.append("div")
+        .attr("class","summaryRows")
+        .html("<span>" + messages.warnings.num_out_of_city_rows_dropped + "</span> rows removed that were not within " + messages.updates.city_used)
+
+
 
 
     headX.on("click", function(){
@@ -30,10 +68,21 @@ function populateSummaries(messages, params){
             d3.select(this).classed("closed", false)
                 .transition()
                 .style("transform", "rotate(45deg)")
+            d3.select(".summaryContainer.visible")
+                .transition()
+                .style("height", function(){
+                    return d3.select(".summaryContainer.clone").node().getBoundingClientRect().height + "px"
+                })
         }else{
             d3.select(this).classed("closed", true)
                 .transition()
                 .style("transform", "rotate(0deg)")
+
+            d3.select(".summaryContainer.visible")
+                .transition()
+                .style("height", function(){
+                    return "29px"
+                })
 
         }
     })
