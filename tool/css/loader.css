@@ -622,11 +622,15 @@ input[type=date]{
 }
 .sampleCard{
     display: inline-block;
+    float: left;
 }
-.sampleCard.s2{
+.sampleCard.inactive{
+    display: none;
+}
+.sampleCard.three11{
     margin-right: 76px;
 }
-.sampleCard.s1{
+.sampleCard.hotspots{
     margin-right: 76px;
 }
 .sampleRect{
@@ -636,6 +640,9 @@ input[type=date]{
     width: 260px;
     height: 85px;
     position: relative;
+}
+.sampleRect.bike.active{
+    margin-right: 75px;
 }
 .sampleInner{
     pointer-events: none;
@@ -673,17 +680,37 @@ input[type=date]{
     top: -11px;
 }
 .sampleDownload{
-    width: 260px;
-    text-align: center;
     color: #1696d2;
-    text-decoration: none;
     font-style: italic;
     font-weight: 400;
-    margin-left: 67.6px;
-    top: 20px;
+    position: relative;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.sampleDetails{
+    display: none;
+}
+.sampleDetails.active{
+    display: inline-block;
+    top: -3px;
     position: relative;
 }
-
+.sampleDeetHeader{
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+.deetRow{
+    margin-bottom: 20px;
+}
+.deetRow img{
+    float: left;
+    display: inline-block;
+    width: 21px;
+    margin-right: 10px;
+    position: relative;
+    top: 1px;
+}
 
 
 

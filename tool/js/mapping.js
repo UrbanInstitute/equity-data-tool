@@ -591,6 +591,8 @@ function drawMaps(bbox, geojsonData, bounds){
                 },
                 change: function(event, d){
 
+                    d3.select("#controlBaselineName").text(getBaselineText(d.item.value))
+
                     d3.select("#baselineSelect-button").classed("pop",false)
                     d3.select("#baselineSelect-button").classed("under_poverty_line",false)
                     d3.select("#baselineSelect-button").classed("no_bband",false)

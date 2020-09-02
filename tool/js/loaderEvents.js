@@ -73,16 +73,81 @@ function handleFiles(inputFiles){
 
 }
 function selectSampleData(sample){
-    var colNames = ["testNum", "testText", "testDate"]
-    var csvCols = {"testNum" : "number", "testText": "string", "testDate": "date"}
+    var colNames = sampleParams[sample]["colNames"]
+    var csvCols = sampleParams[sample]["csvCols"]
+    var defaultParams = sampleParams[sample]["defaultParams"]
     var fileSize = 1000
 
     const p = Object.assign({}, defaultParams)
+
     d3.select("#paramsData").datum(p)
+
+    d3.selectAll(".sampleDetails").classed("active",true)
 
     populateDropdowns(colNames)
     d3.select("#csvProperties").datum({"size": fileSize, "cols": csvCols })
     d3.selectAll(".hideOption.sample").classed("hiddenSection",false)
+
+    d3.selectAll(".sampleCard").classed("inactive", true)
+    d3.select(".sampleCard." + sample).classed("inactive", false)
+
+    d3.selectAll(".sampleDownload").style("display","none")
+    d3.selectAll(".sampleDownload." + sample).style("display","block")
+    // sampleDeetHeader
+
+    d3.selectAll(".deetRow").remove()
+    var sampleParamType;
+
+    if(defaultParams.baseline != "total_pop"){
+        sampleParamType = "baseline"
+        var deetRow = d3.select(".sampleDeetContainer").append("div")
+            .attr("class", "deetRow")
+        deetRow.append("img")
+            .attr("src", "images/check.png")
+        deetRow.append("div")
+            .text(getBaselineText(defaultParams.baseline))
+    }
+    else if(defaultParams.weight != ""){
+        sampleParamType = "weight column"
+        var deetRow = d3.select(".sampleDeetContainer").append("div")
+            .attr("class", "deetRow")
+        deetRow.append("img")
+            .attr("src", "images/check.png")
+        deetRow.append("div")
+            .text(defaultParams.weight)
+    }
+    else if(defaultParams.filters.length > 0){
+        sampleParamType = (defaultParams.filters.length == 1) ? "filter" : "filters"
+
+        var deetRow = d3.select(".sampleDeetContainer")
+            .selectAll(".deetRow")
+            .data(defaultParams.filters)
+            .enter()
+            .append("div")
+            .attr("class", "deetRow")
+        deetRow.append("img")
+            .attr("src", "images/check.png")
+        deetRow.append("div")
+            .text(function(d){
+                console.log(d)
+                return getTagText(d)
+            })        
+    }
+
+    d3.select(".sampleDeetHeader span").text(sampleParamType)
+
+    
+
+}
+function deselectSampleData(){
+//TO DO deselect the sample file
+    d3.selectAll(".sampleRect").classed("active", false)
+
+    d3.selectAll(".sampleDetails").classed("active",false)
+
+    d3.selectAll(".hideOption.sample").classed("hiddenSection",true)
+
+    d3.selectAll(".sampleCard").classed("inactive", false)
 
 }
 function guessLatLon(colNames, l){
@@ -273,8 +338,15 @@ d3.select("#userButton").on("click", function(){
 
 
 
-d3.selectAll(".backButton.data").on("click", function(){
+d3.selectAll(".backButton.user.data").on("click", function(){
     showLoaderSection("home")
+})
+d3.selectAll(".backButton.sample.data").on("click", function(){
+    if(d3.selectAll(".sampleCard.inactive").nodes().length == 0){
+        showLoaderSection("home")    
+    }else{
+        deselectSampleData()
+    }
 })
 d3.selectAll(".backButton.advanced").on("click", function(){
     showLoaderSection(getDatasetType())

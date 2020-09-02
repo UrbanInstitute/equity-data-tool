@@ -73,7 +73,7 @@ function populateFilters(filters){
     addToFilterList(filters[i])
   }
 }
-function addToFilterList(filter){
+function getTagText(filter){
   var tagText = filter.filter_column + " ",
       compareText = (filter.filter_type == "date") ? "=" : d3.select("#numComSel option[value=\"" + filter.filter_comparison + "\"]").html(),
       filterType = filter.filter_type
@@ -106,7 +106,12 @@ function addToFilterList(filter){
 
   tagText += filterValText
 
-  console.log(tagText)
+  return tagText  
+}
+function addToFilterList(filter){
+  var tagText = getTagText(filter)
+
+  
   var tag = d3.select("#filterList")
     .append("div")
     .attr("class", "filterTag visible")
@@ -139,11 +144,7 @@ function addToFilterList(filter){
       d3.select(this).select(".filterTagText").style("white-space", "nowrap").style("text-overflow","ellipsis")
     })
 
-
     clearFilterOptions();
-}
-function showDefaultControls(){
-  // show lat/lon menus and run/advanced buttons/menus
 }
 function showLoaderSection(loaderSection){
   var params = getParams()
@@ -153,12 +154,14 @@ function showLoaderSection(loaderSection){
   if(loaderSection == "filters"){
     var currentFilters = params.filters
     populateFilters(currentFilters)
+    $('#columnSelect').selectmenu("refresh")
   }
   else if(loaderSection == "weight"){
     d3.select("#weightSelect").selectAll("option")
       .property("selected", function(){
         return this.value == params.weight
       })
+      console.log(params.weight)
     $('#weightSelect').selectmenu("refresh")
   }
   else if(loaderSection == "baseline"){
@@ -170,29 +173,16 @@ function showLoaderSection(loaderSection){
     d3.select(".loaderSection." + loaderSection).classed("active", true)
     $('html, body').animate({ scrollTop: 0 }, 1200);
     d3.select(".loaderHome").style("opacity",0)
-  }else{
+  }else if(loaderSection == "sample"){
+
+  }
+  else{
     d3.select("#loaderContainer").style("display", "none")
     d3.select(".loaderHome").style("opacity",1)
   }
 
 }
 
-
-const defaultParams = {
-    "filters":[
-// {
-// "filter_column": "caller race",
-// "filter_comparison": "<",
-// "filter_type": "number",
-// "filter_val": 1
-// }
-    ],
-    "weight": "foo",
-    "baseline":"pop",
-    "lat_column": "",
-    "lon_column": "",
-    "year": 2018
-  }
 
 function startOver(){
 //TO DO clear file, this is causing bugs!
@@ -201,6 +191,8 @@ function startOver(){
   d3.select("#dropboxDrag").text("or drag it here").classed("filename", false)
   setLoaderBaseline("pop")
   populateDropdowns([])
+
+  deselectSampleData()
 
   const p = Object.assign({}, defaultParams)
   d3.select("#paramsData").datum(p)
