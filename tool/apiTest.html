@@ -65,7 +65,7 @@ function runAnalysis() {
         // postURL = "https://httpbin.org/post"
         formData = new FormData();
 
-    formData.append("file", $("#fileInput").prop("files")[0])
+    formData.append("upload_file", $("#fileInput").prop("files")[0])
 
 
 
@@ -95,14 +95,18 @@ function runAnalysis() {
     $.ajax({
         url: postURL,
         method: "POST",
-        contentType: 'multipart/form-data',
+        // contentType: 'multipart/form-data',
+        contentType: false,
+        cache: false,
+        // boundary: 'X-INSOMNIA-BOUNDARY',
+        // contentType; 
         processData: false,
         data:formData,
         crossDomain: true,
         beforeSend: function (xhr) {
             /* Authorization header */
             xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-            xhr.setRequestHeader("X-Mobile", "true");
+            // xhr.setRequestHeader("X-Mobile", "true");
         },        
         success: function(msg, status, jqXHR){
             $("#postResponse textarea").val(JSON.stringify(msg))
