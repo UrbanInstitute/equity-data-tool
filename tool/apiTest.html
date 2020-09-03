@@ -51,12 +51,22 @@ const TOKEN = "4b7aa32e17731af9e97d0d2edd061f1b46d7d117"
 
 function runAnalysis() {
 
-    var params = {"foo": "bar", "filters": [{"baz": "boo"}] },
+    var defaultParams = {
+        "filters":[],
+        "weight": "",
+        // "baseline": "pop",
+        "lat_column": "lat",
+        "lon_column": "lon",
+        "year": 2018
+      }
+
+    var params = defaultParams,
         postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
         // postURL = "https://httpbin.org/post"
         formData = new FormData();
 
     formData.append("file", $("#fileInput").prop("files")[0])
+
 
 
     for(var k in params){
@@ -69,6 +79,18 @@ function runAnalysis() {
             
         }
     }
+    console.log("*************************")
+    console.log("params",params)
+    console.log("*************************")
+    console.log("formData object\n")
+
+    // var fd = formData.values()
+    for (var pair of formData.entries()) {
+        console.log("key", pair[0])
+        console.log("value", pair[1])
+        console.log('\n')
+    }
+    console.log("*************************")
 
     $.ajax({
         url: postURL,
