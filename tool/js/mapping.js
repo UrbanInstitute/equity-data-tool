@@ -4,6 +4,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidXJiYW5pbnN0aXR1dGUiLCJhIjoiTEJUbmNDcyJ9.mbuZ
 d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".controlContainer").classed("active", false)
     d3.select(this).classed("active", true)
+    d3.selectAll(".mapButton.mapImg").classed("active", false)
 
     if(d3.select(this).classed("diff")){
         d3.select("#diffMap")
@@ -14,6 +15,7 @@ d3.selectAll(".controlContainer").on("click", function(){
             .transition()
             .duration(1000)
             .style("margin-top", "0px")
+        d3.select(".mapButton.mapImg.diff").classed("active", true)            
     }else{
         d3.select("#diffMap")
             .transition()
@@ -23,9 +25,35 @@ d3.selectAll(".controlContainer").on("click", function(){
             .transition()
             .duration(1000)
             .style("margin-top", -1*MAP_LEGEND_HEIGHT + "px")
+        d3.select(".mapButton.mapImg.baseline").classed("active", true)
+        d3.select(".mapButton.mapImg.data").classed("active", true)
     }
 })
+// var tmp;
+// function downloadMapImage(map, styleId){
+//     // https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-87.0186,32.4055,14/500x300?access_token=pk.eyJ1IjoidXJiYW5pbnN0aXR1dGUiLCJhIjoiTEJUbmNDcyJ9.mbuZTy4hI_PWXw3C3UFbDQ
+//     // var l = map.getLayer("diffLayer")
+//     // console.log(JSON.stringify(l.paint._values), l)
+//     // var al = {"id": l.id, "paint": ["fill-color", "red"], "source": "composite", "type": "fill"}
 
+
+//     // var mapURL = "https://api.mapbox.com/styles/v1/"
+//     // mapURL += "urbaninstitute/ckecx3n9l2npi1aql5avokshb/"
+//     // mapURL += "static/"
+//     // mapURL += map.getCenter().lng + "," + map.getCenter().lat + ","
+//     // mapURL += map.getZoom() + "/"
+//     // mapURL += "500x300"
+//     // mapURL += "?access_token=" + mapboxgl.accessToken
+//     // mapURL += "&addlayer=" + JSON.stringify(al)
+//     // // mapURL +=    
+//     // // mapURL +=
+//     // window.open(mapURL,"_blank")
+//         // $('#downloadLink').click(function() {
+//         var img = map.getCanvas().toDataURL('image/png')
+//         // this.href = img
+//     // })
+//     window.open(img)
+// }
 
 function getRange(baseline, bounds, mapType){
         var baselineMin = bounds[baseline + "_prop_min"],
@@ -58,24 +86,29 @@ function drawMaps(bbox, geojsonData, bounds){
     
     var baselineMap = new mapboxgl.Map({
         container: 'baselineMap',
-        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb/draft',
+        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb',
         bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
         attributionControl: false
+        // preserveDrawingBuffer: true
     });
 
     var dataMap = new mapboxgl.Map({
         container: 'dataMap',
-        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb/draft',
+        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb',
         bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
         attributionControl: false
+        // preserveDrawingBuffer: true
     });
 
     var diffMap = new mapboxgl.Map({
         container: 'diffMap',
-        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb/draft',
+        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb',
         bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
         attributionControl: false
+        // preserveDrawingBuffer: true
+
     });
+
 
     // var navDiff = new mapboxgl.NavigationControl({"showCompass": false});
     // var navBaseline = new mapboxgl.NavigationControl({"showCompass": false});
@@ -91,7 +124,26 @@ function drawMaps(bbox, geojsonData, bounds){
         .addControl(new mapboxgl.NavigationControl({"showCompass": false}), 'top-right')
         .addControl(new mapboxgl.AttributionControl({compact: true}));
 
+    $('.mapButton.mapImg.diff').click(function() {
+        takeScreenshot(diffMap).then(function(data){
+            var blob = dataURItoBlob(data)
+            downloadBlob(blob, "spatial_equity_disparity_map.png")
+        })
+    })
 
+    $('.mapButton.mapImg.baseline').click(function() {
+        takeScreenshot(baselineMap).then(function(data){
+            var blob = dataURItoBlob(data)
+            downloadBlob(blob, "spatial_equity_" + getBaseline() + "_map.png")
+        })
+    })
+
+    $('.mapButton.mapImg.data').click(function() {
+        takeScreenshot(dataMap).then(function(data){
+            var blob = dataURItoBlob(data)
+            downloadBlob(blob, "spatial_equity_" + getDatasetType() + "data_map.png")
+        })
+    })
 
 
     var baseline = getParams().baseline

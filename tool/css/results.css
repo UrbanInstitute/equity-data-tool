@@ -190,3 +190,33 @@
 .paramRow div{
     margin-bottom: 20px;
 }
+
+
+
+/********************************************/
+/*********** DOWNLOAD BUTTONS ***************/
+/********************************************/
+#mapButtonContainer{
+    width: 1150px;
+    float: right;
+    left: -80px;
+    position: relative;
+    margin-top: 36px;
+}
+.mapButton.active{
+    display: inline-block;
+}
+.mapButton{
+    padding: 10px;
+    width: fit-content;
+    border: 1px solid #1696d2;
+    color: #1696d2;
+    display: none;
+    margin-right: 20px;
+    float: right;
+    cursor: pointer;
+}
+.mapButton:hover{
+    background: #1696d2;
+    color: #fff;
+}

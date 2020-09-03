@@ -176,7 +176,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <div id="baselineMap" class="sliderMap"></div>
                     <div id="dataMap" class="sliderMap"></div>
                 </div>
+            </div>
+            <div id = "mapButtonContainer">
+                  <a id="downloadLink" href="" download="map.png">Download ↓</a>
 
+              <div class = "mapButton mapImg diff active">Download map view (.png)</div>
+              <div class = "mapButton mapImg baseline">Download baseline map view (.png)</div>
+              <div class = "mapButton mapImg data">Download data map view (.png)</div>
+              <div class = "mapButton csv active">Download map data (.csv)</div>
             </div>
         </div>
     </div>
@@ -641,6 +648,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="js/globals.js"></script>
 <script src="js/getters.js"></script>
+<script src="js/mapDownload.js"></script>
 <script src="js/barchart.js"></script>
 <script src="js/loader.js"></script>
 <script src="js/callAPI.js"></script>

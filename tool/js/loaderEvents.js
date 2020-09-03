@@ -527,4 +527,4 @@ d3.selectAll(".runButton").on("click", function(){
 })
 
 
-// showResults();   
+showResults();   
