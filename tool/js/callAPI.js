@@ -10,8 +10,8 @@ function runAnalysis() {
   // log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
   var datasetType = getDatasetType(),
         params = getParams()
-        // postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
-        postURL = "https://httpbin.org/post"
+        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
+        // postURL = "https://httpbin.org/post"
         formData = new FormData();
 
     if(datasetType == "user"){
@@ -30,19 +30,38 @@ function runAnalysis() {
             
         }
     }
+    console.log(params)
+
+    // formData.append("file", $("#fileInput").prop("files")[0])
+
+
+    // for(var k in params){
+    //     if(params.hasOwnProperty(k)){
+    //         if(k != "filters"){
+    //             formData.append(k, params[k])
+    //         }else{
+    //             formData.append(k, JSON.stringify(params[k]))
+    //         }
+            
+    //     }
+    // }
+    var TOKEN = "4b7aa32e17731af9e97d0d2edd061f1b46d7d117"
+
+
+// https://equity-tool-api-stg.urban.org/api/v1/get-equity-status/1598889564-517535?access_token=4b7aa32e17731af9e97d0d2edd061f1b46d7d117
 
     $.ajax({
-        url: postURL,
-        method: "POST",
-        contentType: 'multipart/form-data',
-        processData: false,
-        data:formData,
+        url: "https://equity-tool-api-stg.urban.org/api/v1/get-equity-status/1598889564-517535",
+        method: "GET",
+        // contentType: 'multipart/form-data',
+        // processData: false,
+        // data:formData,
         crossDomain: true,
-    beforeSend: function (xhr) {
-        /* Authorization header */
-        xhr.setRequestHeader("Authorization", "Token " + "4b7aa32e17731af9e97d0d2edd061f1b46d7d117");
-        xhr.setRequestHeader("X-Mobile", "true");
-    },        
+        beforeSend: function (xhr) {
+            /* Authorization header */
+            xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+            xhr.setRequestHeader("X-Mobile", "true");
+        },        
         success: function(msg, status, jqXHR){
             console.log(msg)
             showLoadingScreen();    
@@ -50,6 +69,31 @@ function runAnalysis() {
             statusIntervId = setInterval(loopStatus, 500, msg)
         }
     }); 
+// console.log(formData.boundary)
+//     $.ajax({
+//         url: postURL,
+//         method: "POST",
+//         // contentType: 'multipart/form-data',
+//         // contentType: false,
+//         processData: false,
+//         data:formData,
+//         // boundar:formData.boundary,
+//         crossDomain: true,
+//         beforeSend: function (xhr) {
+//             /* Authorization header */
+//             xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+//             xhr.setRequestHeader("X-Mobile", "true");
+//         },    
+//         error: function(e){
+//             console.log(e)
+//         },
+//         success: function(msg, status, jqXHR){
+//             console.log(msg)
+//             showLoadingScreen();    
+//             tmpCount = 0;        
+//             statusIntervId = setInterval(loopStatus, 500, msg)
+//         }
+//     }); 
 }
 
 function showLoadingScreen(){
