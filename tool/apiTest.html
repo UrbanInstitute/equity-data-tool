@@ -54,7 +54,6 @@ function runAnalysis() {
     var defaultParams = {
         "filters":[],
         "weight": "",
-        // "baseline": "pop",
         "lat_column": "lat",
         "lon_column": "lon",
         "year": 2018
@@ -95,18 +94,15 @@ function runAnalysis() {
     $.ajax({
         url: postURL,
         method: "POST",
-        // contentType: 'multipart/form-data',
         contentType: false,
         cache: false,
-        // boundary: 'X-INSOMNIA-BOUNDARY',
-        // contentType; 
         processData: false,
         data:formData,
         crossDomain: true,
         beforeSend: function (xhr) {
             /* Authorization header */
             xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-            // xhr.setRequestHeader("X-Mobile", "true");
+            xhr.setRequestHeader("X-Mobile", "true");
         },        
         success: function(msg, status, jqXHR){
             $("#postResponse textarea").val(JSON.stringify(msg))
@@ -125,9 +121,6 @@ function testGet(){
         $.ajax({
         url: "https://equity-tool-api-stg.urban.org/api/v1/get-equity-status/1598889564-517535",
         method: "GET",
-        // contentType: 'multipart/form-data',
-        // processData: false,
-        // data:formData,
         crossDomain: true,
         beforeSend: function (xhr) {
             /* Authorization header */
