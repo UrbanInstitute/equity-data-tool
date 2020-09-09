@@ -1,0 +1,122 @@
+body{
+    font-family: Lato;
+    color: #353535;
+}
+/********************************************/
+/********** TABLE OF CONTENTS ***************/
+/********************************************/
+#toc{
+    width: 260px;
+    position: fixed;
+    top: 51px;
+    height: calc(100% - 131px);
+    overflow-y: scroll;
+    padding: 40px;
+    border-right: 1px solid #D2D2D2;
+}
+.contentsHeader.topLevel, .contentsHeader.header{
+    font-size: 20px;
+    font-weight: bold;
+}
+.contentsHeader.question{
+    font-size: 18px;
+    padding-left: 35px;
+}
+.contentsHeader{
+    margin-bottom: 35px;
+    cursor: pointer;
+}
+.contentsHeader.active{
+    color: #1696d2;
+}
+.contentsHeader.header{
+    pointer-events: none;
+}
+.contentsHeader:hover{
+    color: #1696d2;
+}
+
+
+/********************************************/
+/********** MAIN PAGE CONTENT ***************/
+/********************************************/
+
+#pageContainer{
+    width: calc(100% - 340px);
+    left: 340px;
+    position: relative;
+    top: 42px;
+    margin-bottom: 150px;
+}
+#page{
+    margin: 0 auto;
+    width: 560px;
+}
+.contentBlock.title{
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 42px;
+    padding-bottom: 28px;
+    margin: 0;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #d2d2d2;
+}
+.takeawayContainer{
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 50px
+}
+.takeawayHeader{
+    position: absolute;
+    background: white;
+    font-weight: bold;
+    font-size: 18px;
+    top: -15px;
+    left: 0px;
+    padding-right: 10px;    
+}
+.takeawayUl{
+    list-style-image: url("../images/ulDot.png");
+    padding-left: 25px;
+}
+.takeawayLi{
+    margin-bottom: 13px;
+    line-height: 1.6;
+}
+.liStrong{
+    font-weight: bold;
+}
+.contentBlock.paragraph p, .caseStudySubEl.paragraph{
+    line-height: 1.6;
+    margin-bottom: 40px;
+    margin-top: 0px;
+}
+.caseStudyContainer{
+    border-left: 3px solid #FCCB41;
+    padding-left: 25px;
+    margin-left: -28px;
+}
+.caseStudySubEl.image{
+    width: 240px;
+    display: block;
+    float: right;
+    margin-left: 50px;
+}
+.caseStudySubEl.image img{
+    width: 100%;
+}
+.caseStudySubEl.title{
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+.caseStudySubEl.footnote{
+    font-size: 13px;
+}
+.caseStudySubEl.footnote span{
+    font-weight: bold;
+    margin-right: 10px;
+}

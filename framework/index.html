@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+  <title>equity data framework</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1">
+
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" type="text/css" href="css/vendor/jquery-ui.css">
+
+  <link rel="stylesheet" type="text/css" href="css/main.css"/>
+  <link rel="stylesheet" type="text/css" href="css/urban-header.css"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic,900,900italic" rel="stylesheet" type="text/css">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@urbaninstitute">
+  <meta name="twitter:creator" content="@urbaninstitute">
+  <meta name="twitter:title" content="How Segregated Are Schools in Your District?">
+  <meta name="twitter:description" content="Some segregation measures look only at a school's racial composition and not at how it compares with its district. Learn more about a better measure.">
+  <meta name="twitter:image" content="https://apps.urban.org/features/school-segregation-index/images/social.jpg">
+  <meta property="og:title" content="How Segregated Are Schools in Your District?" />
+  <meta property="og:description" content="Some segregation measures look only at a school's racial composition and not at how it compares with its district. Learn more about a better measure." />
+  <meta property="og:image" content="https://apps.urban.org/features/school-segregation-index/images/social.jpg" />
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:url" content="https://urbn.is/2zUJjCf">
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "headline": "How Segregated Are Schools in Your District?",
+  "url": "https://apps.urban.org/features/school-segregation-index",
+  "thumbnailUrl": "https://apps.urban.org/features/school-segregation-index/images/social.jpg",
+  "dateCreated": "2020-06-20T04:00:00.000Z",
+  "articleSection": "Interactive Feature",
+  "creator": ["Tomas Monarrez","Carina Chien","David Hinson","Brian Kisida","JoElla Carman","Emily Peiffer","Matthew Chingos","Ben Chartoff"],
+  "keywords": ["Education and Training"]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MKBD2W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKBD2W');</script>
+<!-- End Google Tag Manager -->
+
+<div id = "isMobile"></div>
+<div id = "isPhone"></div>
+<div id = "isShort"></div>
+<div id = "paramsData"></div>
+<div id = "csvProperties"></div>
+
+<!-- START HEADER -->
+<div id="header-pinned" class="no-touch">
+   <a target="_blank" href="https://www.urban.org" title="Home" rel="home" class="site-logo"></a>
+<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features</a></span></div>
+<div class="share-icons">
+    <div class="shareThisP">
+        <span onclick="toggle_visibility('shareBox');">
+                <div class="shareThisB"></div>
+            </span>
+        <div class="shareThisW" id="shareBox">
+
+            <div class="addthis_toolbox addthis_default_style  "addthis:title="" addthis:url="">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//urbn.is/sci" target="_blank" class="addthis_button_facebook at300b" title="Facebook" onclick="toggle_visibility('shareBox');"><span class="at4-icon aticon-facebook" style="background-color: rgb(48, 88, 145);"><span class="at_a11y">Share on facebook</span></span></a>
+
+                <a href="https://twitter.com/intent/tweet?text=How%20much%20does%20your%20school%20contribute%20to%20segregation%3F%20%40urbaninstitute%27s%20Segregation%20Contribution%20Index%20measures%20how%20much%20individual%20schools%20contribute%20to%20racial%20segregation%20in%20their%20broader%20systems.%20https%3A%2F%2Furbn.is%2Fsci" target="_blank" class="addthis_button_twitter at300b" title="Tweet" onclick="toggle_visibility('shareBox');"><span class="at4-icon aticon-twitter" style="background-color: rgb(44, 168, 210);"><span class="at_a11y">Share on twitter</span></span></a>
+
+                <a href="mailto:%20?Subject=New Urban Institute interactive&amp;Body=Hi! I thought you'd be interested in this new interactive from the Urban Institute: &ldquo;How Much Does Your School Contribute to Segregation?&rdquo; https://urbn.is/sci" target="_blank" class="addthis_button_email at300b" target="_blank" title="Email" onclick="toggle_visibility('shareBox');"><span class="at4-icon aticon-email" style="background-color: rgb(115, 138, 141);"><span class="at_a11y">Share on email</span></span></a>
+                <div class="atclear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="headerimage" id="heroimage">
+  <div class="wrapper headerwrapper">
+  </div>
+</div>
+<!-- END HEADER -->
+
+<!-- START MAIN CONTENT -->
+<div class="container">
+  <div id = "toc"></div>
+  <div id = "pageContainer">
+    <div id = "page"></div>
+  </div>
+</div>
+<!-- END MAIN CONTENT -->
+
+
+
+<script src="js/vendor/es6-promise.min.js"></script>
+<script src="js/vendor/es6-promise.auto.min.js"></script>
+<script src="js/vendor/fetch.min.js"></script>
+
+<script src="js/vendor/jquery-2.2.1.min.js"></script>
+<script src="js/vendor/jquery-ui.1.12.1.min.js"></script>
+
+
+<script src="js/vendor/d3-dispatch.v1.min.js"></script>
+<script src="js/vendor/d3.5.15.0.min.js"></script>
+
+
+<script src="content/global.js"></script>
+<script src="content/intro.js"></script>
+<script src="content/align.js"></script>
+<script src="content/evidence.js"></script>
+<script src="content/marginalized.js"></script>
+<script src="content/risks.js"></script>
+<script src="content/consequences.js"></script>
+<script src="content/formalize.js"></script>
+<script src="content/ahead.js"></script>
+<script src="content/fund.js"></script>
+<script src="content/conclusion.js"></script>
+<script src="content/acknowledgements.js"></script>
+<script src="content/resources.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () { 
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),  m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m) 
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); 
+    ga('create', 'UA-57529944-1', 'auto'); 
+    ga('send', 'pageview');
+</script>
+
+<!-- START Parse.ly Include: Standard -->
+<div id="parsely-root" style="display: none">
+  <span id="parsely-cfg" data-parsely-site="urban.org"></span>
+</div>
+<script>
+    (function(s, p, d) {
+      var h=d.location.protocol, i=p+"-"+s,
+          e=d.getElementById(i), r=d.getElementById(p+"-root"),
+          u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+          :"static."+p+".com";
+      if (e) return;
+      e = d.createElement(s); e.id = i; e.async = true;
+      e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+    })("script", "parsely", document);
+</script>
+<!-- END Parse.ly Include: Standard -->
+
+
+</body>
+</html>
