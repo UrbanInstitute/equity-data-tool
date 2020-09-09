@@ -209,7 +209,9 @@
 }
 #diffNARect{
     background: #9d9d9d;
-    width: 25px;
+    /*border: 2px solid #353535;*/
+    width: 23px;
+    height: 20px !important;
 }
 #diffNA{
     display: block;

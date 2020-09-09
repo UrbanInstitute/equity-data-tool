@@ -1,5 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJiYW5pbnN0aXR1dGUiLCJhIjoiTEJUbmNDcyJ9.mbuZTy4hI_PWXw3C3UFbDQ';
-
+var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb"
 
 d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".controlContainer").classed("active", false)
@@ -86,7 +86,7 @@ function drawMaps(bbox, geojsonData, bounds){
     
     var baselineMap = new mapboxgl.Map({
         container: 'baselineMap',
-        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb',
+        style: mapboxStyleUrl,
         bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
         attributionControl: false
         // preserveDrawingBuffer: true
@@ -94,7 +94,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
     var dataMap = new mapboxgl.Map({
         container: 'dataMap',
-        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb',
+        style: mapboxStyleUrl,
         bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
         attributionControl: false
         // preserveDrawingBuffer: true
@@ -102,7 +102,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
     var diffMap = new mapboxgl.Map({
         container: 'diffMap',
-        style: 'mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb',
+        style: mapboxStyleUrl,
         bounds: new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]),
         attributionControl: false
         // preserveDrawingBuffer: true
@@ -260,7 +260,13 @@ function drawMaps(bbox, geojsonData, bounds){
             'type': 'fill',
             'source': 'diffSource',
             'paint': {
-            'fill-outline-color': "#696969", 
+            'fill-outline-color': 
+            [
+                "case",
+                ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
+                "#696969",
+                "#353535"
+            ],
             'fill-color': [
                 "case",
                 ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
@@ -277,7 +283,7 @@ function drawMaps(bbox, geojsonData, bounds){
                         diffMin + diffStep*3,
                         "#fff2cf",
                         diffMin + diffStep*4,
-                        "#d5d5d4",
+                        "#ffffff",
                         diffMin + diffStep*5,
                         "#cfe8f3",
                         diffMin + diffStep*6,
@@ -299,7 +305,7 @@ function drawMaps(bbox, geojsonData, bounds){
         
 
         var legendPercent = d3.format(".1%")
-        var diffColors = ["#ca5800","#fdbf11","#fdd870","#fff2cf","#d5d5d4","#cfe8f3","#73bfe2","#1696d2","#0a4c6a"]
+        var diffColors = ["#ca5800","#fdbf11","#fdd870","#fff2cf","#ffffff","#cfe8f3","#73bfe2","#1696d2","#0a4c6a"]
         var compareColors = ["#DCEDD9","#BCDEB4","#98CF90","#78C26D","#55B748","#408941","#2C5C2D","#1A2E19"]
 
 
@@ -424,7 +430,7 @@ function drawMaps(bbox, geojsonData, bounds){
         var ttPercent = d3.format(".2%")
         var popup = new mapboxgl.Popup({
             closeButton: false,
-            closeOnClick: false
+            closeOnClick: true
         });
          
         diffMap.on('mousemove', 'diffLayer', function(e) {

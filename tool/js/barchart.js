@@ -50,8 +50,9 @@ svg.selectAll(".lollipop.background")
 .data(data)
 .enter().append("line")
 .attr("class", function(d){
+    var sigdiff = (Math.abs(d.diff_data_city) < 1) ? " insig" : " sig"
 var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
-return "lollipop background active chartPart " + barCategories[d.census_var]["class"] + overunder
+return "lollipop background active chartPart " + barCategories[d.census_var]["class"] + overunder + sigdiff
 })
 .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
 .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
@@ -64,20 +65,33 @@ svg.selectAll(".lollipop.foreground")
 .data(data)
 .enter().append("line")
 .attr("class", function(d){
+    console.log(d.diff_data_city)
+var sigdiff = (Math.abs(d.diff_data_city) < 1) ? " insig" : " sig"
 var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
-return "lollipop foreground active chartPart " + barCategories[d.census_var]["class"] + overunder
+return "lollipop foreground active chartPart " + barCategories[d.census_var]["class"] + overunder + sigdiff
 })
 .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
 .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
 .attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 .attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 
+svg.append("line")
+.attr("x1", x(0))
+.attr("x2", x(0))
+.attr("y1", 0 + margin.top)
+.attr("y2", height)
+.attr("stroke", "#3a403d")
+.attr("stroke-width", "1px");
+
+
+
 svg.selectAll(".barDot")
 .data(data)
 .enter().append("circle")
 .attr("class", function(d){
+    var sigdiff = (Math.abs(d.diff_data_city) < 1) ? " insig" : " sig"
 var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
-return "barDot active chartPart " + barCategories[d.census_var]["class"] + overunder
+return "barDot active chartPart " + barCategories[d.census_var]["class"] + overunder + sigdiff
 })
 .attr("cx", function(d){ return x(d.diff_data_city); })
 .attr("cy", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
@@ -115,13 +129,7 @@ return "bar_full_name foreground active chartPart " + barCategories[d.census_var
 .attr("text-anchor", function(d){ return d.diff_data_city < 0 ? "start" : "end"; })
 .html(function(d){ return barCategories[d.census_var]["full_name"]; });
 
-svg.append("line")
-.attr("x1", x(0))
-.attr("x2", x(0))
-.attr("y1", 0 + margin.top)
-.attr("y2", height)
-.attr("stroke", "#3a403d")
-.attr("stroke-width", "1px");
+
 
 
 

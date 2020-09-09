@@ -158,11 +158,14 @@ function guessLatLon(colNames, l){
             var col = colNames[c]
             if(col.toUpperCase() == guess.toUpperCase()){
                 console.log(col)
+                if(l == "lat") updateParams("lat_column",col)
+                if(l == "lon") updateParams("lon_column",col)
                 return col;
             }
         }
     }
 //TO DO if guess update paramaters w lat/lon
+
     return ""
 }
 
