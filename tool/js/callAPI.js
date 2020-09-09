@@ -140,6 +140,12 @@ function drawResultsData(fileId){
             console.log(msg)
             // console.log(JSON.parse(msg))
             // checkStatus(msg2.results)
+            var params = getParams()
+            // d3.json(jsonURL).then(function(data) {
+              drawBarChart(msg.results.result.demographic_bias_data)
+              drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
+              populateSummaries(msg.results.result.messages, params)
+            // })
         }
     }); 
 
@@ -179,7 +185,7 @@ function loopStatus(msg){
         success: function(msg2, status, xhr){
             console.log(msg2, status)
             // console.log(JSON.parse(msg))
-            // checkStatus(msg2.results)
+            checkStatus(msg2.results)
         }
     }); 
 
@@ -190,12 +196,14 @@ function loopStatus(msg){
 
 function checkStatus(status){
 // TO DO loop through errors for trues
+console.log(status.formdata.updates.num_rows_for_processing, status.formdata.updates.num_rows_processed)
     if(status["formdata"]["error-messages"]["all_rows_filtered"]){
         clearInterval(buildingIntervId);
         clearInterval(statusIntervId);
         showErrorScreen()
     }
-    else if(status.formdata.updates.num_rows_for_processing == status.formdata.updates.num_rows_processed){
+    // else if(status.formdata.updates.num_rows_for_processing == status.formdata.updates.num_rows_processed){
+    else if(status.formdata.updates.finished){
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusDone").style("display","block")
 
