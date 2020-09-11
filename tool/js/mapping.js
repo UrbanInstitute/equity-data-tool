@@ -659,7 +659,8 @@ function drawMaps(bbox, geojsonData, bounds){
                     d3.select("#baselineSelect-button").classed("pop",false)
                     d3.select("#baselineSelect-button").classed("under_poverty_line",false)
                     d3.select("#baselineSelect-button").classed("no_bband",false)
-                    d3.select("#baselineSelect-button").classed("foreign_born",false)
+                    d3.select("#baselineSelect-button").classed("cb_renter_hh",false)
+                    d3.select("#baselineSelect-button").classed("seniors",false)
 
                     d3.select("#baselineSelect-button").classed(d.item.value, true)
 
@@ -667,7 +668,8 @@ function drawMaps(bbox, geojsonData, bounds){
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("pop",false)
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("under_poverty_line",false)
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("no_bband",false)
-                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("foreign_born",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("cb_renter_hh",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("seniors",false)
 
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed(d.item.value, true)
 
@@ -761,7 +763,7 @@ function drawMaps(bbox, geojsonData, bounds){
                                     diffMin + diffStep*3,
                                     "#fff2cf",
                                     diffMin + diffStep*4,
-                                    "#d5d5d4",
+                                    "#ffffff",
                                     diffMin + diffStep*5,
                                     "#cfe8f3",
                                     diffMin + diffStep*6,
