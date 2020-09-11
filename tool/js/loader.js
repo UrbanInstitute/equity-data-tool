@@ -149,6 +149,7 @@ function addToFilterList(filter){
 function showLoaderSection(loaderSection){
   var params = getParams()
   d3.selectAll(".resultsContainer").style("display", "none")
+  d3.selectAll(".loadingError").style("display","none")
   d3.select(".loaderHome").style("display","block")
 
   if(loaderSection == "filters"){

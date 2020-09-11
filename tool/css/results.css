@@ -196,6 +196,10 @@
 /********************************************/
 /*********** DOWNLOAD BUTTONS ***************/
 /********************************************/
+#barButtonContainer{
+    display: inline-block;
+    clear: both;
+}
 #mapButtonContainer{
     width: 1150px;
     float: right;
@@ -203,10 +207,10 @@
     position: relative;
     margin-top: 36px;
 }
-.mapButton.active{
+.mapButton.active, .barButton.active{
     display: inline-block;
 }
-.mapButton{
+.mapButton, .barButton{
     padding: 10px;
     width: fit-content;
     border: 1px solid #1696d2;
@@ -216,7 +220,7 @@
     float: right;
     cursor: pointer;
 }
-.mapButton:hover{
+.mapButton:hover, .barButton:hover{
     background: #1696d2;
     color: #fff;
 }

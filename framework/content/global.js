@@ -56,12 +56,17 @@ var content = {
             "menuName": "How can cities effectively fund technology equity work?"
         },
         {
+            "slug": "takeaways",
+            "contentType" : "topLevel",
+            "menuName": "Key takeaways"
+        },
+        {
             "slug": "conclusion",
             "contentType" : "topLevel",
             "menuName": "Conclusion"
         },
         {
-            "slug": "acknowledgements",
+            "slug": "acknowledgments",
             "contentType" : "topLevel",
             "menuName": "Acknowledgments"
         },

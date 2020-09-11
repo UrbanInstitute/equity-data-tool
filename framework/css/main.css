@@ -61,22 +61,19 @@ body{
     margin-bottom: 40px;
     border-bottom: 1px solid #d2d2d2;
 }
+.contentBlock.title.question{
+    border-bottom: 1px solid transparent;   
+}
 .takeawayContainer{
-    border-top: 1px solid #d2d2d2;
-    border-bottom: 1px solid #d2d2d2;
+    border: 1px solid #d2d2d2;
     position: relative;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-bottom: 50px
+    margin-bottom: 50px;
+    padding: 33px;
 }
 .takeawayHeader{
-    position: absolute;
-    background: white;
     font-weight: bold;
     font-size: 18px;
-    top: -15px;
-    left: 0px;
-    padding-right: 10px;    
+    margin-bottom: 20px;  
 }
 .takeawayUl{
     list-style-image: url("../images/ulDot.png");
@@ -88,6 +85,7 @@ body{
 }
 .liStrong{
     font-weight: bold;
+    color: #1696d2;
 }
 .contentBlock.paragraph p, .caseStudySubEl.paragraph{
     line-height: 1.6;
@@ -119,4 +117,247 @@ body{
 .caseStudySubEl.footnote span{
     font-weight: bold;
     margin-right: 10px;
+}
+.contentBlock.quote, .contentBlock.expand{
+    display: flow-root;
+    margin-bottom: 40px;
+}
+.quoteContainer{
+    width: 450px;
+    float: right;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.quoteQuote{
+    text-align: right;
+    font-size: 24px;
+    font-weight: 300;
+    font-style: italic;
+    color: #696969;
+    padding-bottom: 10px;
+}
+.quoteSource{
+    float: right;
+    display: table;
+    padding-top: 10px;
+    border-top: 1px solid #d2d2d2;
+    text-align: right;
+    padding-left: 20px;
+}
+.quoteSourceName{
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #1696d2;
+}
+.quoteSourceInfo{
+    display: inline-block;
+    color: #696969;
+}
+.expandContainer{
+    background: #e5e5e5;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 33px;
+    margin-top: 10px;
+    padding-bottom: 70px;
+    position: relative;  
+    overflow: hidden;  
+}
+.expandTitle{
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.expandControl{
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    cursor: pointer;
+}
+.expandControlText{
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.expandPlus{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 10px;
+    position: relative;
+}
+.expandVert{
+    width: 2px;
+    height: 14px;
+    background: #1696d2;
+    left: 6px;
+    position: relative;
+    top: 1px;
+    transform: rotate(0deg);
+}
+.expandHor{
+    width: 14px;
+    height: 2px;
+    background: #1696d2;
+    position: absolute;
+    top: 7px;
+}
+.expandSubEl.paragraph{
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+.expandSmall{
+    line-height: 1.6;
+}
+.orderedList ol{
+    line-height: 1.6;
+    margin-bottom: 50px;
+    padding-left: 15px;
+}
+.orderedList ol li{
+    margin-bottom: 10px;
+}
+h3{
+    font-size: 22px;
+    font-weight: bold;
+}
+.mainContentUl{
+    list-style-image: url("../images/ulDot.png");
+    padding-left: 25px;
+}
+.mainContentUl li{
+    margin-bottom: 13px;
+    line-height: 1.6;
+}
+.expandSubEl.unorderedList ul{
+    list-style-image: url("../images/ulDot.png");
+    padding-left: 25px;   
+    margin-bottom: 40px;
+}
+.expandSubEl.unorderedList ul li{
+    line-height: 1.6;
+    margin-bottom: 13px;
+}
+.toolboxEl{
+    border-left: 3px solid #98CF90;
+    padding-left: 25px;
+    margin-left: -28px;
+    margin-bottom: 40px;
+}
+.toolBoxSubEl.title{
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+.toolBoxSubEl.paragraph img{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.toolBoxImg{
+    width: 310px;
+    float: right;
+    display: block;
+    margin-bottom: 5px;
+}
+.toolBoxImg img{
+    width: 100%;
+}
+.toolBoxImg div a{
+    color: #1696d2;
+    text-decoration: none;    
+}
+.toolBoxSubEl.paragraph{
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+.inlineImageContainer{
+    width: 100%;
+}
+.inlineImageTitle{
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.inlineImageContainer img{
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.listPBreak{
+    display: block;
+    height: 20px;
+}
+.printView{
+    display: none;
+}
+.contentBlock.urbanLogo{
+    display: none;
+}
+.credHed{
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.jobTitle{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    margin-top: 20px;    
+}
+.ghLink{
+    margin-top: 20px;
+}
+.ghLink a{
+    font-size: 14px;
+    font-style: italic;
+    color: #1696d2;
+}
+
+
+
+.contentBlock.title.intro{
+    font-size: 42px;
+    text-align: center;
+}
+.contentBlock.authors.intro{
+    font-style: italic;
+    font-size: 18px;
+    text-align: center;
+}
+.contentBlock.pubDate.intro{
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.contentBlock.title.intro div span{
+    display: block;
+    font-weight: 300;
+}
+.contentBlock.caseStudy.consequences{
+    margin-bottom: 40px;
+}
+.printIcon{
+    display: inline-block;
+    float: right;
+    cursor: pointer;
+}
+.printIcon div{
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #1696d2;    
+    display: inline-block;
+    margin-left: 13px;
+    position: relative;
+    top: -7px;
+}
+.printIcon img{
+    width: 36px;
+    display: inline-block;
 }

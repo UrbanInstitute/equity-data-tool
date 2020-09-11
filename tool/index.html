@@ -174,7 +174,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class = "mapButton mapImg diff active">Download map view (.png)</div>
               <div class = "mapButton mapImg baseline">Download baseline map view (.png)</div>
               <div class = "mapButton mapImg data">Download data map view (.png)</div>
-              <div class = "mapButton csv active">Download map data (.csv)</div>
+              <a class = "mapLink csv" href = ""><div class = "mapButton csv active">Download map data (.csv)</div></a>
             </div>
         </div>
     </div>
@@ -215,7 +215,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div id = "barChart">
             </div>
             <div class = "overunder over">Overrepresented</div>
+            <div id = "barButtonContainer">
+              <div class = "barButton barImg active">Download bar image (.png)</div>
+              <a class = "barLink csv" href = ""><div class = "barButton csv active">Download bar data (.csv)</div></a>
+            </div>
         </div>
+
     </div>
 
 </div>
@@ -549,6 +554,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div id = "statusLoading" class = "loaderSectionStatus">Uploading data&hellip;</div>
                 <div id = "statusProcessing" class = "loaderSectionStatus">Processing <span id = "num_rows_processed"></span> of <span id = "num_rows_file"></span> rows of data</div>
                 <div id = "statusDone" class = "loaderSectionStatus">Wrapping up&hellip;</div>
+                <div id = "loadingErrorContainer" class = "loadingError"></div>
             </em>
             </div>
 
@@ -563,6 +569,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <img class = "loadingImg l8" src = "images/loading8.png">
                 <img class = "loadingImg l9" src = "images/loading9.png">
                 <img class = "loadingImg l10" src = "images/loading10.png">
+
+                <img class = "loadingErrorImg loadingError" src = "images/errorBuildings.png">
             </div>
 
         </div>

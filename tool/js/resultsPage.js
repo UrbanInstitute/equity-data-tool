@@ -88,6 +88,14 @@ function populateSummaries(messages, params){
     })
 
 }
+function populateDownloadLinks(links){
+    console.log(links)
+    d3.select(".mapLink.csv").attr("href", links.geo_bias_csv)
+    d3.select(".mapLink.json").attr("href", links.geo_bias_geojson)
+    d3.select(".barLink.csv").attr("href", links.demographic_bias_csv)
+
+}
+
 
 d3.select(".resultsNav.startOverResults").on("click", startOver)
 

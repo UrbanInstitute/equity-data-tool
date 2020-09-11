@@ -732,6 +732,9 @@ input[type=date]{
     margin: 0 auto;
     margin-top: 60px;
 }
+.loadingErrorImg{
+    display: none;
+}
 .loadingImg{
     position: absolute;
     top: 0px;
@@ -741,4 +744,36 @@ input[type=date]{
 }
 .loaderSectionStatus{
     display: none;
+}
+.errorLight{
+    font-weight: 300;
+    display: block;
+}
+#loadingErrorContainer{
+    margin-top: -20px;
+}
+.loadingError{
+    display: none;
+}
+.errorX.loading{
+    display: inline-block;
+    float: left;
+    width: 28px;
+    top: 33px;
+    margin-right: 0px;
+    position: relative;
+}
+.loadingErrorText{
+    color: #D02828;
+    display: inline-block;
+    float: left;
+    width: 100%;
+    text-align: left;
+    padding-left: 46px;
+}
+.loadingErrorRow{
+    clear: both;
+    display: block;
+    margin-bottom: 50px;
+    width: fit-content;
 }

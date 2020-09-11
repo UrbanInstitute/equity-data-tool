@@ -1,12 +1,8 @@
-Ajjit q
-I upload sample data file w/ no filters/weights and get a CORS error
-
-
-
-- style summary stats on results page
+- allison, note red error text on error pg
+- ajjit geojson access denied
+- style summary stats on results page and hide for N = 0
 
 - stitch together
-    - post user data
     - post default sample data
     - post non default sample data
     - loop status
@@ -16,20 +12,27 @@ I upload sample data file w/ no filters/weights and get a CORS error
             - give this some timeout, if it's not changing, throw timeout error
 
 
+- loader error, non csv file
+- loader error, max file size error
 - fix bar category text
 
-- error handling and post-error navigation
+- post-error navigation
 
 - what to do for sample data display page if user changes preset val?
 - barchart radios income/wealth tooltip
-- export data map/chart
+- export data map json
 - export chart img
+- bar sig diff and legends
+
+
+
 
 - mmmoooobhiiile
 
 - framework
-- whatsabox
 - framework table
+
+- x browser
 
 
 Nice to haves
