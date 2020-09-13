@@ -29,12 +29,16 @@ function buildTakeawaysData(){
 function init(){
     d3.select("#toc").selectAll("*").remove()
     d3.select("#page").selectAll("*").remove()
+    // d3.select("#tableContainer").selectAll("*").remove()
 
 
     var section = (window.location.hash == "") ? content["contents"][0]["slug"] : window.location.hash.replace("#","")
     buildToc(section, function(){
-        loadSection(section)    
+        loadSection(section, function(){
+            buildResourceTable()
+        })    
     })
+
     
 }
 function buildToc(section, callback){
@@ -53,68 +57,68 @@ function buildToc(section, callback){
             })
             .on("click", function(d){
                 if(d.contentType != "header"){
-                    loadSection(d.slug)
+                    loadSection(d.slug, function(){})
                 }
             })
     }
     callback()
 }
-function loadSection(section){
+function loadSection(section, callback){
     window.location.hash = "#" + section
     d3.select("#page").selectAll("*").remove()
+    // d3.select("#tableContainer").selectAll("*").remove()
+
     if(!isPrintPage){
         d3.selectAll(".contentsHeader").classed("active", false)
 
-        if(!content.pages.hasOwnProperty(section)) section = content["contents"][0]["slug"]
+        if(!content.pages.hasOwnProperty(section) && section != "resources") section = content["contents"][0]["slug"]
 
         var contentsHeader = d3.select(".contentsHeader." + section)
         contentsHeader.classed("active", true)
         if(contentsHeader.classed("question")) d3.select(".contentsHeader.questions").classed("active", true)
     }
+    // console.log(section)
+    if(section == "resources"){
+        d3.select("#resourcesContainer").style("display","block")
+    }else{
+        d3.select("#resourcesContainer").style("display","none")
+        var page = d3.select("#page").selectAll(".contentBlock")
+            .data(content["pages"][section])
+            .enter()
+            .append("div")
+            .attr("class", function(d){
+                var pageType = (["intro","takeaways","conclusion","acknowledgments","resources"].indexOf(section) != -1) ? " topLevel" : " question"
+                return "contentBlock " + d.contentType + " " + section + pageType
+            })
+            .html(function(d){
+                var contentEl;
+                if(d.contentType == "title") contentEl = getTitleEl(d.content)
+                else if(d.contentType == "takeaways") contentEl = getTakeawayEl(d.content)
+                else if(d.contentType == "paragraph") contentEl = getParagraphEl(d.content)
+                else if(d.contentType == "caseStudy") contentEl = getCaseStudyEl(d.content)
+                else if(d.contentType == "video") contentEl = getVideoEl(d.content)
+                else if(d.contentType == "quote") contentEl = getQuoteEl(d.content)
+                else if(d.contentType == "expand") contentEl = getExpandEl(d.content)
+                else if(d.contentType == "sectionHeader") contentEl = getHeaderEl(d.content)
+                else if(d.contentType == "unorderedList") contentEl = getUnorderedListEl(d.content)
+                else if(d.contentType == "toolBox") contentEl = getToolBoxEl(d.content)
+                else if(d.contentType == "printParagraph") contentEl = getPrintParagraphEl(d.content)
+                else if(d.contentType == "urbanLogo") contentEl = getPrintLogo()
+                else if(d.contentType == "credits") contentEl = getCreditsEl(d.content)
+                
+                else contentEl = d3.select("body").append("div").html(d.content)
 
-// console.log(content["pages"][section])
-    var page = d3.select("#page").selectAll(".contentBlock")
-        .data(content["pages"][section])
-        .enter()
-        .append("div")
-        .attr("class", function(d){
-            var pageType = (["intro","takeaways","conclusion","acknowledgments","resources"].indexOf(section) != -1) ? " topLevel" : " question"
-            return "contentBlock " + d.contentType + " " + section + pageType
-        })
-        .html(function(d){
-            // var foo = d3.select("body").append("div")
-            //     foo.append("p").html("xasdf").style("background","red")
-            // // console.log(foo.node()
+                if(isPrintPage) d3.select("body").classed("print", true)
+                else d3.select("body").classed("print", false)
 
-            // var content = foo.node().outerHTML
-            // foo.remove()
-            // return content
-            var contentEl;
-            if(d.contentType == "title") contentEl = getTitleEl(d.content)
-            else if(d.contentType == "takeaways") contentEl = getTakeawayEl(d.content)
-            else if(d.contentType == "paragraph") contentEl = getParagraphEl(d.content)
-            else if(d.contentType == "caseStudy") contentEl = getCaseStudyEl(d.content)
-            else if(d.contentType == "video") contentEl = getVideoEl(d.content)
-            else if(d.contentType == "quote") contentEl = getQuoteEl(d.content)
-            else if(d.contentType == "expand") contentEl = getExpandEl(d.content)
-            else if(d.contentType == "sectionHeader") contentEl = getHeaderEl(d.content)
-            else if(d.contentType == "unorderedList") contentEl = getUnorderedListEl(d.content)
-            else if(d.contentType == "toolBox") contentEl = getToolBoxEl(d.content)
-            else if(d.contentType == "printParagraph") contentEl = getPrintParagraphEl(d.content)
-            else if(d.contentType == "urbanLogo") contentEl = getPrintLogo()
-            else if(d.contentType == "credits") contentEl = getCreditsEl(d.content)
-            
-            else contentEl = d3.select("body").append("div").html(d.content)
-
-            if(isPrintPage) d3.select("body").classed("print", true)
-            else d3.select("body").classed("print", false)
-
-            var contentHtml = contentEl.node().outerHTML
-            contentEl.remove()
-            return contentHtml
-        })
+                var contentHtml = contentEl.node().outerHTML
+                contentEl.remove()
+                return contentHtml
+            })
+    }
 
     initEvents()
+    callback()
 }
 function initEvents(){
     d3.selectAll(".expandControl").on("click", function(d){
@@ -365,10 +369,168 @@ function getCreditsEl(content){
 
     return creditsEl
 }
+function buildResourceTable(){
+    // d3.csv('content/resources.csv')
+    //     .then(function(data) {
+    //         console.log(data)
+    //         var table = d3.select("#tableContainer").append("table")
 
-buildTakeawaysData()
-if(!isPrintPage) init()
-else{
-    loadSection("takeaways")
-    window.print();  
+    //         table.append("thead").append("tr")
+    //             .selectAll("th")
+    //             .data(data.columns)
+    //             .enter()
+    //             .append("th")
+    //             .html(function(d){ return d })
+    //         var tr = table.append("tbody")
+    //             .selectAll("tr")
+    //             .data(data)
+    //             .enter()
+    //             .append("tr")
+
+    //         for(var i = 0; i < data.columns.length; i++){
+    //             tr.append("td")
+    //                 .html(function(d){
+    //                     var col = data.columns[i]
+    //                     return getTableContent(col, d[col])
+    //                 })
+    //         }
+
+    //         return (table.node())
+
+
+    //     })
+    //     .then(function(table){
+            // var $table = $(table.node())
+            $("#resourcesTable").tablesorter({
+            theme: 'jui',
+            showProcessing: true,
+                  widthFixed: true,
+
+            headerTemplate : '{content} {icon}',
+            widgets: [ 'filter','uitheme', 'scroller' ],
+            widgetOptions : {
+              // scroll tbody to top after sorting
+              // scroller_upAfterSort: true,
+              // pop table header into view while scrolling up the page
+              // scroller_jumpToHeader: true,
+
+              scroller_height : 1000,
+              // // set number of columns to fix
+              // scroller_fixedColumns : 1,
+              // // add a fixed column overlay for styling
+              // scroller_addFixedOverlay : false,
+              // // add hover highlighting to the fixed column (disable if it causes slowing)
+              // scroller_rowHighlight : 'hover',
+
+              // // bar width is now calculated; set a value to override
+              // scroller_barWidth : 100
+              // extra css class applied to the table row containing the filters & the inputs within that row
+              // filter_cssFilter   : '',
+
+              // // If there are child rows in the table (rows with class name from "cssChildRow" option)
+              // // and this option is true and a match is found anywhere in the child row, then it will make that row
+              // // visible; default is false
+              // filter_childRows   : false,
+
+              // // if true, filters are collapsed initially, but can be revealed by hovering over the grey bar immediately
+              // // below the header row. Additionally, tabbing through the document will open the filter row when an input gets focus
+              // filter_hideFilters : false,
+
+              // // Set this option to false to make the searches case sensitive
+              // filter_ignoreCase  : true,
+
+              // // jQuery selector string of an element used to reset the filters
+              // filter_reset : '.reset',
+
+              // // Use the $.tablesorter.storage utility to save the most recent filters
+              // filter_saveFilters : true,
+
+              // // Delay in milliseconds before the filter widget starts searching; This option prevents searching for
+              // // every character while typing and should make searching large tables faster.
+              // filter_searchDelay : 300,
+
+              // // Set this option to true to use the filter to find text from the start of the column
+              // // So typing in "a" will find "albert" but not "frank", both have a's; default is false
+              // filter_startsWith  : false,
+
+              // Add select box to 4th column (zero-based index)
+              // each option has an associated function that returns a boolean
+              // function variables:
+              // e = exact text from cell
+              // n = normalized value returned by the column parser
+              // f = search filter input value
+              // i = column index
+
+              filter_functions : {
+
+                // Add select menu to this column
+                // set the column value to true, and/or add "filter-select" class name to header
+                // '.type' : true,
+
+                // Exact match only
+                // 5 : function(e, n, f, i, $r, c, data) {
+                //   return e === f;
+                // }
+
+                // // Add these options to the select dropdown (regex example)
+                // 2 : {
+                //   "A - D" : function(e, n, f, i, $r, c, data) { return /^[A-D]/.test(e); },
+                //   "E - H" : function(e, n, f, i, $r, c, data) { return /^[E-H]/.test(e); },
+                //   "I - L" : function(e, n, f, i, $r, c, data) { return /^[I-L]/.test(e); },
+                //   "M - P" : function(e, n, f, i, $r, c, data) { return /^[M-P]/.test(e); },
+                //   "Q - T" : function(e, n, f, i, $r, c, data) { return /^[Q-T]/.test(e); },
+                //   "U - X" : function(e, n, f, i, $r, c, data) { return /^[U-X]/.test(e); },
+                //   "Y - Z" : function(e, n, f, i, $r, c, data) { return /^[Y-Z]/.test(e); }
+                // },
+
+                // // Add these options to the select dropdown (numerical comparison example)
+                // // Note that only the normalized (n) value will contain numerical data
+                // // If you use the exact text, you'll need to parse it (parseFloat or parseInt)
+                // 4 : {
+                //   "< $10"      : function(e, n, f, i, $r, c, data) { return n < 10; },
+                //   "$10 - $100" : function(e, n, f, i, $r, c, data) { return n >= 10 && n <=100; },
+                //   "> $100"     : function(e, n, f, i, $r, c, data) { return n > 100; }
+                // }
+              }
+
+    
+
+            }
+          });
+        // })
+// $("table").trigger("update")
+
 }
+
+// function getTableContent(column, value){
+//     if(column == "Link"){
+//         return ("<a href = \"" + value + "\">" + value + "</a>")
+//     }
+//     else if(column == "Contact"){
+//         return ("<a href = \"mailto:" + value + "\">" + value + "</a>")   
+//     }
+//     else if(column == "Referenced In"){
+//         var sections = value.split(";").map(function(v){ return v.trim() })
+//         var returned = ""
+//         for(var i = 0; i < sections.length; i++){
+//             returned += "<a href = \"index.html#" + content.contents[+sections[i] + 1]["slug"] + "\"><span class = \"resourceTableQ Q" + (+sections[i]) + "\">Q" + (+sections[i]) + "</span></a>"
+//         }
+//         return returned
+//     }
+//     else{
+//         return value
+//     }
+// }
+$(document).ready(function(){
+    buildTakeawaysData()
+    if(!isPrintPage){
+        init()
+    }
+    else{
+        loadSection("takeaways", function(){})
+        window.print();  
+    }
+
+})
+
+
