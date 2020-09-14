@@ -1,16 +1,17 @@
-Framework special text:
+Framework:
 - links
 - scroll in doc links
 - other section links
 - bold/ ital
 - grey highlight
-
-
-
 - footnote tooltips
+- Language around "box n"
+- allison eyebrow key takeaways
 
+
+
+Tool:
 - map buttons dropdowns, csv/json and baseline/data
-
 - style summary stats on results page and hide for N = 0
 
 - stitch together
@@ -29,7 +30,7 @@ Framework special text:
 
 - post-error navigation
 
-- what to do for sample data display page if user changes preset val?
+- what to do fyeor sample data display page if user changes preset val?
 - barchart radios income/wealth tooltip
 - export data map json
 - export chart img

@@ -67,7 +67,7 @@ content.pages.intro = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "This guide outlines nine key questions cities can ask themselves to make sure equity is intentional from the beginning of designing and implementing technology programs. It also surfaces best practices from how our case study cities and others are answering those questions."
+        "content" : "This guide outlines <strong>nine key questions</strong> cities can ask themselves to make sure equity is intentional from the beginning of designing and implementing technology programs. It also surfaces <strong>best practices</strong> from how our case study cities and others are answering those questions."
     },
     {
         "contentType" : "expand",
@@ -93,9 +93,9 @@ content.pages.intro = [
     {
         "contentType" : "unorderedList",
         "content" : [
-            "procedural equity: groups, particularly the most marginalized, are inclusively, accessibly, and substantively engaged and represented in the design and implementation of technology policies and programs.",
-            "distributional equity: technology policies and programs spread benefits and burdens fairly across all segments of a community, prioritizing people with the highest need.",
-            "structural equity: decisionmakers institutionalize equity analysis and accountability for the equity outcomes of technology projects and programs. Decisions about technology policies and programs recognize the historical, cultural, and institutional dynamics and structures that have routinely advantaged privileged groups and chronically disadvantaged marginalized groups."
+            "<strong>procedural equity:</strong> groups, particularly the most marginalized, are inclusively, accessibly, and substantively engaged and represented in the design and implementation of technology policies and programs.",
+            "<strong>distributional equity:</strong> technology policies and programs spread benefits and burdens fairly across all segments of a community, prioritizing people with the highest need.",
+            "<strong>structural equity:</strong> decisionmakers institutionalize equity analysis and accountability for the equity outcomes of technology projects and programs. Decisions about technology policies and programs recognize the historical, cultural, and institutional dynamics and structures that have routinely advantaged privileged groups and chronically disadvantaged marginalized groups."
             ]
     },
     {

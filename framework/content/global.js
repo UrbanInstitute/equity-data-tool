@@ -3,7 +3,7 @@ var content = {
         {
             "slug": "intro",
             "contentType" : "topLevel",
-            "menuName": "Introduction"
+            "menuName": "Home"
         },
         {
             "slug": "questions",

@@ -16,6 +16,7 @@ body{
 }
 .contentsHeader.topLevel, .contentsHeader.header{
     font-size: 20px;
+    text-transform: uppercase;
     font-weight: bold;
 }
 .contentsHeader.question{
@@ -53,6 +54,10 @@ body{
     width: 560px;
 }
 
+.frameworkHighliight{
+    background: #CFE8F3;
+    padding: 3px 0px;
+}
 .contentBlock.title{
     font-size: 30px;
     font-weight: bold;
@@ -62,6 +67,16 @@ body{
     margin-bottom: 40px;
     border-bottom: 1px solid #d2d2d2;
 }
+.contentBlock.title .eyebrow{
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #9D9D9D;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.contentBlock.title .eyebrow span{
+    font-weight: normal;
+}    
 .contentBlock.title.question{
     border-bottom: 1px solid transparent;   
 }
@@ -86,7 +101,7 @@ body{
 }
 .liStrong{
     font-weight: bold;
-    color: #1696d2;
+    color: #353535;
 }
 .contentBlock.paragraph p, .caseStudySubEl.paragraph{
     line-height: 1.6;
@@ -149,7 +164,7 @@ body{
     display: inline-block;
     text-transform: uppercase;
     font-weight: bold;
-    color: #1696d2;
+    color: #353535;
 }
 .quoteSourceInfo{
     display: inline-block;
@@ -209,6 +224,9 @@ body{
     margin-bottom: 40px;
 }
 .expandSmall{
+    line-height: 1.6;
+}
+.contentBlock.orderedList{
     line-height: 1.6;
 }
 .orderedList ol{
@@ -563,7 +581,7 @@ th:nth-child(1) .tablesorter-header-inner, th:nth-child(6) .tablesorter-header-i
     position: relative;
 }
 #resourcesContainer{
-    display: block;
+    display: none;
     width: calc(100% - 454px);
     left: 400px;
     position: relative;

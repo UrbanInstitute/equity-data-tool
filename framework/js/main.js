@@ -80,6 +80,7 @@ function loadSection(section, callback){
     // console.log(section)
     if(section == "resources"){
         d3.select("#resourcesContainer").style("display","block")
+        $("table").trigger("update")
     }else{
         d3.select("#resourcesContainer").style("display","none")
         var page = d3.select("#page").selectAll(".contentBlock")
@@ -92,7 +93,7 @@ function loadSection(section, callback){
             })
             .html(function(d){
                 var contentEl;
-                if(d.contentType == "title") contentEl = getTitleEl(d.content)
+                if(d.contentType == "title") contentEl = getTitleEl(d.content, section)
                 else if(d.contentType == "takeaways") contentEl = getTakeawayEl(d.content)
                 else if(d.contentType == "paragraph") contentEl = getParagraphEl(d.content)
                 else if(d.contentType == "caseStudy") contentEl = getCaseStudyEl(d.content)
@@ -142,8 +143,17 @@ function initEvents(){
         }
     })
 }
-function getTitleEl(content){
-    var titleEl = d3.select("body").append("div").html(content)
+function getTitleEl(content, section){
+    if(section == "intro"){
+        var titleEl = d3.select("body").append("div").html(content)
+    }else{
+        var titleEl = d3.select("body").append("div")
+        titleEl.append("div").attr("class", "eyebrow")
+            .html("Creating Equitable Technology Programs:<span> A Guide for Cities</span>")
+        titleEl.append("div").html(content)
+
+
+    }
     return titleEl
 }
 function getTakeawayEl(content){

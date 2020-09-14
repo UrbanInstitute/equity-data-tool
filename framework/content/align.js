@@ -22,11 +22,11 @@ content.pages.align = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "Some cities build this shared commitment by explicitly centering equity in their technology strategy. Philadelphia’s Smart City PHL Roadmap includes equity as one of four guiding principles, Kansas City’s emerging technology board has “equitable outcomes” as a core principle for technology use, and Boston’s Smart City Playbook establishes that technology “must solve real problems for real people.” Portland’s Smart City PDX Priorities Framework goes even further: it requires all smart city projects address an inequity or disparity (box 1)."
+        "content" : "Some cities build this shared commitment by explicitly centering equity in their technology strategy.<span class = \"frameworkHighliight\"> Philadelphia’s Smart City PHL Roadmap </span>includes equity as one of four guiding principles,<span class = \"frameworkHighliight\"> Kansas City’s emerging technology board </span>has “equitable outcomes” as a core principle for technology use, and<span class = \"frameworkHighliight\"> Boston’s Smart City Playbook </span>establishes that technology “must solve real problems for real people.”<span class = \"frameworkHighliight\"> Portland’s Smart City PDX Priorities Framework </span>goes even further: it requires all smart city projects address an inequity or disparity (box 1)."
     },
     {
         "contentType" : "paragraph",
-        "content" : "Other cities orient their technology programs to their equity strategy. The Resilient Boston Strategy for Racial Equity (PDF) directs the city to use “new and existing data sources to advance resilience and racial equity”; this goal is guiding the work of the analytics team (box 2)."
+        "content" : "Other cities orient their technology programs to their equity strategy.<span class = \"frameworkHighliight\"> The Resilient Boston Strategy for Racial Equity (PDF) </span>directs the city to use “new and existing data sources to advance resilience and racial equity”; this goal is guiding the work of the analytics team (box 2)."
     },
     {
         "contentType" : "paragraph",

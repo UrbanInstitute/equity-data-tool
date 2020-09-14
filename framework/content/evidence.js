@@ -49,13 +49,13 @@ content.pages.evidence = [
             },            
             {
                 "contentType" : "paragraph",
-                "content" : "The Urban Institute’s Evaluating Equity Data Tool can help cities audit their data assets. The tool compares the distribution of data points against a baseline dataset to identify which neighborhoods and demographic groups are underrepresented and overrepresented. When we used the tool to analyze the distribution of wi-fi hotspots in [city x] we found that [findings]. [insert map and hyperlink with text “click to learn more]."
+                "content" : "The Urban Institute’s<span class = \"frameworkHighliight\"> Evaluating Equity Data Tool </span>can help cities audit their data assets. The tool compares the distribution of data points against a baseline dataset to identify which neighborhoods and demographic groups are underrepresented and overrepresented. When we used the tool to analyze the distribution of wi-fi hotspots in [city x] we found that [findings]. [insert map and hyperlink with text “click to learn more]."
             }
         ]
     },
     {
         "contentType" : "paragraph",
-        "content" : "Some cities are regularly auditing data sources for bias and supplementing the data to create a more accurate picture (box 2). Another approach is using community-informed data collection methods to boost response rates in underrepresented groups. To improve response rates and accuracy of a recent survey, the city of Austin’s innovation team connected with community members through Measure Austin to shape questionnaire language and hire interviewers that reflected the focus community."
+        "content" : "Some cities are regularly auditing data sources for bias and supplementing the data to create a more accurate picture (box 2). Another approach is using community-informed data collection methods to boost response rates in underrepresented groups. To improve response rates and accuracy of a recent survey, the city of Austin’s innovation team connected with community members through<span class = \"frameworkHighliight\"> Measure Austin </span>to shape questionnaire language and hire interviewers that reflected the focus community."
     },
     {
         "contentType" : "paragraph",
@@ -63,7 +63,7 @@ content.pages.evidence = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "Cities have identified several ways to conduct R&D around equitable technology. Philadelphia’s Pitch & Pilot program has companies submit ideas that leverage technology to address a community challenge, such as reducing waste. Boston’s Beta Blocks Action Research project facilitates community-driven technology innovation, and Pittsburgh’s PGH Lab provides an incubator for technology startups developing new products to address resident challenges. Learn more about these programs."
+        "content" : "Cities have identified several ways to conduct R&D around equitable technology.<span class = \"frameworkHighliight\"> Philadelphia’s Pitch & Pilot program </span>has companies submit ideas that leverage technology to address a community challenge, such as reducing waste.<span class = \"frameworkHighliight\"> Boston’s Beta Blocks Action Research project </span>facilitates community-driven technology innovation, and<span class = \"frameworkHighliight\"> Pittsburgh’s PGH Lab </span>provides an incubator for technology startups developing new products to address resident challenges. Learn more about these programs."
     },
     {
         "contentType" : "expand",
@@ -118,7 +118,7 @@ content.pages.evidence = [
                 "contentType" : "footnote",
                 "content" : {
                     "symbol" : "a",
-                    "content" : "Meghan E. Irons, “Boston’s Rich and Poor Neighborhoods Show Sidewalk Repair Disparity,” Boston Globe, March 4, 2018,  https://www3.bostonglobe.com/metro/2018/03/04/sidewalk-analysis-city-finds-inequality/qvnLJIMyVCfRxJKjKwrzYK/story.html?arc404=true#comments."
+                    "content" : "Meghan E. Irons, “Boston’s Rich and Poor Neighborhoods Show Sidewalk Repair Disparity,” <em>Boston Globe</em>, March 4, 2018,  https://www3.bostonglobe.com/metro/2018/03/04/sidewalk-analysis-city-finds-inequality/qvnLJIMyVCfRxJKjKwrzYK/story.html?arc404=true#comments."
                 }
             },
         ]
