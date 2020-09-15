@@ -67,7 +67,6 @@ function getBarHeight(data){
     // var h = (typeof(data) == "undefined") ? 500 : (500/21) * data.length
     
     var scalar = (typeof(data) == "undefined") ? 19 : data.length
-    // console.log(data, scalar, margin.top, margin.bottom, (700 - margin.top - margin.bottom)/19, scalar*(700 - margin.top - margin.bottom)/19)
     return ((700 - margin.top - margin.bottom)/19) * scalar;
 }
 function getBarMargins(){
@@ -83,15 +82,18 @@ function getBarX(data){
 function getBarY(data){
     var height = getBarHeight(data)
     var margin = getBarMargins();
-    console.log(height, margin.top)
     return d3.scaleBand()
         .rangeRound([height,0])
         .padding(.2)
         .domain(data.map(function(d) { return d.census_var; }));
 }
 
-
-
 function getMapHeight(){
     return 500;
+}
+function getSampleDatasetId(){
+    if (d3.select(".sampleRect.active").classed("three11"))return "new_orleans_311.csv"
+    else if (d3.select(".sampleRect.active").classed("hotspots")) return "new_york_wifi.csv"
+    else if (d3.select(".sampleRect.active").classed("bike")) return "minneapolis_bikes.csv"
+    else return ""
 }

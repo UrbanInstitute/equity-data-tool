@@ -3,6 +3,31 @@ var statusIntervId;
 var buildingIndex = 0;
 
 var TOKEN = "4b7aa32e17731af9e97d0d2edd061f1b46d7d117"
+
+function humanFileSize(bytes, si=false, dp=1) {
+  const thresh = si ? 1000 : 1024;
+
+  if (Math.abs(bytes) < thresh) {
+    return bytes + ' B';
+  }
+
+  const units = si 
+    ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] 
+    : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+  let u = -1;
+  const r = 10**dp;
+
+  do {
+    bytes /= thresh;
+    ++u;
+  } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+
+
+  return bytes.toFixed(dp) + ' ' + units[u];
+}
+
+
+
 function runAnalysis() {
     
     // console.log(event, JSON.toString(getParams()))
@@ -10,15 +35,21 @@ function runAnalysis() {
   // log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
   var datasetType = getDatasetType(),
         params = getParams(),
-        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/",
+        postURL,
         // postURL = "https://httpbin.org/post"
         formData = new FormData();
 
     if(datasetType == "user"){
         // formData.append("upload_file", $("#fileInput").prop("files")[0])
         formData.append("upload_file", globalFile)
+        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/"
     }else{
-        formData.append("upload_file", "foo")
+        // formData.append("upload_file", "foo")
+        var sample_dataset_id = getSampleDatasetId()
+        if(sample_dataset_id == "") throwError(["unknown"])
+            console.log(sample_dataset_id)
+        formData.append("sample_dataset_id", sample_dataset_id)
+        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-sample-file/"
     }
 
     for(var k in params){
@@ -46,7 +77,21 @@ function runAnalysis() {
             
             xhr.setRequestHeader("Authorization", "Token " + TOKEN);
             xhr.setRequestHeader("X-Mobile", "true");
-        },    
+        },
+        xhr: function() {
+            var xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener("progress", function(evt) {
+                if (evt.lengthComputable) {
+                    // console.log(humanFileSize(evt.loaded,true), humanFileSize(evt.total, true))
+                    var percentComplete = d3.format(".1%")(evt.loaded / evt.total);
+                    //Do something with upload progress here
+                    // console.log(percentComplete)
+                    d3.select("#statusLoading").html("Uploading " + humanFileSize(evt.loaded,true) + " of " + humanFileSize(evt.total, true) + " (" + percentComplete + ")")
+                }
+           }, false);
+           return xhr;
+        },
+
         error: function(e){
             throwError(["upload"])
         },
@@ -168,6 +213,7 @@ function checkStatus(status){
         Object.keys(status["formdata"]["error-messages"]).forEach(function(key){
             if (!status["formdata"]["error-messages"][key]) delete status["formdata"]["error-messages"][key];
         });
+        console.log(status)
         throwError(Object.keys(status["formdata"]["error-messages"]))
     }
     else if(status.formdata.updates.finished){

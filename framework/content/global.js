@@ -43,7 +43,7 @@ var content = {
         {
             "slug": "formalize",
             "contentType" : "question",
-            "menuName": "How How can cities formalize asking equity questions of technology?"
+            "menuName": "How can cities formalize asking equity questions of technology?"
         },
        {
             "slug": "ahead",
