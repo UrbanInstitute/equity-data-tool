@@ -3,7 +3,6 @@
 
 
 function drawBarChart(data){
-// console.log(data)
 d3.selectAll("#barChart svg").remove()
 var margin = getBarMargins(),
 width = getBarWidth(),
@@ -50,7 +49,7 @@ svg.selectAll(".lollipop.background")
 .data(data)
 .enter().append("line")
 .attr("class", function(d){
-    var sigdiff = (Math.abs(d.diff_data_city) < 1) ? " insig" : " sig"
+    var sigdiff = (d.sig_diff) ? " sig" : " insig"
 var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
 return "lollipop background active chartPart " + barCategories[d.census_var]["class"] + overunder + sigdiff
 })
@@ -65,8 +64,9 @@ svg.selectAll(".lollipop.foreground")
 .data(data)
 .enter().append("line")
 .attr("class", function(d){
-    console.log(d.diff_data_city)
-var sigdiff = (Math.abs(d.diff_data_city) < 1) ? " insig" : " sig"
+    console.log(d)
+
+var sigdiff = (d.sig_diff) ? " sig" : " insig"
 var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
 return "lollipop foreground active chartPart " + barCategories[d.census_var]["class"] + overunder + sigdiff
 })
@@ -89,7 +89,7 @@ svg.selectAll(".barDot")
 .data(data)
 .enter().append("circle")
 .attr("class", function(d){
-    var sigdiff = (Math.abs(d.diff_data_city) < 1) ? " insig" : " sig"
+    var sigdiff = (d.sig_diff) ? " sig" : " insig"
 var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
 return "barDot active chartPart " + barCategories[d.census_var]["class"] + overunder + sigdiff
 })
@@ -161,11 +161,9 @@ function updateBars(category, hide){
             .style("opacity",0)
             .on("end", function(){
                 clone = clone.filter(function(o){
-                // console.log(barCategories[o.census_var]["class"], category)
                 return barCategories[o.census_var]["class"] != category
                 })
 
-                // console.log(clone, data)
                 var y = getBarY(clone),
                     margin = getBarMargins()
 
@@ -177,7 +175,6 @@ function updateBars(category, hide){
                 .transition()
                 .attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
                 .attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
-                // console.log(clone)
 
 
                 d3.selectAll(".bar_full_name.active")
@@ -200,7 +197,6 @@ function updateBars(category, hide){
         .transition()
         .attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
         .attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
-        // console.log(clone)
 
 
         d3.selectAll(".bar_full_name.active")

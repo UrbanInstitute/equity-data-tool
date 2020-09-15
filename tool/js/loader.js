@@ -162,7 +162,6 @@ function showLoaderSection(loaderSection){
       .property("selected", function(){
         return this.value == params.weight
       })
-      console.log(params.weight)
     $('#weightSelect').selectmenu("refresh")
   }
   else if(loaderSection == "baseline"){

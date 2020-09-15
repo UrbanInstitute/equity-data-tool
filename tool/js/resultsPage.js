@@ -1,5 +1,4 @@
 function populateSummaries(messages, params){
-    console.log(messages, params)
     var datasetType = getDatasetType()
     var container = d3.selectAll(".summaryContainer")
     container.selectAll("*").remove()
@@ -89,7 +88,6 @@ function populateSummaries(messages, params){
 
 }
 function populateDownloadLinks(links){
-    console.log(links)
     d3.select(".mapLink.csv").attr("href", links.geo_bias_csv)
     d3.select(".mapLink.json").attr("href", links.geo_bias_geojson)
     d3.select(".barLink.csv").attr("href", links.demographic_bias_csv)

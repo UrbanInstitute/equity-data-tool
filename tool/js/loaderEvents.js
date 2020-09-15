@@ -1,5 +1,3 @@
-var globalFile;
-
 function handleFiles(inputFiles){
     var fileList;
     if(inputFiles.type == "change"){
@@ -130,7 +128,6 @@ function selectSampleData(sample){
             .attr("src", "images/check.png")
         deetRow.append("div")
             .text(function(d){
-                console.log(d)
                 return getTagText(d)
             })        
     }
@@ -158,7 +155,6 @@ function guessLatLon(colNames, l){
         for(var c = 0; c < colNames.length; c++){
             var col = colNames[c]
             if(col.toUpperCase() == guess.toUpperCase()){
-                console.log(col)
                 if(l == "lat") updateParams("lat_column",col)
                 if(l == "lon") updateParams("lon_column",col)
                 return col;
