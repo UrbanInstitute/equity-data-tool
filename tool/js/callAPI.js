@@ -15,7 +15,8 @@ function runAnalysis() {
         formData = new FormData();
 
     if(datasetType == "user"){
-        formData.append("upload_file", $("#fileInput").prop("files")[0])
+        // formData.append("upload_file", $("#fileInput").prop("files")[0])
+        formData.append("upload_file", globalFile)
     }else{
         formData.append("upload_file", "foo")
     }

@@ -57,6 +57,9 @@ body.print h3{
     margin-bottom: -8px;
     margin-top: 33px;
 }
+body.print .eyebrow{
+    display: none;
+}
 #bottomLogo{
     width: 610px;
     float: right;

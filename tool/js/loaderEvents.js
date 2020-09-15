@@ -1,4 +1,4 @@
-
+var globalFile;
 
 function handleFiles(inputFiles){
     var fileList;
@@ -17,6 +17,7 @@ function handleFiles(inputFiles){
         loaderError("File must be CSV", "upload")
         return false
     }
+    globalFile = fileList[0]
 
     var fileSize = fileList[0]["size"]
     var fileName = fileList[0]["name"]

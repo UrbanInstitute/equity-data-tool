@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="css/vendor/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="css/vendor/theme.jui.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css"/>
+  <link rel="stylesheet" type="text/css" href="css/mobile.css"/>
   <link rel="stylesheet" type="text/css" href="css/urban-header.css"/>
 
   <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic,900,900italic" rel="stylesheet" type="text/css">
@@ -72,7 +73,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- START HEADER -->
 <div id="header-pinned" class="no-touch">
    <a target="_blank" href="https://www.urban.org" title="Home" rel="home" class="site-logo"></a>
-<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features</a></span></div>
+<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features</a> <span id = "dblcolon">: :</span> </span><a href="index.html" class="title-linkback full">Creating Equitable Technology Programs: A Guide for Cities</a>
+</div>
 <div class="share-icons">
     <div class="shareThisP">
         <span onclick="toggle_visibility('shareBox');">
@@ -92,12 +94,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
     </div>
 </div>
+  <div id = "boorgerContainer">
+    <div id = "boorgerTop"></div>
+    <div id = "boorgerBottom"></div>
+  </div>
 </div>
 <div class="headerimage" id="heroimage">
   <div class="wrapper headerwrapper">
   </div>
 </div>
 <!-- END HEADER -->
+
+<div id = "chaptersTablet">CHAPTERS<div></div></div>
 
 <!-- START MAIN CONTENT -->
 <div class="container">
@@ -107,7 +115,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
   <div id = "resourcesContainer">
     <div class="contentBlock title resources topLevel">
-      <div class="eyebrow">Creating Equitable Technology Programs:<span> A Guide for Cities</span></div>
+      <div class="eyebrow">Creating Equitable Technology Programs</div>
       <div>Resources</div>
     </div>
     <div id = "tableContainer">
@@ -127,7 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="js/vendor/d3-dispatch.v1.min.js"></script>
 <script src="js/vendor/d3.5.15.0.min.js"></script>
 
-
+<script src="js/header.js"></script>
 <script src="content/global.js"></script>
 <script src="content/intro.js"></script>
 <script src="content/align.js"></script>

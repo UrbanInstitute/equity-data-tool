@@ -60,6 +60,15 @@ function buildToc(section, callback){
                     loadSection(d.slug, function(){})
                 }
             })
+        d3.select("#toc").append("div").attr("id","tocClose")
+            .on("click", function(){
+                d3.select("#toc")
+                    .transition()
+                    .ease(d3.easeBackIn.overshoot(1.7))
+                    .duration(800)
+                    .style("left", "-600px")
+            })
+
     }
     callback()
 }
@@ -142,6 +151,39 @@ function initEvents(){
             d3.select(this.parentNode).transition().style("height", heightSmall + "px")
         }
     })
+    d3.select("#chaptersTablet").on("click", function(){
+        d3.select("#toc")
+            .transition()
+            .ease(d3.easeBackOut.overshoot(1.7))
+            .duration(800)
+            .style("left", "-60px")
+    })
+    d3.select("#boorgerContainer").on("click", function(){
+        console.log("asdf")
+        if(d3.select(this).classed("ex")){
+            d3.select(this).classed("ex", false)
+            d3.select("#boorgerTop")
+                .transition()
+                .style("transform","rotate(0deg)")
+                .style("top","3px")
+            d3.select("#boorgerBottom")
+                .transition()
+                .style("transform","rotate(0deg)")
+                .style("bottom","3px")                
+        }else{
+            d3.select(this).classed("ex", true)
+            d3.select("#boorgerTop")
+                .transition()
+                .style("transform","rotate(45deg)")
+                .style("top","7px")
+            d3.select("#boorgerBottom")
+                .transition()
+                .style("transform","rotate(-45deg)")
+                .style("bottom","7px")   
+
+        }
+    })
+
 }
 function getTitleEl(content, section){
     if(section == "intro"){
@@ -149,7 +191,7 @@ function getTitleEl(content, section){
     }else{
         var titleEl = d3.select("body").append("div")
         titleEl.append("div").attr("class", "eyebrow")
-            .html("Creating Equitable Technology Programs:<span> A Guide for Cities</span>")
+            .html("Creating Equitable Technology Programs")
         titleEl.append("div").html(content)
 
 
