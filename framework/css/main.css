@@ -114,6 +114,13 @@ a{
     margin-bottom: 40px;
     margin-top: 0px;
 }
+.caseStudySubEl.unorderedList li{
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+.caseStudySubEl.unorderedList{
+    margin-bottom: 40px;
+}
 .caseStudyContainer{
     border-left: 3px solid #FCCB41;
     padding-left: 25px;
@@ -239,6 +246,7 @@ a{
     line-height: 1.6;
     margin-bottom: 50px;
     padding-left: 15px;
+    list-style: decimal;
 }
 .orderedList ol li{
     margin-bottom: 10px;

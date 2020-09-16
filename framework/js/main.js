@@ -110,6 +110,7 @@ function loadSection(section, callback){
                 else if(d.contentType == "quote") contentEl = getQuoteEl(d.content)
                 else if(d.contentType == "expand") contentEl = getExpandEl(d.content)
                 else if(d.contentType == "sectionHeader") contentEl = getHeaderEl(d.content)
+                else if(d.contentType == "orderedList") contentEl = getOrderedListEl(d.content)
                 else if(d.contentType == "unorderedList") contentEl = getUnorderedListEl(d.content)
                 else if(d.contentType == "toolBox") contentEl = getToolBoxEl(d.content)
                 else if(d.contentType == "printParagraph") contentEl = getPrintParagraphEl(d.content)
@@ -245,6 +246,14 @@ function getCaseStudyEl(content){
             else if(d.contentType == "paragraph") return d.content
             else if(d.contentType == "image") return "<img src = 'images/"  + d.content +"'>"
             else if(d.contentType == "footnote") return "<span>" + d.content.symbol + "</span>" + d.content.content
+            else if(d.contentType == "unorderedList"){
+                var ulHtml = "<ul>"
+                for(var i = 0; i < d.content.length; i++){
+                    ulHtml += "<li>" + d.content[i] + "</li>"
+                }
+                ulHtml += "</ul>"
+                return ulHtml
+            }
         })
 
     return caseStudyEl
@@ -367,6 +376,18 @@ function getUnorderedListEl(content){
         .html(function(d){ return d})
 
     return ulEl
+}
+function getOrderedListEl(content){
+    var olEl = d3.select("body").append("ol")
+        .attr("class", "mainContentUl")
+
+    olEl.selectAll("li")
+        .data(content)
+        .enter()
+        .append("li")
+        .html(function(d){ return d})
+
+    return olEl
 }
 function getToolBoxEl(content){
     var toolboxEl = d3.select("body").append("div")

@@ -147,8 +147,8 @@ const sampleParams = {
           "LABEL" : "string",
           "TYPE" : "string",
           "NUMBER_OF_SITES" : "string",
-          "LATITUDE" : "number",
-          "LONGITUDE" : "number",
+          "Latitude" : "number",
+          "Longitude" : "number",
           "SITE_TYPE" : "string",
           "DATE_OPENED" : "date"
         },
@@ -156,8 +156,8 @@ const sampleParams = {
           "filters": [],
           "weight": "",
           "baseline": "no_internet",
-          "lat_column": "LATITUDE",
-          "lon_column": "LONGITUDE"
+          "lat_column": "Latitude",
+          "lon_column": "Longitude"
         }
     },
     "three11" : {

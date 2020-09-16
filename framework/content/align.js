@@ -22,11 +22,11 @@ content.pages.align = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "Some cities build this shared commitment by explicitly centering equity in their technology strategy. <span class = \"frameworkHighliight\">Philadelphia’s <a href = \"https://www.phila.gov/media/20190204121858/SmartCityPHL-Roadmap.pdf\" target = \"_blank\">Smart City PHL Roadmap</a> (PDF)</span> includes equity as one of four guiding principles, <span class = \"frameworkHighliight\">Kansas City’s <a href = \"http://cityclerk.kcmo.org/LiveWeb/Documents/Document.aspx?q=B3m6jg3G5c%2bHMmNdLkJjPEmECb178EPfRbFf%2f9yv5XyqRQg%2ft1%2fOH1GNnAWVVd68\" target = \"_blank\">emerging technology board</a></span> has “equitable outcomes” as a core principle for technology use, and <span class = \"frameworkHighliight\">Boston’s <a href = \"https://monum.github.io/playbook/\" target = \"_blank\">Smart City Playbook</a></span> establishes that technology “must solve real problems for real people.” <span class = \"frameworkHighliight\">Portland’s Smart City PDX Priorities Framework</span> goes even further: it requires all smart city projects address an inequity or disparity (box 1)."
+        "content" : "Some cities build this shared commitment by explicitly centering equity in their technology strategy. <span class = \"frameworkHighliight\">Philadelphia’s <a href = \"https://www.phila.gov/media/20190204121858/SmartCityPHL-Roadmap.pdf\" target = \"_blank\">Smart City PHL Roadmap</a> (PDF)</span> includes equity as one of four guiding principles, <span class = \"frameworkHighliight\">Kansas City’s <a href = \"http://cityclerk.kcmo.org/LiveWeb/Documents/Document.aspx?q=B3m6jg3G5c%2bHMmNdLkJjPEmECb178EPfRbFf%2f9yv5XyqRQg%2ft1%2fOH1GNnAWVVd68\" target = \"_blank\">Emerging Technology Board</a></span> has “equitable outcomes” as a core principle for technology use, and <span class = \"frameworkHighliight\">Boston’s <a href = \"https://monum.github.io/playbook/\" target = \"_blank\">Smart City Playbook</a></span> establishes that technology “must solve real problems for real people.” <span class = \"frameworkHighliight\">Portland’s Smart City PDX Priorities Framework</span> goes even further: it requires all smart city projects address an inequity or disparity (box 1)."
     },
     {
         "contentType" : "paragraph",
-        "content" : "Other cities orient their technology programs to their equity strategy. <span class = \"frameworkHighliight\">The <a href = \"https://www.boston.gov/sites/default/files/file/document_files/2017/07/resilient_boston.pdf\" target = \"_blank\">Resilient Boston Strategy for Racial Equity</a> (PDF)</span> directs the city to use “new and existing data sources to advance resilience and racial equity”; this goal is guiding the work of the analytics team (box 2)."
+        "content" : "Other cities orient their technology programs to their equity strategy. The <span class = \"frameworkHighliight\"><a href = \"https://www.boston.gov/sites/default/files/file/document_files/2017/07/resilient_boston.pdf\" target = \"_blank\">Resilient Boston Strategy for Racial Equity</a></span> (PDF) directs the city to use “new and existing data sources to advance resilience and racial equity”; this goal is guiding the work of the analytics team (box 2)."
     },
     {
         "contentType" : "paragraph",
@@ -53,7 +53,7 @@ content.pages.align = [
             },
             {
                 "contentType" : "paragraph",
-                "content" : "The team was informed by community-led research that found, in the words of Smart City PDX Coordinator Christine Kendrick, “equity has to be overarching every single goal that the city has”—including smart city goals. Kendrick identified that “implementing equity requires paradigm shifts and changes,” which takes more than writing equity into a strategy document."
+                "content" : "The team was informed by community-led research that found, in the words of Smart City PDX coordinator Christine Kendrick, “equity has to be overarching every single goal that the city has”—including smart city goals. Kendrick identified that “implementing equity requires paradigm shifts and changes,” which takes more than writing equity into a strategy document."
             },
             {
                 "contentType" : "paragraph",

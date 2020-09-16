@@ -1,26 +1,23 @@
 Framework:
-- links
 - scroll in doc links
 - other section links
 - footnote tooltips
 - Language around "box n"
 - mobile
+- expand boxes for 3 stacked list thing
+
 
 
 
 Tool:
+- weight "none selected" counts as text
 - map buttons dropdowns, csv/json and baseline/data
 - style summary stats on results page and hide for N = 0
+- 
 
-- stitch together
-    - post default sample data
-    - post non default sample data
-    - loop status
-        - check if started_processing
-            - this has some set # of loops, determined by largest file tests, before time out
-        - once started processing, check if num rows processed is changing
-            - give this some timeout, if it's not changing, throw timeout error
 
+- MAX_PROCESSING_TIME test, timeout error
+- ny wifi data throwing error
 
 - loader error, non csv file
 - loader error, max file size error
@@ -32,7 +29,8 @@ Tool:
 - barchart radios income/wealth tooltip
 - export data map json
 - export chart img
-- bar sig diff and legends
+- bar sig diff legend
+- bar dot transition interrupt size
 
 
 
