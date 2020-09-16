@@ -49,7 +49,7 @@ content.pages.align = [
             },
             {
                 "contentType" : "paragraph",
-                "content" : "The framework was created by Portland’s Smart Cities steering committee, which included representatives from 14 different bureaus, all five commissioner’s offices, and the mayor’s office. Adopted by the city council on June 21, 2018, the framework established a process for incorporating equity in the design of technology projects and criteria for municipal support, including that any smart city project must “address an inequity/disparity (supported by data and/or information identified by underserved communities).”a"
+                "content" : "The framework was created by Portland’s Smart Cities steering committee, which included representatives from 14 different bureaus, all five commissioner’s offices, and the mayor’s office. Adopted by the city council on June 21, 2018, the framework established a process for incorporating equity in the design of technology projects and criteria for municipal support, including that any smart city project must “address an inequity/disparity (supported by data and/or information identified by underserved communities).”<i class = \"tt-icon\" data-footnote=\"align1\">?</i>"
             },
             {
                 "contentType" : "paragraph",
@@ -62,14 +62,7 @@ content.pages.align = [
             {
                 "contentType" : "paragraph",
                 "content" : "However, securing buy-in to prioritize equity is not a one-time thing. As Kendrick put it, “There’s always going to be scarcity thinking and … a sense of urgency [in government]. Those are things you need to actively work to combat.” For the Smart City PDX team, showing the successes of the framework and where it has allowed the city to learn from past mistakes has been key to demonstrating the value of an equity-first approach."
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "a",
-                    "content" : "The framework process and criteria are outlined in <a href = \"https://efiles.portlandoregon.gov/Record/12067444/\" target = \"_blank\">exhibit A</a> of Council Resolution 37371."
-                }
-            },
+            }
         ]
     }
 ]

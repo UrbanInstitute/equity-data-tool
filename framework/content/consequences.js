@@ -53,11 +53,11 @@ content.pages.consequences = [
             },
             {
                 "contentType" : "paragraph",
-                "content" : "As cities issued shelter-in-place orders in spring 2020 to slow the spread of COVID-19, many residents had to quickly adjust to working, educating themselves and their children, and interacting with their governments online. Yet many households in the United States lack the necessary internet connectivity, access to connected devices, and digital literacy to effectively work, educate, and engage online. In 221 large and medium-sized US cities, at least 30 percent of all households still lacked a wireline broadband connection (e.g., cable, fiber optic, or DSL) in 2018.a In 92 cities, at least one in five households had no broadband internet of any type, including cellular data plans. This digital divide is highest among low-income householdsb and disproportionately affects people of colorc—even when accounting for differences in income, education, and employment.d"
+                "content" : "As cities issued shelter-in-place orders in spring 2020 to slow the spread of COVID-19, many residents had to quickly adjust to working, educating themselves and their children, and interacting with their governments online. Yet many households in the United States lack the necessary internet connectivity, access to connected devices, and digital literacy to effectively work, educate, and engage online. In 221 large and medium-sized US cities, at least 30 percent of all households still lacked a wireline broadband connection (e.g., cable, fiber optic, or DSL) in 2018.<i class = \"tt-icon\" data-footnote=\"cons1\">?</i> In 92 cities, at least one in five households had no broadband internet of any type, including cellular data plans. This digital divide is highest among low-income households<i class = \"tt-icon\" data-footnote=\"cons2\">?</i> and disproportionately affects people of color<i class = \"tt-icon\" data-footnote=\"cons3\">?</i>—even when accounting for differences in income, education, and employment."
             },
             {
               "contentType" : "paragraph",
-                "content" : "In 2020, the Urban Institute surveyed city technology officials to understand how they were closing the digital divide and using technology to meet the needs of their residents in response to COVID-19.4 The survey revealed that the pandemic made the magnitude of the digital divide clearer or expedited solutions (or both). One technology official from Aurora, Illinois, reflected that “internet isn’t a luxury any more, it’s a necessity.” Cities are undertaking efforts to reduce disparities along all dimensions of the digital divide:"
+                "content" : "In 2020, the Urban Institute surveyed city technology officials to understand how they were closing the digital divide and using technology to meet the needs of their residents in response to COVID-19.<i class = \"tt-icon\" data-footnote=\"cons4\">?</i> The survey revealed that the pandemic made the magnitude of the digital divide clearer or expedited solutions (or both). One technology official from Aurora, Illinois, reflected that “internet isn’t a luxury any more, it’s a necessity.” Cities are undertaking efforts to reduce disparities along all dimensions of the digital divide:"
             },
             {
                 "contentType" : "unorderedList",
@@ -70,35 +70,7 @@ content.pages.consequences = [
             {
               "contentType" : "paragraph",
                 "content" : "COVID-19 clearly illuminated how the digital divide excludes affected households from fully participating in digital city services and civic life. Beyond the pandemic, cities must pursue long-term solutions to address the digital divide and ensure all residents can equitably benefit from technology programs."
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "a",
-                    "content" : "“Worst Connected Cities 2018,” National Digital Inclusion Alliance, accessed June 1, 2020, <a href = \"https://www.digitalinclusion.org/worst-connected-2018/\" target = \"_blank\">https://www.digitalinclusion.org/worst-connected-2018/</a>."
-                }
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "b",
-                    "content" : "Doug Kinkoph, “Five Digital Inclusion Trends in the United States,” US Department of Commerce, National Telecommunications and Information Administration, October 18, 2018, <a href = \"https://www.ntia.doc.gov/blog/2018/five-digital-inclusion-trends-united-states\" target = \"_blank\">https://www.ntia.doc.gov/blog/2018/five-digital-inclusion-trends-united-states</a>."
-                }
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "c",
-                    "content" : "Dana Floberg, “The Racial Digital Divide Persists,” Free Press, December 13, 2018, <a href = \"https://www.freepress.net/our-response/expert-analysis/insights-opinions/racial-digital-divide-persists\" target = \"_blank\">https://www.freepress.net/our-response/expert-analysis/insights-opinions/racial-digital-divide-persists</a>."
-                }
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "d",
-                    "content" : "Madeline Brown, Richard Ezike, and Alena Stern, “<a href = \"https://www.urban.org/research/publication/how-cities-are-leveraging-technology-meet-residents-needs-during-pandemic\" target = \"_blank\">How Cities Are Leveraging Technology to Meet Residents’ Needs during a Pandemic</a>” (Washington, DC: Urban Institute, 2020)."
-                }
-            },            
+            }           
         ]
     },
     {

@@ -618,3 +618,65 @@ th:nth-child(1) .tablesorter-header-inner, th:nth-child(6) .tablesorter-header-i
     margin-bottom: 40px;
 
 }
+.tt-icon{
+    font-style: normal;
+    width: 22px;
+    height: 16px;
+    display: inline-block;
+    background: #9d9d9d;
+    text-align: center;
+    vertical-align: sub;
+    color: #fff;
+    font-family: monospace;
+    font-size: 15px;
+    border-radius: 100%;
+    padding-bottom: 6px;
+    position: relative;
+    top: -4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.tt-container {
+    position: absolute;
+    color: #353535;
+    font-family: Lato;
+    background: #f3f3f3;
+    text-align: left;
+    padding: 22px 24px;
+    border: 1px solid #d2d2d2;
+    width: 250px;
+    overflow-wrap: break-word;
+    left: -138.5px;
+    font-size: 12px;
+    top: 33px;
+}
+.tt-close{
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 17px;
+}
+.tt-container:after, .tt-container:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.tt-container:after {
+    border-color: rgba(243, 243, 243, 0);
+    border-bottom-color: #f3f3f3;
+    border-width: 10px;
+    margin-left: -10px;
+}
+.tt-container:before {
+    border-color: rgba(210, 210, 210, 0);
+    border-bottom-color: #d2d2d2;
+    border-width: 11px;
+    margin-left: -11px;
+}

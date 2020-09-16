@@ -82,11 +82,11 @@ content.pages.impact = [
             },
             {
                 "contentType" : "paragraph",
-                "content" : "In 2017, the City of Pittsburgh developed a framework to assess progress toward the equitable outcomes and opportunities outlined in the <a href = \"https://pittsburghpa.gov/onepgh/index.html\" target = \"_blank\">OnePGH Resilient Pittsburgh Strategy</a>. “The mayor often says ‘You can’t manage what you can’t measure’,” said Pittsburgh chief equity officer Majestic Lane. “It was important for us to have a measurement framework to say how the work that we’re doing is affecting people’s quality of life in ways that we can measure.” The city established the Pittsburgh Equity Indicators as <a href = \"http://islg.cuny.edu/sites/our-work/equality-indicators/\" target = \"_blank\">one of five</a> cities supported by the Rockefeller Foundation and <a href = \"http://islg.cuny.edu/sites/\" target = \"_blank\">City University of New York Institute for State and Local Governance</a.."
+                "content" : "In 2017, the City of Pittsburgh developed a framework to assess progress toward the equitable outcomes and opportunities outlined in the <a href = \"https://pittsburghpa.gov/onepgh/index.html\" target = \"_blank\">OnePGH Resilient Pittsburgh Strategy</a><i class = \"tt-icon\" data-footnote=\"impact1\">?</i>. “The mayor often says ‘You can’t manage what you can’t measure’,” said Pittsburgh chief equity officer Majestic Lane. “It was important for us to have a measurement framework to say how the work that we’re doing is affecting people’s quality of life in ways that we can measure.” The city established the Pittsburgh Equity Indicators as <a href = \"http://islg.cuny.edu/sites/our-work/equality-indicators/\" target = \"_blank\">one of five</a> cities supported by the Rockefeller Foundation and <a href = \"http://islg.cuny.edu/sites/\" target = \"_blank\">City University of New York Institute for State and Local Governance</a.."
             },
             {
                 "contentType" : "paragraph",
-                "content" : "The indicators included 80 different ways to measure disparities between different population subgroups (such as between Black people and white people) in the four policy domains identified in <a href = \"https://pittsburghpa.gov/equityindicators/documents/PGH_Equity_Indicators_2017.pdf\" target = \"_blank\">OnePGH</a> (PDF). The city identified the indicators and subgroups for comparison based on a literature review, assessment of local data, and stakeholder feedback—including “extensive community engagement… and meetings with over 45 local experts and data providers” (OnePGH 2017, 17)."
+                "content" : "The indicators included 80 different ways to measure disparities between different population subgroups (such as between Black people and white people) in the four policy domains identified in <a href = \"https://pittsburghpa.gov/equityindicators/documents/PGH_Equity_Indicators_2017.pdf\" target = \"_blank\">OnePGH</a> (PDF)<i class = \"tt-icon\" data-footnote=\"impact2\">?</i>. The city identified the indicators and subgroups for comparison based on a literature review, assessment of local data, and stakeholder feedback—including “extensive community engagement… and meetings with over 45 local experts and data providers” (OnePGH 2017, 17)."
             },
             {
                 "contentType" : "paragraph",
@@ -95,21 +95,7 @@ content.pages.impact = [
             {
                 "contentType" : "paragraph",
                 "content" : "According to Lane, the <a href = \"https://www.urban.org/urban-wire/covid-19-crisis-continues-have-uneven-economic-impact-race-and-ethnicity\" target = \"_blank\">disparate health, social, and economic impacts of COVID-19</a> on communities of color and widespread protests of the killing of Black people by law enforcement in summer 2020 have increased recognition within city government of the importance of racially disaggregated data such as the Pittsburgh Equity Indicators to identify and address inequities. Lane notes that Pittsburgh’s 2021 budget provides funding to resume data collection after a pause last year, and the <a href = \"https://www.wpxi.com/news/top-stories/pittsburgh-city-council-passes-black-pittsburgh-matters-bill-aimed-diversity-inclusion/G2D2VI2BLRHXRAY2USKZSBGDV4/\" target = \"_blank\">Black Pittsburgh Matters bill</a> that passed in July 2020 will fund work on additional research into racial disparities and solutions."
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "a",
-                    "content" : "The new OnePGH website is still under construction as of September 2020. "
-                }
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "b",
-                    "content" : "The four domains are health, food, and safety; education, workforce development, and entrepreneurship; housing, transportation, infrastructure, and environment; and civic engagement and communications."
-                }
-            }         
+            }       
         ]
     }
 ]

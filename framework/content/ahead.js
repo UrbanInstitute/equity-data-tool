@@ -57,19 +57,12 @@ content.pages.ahead = [
             },
             {
               "contentType" : "paragraph",
-                "content" : "The <a href = \"http://cityclerk.kcmo.org/LiveWeb/Documents/Document.aspx?q=B3m6jg3G5c%2BHMmNdLkJjPEmECb178EPfRbFf%2F9yv5XyqRQg%2Ft1%2FOH1GNnAWVVd68\" target = \"_blank\">final resolution</a> specifies that the Emerging Technology Board will be co-chaired by the city’s chief innovation officer and a non-city employee with “substantial experience in engaging with community or neighborhood groups” along with five other voting members from outside city government with relevant substantive expertise in technology, law, business, sociology, and public affairs.d The board further establishes the importance of community engagement in setting the city’s technology agenda by establishing as core principles collecting “diverse and meaningful” input from community stakeholders and making meetings open to the public. According to Herrmann, the board will fill the “need for a body that allows the city to have two-way conversations [with residents] about technology as it relates to equity and other issues.” Residents will be able to bring concerns to the board for review in consultation with independent experts."
+                "content" : "The <a href = \"http://cityclerk.kcmo.org/LiveWeb/Documents/Document.aspx?q=B3m6jg3G5c%2BHMmNdLkJjPEmECb178EPfRbFf%2F9yv5XyqRQg%2Ft1%2FOH1GNnAWVVd68\" target = \"_blank\">final resolution</a> specifies that the Emerging Technology Board will be co-chaired by the city’s chief innovation officer <i class = \"tt-icon\" data-footnote=\"ahead1\">?</i> and a non-city employee with “substantial experience in engaging with community or neighborhood groups” along with five other voting members from outside city government with relevant substantive expertise in technology, law, business, sociology, and public affairs.d The board further establishes the importance of community engagement in setting the city’s technology agenda by establishing as core principles collecting “diverse and meaningful” input from community stakeholders and making meetings open to the public. According to Herrmann, the board will fill the “need for a body that allows the city to have two-way conversations [with residents] about technology as it relates to equity and other issues.” Residents will be able to bring concerns to the board for review in consultation with independent experts."
             },     
             {
               "contentType" : "paragraph",
                 "content" : "As of now, the voting and ex-officio members of the board had not been appointed. Once that happens, work will need to be done to educate the members on the data issues of the city and determine what metrics—including equity metrics—will be used to evaluate technologies during the assessment phase and measure the board’s progress."
-            },            
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "a",
-                    "content" : "Kansas City closed the innovation office and eliminated the position of chief innovation officer at the end of 2019. The city has not yet announced who will co-chair the emerging technology board (Noelle Knell, “Kansas City Innovation Chief to Step Down This Month,” Government Technology, December 13, 2019, <a href = \"https://www.govtech.com/people/Kansas-City-Innovation-Chief-to-Step-Down-This-Month.html\" target = \"_blank\">https://www.govtech.com/people/Kansas-City-Innovation-Chief-to-Step-Down-This-Month.html</a>)."
-                }
-            }     
+            }  
         ]
     }
 ]

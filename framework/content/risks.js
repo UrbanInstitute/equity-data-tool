@@ -84,15 +84,8 @@ content.pages.risks = [
             },
             {
                 "contentType" : "paragraph",
-                "content" : "The commitment to prioritize the needs of marginalized communities in decisions about data management is a notable recognition that “in this new data-driven age, communities are more vulnerable to misuse of data, particularly marginalized communities.”a In a letter of support, Kelsey Finch, senior privacy counsel at the Future of Privacy Forum, <a href = \"https://www.geekwire.com/2019/facial-recognition-video-surveillance-highlight-new-privacy-resolution-passed-portland-lawmakers/\" target = \"_blank\">praised</a> the principles’ “focus on human rights and the ethical use of data” as “especially progressive.” She continued that “in formalizing its commitment to designing equitable and inclusive automated decision systems, the City of Portland is setting an important example for other cities and communities.” In a statement, Mayor Ted Wheeler noted that the privacy principles were born from the need to “build trust with communities” that the city could effectively build “the next generation of digital public services… while minimizing risk and maximizing benefits.” City staff are now identifying the short- and long-term procedures necessary to effectively operationalize the principles."
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "a",
-                    "content" : "“Portland City Council directs Smart City PDX and the Office of Equity and Human Rights to lead implementation of data privacy and information protection principles for City operations,” City of Portland, <a href = \"https://www.portlandoregon.gov/bps/article/735023\" target = \"_blank\">https://www.portlandoregon.gov/bps/article/735023</a>."
-                }
-            },
+                "content" : "The commitment to prioritize the needs of marginalized communities in decisions about data management is a notable recognition that “in this new data-driven age, communities are more vulnerable to misuse of data, particularly marginalized communities.”<i class = \"tt-icon\" data-footnote=\"risk1\">?</i> In a letter of support, Kelsey Finch, senior privacy counsel at the Future of Privacy Forum, <a href = \"https://www.geekwire.com/2019/facial-recognition-video-surveillance-highlight-new-privacy-resolution-passed-portland-lawmakers/\" target = \"_blank\">praised</a> the principles’ “focus on human rights and the ethical use of data” as “especially progressive.” She continued that “in formalizing its commitment to designing equitable and inclusive automated decision systems, the City of Portland is setting an important example for other cities and communities.” In a statement, Mayor Ted Wheeler noted that the privacy principles were born from the need to “build trust with communities” that the city could effectively build “the next generation of digital public services… while minimizing risk and maximizing benefits.” City staff are now identifying the short- and long-term procedures necessary to effectively operationalize the principles."
+            }
         ]
     }
 ]

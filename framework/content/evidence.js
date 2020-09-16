@@ -96,7 +96,7 @@ content.pages.evidence = [
             },
             {
                 "contentType" : "paragraph",
-                "content" : "The Boston Department of Public Works suspected that, despite hitting performance targets for responsiveness to 311 requests, its workers weren’t making sidewalk and road repairs where they were most needed. The department’s analytics team reviewed the neighborhoods where 311 requests for sidewalk repairs were coming from against the city’s engineering survey of sidewalk quality and found a fundamental mismatch: 311 calls were more likely to come from whiter and more socioeconomically advantaged neighborhoods. Low-income neighborhoods such as Roxbury and Dorchester had twice the proportion of sidewalks in fair or poor condition as wealthier areas like downtown and the Back Bay.a"
+                "content" : "The Boston Department of Public Works suspected that, despite hitting performance targets for responsiveness to 311 requests, its workers weren’t making sidewalk and road repairs where they were most needed. The department’s analytics team reviewed the neighborhoods where 311 requests for sidewalk repairs were coming from against the city’s engineering survey of sidewalk quality and found a fundamental mismatch: 311 calls were more likely to come from whiter and more socioeconomically advantaged neighborhoods. Low-income neighborhoods such as Roxbury and Dorchester had twice the proportion of sidewalks in fair or poor condition as wealthier areas like downtown and the Back Bay.<i class = \"tt-icon\" data-footnote=\"evidence1\">?</i>"
             },
             {
                 "contentType" : "paragraph",
@@ -113,14 +113,7 @@ content.pages.evidence = [
             {
                 "contentType" : "paragraph",
                 "content" : "Costa Leabo noted that this effort fundamentally changed how the city does business. “We’re now infusing an equity lens in [sidewalk repairs] to ensure that we’re distributing resources more evenly across the city and targeting the more vulnerable populations first who we believe, based on our understanding of the [311] data, are not engaging with us in the way that other residents are.” The city started with sidewalk repairs because it had engineering survey data on the underlying quality and state of repair of sidewalks—data it does not have for the city’s other major assets. “It’s hard for us to know in many cases where the work needs to be done the most,” Costa Leabo added. The city plans to build these data resources and enable Boston to scale the success of StreetCaster to other public works efforts."
-            },
-            {
-                "contentType" : "footnote",
-                "content" : {
-                    "symbol" : "a",
-                    "content" : "Meghan E. Irons, “Boston’s Rich and Poor Neighborhoods Show Sidewalk Repair Disparity,” <em>Boston Globe</em>, March 4, 2018,  <a href = \"https://www3.bostonglobe.com/metro/2018/03/04/sidewalk-analysis-city-finds-inequality/qvnLJIMyVCfRxJKjKwrzYK/story.html?arc404=true#comments\" target = \"_blank\">https://www3.bostonglobe.com/metro/2018/03/04/sidewalk-analysis-city-finds-inequality/qvnLJIMyVCfRxJKjKwrzYK/story.html?arc404=true#comments</a>."
-                }
-            },
+            }
         ]
     }
 ]

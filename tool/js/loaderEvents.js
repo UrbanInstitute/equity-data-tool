@@ -11,9 +11,16 @@ function handleFiles(inputFiles){
         return false;
     }
 
-    console.log("file type: ", fileList[0]["type"])
+    for (var i = 0; i < fileList.length; i++){
+        var file = fileList[i]
+        console.log("******************************")
+        console.log("file" + i)
+        console.log("name", file.name)
+        console.log("size", file.size)
+        console.log("type", file.type)
+        console.log("******************************")
+    }
     if(fileList[0]["type"] != "text/csv"){
-        console.log("asdf")
         loaderError("File must be CSV", "upload")
         return false
     }
