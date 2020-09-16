@@ -74,9 +74,12 @@ function getBarMargins(){
 }
 function getBarX(data){
     var width = getBarWidth()
+    var max = d3.max(data, function(d){ return d.diff_data_city; }),
+        min = Math.abs(d3.min(data, function(d){ return d.diff_data_city; })),
+        bound = Math.max(max, min)
     return d3.scaleLinear()
         .range([0,width])
-        .domain(d3.extent(data, function(d){ return d.diff_data_city; }));
+        .domain([-bound, bound]);
 
 }
 function getBarY(data){

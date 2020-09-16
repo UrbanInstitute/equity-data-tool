@@ -34,14 +34,14 @@ content.pages.evidence = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "However, quantitative data sources can reflect structural inequities and bias. Unless these biases are acknowledged and countered, quantitative evidence could unintentionally move a program toward inequitable results. For example, several studies have identified that higher-income neighborhoods are often overrepresented in public response data, such as 311 request data. Even administrative data sources, such as census data or city resident surveys, may undercount Black and Latinx populations."
+        "content" : "However, quantitative data sources can reflect structural inequities and bias. Unless these biases are acknowledged and countered, quantitative evidence could unintentionally move a program toward inequitable results. For example, several studies have identified that higher-income neighborhoods are often overrepresented in public response data, such as <a href = \"https://www.urban.org/research/publication/toward-open-data-bias-assessment-tool\" target = \"_blank\">311 request data</a>. Even administrative data sources, such as <a href = \"http://apps.urban.org/features/2020-census/\" target = \"_blank\">census data</a> or city resident surveys, may undercount Black and Latinx populations."
     },
     {
         "contentType" : "toolBox",
         "content": [
             {
                 "contentType" : "title",
-                "content" : "Box on Evaluating Equity Data Tool"
+                "content" : "Box on Spatial Equity Data Tool"
             },
             {
                 "contentType" : "image",
@@ -49,13 +49,13 @@ content.pages.evidence = [
             },            
             {
                 "contentType" : "paragraph",
-                "content" : "The Urban Institute’s<span class = \"frameworkHighliight\"> Evaluating Equity Data Tool </span>can help cities audit their data assets. The tool compares the distribution of data points against a baseline dataset to identify which neighborhoods and demographic groups are underrepresented and overrepresented. When we used the tool to analyze the distribution of wi-fi hotspots in [city x] we found that [findings]. [insert map and hyperlink with text “click to learn more]."
+                "content" : "The Urban Institute’s <span class = \"frameworkHighliight\">Spatial Equity Data Tool</span> can help cities audit their data assets. The tool compares the distribution of data points against a baseline dataset to identify which neighborhoods and demographic groups are underrepresented and overrepresented. When we used the tool to analyze the distribution of 311 requests between 2014 and 2019 in New Orleans, Louisiana we found that the neighborhoods of Huntington Park and Algiers were most underrepresented in 311 requests (shown in orange) relative to their share of the city’s total population, while some of the areas around Tulane University and the French Quarter were most overrepresented (shown in blue). Overall, white residents are 4.4% overrepresented in the neighborhoods where 311 requests are located and Black residents are 3.9% underrepresented. This audit could help target outreach to underrepresented neighborhoods and raise key questions about how to equitably use 311 requests to inform service delivery. "
             }
         ]
     },
     {
         "contentType" : "paragraph",
-        "content" : "Some cities are regularly auditing data sources for bias and supplementing the data to create a more accurate picture (box 2). Another approach is using community-informed data collection methods to boost response rates in underrepresented groups. To improve response rates and accuracy of a recent survey, the city of Austin’s innovation team connected with community members through<span class = \"frameworkHighliight\"> Measure Austin </span>to shape questionnaire language and hire interviewers that reflected the focus community."
+        "content" : "Some cities are regularly auditing data sources for bias and supplementing the data to create a more accurate picture (box 2). Another approach is using community-informed data collection methods to boost response rates in underrepresented groups. To improve response rates and accuracy of a recent survey, the city of Austin’s innovation team connected with community members through <span class = \"frameworkHighliight\"><a href = \"https://www.measureaustin.org/\" target = \"_blank\">Measure Austin</a></span> to shape questionnaire language and hire interviewers that reflected the focus community."
     },
     {
         "contentType" : "paragraph",
@@ -63,19 +63,19 @@ content.pages.evidence = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "Cities have identified several ways to conduct R&D around equitable technology.<span class = \"frameworkHighliight\"> Philadelphia’s Pitch & Pilot program </span>has companies submit ideas that leverage technology to address a community challenge, such as reducing waste.<span class = \"frameworkHighliight\"> Boston’s Beta Blocks Action Research project </span>facilitates community-driven technology innovation, and<span class = \"frameworkHighliight\"> Pittsburgh’s PGH Lab </span>provides an incubator for technology startups developing new products to address resident challenges. Learn more about these programs."
+        "content" : "Cities have identified several ways to conduct R&D around equitable technology. <span class = \"frameworkHighliight\">Philadelphia’s <a href = \"https://www.phila.gov/programs/pitch-and-pilot/\" target = \"_blank\">Pitch & Pilot</a> program</span> has companies submit ideas that leverage technology to address a community challenge, such as reducing waste. <span class = \"frameworkHighliight\">Boston’s <a href = \"https://www.boston.gov/innovation-and-technology/beta-blocks\" target = \"_blank\">Beta Blocks Action Research</a> project</span> facilitates community-driven technology innovation, and <span class = \"frameworkHighliight\">Pittsburgh’s <a href = \"https://pittsburghpa.gov/innovation-performance/pghlab/index.html\" target = \"_blank\">PGH Lab</a></span> provides an incubator for technology startups developing new products to address resident challenges. Learn more about these programs."
     },
     {
         "contentType" : "expand",
         "content" : {
             "title" : "Technology Research & Development Approaches",
-            "small" : "Philadelphia: As part of the SmartCityPHL initiative, the Pitch & Pilot program has opened four different “calls for solutions”",
+            "small" : "Philadelphia: As part of the SmartCityPHL initiative, the Pitch & Pilot program has opened four different “<a href = \"https://www.phila.gov/documents/pitch-and-pilot-calls-for-solutions/\" target = \"_blank\">calls for solutions</a>”",
             "content": [
                 {
                     "contentType" : "unorderedList",
                     "content" : [
-                        "Philadelphia: As part of the SmartCityPHL initiative, the Pitch & Pilot program has opened four different “calls for solutions” for technology-driven proposals that address a city challenge. The winning submission receives up to $34,000 to pilot a solution that demonstrates value and “prioritizes disadvantaged residents and communities.” Past solutions include a road repair prioritization tool and waste reduction and diversion.",
-                        " Boston: The Beta Blocks Action Research program aims to expand opportunities for public engagement and collaboration on technology use through events like Meet the Kiosks and Robot Block Party that bring technology into communities for residents to test and explore. Boston also released a Smart City request for information (PDF) to hear from tech companies on their product directions.",
+                        "Philadelphia: As part of the SmartCityPHL initiative, the Pitch & Pilot program has opened four different “<a href = \"https://www.phila.gov/documents/pitch-and-pilot-calls-for-solutions/\" target = \"_blank\">calls for solutions</a>” for technology-driven proposals that address a city challenge. The winning submission receives up to $34,000 to pilot a solution that demonstrates value and “prioritizes disadvantaged residents and communities.” Past solutions include a road repair prioritization tool and waste reduction and diversion.",
+                        " Boston: The Beta Blocks Action Research program aims to expand opportunities for public engagement and collaboration on technology use through events like <a href = \"https://www.northeastern.edu/csshresearch/bostonarearesearchinitiative/event/meet-the-kiosks/\" target = \"_blank\">Meet the Kiosks</a> and <a href = \"https://www.boston.com/news/technology/2017/10/15/robots-to-take-over-bostons-city-hall-plaza-as-part-of-hubweek\" target = \"_blank\">Robot Block Party</a> that bring technology into communities for residents to test and explore. Boston also released a Smart City <a href = \"https://www.boston.gov/sites/default/files/embed/file/2017-04/smartcityrfiupdated4.24.17.pdf\" target = \"_blank\">request for information</a> (PDF) to hear from tech companies on their product directions.",
                         "Pittsburgh: The PGH Lab connects local startup companies with city departments to incubate and test new products. The PGH Lab outlines three areas of interest for submissions—citizen engagement, improved operations, and climate change and the environment—as well as an open call."
 
                     ]
@@ -118,7 +118,7 @@ content.pages.evidence = [
                 "contentType" : "footnote",
                 "content" : {
                     "symbol" : "a",
-                    "content" : "Meghan E. Irons, “Boston’s Rich and Poor Neighborhoods Show Sidewalk Repair Disparity,” <em>Boston Globe</em>, March 4, 2018,  https://www3.bostonglobe.com/metro/2018/03/04/sidewalk-analysis-city-finds-inequality/qvnLJIMyVCfRxJKjKwrzYK/story.html?arc404=true#comments."
+                    "content" : "Meghan E. Irons, “Boston’s Rich and Poor Neighborhoods Show Sidewalk Repair Disparity,” <em>Boston Globe</em>, March 4, 2018,  <a href = \"https://www3.bostonglobe.com/metro/2018/03/04/sidewalk-analysis-city-finds-inequality/qvnLJIMyVCfRxJKjKwrzYK/story.html?arc404=true#comments\" target = \"_blank\">https://www3.bostonglobe.com/metro/2018/03/04/sidewalk-analysis-city-finds-inequality/qvnLJIMyVCfRxJKjKwrzYK/story.html?arc404=true#comments</a>."
                 }
             },
         ]

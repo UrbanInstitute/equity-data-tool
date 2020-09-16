@@ -9,7 +9,7 @@ content.pages.acknowledgments = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of Urban experts. Further information on the Urban Institute’s funding principles is available at urban.org/fundingprinciples."
+        "content" : "The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of Urban experts. Further information on the Urban Institute’s funding principles is available at <a href = \"http://www.urban.org/fundingprinciples\" target = \"_blank\">urban.org/fundingprinciples</a>."
     },
     {
         "contentType" : "paragraph",

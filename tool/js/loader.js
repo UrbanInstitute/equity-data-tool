@@ -32,14 +32,14 @@ function setLoaderBaseline(baseline){
 function loaderError(error, errorType){
   if(errorType == "upload"){
     d3.selectAll(".hideOption").classed("hiddenSection",true)
-    return false;
+    // return false;
   }
   if(errorType == "upload" || errorType == "latlon"){
     d3.select("#uploadErrors").style("display","block")  
     d3.select("#uploadErrors")
       .select(".errorText")
       .html(error)
-    return false;
+    // return false;
   }
   if(errorType == "weight"){
     d3.select(".saveButton.weight").classed("disabled", true)
@@ -47,7 +47,7 @@ function loaderError(error, errorType){
     d3.select("#weightError")
       .select(".errorText")
       .html(error)
-    return false;
+    // return false;
   }
   d3.select(".user.runButton").classed("disabled", true)
 }

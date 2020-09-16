@@ -9,11 +9,11 @@ content.pages.conclusion = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "For more information on the policies and programs referenced in this guide, please see our resources page.  For help auditing your city’s data assets, please see the Urban Institute’s<span class = \"frameworkHighliight\"> Evaluating Equity Data Tool.</span>"
+        "content" : "For more information on the policies and programs referenced in this guide, please see our resources page.  For help auditing your city’s data assets, please see the Urban Institute’s <span class = \"frameworkHighliight\">Spatial Equity Data Tool</span>."
     },
     {
         "contentType" : "paragraph",
-        "content" : "If you have any feedback about the guide or questions about how to adapt the best practices outlined in your city, please reach out to Alena Stern at astern@urban.org."
+        "content" : "If you have any feedback about the guide or questions about how to adapt the best practices outlined in your city, please reach out to Alena Stern at <a href = \"mailto:astern@urban.org\" target = \"_blank\">astern@urban.org</a>."
     },
     {
         "contentType" : "quote",

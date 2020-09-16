@@ -18,15 +18,15 @@ content.pages.align = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "Equitable technology starts with reorienting the smart cities conversation from a technology-first approach that prioritizes efficiency to a problem-first approach that prioritizes equity. Or as Austin Chief Equity Officer Brion Oaks put it, “Technology needs to be rooted in solving the problems of poor people.” Respondents identified that the technology companies reaching out to cities to build a proof of concept for their new product often do not prioritize addressing the problems of marginalized communities because they do not see it as profitable, though some evidence suggests otherwise. To counter these pressures—and encourage technology companies to innovate for equity in order to secure government contracts—cities need to build a shared commitment to center equity in technology programs."
+        "content" : "Equitable technology starts with reorienting the smart cities conversation from a technology-first approach that prioritizes efficiency to a problem-first approach that prioritizes equity. Or as Austin Chief Equity Officer Brion Oaks put it, “Technology needs to be rooted in solving the problems of poor people.” Respondents identified that the technology companies reaching out to cities to build a proof of concept for their new product often do not prioritize addressing the problems of marginalized communities because they <a href = \"https://www.fastcompany.com/40540511/why-low-income-communities-are-building-their-own-internet-networks\" target = \"_blank\">do not see it as profitable</a>, though <a href = \"https://www.fsg.org/publications/competitive-advantage-racial-equity\" target = \"_blank\">some evidence suggests otherwise</a>. To counter these pressures—and encourage technology companies to innovate for equity in order to secure government contracts—cities need to build a shared commitment to center equity in technology programs."
     },
     {
         "contentType" : "paragraph",
-        "content" : "Some cities build this shared commitment by explicitly centering equity in their technology strategy.<span class = \"frameworkHighliight\"> Philadelphia’s Smart City PHL Roadmap </span>includes equity as one of four guiding principles,<span class = \"frameworkHighliight\"> Kansas City’s emerging technology board </span>has “equitable outcomes” as a core principle for technology use, and<span class = \"frameworkHighliight\"> Boston’s Smart City Playbook </span>establishes that technology “must solve real problems for real people.”<span class = \"frameworkHighliight\"> Portland’s Smart City PDX Priorities Framework </span>goes even further: it requires all smart city projects address an inequity or disparity (box 1)."
+        "content" : "Some cities build this shared commitment by explicitly centering equity in their technology strategy. <span class = \"frameworkHighliight\">Philadelphia’s <a href = \"https://www.phila.gov/media/20190204121858/SmartCityPHL-Roadmap.pdf\" target = \"_blank\">Smart City PHL Roadmap</a> (PDF)</span> includes equity as one of four guiding principles, <span class = \"frameworkHighliight\">Kansas City’s <a href = \"http://cityclerk.kcmo.org/LiveWeb/Documents/Document.aspx?q=B3m6jg3G5c%2bHMmNdLkJjPEmECb178EPfRbFf%2f9yv5XyqRQg%2ft1%2fOH1GNnAWVVd68\" target = \"_blank\">emerging technology board</a></span> has “equitable outcomes” as a core principle for technology use, and <span class = \"frameworkHighliight\">Boston’s <a href = \"https://monum.github.io/playbook/\" target = \"_blank\">Smart City Playbook</a></span> establishes that technology “must solve real problems for real people.” <span class = \"frameworkHighliight\">Portland’s Smart City PDX Priorities Framework</span> goes even further: it requires all smart city projects address an inequity or disparity (box 1)."
     },
     {
         "contentType" : "paragraph",
-        "content" : "Other cities orient their technology programs to their equity strategy.<span class = \"frameworkHighliight\"> The Resilient Boston Strategy for Racial Equity (PDF) </span>directs the city to use “new and existing data sources to advance resilience and racial equity”; this goal is guiding the work of the analytics team (box 2)."
+        "content" : "Other cities orient their technology programs to their equity strategy. <span class = \"frameworkHighliight\">The <a href = \"https://www.boston.gov/sites/default/files/file/document_files/2017/07/resilient_boston.pdf\" target = \"_blank\">Resilient Boston Strategy for Racial Equity</a> (PDF)</span> directs the city to use “new and existing data sources to advance resilience and racial equity”; this goal is guiding the work of the analytics team (box 2)."
     },
     {
         "contentType" : "paragraph",
@@ -45,7 +45,7 @@ content.pages.align = [
             },
             {
                 "contentType" : "paragraph",
-                "content" : "Portland city leaders created the Smart City PDX Priorities Framework after feeling bombarded by product offers from technology companies. They recognized they needed a strong policy and data governance foundation so they could evaluate technology projects to innovate and pilot in a manner consistent with the City of Portland’s strong equity values."
+                "content" : "Portland city leaders created the <a href = \"https://www.smartcitypdx.com/priorities-framework\" target = \"_blank\">Smart City PDX Priorities Framework</a> after feeling bombarded by product offers from technology companies. They recognized they needed a strong policy and data governance foundation so they could evaluate technology projects to innovate and pilot in a manner consistent with the City of Portland’s strong equity values."
             },
             {
                 "contentType" : "paragraph",
@@ -67,7 +67,7 @@ content.pages.align = [
                 "contentType" : "footnote",
                 "content" : {
                     "symbol" : "a",
-                    "content" : "The framework process and criteria are outlined in exhibit A of Council Resolution 37371."
+                    "content" : "The framework process and criteria are outlined in <a href = \"https://efiles.portlandoregon.gov/Record/12067444/\" target = \"_blank\">exhibit A</a> of Council Resolution 37371."
                 }
             },
         ]

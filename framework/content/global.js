@@ -78,3 +78,7 @@ var content = {
     ],
     "pages":{}
 }
+
+var footnotes = {
+    "impact1" : "Smart City PDX Priorities Framework: <a href = \"https://efiles.portlandoregon.gov/Record/12067444\" target = \"_blank\">https://efiles.portlandoregon.gov/Record/12067444/</a>"
+}

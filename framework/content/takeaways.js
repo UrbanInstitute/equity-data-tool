@@ -13,7 +13,7 @@ content.pages.takeaways = [
     },
     {
         "contentType" : "printParagraph",
-        "content" : "The policies and programs referenced in the guide can be found at URL here.  For help auditing your city’s data assets, please see the Urban Institute’s Evaluating Equity Data Tool (URL here). "
+        "content" : "The policies and programs referenced in the guide can be found at URL here.  For help auditing your city’s data assets, please see the Urban Institute’s Spatial Equity Data Tool (URL here). "
     },
     {
         "contentType" : "printParagraph",

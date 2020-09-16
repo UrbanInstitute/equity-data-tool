@@ -12,6 +12,7 @@ function handleFiles(inputFiles){
     }
 
     if(fileList[0]["type"] != "text/csv"){
+        console.log("asdf")
         loaderError("File must be CSV", "upload")
         return false
     }

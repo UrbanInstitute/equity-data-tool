@@ -2,6 +2,10 @@ body{
     font-family: Lato;
     color: #353535;
 }
+a{
+    color: #1696d2;
+    text-decoration: none;
+}
 /********************************************/
 /********** TABLE OF CONTENTS ***************/
 /********************************************/
@@ -16,7 +20,7 @@ body{
 }
 .contentsHeader.topLevel, .contentsHeader.header{
     font-size: 20px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-weight: bold;
 }
 .contentsHeader.question{
@@ -71,7 +75,6 @@ body{
     font-size: 15px;
     text-transform: uppercase;
     color: #9D9D9D;
-    font-weight: bold;
     margin-bottom: 8px;
 }
 .contentBlock.title .eyebrow span{
@@ -79,6 +82,9 @@ body{
 }    
 .contentBlock.title.question{
     border-bottom: 1px solid transparent;   
+}
+.contentBlock.video.intro{
+    margin-top: 80px;
 }
 .takeawayContainer{
     border: 1px solid #d2d2d2;
@@ -595,3 +601,5 @@ th:nth-child(1) .tablesorter-header-inner, th:nth-child(6) .tablesorter-header-i
     box-shadow: 18px 0 13px -19px #e3e3e3; 
     border: 1px solid #d2d2d2;
 }
+
+

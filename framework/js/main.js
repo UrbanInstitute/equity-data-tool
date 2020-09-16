@@ -129,6 +129,7 @@ function loadSection(section, callback){
 
     initEvents()
     callback()
+    window.scrollTo(0,0);
 }
 function initEvents(){
     d3.selectAll(".expandControl").on("click", function(d){
@@ -159,7 +160,6 @@ function initEvents(){
             .style("left", "-60px")
     })
     d3.select("#boorgerContainer").on("click", function(){
-        console.log("asdf")
         if(d3.select(this).classed("ex")){
             d3.select(this).classed("ex", false)
             d3.select("#boorgerTop")
