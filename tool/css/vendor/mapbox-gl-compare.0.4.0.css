@@ -59,7 +59,7 @@
 .mapboxgl-compare .compare-swiper-vertical.under_poverty_line::after{
     content: "Low-income population";
 }
-.mapboxgl-compare .compare-swiper-vertical.no_bband::after{
+.mapboxgl-compare .compare-swiper-vertical.no_internet::after{
     content: "population of households without broadband Internet access";
 }
 .mapboxgl-compare .compare-swiper-vertical.cb_renter_hh::after{

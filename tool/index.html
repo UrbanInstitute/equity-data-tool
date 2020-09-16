@@ -129,8 +129,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <select id = "baselineSelect">
             <option value = "pop">total population</option> 
-            <option value = "under_poverty_line">low-income population</option> 
-            <option value = "no_bband">population of households without broadband internet access</option> 
+            <option value = "under_200_poverty_line">low-income population</option> 
+            <option value = "no_internet">population of households without broadband internet access</option> 
             <option value = "cb_renter_hh">population of cost burdened renter households</option>
             <option value = "seniors">senior population</option>       
         </select>
@@ -509,7 +509,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>                        
                         <div class = "baselineText">Low-income population</div>
                     </div>
-                    <div class = "baselineRow nobband" data-baseline="nobband">
+                    <div class = "baselineRow nointernet" data-baseline="nointernet">
                         <div class = "baselineRadio">
                             <img class = "radio large checked" src = "images/checkedRadio.png">
                             <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
@@ -552,7 +552,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <h2 class = "loaderHeader">Sit tight! We’re analyzing your data.</h2>
             <div id = "loadingStatusContainer">
             <em>
-                <div id = "statusLoading" class = "loaderSectionStatus">Uploading data<span></span>&hellip;</div>
+                <div id = "statusLoading" class = "loaderSectionStatus"></div>
                 <div id = "statusProcessing" class = "loaderSectionStatus">Processing <span id = "num_rows_processed"></span> of <span id = "num_rows_file"></span> rows of data</div>
                 <div id = "statusDone" class = "loaderSectionStatus">Wrapping up&hellip;</div>
                 <div id = "loadingErrorContainer" class = "loadingError"></div>

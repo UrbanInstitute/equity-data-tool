@@ -88,7 +88,7 @@ var barCategories = {  "pct_bach":{
     "category": "Other demographics",
     "class": "other"
   },
-  "pct_no_bband":{
+  "pct_no_internet":{
     "full_name": "Households without broadband Internet access",
     "category": "Other demographics",
     "class": "other"
@@ -155,7 +155,7 @@ const sampleParams = {
         "defaultParams" : {
           "filters": [],
           "weight": "",
-          "baseline": "no_bband",
+          "baseline": "no_internet",
           "lat_column": "LATITUDE",
           "lon_column": "LONGITUDE"
         }
