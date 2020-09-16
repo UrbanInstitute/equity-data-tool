@@ -6,6 +6,8 @@ d3.selectAll(".controlContainer").on("click", function(){
     d3.select(this).classed("active", true)
     d3.selectAll(".mapButton.mapImg").classed("active", false)
 
+
+
     if(d3.select(this).classed("diff")){
         d3.select("#diffMap")
             .transition()
@@ -15,7 +17,7 @@ d3.selectAll(".controlContainer").on("click", function(){
             .transition()
             .duration(1000)
             .style("margin-top", "0px")
-        d3.select(".mapButton.mapImg.diff").classed("active", true)            
+        d3.select(".mapButton.mapImg.diff").classed("active", true)     
     }else{
         d3.select("#diffMap")
             .transition()
@@ -314,7 +316,7 @@ function drawMaps(bbox, geojsonData, bounds){
             legendMargin = 18;
 
         d3.selectAll(".mapLegend").selectAll("svg").remove()
-        d3.selectAll(".mapLegend").selectAll("div").remove()
+        d3.selectAll(".mapLegend").selectAll(".dynamicLegend").remove()
 
         var diffSvg = d3.select(".mapLegend.diff").append("svg")
             .attr("width", legendWidth + 2*legendMargin)
@@ -328,9 +330,11 @@ function drawMaps(bbox, geojsonData, bounds){
 
         diffNA.append("div")
             .attr("id", "diffNAText")
+            .attr("class", "dynamicLegend")
             .text("No significant difference")
         diffNA.append("div")
             .attr("id", "diffNARect")
+            .attr("class", "dynamicLegend")
             .style("height", legendHeight + "px")
 
 

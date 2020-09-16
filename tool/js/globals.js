@@ -39,17 +39,17 @@ var barCategories = {  "pct_bach":{
     "class": "income"
   },
   "pct_under_200_poverty_line":{
-    "full_name": "Extremely low-income residents",
+    "full_name": "Extremely low–income residents",
     "category": "Income/wealth",
     "class": "income"
   },
   "pct_cb_renter_hh":{
-    "full_name": "Cost burdened renter households",
+    "full_name": "Cost-burdened renter households",
     "category": "Income/wealth",
     "class": "income"
   },
   "pct_less_hs_diploma":{
-    "full_name":  "Residents with less than a High School diploma",
+    "full_name":  "Residents with less than a high school diploma",
     "category": "Education",
     "class": "education"
   },
@@ -69,7 +69,7 @@ var barCategories = {  "pct_bach":{
     "class": "age"
   },
   "pct_children":{
-    "full_name": "Children (under 18)",
+    "full_name": "Children (< 18)",
     "category": "Age",
     "class": "age"
   },
@@ -89,7 +89,7 @@ var barCategories = {  "pct_bach":{
     "class": "other"
   },
   "pct_no_internet":{
-    "full_name": "Households without broadband Internet access",
+    "full_name": "Households without Internet access",
     "category": "Other demographics",
     "class": "other"
   }
@@ -223,7 +223,7 @@ var errorMessages = {
 const BAR_DOT_RADIUS = 8;
 const BAR_LABEL_SCOOTCH = 9;
 const MAP_BINS = 8;
-const MAP_LEGEND_HEIGHT = 74;
+const MAP_LEGEND_HEIGHT = 87;
 const MAX_PROCESSING_TIME = 10000
 const PROCESSING_INTERVAL = 500
 

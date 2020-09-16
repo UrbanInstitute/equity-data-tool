@@ -30,7 +30,7 @@ content.pages.evidence = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "Accordingly, cities should begin by working with community members to identify priority problems and codesign solutions. The ways cities engage communities affect who is able or willing to participate, and they can unintentionally privilege the lived experiences of some residents over others. According to Austin Chief Equity Officer Brion Oaks, designing equitable technology requires city departments to reach beyond the usual respondents to “the missing audience—that is, the person with disabilities who can’t read the city website or the person without wi-fi living on the edge of town.” Oaks noted, “If you design around that missing audience, the solution you identify works for everyone.”"
+        "content" : "Accordingly, cities should begin by working with community members to identify priority problems and codesign solutions. The ways cities engage communities affect who is able or willing to participate, and they can unintentionally privilege the lived experiences of some residents over others. According to Austin chief equity officer Brion Oaks, designing equitable technology requires city departments to reach beyond the usual respondents to “the missing audience—that is, the person with disabilities who can’t read the city website or the person without wi-fi living on the edge of town.” Oaks noted, “If you design around that missing audience, the solution you identify works for everyone.”"
     },
     {
         "contentType" : "paragraph",

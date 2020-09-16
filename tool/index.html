@@ -130,7 +130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <select id = "baselineSelect">
             <option value = "pop">total population</option> 
             <option value = "under_200_poverty_line">low-income population</option> 
-            <option value = "no_internet">population of households without broadband internet access</option> 
+            <option value = "no_internet">population without Internet access</option> 
             <option value = "cb_renter_hh">population of cost burdened renter households</option>
             <option value = "seniors">senior population</option>       
         </select>
@@ -150,14 +150,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <img class = "radio large checked" src = "images/checkedRadio.png">
                         <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
                     </div>
-                    <div class = "controlName">Score Breakdown</div>
+                    <div class = "controlName">Data comparison</div>
                     <div class = "controlDescription">See your data side by side with the city’s <span id = "controlBaselineName">total population</span></div>
                 </div>
             </div>
-
             <div id = "legendSlideContainer">
-              <div class = "mapLegend diff"></div>
-              <div class = "mapLegend compare"></div>
+              <div class = "mapLegend diff">
+                  <div class = "legendTitle">Neighborhood Disparity Score</div>
+              </div>
+              <div class = "mapLegend compare">
+                <div class = "legendTitle">Percent of data / Percent of baseline</div>
+              </div>
               <div id = "pointUp">
                 <img src = "images/point-up.png">
                 <div id = "pointUpText"></div>
@@ -212,6 +215,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
 
         <div id = "barChartContainer">
+            <div class = "barNoSig"><span></span>No significant difference</div>
             <div class = "overunder under">Underrepresented</div>
             <div id = "barChart">
             </div>

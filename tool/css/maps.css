@@ -197,11 +197,17 @@
     overflow-y: hidden;
     overflow-x: visible;
     width: 800px;
-    height: 74px;
+    height: 91px;
     left: -18px;
 }
 .mapLegend{
-    height: 74px;
+    height: 87px;
+    clear: both;
+}
+.legendTitle{
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 16px;    
 }
 .legendStop, #diffNAText{
     font-size: 12px;

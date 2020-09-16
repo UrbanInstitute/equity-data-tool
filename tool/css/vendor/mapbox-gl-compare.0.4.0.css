@@ -27,7 +27,7 @@
     left: -158px;
     font-size: 26px;
     font-weight: bold;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     top: 15px;
     display: inline-block;
     white-space: nowrap;
@@ -43,7 +43,7 @@
     left: -73px;
     font-size: 26px;
     font-weight: bold;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     top: 12px;
     display: inline-block;
     white-space: nowrap;
@@ -60,10 +60,10 @@
     content: "Low-income population";
 }
 .mapboxgl-compare .compare-swiper-vertical.no_internet::after{
-    content: "population of households without broadband Internet access";
+    content: "Population without Internet access";
 }
 .mapboxgl-compare .compare-swiper-vertical.cb_renter_hh::after{
-    content: "population of cost burdened renter households ";
+    content: "Population of cost burdened renter households ";
 }
 .mapboxgl-compare .compare-swiper-vertical.seniors::after{
     content: "Senior population";

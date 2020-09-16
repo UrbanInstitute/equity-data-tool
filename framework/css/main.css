@@ -611,3 +611,10 @@ th:nth-child(1) .tablesorter-header-inner, th:nth-child(6) .tablesorter-header-i
 }
 
 
+#resourceIntro{
+    font-size: 18px;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 40px;
+
+}

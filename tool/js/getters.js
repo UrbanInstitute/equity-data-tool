@@ -70,7 +70,7 @@ function getBarHeight(data){
     return ((700 - margin.top - margin.bottom)/19) * scalar;
 }
 function getBarMargins(){
-    return {top: 50, right: 100, bottom: 0, left: 100}
+    return {top: 50, right: 60, bottom: 0, left: 60}
 }
 function getBarX(data){
     var width = getBarWidth()

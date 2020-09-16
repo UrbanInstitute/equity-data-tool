@@ -80,6 +80,22 @@
     top: -110px;
     position: relative;
 }
+.barNoSig{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 9px;
+    margin-left: 60px;
+}
+.barNoSig span{
+    width: 16px;
+    height: 16px;
+    background: #9d9d9d;
+    display: inline-block;
+    margin-right: 8px;
+    position: relative;
+    top: 3.5px;
+    border-radius: 100%;
+}
 .overunder{
     display: inline-block;
     float: left;
@@ -97,7 +113,8 @@
 .overunder.over{
     float: revert;
     top: 20px;
-    right: -110px;
+    top: 45px;
+    right: -135px;
     left: auto;
     position: absolute;
     transform: rotate(90deg);

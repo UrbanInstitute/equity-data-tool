@@ -1,56 +1,58 @@
 ﻿Name,Referenced In,Affiliated Organizations,Link,Geography Name,Geography Level,Type,Topic,Contact
-StreetCaster,2,City of Boston,https://www.boston.gov/streets-and-sanitation/streetcaster,"Boston, Massachussetts",local,program,data analytics,emailaddress@samplecity.gov
-Technology Leadership Council,7,City of Pittsburgh,https://pittsburghpa.gov/innovation-performance/index.html,"Pittsburgh, Pennsylvania",local,policy,smart cities,emailaddress@samplecity.gov
+StreetCaster,2,City of Boston,https://www.boston.gov/streets-and-sanitation/streetcaster,"Boston, Massachussetts",local,program,data analytics,stefanie.costaleabo@boston.gov
+Technology Leadership Council,7,City of Pittsburgh,https://pittsburghpa.gov/innovation-performance/index.html,"Pittsburgh, Pennsylvania",local,policy,smart cities,santiago.garces@pittsburghpa.gov
 Smart City Playbook,1,City of Boston,https://monum.github.io/playbook/,"Boston, Massachussetts",local,strategy,smart cities,emailaddress@samplecity.gov
 Robot Block Party,3,City of Boston,https://www.boston.com/news/technology/2017/10/15/robots-to-take-over-bostons-city-hall-plaza-as-part-of-hubweek,"Boston, Massachussetts",local,program,community engagement,emailaddress@samplecity.gov
 Beta Blocks Action Research,2; 3,City of Boston,https://www.boston.gov/innovation-and-technology/beta-blocks,"Boston, Massachussetts",local,program,research & development,emailaddress@samplecity.gov
-Ethical Data Working Group,7,City of Boston,https://www.boston.gov/departments/analytics-team,"Boston, Massachussetts",local,program,data analytics,emailaddress@samplecity.gov
-Pittsburgh Equity Indicators,4,City of Pittsburgh,https://pittsburghpa.gov/equityindicators/,"Pittsburgh, Pennsylvania",local,program,data analytics,emailaddress@samplecity.gov
-Pittsburgh Principles for Autonomous Vehicle Technology,6,City of Pittsburgh,https://smartcitiesconnect.org/pittsburgh-principles-defines-expectations-and-policies-for-av-testing/,"Pittsburgh, Pennsylvania",local,policy,smart cities,emailaddress@samplecity.gov
-Resilient Boston Strategy for Racial Equity,1,City of Boston,https://www.boston.gov/sites/default/files/file/document_files/2017/07/resilient_boston.pdf,"Boston, Massachussetts",local,strategy,equity,emailaddress@samplecity.gov
-Ladder of Stakeholder Participation,3,City of Philadelphia; Service Design Studio,https://www.phila.gov/2019-03-26-the-story-of-us/,"Philadelphia, Pennsylvania",local,strategy,community engagement,emailaddress@samplecity.gov
-Citywide Disaggregated Data Standard,4,City of Austin,https://www.austintexas.gov/department/equity-office,"Austin, Texas",local,policy,data analytics,emailaddress@samplecity.gov
-Equity Assessment Tool,7,City of Austin,http://www.austintexas.gov/edims/document.cfm?id=279626,"Austin, Texas",local,tool,equity,emailaddress@samplecity.gov
-PGH Lab,2; 9,City of Pittsburgh,https://pittsburghpa.gov/innovation-performance/pghlab/index.html,"Pittsburgh, Pennsylvania",local,program,research & development,emailaddress@samplecity.gov
-Inclusive Innovation Summit,3,City of Pittsburgh,https://weinnovatepgh.net/inclusive-innovation-summit-2019/,"Pittsburgh, Pennsylvania",local,program,community engagement,emailaddress@samplecity.gov
-Rec2Tech,6,City of Pittsburgh,https://pittsburghpa.gov/onepgh/documents/people/rec2tec.pdf,"Pittsburgh, Pennsylvania",local,program,digital inclusion,emailaddress@samplecity.gov
-OnePGH Resilient Pittsburgh Strategy,4,City of Pittsburgh,https://pittsburghpa.gov/onepgh/,"Pittsburgh, Pennsylvania",local,strategy,equity,emailaddress@samplecity.gov
-Civic Engagement Spectrum of Methods,3,Benton Institute for Broadband and Society,https://www.benton.org/sites/default/files/inclusive_tech_final.pdf,United States,local,tool,community engagement,emailaddress@samplecity.gov
+Ethical Data Working Group,7,City of Boston,https://www.boston.gov/departments/analytics-team,"Boston, Massachussetts",local,program,data analytics,matthew.nk.smith@boston.gov
+Pittsburgh Equity Indicators,4,City of Pittsburgh,https://pittsburghpa.gov/equityindicators/,"Pittsburgh, Pennsylvania",local,program,data analytics,majestic.lane@pittsburghpa.gov
+Pittsburgh Principles for Autonomous Vehicle Technology,6,City of Pittsburgh,https://smartcitiesconnect.org/pittsburgh-principles-defines-expectations-and-policies-for-av-testing/,"Pittsburgh, Pennsylvania",local,policy,smart cities,
+Resilient Boston Strategy for Racial Equity,1,City of Boston,https://www.boston.gov/sites/default/files/file/document_files/2017/07/resilient_boston.pdf,"Boston, Massachussetts",local,strategy,equity,
+Ladder of Stakeholder Participation,3,City of Philadelphia; Service Design Studio,https://www.phila.gov/2019-03-26-the-story-of-us/,"Philadelphia, Pennsylvania",local,strategy,community engagement,Liana.Dragoman@Phila.gov
+Citywide Disaggregated Data Standard,4,City of Austin,https://www.austintexas.gov/department/equity-office,"Austin, Texas",local,policy,data analytics,Kellee.Coleman@austintexas.gov
+Equity Assessment Tool,7,City of Austin,http://www.austintexas.gov/edims/document.cfm?id=279626,"Austin, Texas",local,tool,equity,Kellee.Coleman@austintexas.gov
+PGH Lab,2; 9,City of Pittsburgh,https://pittsburghpa.gov/innovation-performance/pghlab/index.html,"Pittsburgh, Pennsylvania",local,program,research & development,itha.cao@pittsburghpa.gov
+Inclusive Innovation Summit,3,City of Pittsburgh,https://weinnovatepgh.net/inclusive-innovation-summit-2019/,"Pittsburgh, Pennsylvania",local,program,community engagement,itha.cao@pittsburghpa.gov
+Rec2Tech,6,City of Pittsburgh,https://pittsburghpa.gov/onepgh/documents/people/rec2tec.pdf,"Pittsburgh, Pennsylvania",local,program,digital inclusion,itha.cao@pittsburghpa.gov
+OnePGH Resilient Pittsburgh Strategy,4,City of Pittsburgh,https://pittsburghpa.gov/onepgh/,"Pittsburgh, Pennsylvania",local,strategy,equity,grant.ervin@pittsburghpa.gov
+Civic Engagement Spectrum of Methods,3,Benton Institute for Broadband & Society,https://www.benton.org/sites/default/files/inclusive_tech_final.pdf,United States,local,tool,community engagement,driedl@southbendin.gov 
 Office of Design and Delivery Equity Assessment Protocol,7,City of Austin,https://odd.austintexas.io/,"Austin, Texas",local,tool,equity,emailaddress@samplecity.gov
-Equity Consulting Advisor Group,3,City of Portland,https://www.smartcitypdx.com/news/2019/10/9/smart-city-pdx-tests-new-model-for-engaging-community-leaders-equity-experts,"Portland, Oregon",local,program,equity,emailaddress@samplecity.gov
-Community Engagement Research Project,3,City of Portland,,"Portland, Oregon",local,program,community engagement,emailaddress@samplecity.gov
-City of Portland Privacy and Information Protection Principles,5,City of Portland,https://www.smartcitypdx.com/privacy-principles,"Portland, Oregon",local,policy,data privacy,emailaddress@samplecity.gov
-Smart City PDX Priorities Framework,1; 4; 7,City of Portland,https://www.smartcitypdx.com/priorities-framework,"Portland, Oregon",local,strategy,smart cities,emailaddress@samplecity.gov
-Legal Technology Lab,5;9,University of Missouri-Kansas City School of Law,https://thelegaltechlab.com/,"Kansas City, Missouri",local,partnership,data privacy,emailaddress@samplecity.gov
-Model Data Handling Policy for Municipalities,5,University of Missouri-Kansas City; Legal Technology Laboratory,https://www.govtech.com/analytics/Cities-Partner-on-Model-Policy-for-Handling-Municipal-Data.html,"Kansas City, Missouri",local,policy,data privacy,emailaddress@samplecity.gov
+Equity Consulting Advisor Group,3,City of Portland,https://www.smartcitypdx.com/news/2019/10/9/smart-city-pdx-tests-new-model-for-engaging-community-leaders-equity-experts,"Portland, Oregon",local,program,equity,Christine.Kendrick@portlandoregon.gov
+Community Engagement Research Project,3,City of Portland,,"Portland, Oregon",local,program,community engagement,Christine.Kendrick@portlandoregon.gov
+City of Portland Privacy and Information Protection Principles,5,City of Portland,https://www.smartcitypdx.com/privacy-principles,"Portland, Oregon",local,policy,data privacy,Christine.Kendrick@portlandoregon.gov
+Smart City PDX Priorities Framework,1; 4; 7,City of Portland,https://www.smartcitypdx.com/priorities-framework,"Portland, Oregon",local,strategy,smart cities,Christine.Kendrick@portlandoregon.gov
+Legal Technology Lab,5;9,University of Missouri-Kansas City School of Law,https://thelegaltechlab.com/,"Kansas City, Missouri",local,partnership,data privacy,luppinoa@umkc.edu
+Draft Model Data Handling Policy for Municipalities,5,University of Missouri-Kansas City School of Law; Legal Technology Laboratory,https://www.govtech.com/analytics/Cities-Partner-on-Model-Policy-for-Handling-Municipal-Data.html,"Kansas City, Missouri",local,policy,data privacy,luppinoa@umkc.edu
 Broadband Ready Buildings Questionnaire,6,City of Boston,http://www.bostonplans.org/projects/development-review/article-80-design-review-broadband-ready-buildings,"Boston, Massachussetts",local,program,digital inclusion,emailaddress@samplecity.gov
 Smart City PHL Roadmap,1,City of Philadelphia,https://www.phila.gov/media/20190204121858/SmartCityPHL-Roadmap.pdf,"Philadelphia, Pennsylvania",local,strategy,smart cities,emailaddress@samplecity.gov
 Pitch & Pilot,2; 9,City of Philadelphia,https://www.phila.gov/programs/pitch-and-pilot/,"Philadelphia, Pennsylvania",local,program,research & development,emailaddress@samplecity.gov
-Innovation Team (i-Team),5,City of Austin; University of Texas at Austin Moody College of Communication,http://projects.austintexas.io/projects/bloomberg-iteam/about/overview/,"Austin, Texas",local,partnership,data privacy,emailaddress@samplecity.gov
-Evalutating Equity Data Tool,2; 4,Urban Institute,,United States,local,tool,data analytics,emailaddress@samplecity.gov
-Emerging Technology Board,1; 8,City of Kansas City,http://cityclerk.kcmo.org/LiveWeb/Documents/Document.aspx?q=B3m6jg3G5c%2bHMmNdLkJjPEmECb178EPfRbFf%2f9yv5XyqRQg%2ft1%2fOH1GNnAWVVd68,"Kansas City, Missouri",local,policy,smart cities,emailaddress@samplecity.gov
-Measure Austin,2,,https://www.measureaustin.org/,"Austin, Texas",local,partnership,data analytics,emailaddress@samplecity.gov
-Office of Neighbordhood Services,3,City of Boston,https://www.boston.gov/departments/neighborhood-services,"Boston, Massachussetts",local,partnership,community engagement,emailaddress@samplecity.gov
-Mayor's Office of Civic Engagement and Volunteer Services,3,City of Philadelphia,https://www.phila.gov/departments/mayors-office-of-civic-engagement-and-volunteer-service/,"Philadelphia, Pennsylvania",local,partnership,community engagement,emailaddress@samplecity.gov
-Array of Things Engagement Report,3,City of Chicago,https://arrayofthings.github.io/engagement-report.html,"Chicago, Illinois",local,report,community engagement,emailaddress@samplecity.gov
-Smart Work Learn Play,3,Housing Authority of the City of Austin,"https://gctc.opencommons.org/Smart_Work_Learn_Play_-_Participatory_Smart_City_Innovation_and_Digital_Inclusion_in_Public_and_Subsidized_Housing#:~:text=Smart%20Work%20Learn%20Play%2C%20initiated,of%20smart%20cities%20technologies%20are","Austin, Texas",local,program,digital inclusion,emailaddress@samplecity.gov
-OpenNorth Smart Cities Guide,5,OpenNorth,https://docs.google.com/document/d/1528rqTjzKWwk4s2xKuPf7ZJg-tLlRK8WcMZQbicoGTM/edit#,Canada,federal,strategy,smart cities,emailaddress@samplecity.gov
-PayNearMe,6,City of Philadelphia; Indego ,https://www.rideindego.com/passes/cash-program/,"Philadelphia, Pennsylvania",local,program,equity,emailaddress@samplecity.gov
-Autonomous Vehicles: Boston's Approach,6,City of Boston,https://www.boston.gov/departments/new-urban-mechanics/autonomous-vehicles-bostons-approach,"Boston, Massachussetts",local,policy,smart cities,emailaddress@samplecity.gov
-New York City Automated Decision Systems Task Force,6,City of New York City,https://www1.nyc.gov/site/adstaskforce/index.page,"New York City, New York",local,policy,smart cities,emailaddress@samplecity.gov
-Vermont Artificial Intelligence Task Force,6,State of Vermont,https://accd.vermont.gov/economic-development/artificial-intelligence-task-force,Vermont,state,policy,smart cities,emailaddress@samplecity.gov
-Shadow Report of the New York City Automated Decision System Task Force,6,AI Now Institute,https://ainowinstitute.org/ads-shadowreport-2019.pdf,"New York City, New York",local,report,smart cities,emailaddress@samplecity.gov
-Boston Facial Recognition Technology Ban,6,City of Boston,https://assets.documentcloud.org/documents/6956465/Boston-City-Council-face-surveillance-ban.pdf,"Boston, Massachussetts",local,policy,data privacy,emailaddress@samplecity.gov
-San Francisco Facial Recognition Technology Ban,6,City of San Francisco,https://sfgov.legistar.com/View.ashx?M=F&ID=7206781&GUID=38D37061-4D87-4A94-9AB3-CB113656159A,"San Francisco, California",local,policy,data privacy,emailaddress@samplecity.gov
-SNAP Online Purchahsing Pilot,6,United States Department of Agriculture,https://www.fns.usda.gov/pressrelease/2019/fns-000319,United States,federal,program,digital inclusion,emailaddress@samplecity.gov
-Equity Assessment Toolkit,7,Government Alliance on Race & Equity,https://www.racialequityalliance.org/resources/racial-equity-toolkit-opportunity-operationalize-equity/,United States,federal,tool,equity,emailaddress@samplecity.gov
-Office of Emerging Technology,8,City of San Francisco,http://www.sfpublicworks.org/OET,"San Francisco, California",local,policy,smart cities,emailaddress@samplecity.gov
-Digital Inclusion Survey,9,City of Austin; University of Texas at Austin Moody College of Communication,https://austintexas.gov/sites/default/files/files/Telecommunications/Digital_Inclusion_in_Austin_April_2_2015.pdf,"Austin, Texas",local,partnership,digital inclusion,emailaddress@samplecity.gov
-Metro21: Smart Cities Institute,9,Carnegie Mellon University; City of Pittsburgh,https://www.cmu.edu/metro21/,"Pittsburgh, Pennsylvania",local,partnership,research & development,emailaddress@samplecity.gov
-Tech Goes Home,9,,https://www.techgoeshome.org/,"Boston, Massachussetts",local,partnership,digital inclusion,emailaddress@samplecity.gov
-Digital Equity Act of 2019,9,U.S. Senator Patty Murray (WA),https://www.digitalequityact.org/,United States,federal,policy,digital inclusion,emailaddress@samplecity.gov
-5G Permitting Strategy,9,City of Los Angeles,https://www.axios.com/5g-digital-divide-19b70d34-4978-44df-a1cb-ae9222d113ef.html,"Los Angeles, California",local,strategy,digital inclusion,emailaddress@samplecity.gov
-Closing the Digital Divide,9,Federal Resereve Bank of Dallas - San Antonio Branch,https://www.dallasfed.org/~/media/documents/cd/pubs/digitaldivide.pdf,"San Antonio, Texas",local,report,digital inclusion,emailaddress@samplecity.gov
-KC Digital Drive,9,,https://www.kcdigitaldrive.org/,"Kansas City, Missouri",local,partnership,digital inclusion,emailaddress@samplecity.gov
-Community Control Over Police Surveillance,5; 6,ACLU,https://www.aclu.org/issues/privacy-technology/surveillance-technologies/community-control-over-police-surveillance,United States,federal,policy,data privacy,emailaddress@samplecity.gov
-Emerging Technology Open Working Group,7; 8,City of San Francisco,https://emergingtech.sfgov.org/sites/default/files/2019-01/ET_Report_0119Single_0.pdf,"San Francisco, California",local,policy,smart cities,emailaddress@samplecity.gov
+Innovation Team (i-Team),5,City of Austin,http://projects.austintexas.io/projects/bloomberg-iteam/about/overview/,"Austin, Texas",local,partnership,data privacy,
+Spatial Equity Data Tool,2; 4,Urban Institute,https://apps.urban.org/features/equity-data-tool,United States,local,tool,data analytics,anarayanan@urban.org
+Emerging Technology Board,1; 8,City of Kansas City,http://cityclerk.kcmo.org/LiveWeb/Documents/Document.aspx?q=B3m6jg3G5c%2bHMmNdLkJjPEmECb178EPfRbFf%2f9yv5XyqRQg%2ft1%2fOH1GNnAWVVd68,"Kansas City, Missouri",local,policy,smart cities,AJ.Herrmann@kcmo.org>
+Measure Austin,2,,https://www.measureaustin.org/,"Austin, Texas",local,partnership,data analytics,
+Office of Neighborhood Services,3,City of Boston,https://www.boston.gov/departments/neighborhood-services,"Boston, Massachussetts",local,partnership,community engagement,
+Mayor's Office of Civic Engagement and Volunteer Services,3,City of Philadelphia,https://www.phila.gov/departments/mayors-office-of-civic-engagement-and-volunteer-service/,"Philadelphia, Pennsylvania",local,partnership,community engagement,
+Array of Things Engagement Report,3,City of Chicago,https://arrayofthings.github.io/engagement-report.html,"Chicago, Illinois",local,report,community engagement,
+Smart Work Learn Play,3,Housing Authority of the City of Austin,"https://gctc.opencommons.org/Smart_Work_Learn_Play_-_Participatory_Smart_City_Innovation_and_Digital_Inclusion_in_Public_and_Subsidized_Housing#:~:text=Smart%20Work%20Learn%20Play%2C%20initiated,of%20smart%20cities%20technologies%20are","Austin, Texas",local,program,digital inclusion,
+OpenNorth Smart Cities Guide,5,OpenNorth,https://docs.google.com/document/d/1528rqTjzKWwk4s2xKuPf7ZJg-tLlRK8WcMZQbicoGTM/edit#,Canada,federal,strategy,smart cities,
+PayNearMe,6,City of Philadelphia; Indego ,https://www.rideindego.com/passes/cash-program/,"Philadelphia, Pennsylvania",local,program,equity,
+Autonomous Vehicles: Boston's Approach,6,City of Boston,https://www.boston.gov/departments/new-urban-mechanics/autonomous-vehicles-bostons-approach,"Boston, Massachussetts",local,policy,smart cities,
+New York City Automated Decision Systems Task Force,6,City of New York City,https://www1.nyc.gov/site/adstaskforce/index.page,"New York City, New York",local,policy,smart cities,
+Vermont Artificial Intelligence Task Force,6,State of Vermont,https://accd.vermont.gov/economic-development/artificial-intelligence-task-force,Vermont,state,policy,smart cities,
+Shadow Report of the New York City Automated Decision Systems Task Force,6,AI Now Institute,https://ainowinstitute.org/ads-shadowreport-2019.pdf,"New York City, New York",local,report,smart cities,
+Boston Facial Recognition Technology Ban,6,City of Boston,https://assets.documentcloud.org/documents/6956465/Boston-City-Council-face-surveillance-ban.pdf,"Boston, Massachussetts",local,policy,data privacy,
+San Francisco Facial Recognition Technology Ban,6,City of San Francisco,https://sfgov.legistar.com/View.ashx?M=F&ID=7206781&GUID=38D37061-4D87-4A94-9AB3-CB113656159A,"San Francisco, California",local,policy,data privacy,
+SNAP Online Purchasing Pilot,6,United States Department of Agriculture,https://www.fns.usda.gov/pressrelease/2019/fns-000319,United States,federal,program,digital inclusion,
+Equity Assessment Toolkit,7,Government Alliance on Race & Equity,https://www.racialequityalliance.org/resources/racial-equity-toolkit-opportunity-operationalize-equity/,United States,federal,tool,equity,
+Office of Emerging Technology,8,City of San Francisco,http://www.sfpublicworks.org/OET,"San Francisco, California",local,policy,smart cities,
+Digital Inclusion Survey,9,City of Austin; University of Texas at Austin Moody College of Communication,https://austintexas.gov/sites/default/files/files/Telecommunications/Digital_Inclusion_in_Austin_April_2_2015.pdf,"Austin, Texas",local,partnership,digital inclusion,
+Metro21: Smart Cities Institute,9,Carnegie Mellon University; City of Pittsburgh,https://www.cmu.edu/metro21/,"Pittsburgh, Pennsylvania",local,partnership,research & development,
+Tech Goes Home,9,,https://www.techgoeshome.org/,"Boston, Massachussetts",local,partnership,digital inclusion,
+Digital Equity Act of 2019,9,U.S. Senator Patty Murray (WA),https://www.digitalequityact.org/,United States,federal,policy,digital inclusion,
+5G Permitting Strategy,9,City of Los Angeles,https://www.axios.com/5g-digital-divide-19b70d34-4978-44df-a1cb-ae9222d113ef.html,"Los Angeles, California",local,strategy,digital inclusion,
+Closing the Digital Divide,9,Federal Resereve Bank of Dallas - San Antonio Branch,https://www.dallasfed.org/~/media/documents/cd/pubs/digitaldivide.pdf,"San Antonio, Texas",local,report,digital inclusion,
+KC Digital Drive,9,,https://www.kcdigitaldrive.org/,"Kansas City, Missouri",local,partnership,digital inclusion,
+Community Control Over Police Surveillance,5; 6,ACLU,https://www.aclu.org/issues/privacy-technology/surveillance-technologies/community-control-over-police-surveillance,United States,federal,policy,data privacy,
+Emerging Technology Open Working Group,7; 8,City of San Francisco,https://emergingtech.sfgov.org/sites/default/files/2019-01/ET_Report_0119Single_0.pdf,"San Francisco, California",local,policy,smart cities,
+Toward Inclusive Urban Technology,3,Benton Institute for Broadband & Society,https://www.benton.org/publications/inclusive-urban-tech,United States,federal,tool,community engagement,driedl@southbendin.gov 
+Portland Facial Recognition Technology Ban,6,City of Portland,https://www.portlandoregon.gov/auditor/article/765749,"Portland, Oregon",local,policy,data privacy,
