@@ -20,7 +20,7 @@ function handleFiles(inputFiles){
         console.log("type", file.type)
         console.log("******************************")
     }
-    if(fileList[0]["type"] != "text/csv"){
+    if(fileList[0]["type"] != "text/csv" && fileList[0]["type"] != "application/vnd.ms-excel" ){
         loaderError("File must be CSV", "upload")
         return false
     }
@@ -38,6 +38,11 @@ function handleFiles(inputFiles){
     var numberOfLines = 500;
     navigator.readLines(0, numberOfLines, function (err, index, lines, isEof, progress) {
         // Error happened
+        console.log("******************************")
+        console.log("******************************")
+        console.log("Lines object:")
+        console.log(lines)
+        
         if (err){
             loaderError("An error occured reading your CSV", "upload")
         }
