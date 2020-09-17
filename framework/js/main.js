@@ -59,14 +59,16 @@ function buildToc(section, callback){
                 if(d.contentType != "header"){
                     loadSection(d.slug, function(){})
                 }
+                if(d3.select("#isTablet").style("display") == "block"){
+                    closeTablet()
+                }
+                else if(d3.select("#isPhone").style("display") == "block"){
+                    closeBoorger()
+                }
             })
         d3.select("#toc").append("div").attr("id","tocClose")
             .on("click", function(){
-                d3.select("#toc")
-                    .transition()
-                    .ease(d3.easeBackIn.overshoot(1.7))
-                    .duration(800)
-                    .style("left", "-600px")
+                closeTablet()
             })
 
     }
@@ -122,6 +124,8 @@ function loadSection(section, callback){
                 if(isPrintPage) d3.select("body").classed("print", true)
                 else d3.select("body").classed("print", false)
 
+                if(d.hasOwnProperty("anchor")) contentEl.attr("id", d.anchor)
+
                 var contentHtml = contentEl.node().outerHTML
                 contentEl.remove()
                 return contentHtml
@@ -132,56 +136,83 @@ function loadSection(section, callback){
     callback()
     window.scrollTo(0,0);
 }
+
+function expandNode(node, forceOpen){
+    var heightSmall = d3.select(node).attr("data-heightSmall")
+    var heightLarge = d3.select(node).attr("data-heightLarge")
+    if(d3.select(node).classed("plus")){
+        d3.select(node).classed("plus", false)
+        d3.select(node).select(".expandControlText").text("less")
+        d3.select(node).select(".expandVert").transition().style("transform","rotate(90deg)")
+        d3.select(node.parentNode).select(".expandSmall").style("display","none")
+        d3.select(node.parentNode).select(".expandFull").style("display","block")
+        d3.select(node.parentNode).transition().style("height", heightLarge + "px")
+    }else{
+        if(forceOpen) return false
+        d3.select(node).classed("plus", true)
+        d3.select(node).select(".expandControlText").text("more")
+        d3.select(node).select(".expandVert").transition().style("transform","rotate(0deg)")
+        d3.select(node.parentNode).select(".expandSmall").style("display","block")
+        d3.select(node.parentNode).select(".expandFull").style("display","none")
+        d3.select(node.parentNode).transition().style("height", heightSmall + "px")
+    }
+}
+function closeBoorger(){
+    d3.select("#boorgerContainer").classed("ex", false)
+    d3.select("#boorgerTop")
+        .transition()
+        .style("transform","rotate(0deg)")
+        .style("top","3px")
+    d3.select("#boorgerBottom")
+        .transition()
+        .style("transform","rotate(0deg)")
+        .style("bottom","3px")        
+    d3.select("#toc")
+        .transition()
+        .ease(d3.easeBackOut.overshoot(1.7))
+        .duration(800)
+        .style("top", "-600px")
+}
+function openBoorger(){
+    d3.select("#boorgerContainer").classed("ex", true)
+    d3.select("#boorgerTop")
+        .transition()
+        .style("transform","rotate(45deg)")
+        .style("top","7px")
+    d3.select("#boorgerBottom")
+        .transition()
+        .style("transform","rotate(-45deg)")
+        .style("bottom","7px")   
+    d3.select("#toc")
+        .transition()
+        .ease(d3.easeBackIn.overshoot(1.7))
+        .duration(800)
+        .style("top", "51px")
+}
+function closeTablet(){
+    d3.select("#toc")
+        .transition()
+        .ease(d3.easeBackIn.overshoot(1.7))
+        .duration(800)
+        .style("left", "-800px")
+}
+function openTablet(){
+    d3.select("#toc")
+        .transition()
+        .ease(d3.easeBackOut.overshoot(1.7))
+        .duration(800)
+        .style("left", "-60px")
+}
 function initEvents(){
-    d3.selectAll(".expandControl").on("click", function(d){
-        var heightSmall = d3.select(this).attr("data-heightSmall")
-        var heightLarge = d3.select(this).attr("data-heightLarge")
-        console.log(heightSmall, heightLarge)
-        if(d3.select(this).classed("plus")){
-            d3.select(this).classed("plus", false)
-            d3.select(this).select(".expandControlText").text("less")
-            d3.select(this).select(".expandVert").transition().style("transform","rotate(90deg)")
-            d3.select(this.parentNode).select(".expandSmall").style("display","none")
-            d3.select(this.parentNode).select(".expandFull").style("display","block")
-            d3.select(this.parentNode).transition().style("height", heightLarge + "px")
-        }else{
-            d3.select(this).classed("plus", true)
-            d3.select(this).select(".expandControlText").text("more")
-            d3.select(this).select(".expandVert").transition().style("transform","rotate(0deg)")
-            d3.select(this.parentNode).select(".expandSmall").style("display","block")
-            d3.select(this.parentNode).select(".expandFull").style("display","none")
-            d3.select(this.parentNode).transition().style("height", heightSmall + "px")
-        }
-    })
+    d3.selectAll(".expandControl").on("click", function(){ expandNode(this, false) })
     d3.select("#chaptersTablet").on("click", function(){
-        d3.select("#toc")
-            .transition()
-            .ease(d3.easeBackOut.overshoot(1.7))
-            .duration(800)
-            .style("left", "-60px")
+        openTablet()
     })
     d3.select("#boorgerContainer").on("click", function(){
         if(d3.select(this).classed("ex")){
-            d3.select(this).classed("ex", false)
-            d3.select("#boorgerTop")
-                .transition()
-                .style("transform","rotate(0deg)")
-                .style("top","3px")
-            d3.select("#boorgerBottom")
-                .transition()
-                .style("transform","rotate(0deg)")
-                .style("bottom","3px")                
+            closeBoorger()
         }else{
-            d3.select(this).classed("ex", true)
-            d3.select("#boorgerTop")
-                .transition()
-                .style("transform","rotate(45deg)")
-                .style("top","7px")
-            d3.select("#boorgerBottom")
-                .transition()
-                .style("transform","rotate(-45deg)")
-                .style("bottom","7px")   
-
+            openBoorger()
         }
     })
 
@@ -189,6 +220,9 @@ function initEvents(){
         var k = d3.select(this).attr("data-footnote")
         if(d3.select(this).selectAll(".tt-container").nodes().length > 0) return false
         var tt = d3.select(this).append("div").attr("class", "tt-container")
+            .style("z-index", function(){
+                return d3.selectAll(".tt-container").nodes().length + 1
+            })
         tt.append("div")
             .html(content["footnotes"][k])
         tt.append("img")
@@ -204,6 +238,44 @@ function initEvents(){
                 d3.select(this.parentNode).remove()
             })
     })
+
+    d3.selectAll(".anchorLink.same").on("click", function(){
+        var anchorSelector = "#" + d3.select(this).attr("data-anchor"),
+            anchor = d3.select(anchorSelector),
+            offsetTop = anchor.node().offsetTop
+
+        if(d3.select(this).classed("expand")){
+            expandNode(d3.select(anchorSelector + " .expandControl").node(), true)
+        }
+
+        $('html').animate({scrollTop : offsetTop}, 1000);
+        $('body').animate({scrollTop : offsetTop}, 1000);
+    })
+
+    d3.selectAll(".sectionLink").on("click", function(){
+        var section = d3.select(this).attr("data-section")
+        loadSection(section, function(){})
+    })
+
+    d3.selectAll(".anchorLink.different").on("click", function(){
+        var anchorSelector = "#" + d3.select(this).attr("data-anchor"),
+            section = d3.select(this).attr("data-section"),
+            expand = d3.select(this).classed("expand")
+
+        loadSection(section, function(){
+            var anchor = d3.select(anchorSelector),
+            offsetTop = anchor.node().offsetTop
+
+            if(expand){
+                expandNode(d3.select(anchorSelector + " .expandControl").node(), true)
+            }
+
+            $('html').delay(200).animate({scrollTop : offsetTop}, 1000);
+            $('body').delay(200).animate({scrollTop : offsetTop}, 1000);
+        })
+
+    })
+    // anchorLink different consequences expand
 
 }
 function getTitleEl(content, section){
@@ -301,12 +373,12 @@ function getQuoteEl(content){
         .html("&ldquo;" + content.quote + "&rdquo;")
     var source = quoteEl.append("div")
         .attr("class", "quoteSource")
-    source.append("div")
-        .attr("class", "quoteSourceName")
-        .html(content.sourceName)
-    source.append("div")
-        .attr("class", "quoteSourceInfo")
-        .html(", " + content.sourceInfo)
+    
+    source
+        .html(content.sourceName + "<span class = \"quoteSourceInfo\">, " + content.sourceInfo + "</span>")
+    // source.append("div")
+    //     .attr("class", "quoteSourceInfo")
+    //     .html(", " + content.sourceInfo)
 
     return quoteEl;
 }
@@ -429,7 +501,7 @@ function getToolBoxEl(content){
             else if(d.contentType == "image"){
                 var imgHtml = "<div class = 'toolBoxImg'>"
                 imgHtml += "<img src = 'images/"  + d.content +"'>"
-                imgHtml += "<div><a href = '' target = '_blank'>Click to learn more</a></div>"
+                // imgHtml += "<div><a href = '' target = '_blank'>Click to learn more</a></div>"
                 return imgHtml
             }
         })

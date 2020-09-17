@@ -13,11 +13,11 @@ content.pages.takeaways = [
     },
     {
         "contentType" : "printParagraph",
-        "content" : "The policies and programs referenced in the guide can be found at URL here.  For help auditing your city’s data assets, please see the Urban Institute’s Spatial Equity Data Tool (URL here). "
+        "content" : "The policies and programs referenced in the guide can be found at https://apps.urban.org/features/how-to-create-equitable-technology-programs.  For help auditing your city’s data assets, please see the Urban Institute’s Spatial Equity Data Tool (https://apps.urban.org/features/equity-data-tool)."
     },
     {
         "contentType" : "printParagraph",
-        "content" : "If you have any feedback about the guide or questions about how to adapt the best practices outlined in your city, please reach out to Alena Stern at astern@urban.org. "
+        "content" : "If you have any feedback about the guide or questions about how to adapt the best practices outlined in your city, please reach out to Alena Stern at astern@urban.org."
     }    
 
 ]

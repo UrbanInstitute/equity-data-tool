@@ -1,15 +1,26 @@
 #toc{
     left: 0px;
+    top: 51px;
 }
 #tocClose, #boorgerContainer, #chaptersTablet{
     display: none;
 }
+#isTablet, #isPhone{
+    display: none;
+}
 @media(max-width: 1000px){
+    #isTablet{
+        display: block;
+    }
+    #isPhone{
+        display: none;
+    }
     #toc{
         background: white;
         z-index: 3;
         width: 400px;
         left: -600px;
+        top: 51px;
         padding-left: 100px;
     }
     #pageContainer{
@@ -70,13 +81,19 @@
 
 }
 @media(max-width: 768px){
+    #isPhone{
+        display: block;
+    }
+    #isTablet{
+        display: none;
+    }
     #page{
         width: calc(100% - 64px);
     }
     body{
         margin: 0px;
     }
-    #chaptersTablet{
+    #chaptersTablet, #tocClose{
         display: none;
     }
     .expandContainer{
@@ -85,7 +102,7 @@
         margin-left: -32px;
         width: calc(100% - 56px);
     }
-    .eyebrow{
+    .contentBlock.title .eyebrow, .eyebrow{
         font-size: 13px;
     }
     .title-linkback.full, #dblcolon{
@@ -94,8 +111,13 @@
     .contentBlock.title.intro{
         font-size: 28px;
     }
+
     .contentBlock.title.intro div span{
         font-size: 26px;
+    }
+    .contentBlock.title.question{
+        font-size: 23px;
+        margin-bottom: 20px;
     }
     .contentBlock.video.intro{
         margin-top: 50px;
@@ -127,7 +149,6 @@
         position: relative;
         top: -12px;
         display: block;
-
     }
     .quoteSourceName{
         font-size: 16px;
@@ -158,5 +179,22 @@
         bottom: 3px;
         width: 20px;
         transform: rotate(0deg);
+    }
+    #toc{
+        left: 0px !important;
+        top: -800px;
+        width: calc(100% - 40px);
+        padding-left: 20px;
+        font-size: 14px;
+    }
+}
+@media(max-width: 415px){
+    .printIcon{
+        display: block;
+        float: left;
+        height: 50px;
+    }
+    .contentBlock.title.takeaways{
+        padding-bottom: 54px;
     }
 }

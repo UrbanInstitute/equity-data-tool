@@ -67,10 +67,11 @@ content.pages.intro = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "This guide outlines <strong>nine key questions</strong> cities can ask themselves to make sure equity is intentional from the beginning of designing and implementing technology programs. It also surfaces <strong>best practices</strong> from how our case study cities and others are answering those questions."
+        "content" : "This guide outlines <strong>nine key questions</strong> cities can ask themselves to make sure equity is intentional from the beginning of designing and implementing <span class = \"anchorLink same expand\" data-anchor=\"techExpand\">technology programs</span>. It also surfaces <strong>best practices</strong> from how our case study cities and others are answering those questions."
     },
     {
         "contentType" : "expand",
+        "anchor" : "techExpand",
         "content" : {
             "title" : "technology programs",
             "small" : "We use “technology programs” to refer broadly to city uses of technology to inform or provide services to residents",
@@ -88,7 +89,7 @@ content.pages.intro = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "In this guide, equitable technology demonstrates three characteristics defined by the Urban Sustainability Directors Network:"
+        "content" : "In this guide, equitable technology demonstrates three characteristics defined by the <span class = \"anchorLink same expand\" data-anchor=\"usdn\">Urban Sustainability Directors Network</span>:"
     },
     {
         "contentType" : "unorderedList",
@@ -104,6 +105,7 @@ content.pages.intro = [
     },
     {
         "contentType" : "expand",
+        "anchor" : "usdn",
         "content" : {
             "title" : "The Urban Sustainability Directors Network",
             "small" : "The <a href = \"https://www.usdn.org/about.html\" target = \"_blank\">Urban Sustainability Directors Network (USDN)</a> consists of 200 communities across the US and Canada",

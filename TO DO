@@ -1,8 +1,15 @@
+Framework:
+- design boxnote edits
+- final screenshots
+- mobile menu
+
 Tool:
+- design boxnote edits
 - map buttons dropdowns, csv/json and baseline/data
 - style summary stats on results page and hide for N = 0
 - metas
 - samplue uploader statuses
+- fix filter page, apply filter/ applied filters/ save/ cancel
 
 - MAX_PROCESSING_TIME test, timeout error
 

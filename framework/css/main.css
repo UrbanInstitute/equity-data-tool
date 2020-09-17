@@ -2,9 +2,10 @@ body{
     font-family: Lato;
     color: #353535;
 }
-a{
+a, .anchorLink, .sectionLink{
     color: #1696d2;
     text-decoration: none;
+    cursor: pointer;
 }
 /********************************************/
 /********** TABLE OF CONTENTS ***************/
@@ -152,13 +153,13 @@ a{
     margin-bottom: 40px;
 }
 .quoteContainer{
-    width: 450px;
+    width: 100%;
     float: right;
     margin-top: 8px;
     margin-bottom: 8px;
 }
 .quoteQuote{
-    text-align: right;
+    text-align: left;
     font-size: 24px;
     font-weight: 300;
     font-style: italic;
@@ -166,21 +167,25 @@ a{
     padding-bottom: 10px;
 }
 .quoteSource{
-    float: right;
+    float: left;
     display: table;
-    padding-top: 10px;
-    border-top: 1px solid #d2d2d2;
-    text-align: right;
-    padding-left: 20px;
-}
-.quoteSourceName{
-    display: inline-block;
-    text-transform: uppercase;
+    padding-top: 20px;
+    text-align: left;
     font-weight: bold;
     color: #353535;
 }
+.quoteSource:before{
+    content: '';
+    width: 60px;
+    height: 2px;
+    background: #E88E2D;
+    position: relative;
+    top: -12px;
+    display: block;
+    margin-bottom: 6px;
+}
 .quoteSourceInfo{
-    display: inline-block;
+    font-weight: normal;
     color: #696969;
 }
 .expandContainer{
@@ -188,7 +193,7 @@ a{
     padding-left: 28px;
     padding-right: 28px;
     padding-top: 33px;
-    margin-top: 10px;
+    margin-top: 20px;
     padding-bottom: 70px;
     position: relative;  
     overflow: hidden;  
@@ -282,6 +287,12 @@ h3{
     font-weight: bold;
     font-size: 22px;
     margin-bottom: 40px;
+}
+.tbImgTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    font-style: italic;
 }
 .toolBoxSubEl.paragraph img{
     width: 100%;
@@ -379,6 +390,8 @@ h3{
     display: inline-block;
     float: right;
     cursor: pointer;
+    position: relative;
+    top: 7px;
 }
 .printIcon div{
     font-weight: normal;
@@ -470,13 +483,15 @@ table{
     padding: 0px !important;
     border: none !important;
 }
-td:nth-child(1) {  
+td:nth-child(1){  
     display: block;
     width: 300px;
     padding-top: 36px !important;
-    color: #1696d2 !important;
     font-weight: bold;
     text-align: left !important;
+}
+td:nth-child(1) a{
+    color: #1696d2 !important;
 }
 td:nth-child(6) {  
     display: block;
@@ -679,4 +694,26 @@ th:nth-child(1) .tablesorter-header-inner, th:nth-child(6) .tablesorter-header-i
     border-bottom-color: #d2d2d2;
     border-width: 11px;
     margin-left: -11px;
+}
+
+
+@media print{
+    #toc, #header-pinned{
+        display: none;
+    }
+    .contentBlock.title{
+        padding-top: 0px;
+    }
+    .expandContainer{
+        height: fit-content !important;
+    }
+    .expandFull{
+        display: block !important;
+    }
+  @page {
+    size: 210mm 297mm; /* portrait 
+    /* you can also specify margins here: */
+    margin: 15mm;   
+   /*margin-right: 45mm;  for compatibility with both A4 and Letter */
+  }
 }

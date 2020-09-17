@@ -41,32 +41,29 @@ content.pages.evidence = [
         "content": [
             {
                 "contentType" : "title",
-                "content" : "Box on Spatial Equity Data Tool"
-            },
-            {
-                "contentType" : "image",
-                "content" : "toolScreenEvidence.png"
-            },            
+                "content" : "Spatial Equity Data Tool: Measuring Disparities in Your City"
+            },           
             {
                 "contentType" : "paragraph",
-                "content" : "The Urban Institute’s <span class = \"frameworkHighliight\">Spatial Equity Data Tool</span> can help cities audit their data assets. The tool compares the distribution of data points against a baseline dataset to identify which neighborhoods and demographic groups are underrepresented and overrepresented. When we used the tool to analyze the distribution of 311 requests between 2014 and 2019 in New Orleans, Louisiana, we found that the Huntington Park and Algiers neighborhoods were highly underrepresented in 311 requests (shown in orange) relative to their share of the city’s total population, while some areas around the Warehouse District and French Quarter were highly overrepresented (shown in blue). Overall, white residents are 4.4 percent overrepresented in the neighborhoods where 311 requests are located and Black residents are 3.9 percent underrepresented. This audit could help target outreach to underrepresented neighborhoods and raise key questions about how to equitably use 311 requests to inform service delivery."
+                "content" : "The Urban Institute’s <span class = \"frameworkHighliight\"><a href = \"https://apps.urban.org/features/equity-data-tool\" target = \"_blank\">Spatial Equity Data Tool</a></span> can help cities audit their data assets. The tool compares the distribution of data points against a baseline dataset to identify which neighborhoods and demographic groups are underrepresented and overrepresented.<img src = \"images/nolaMap.png\"> When we used the tool to analyze the distribution of 311 requests between 2014 and 2019 in New Orleans, Louisiana, <a href = \"https://apps.urban.org/features/equity-data-tool/#three11\" target = \"_blank\">we found</a> that the Huntington Park and Algiers neighborhoods were highly underrepresented in 311 requests (shown in orange) relative to their share of the city’s total population, while some areas around the Warehouse District and French Quarter were highly overrepresented (shown in blue). Overall, white residents are 4.4 percent overrepresented in the neighborhoods where 311 requests are located and Black residents are 3.9 percent underrepresented. This audit could help target outreach to underrepresented neighborhoods and raise key questions about how to equitably use 311 request data to inform service delivery."
             }
         ]
     },
     {
         "contentType" : "paragraph",
-        "content" : "Some cities are regularly auditing data sources for bias and supplementing the data to create a more accurate picture (box 2). Another approach is using community-informed data collection methods to boost response rates in underrepresented groups. To improve response rates and accuracy of a recent survey, the city of Austin’s innovation team connected with community members through <span class = \"frameworkHighliight\"><a href = \"https://www.measureaustin.org/\" target = \"_blank\">Measure Austin</a></span> to shape questionnaire language and hire interviewers that reflected the focus community."
+        "content" : "Some cities are regularly auditing data sources for bias and supplementing the data to create a more accurate picture (<span class = \"anchorLink same\" data-anchor=\"streetcaster\">see our case study</span>). Another approach is using community-informed data collection methods to boost response rates in underrepresented groups. To improve response rates and accuracy of a recent survey, the city of Austin’s innovation team connected with community members through <span class = \"frameworkHighliight\"><a href = \"https://www.measureaustin.org/\" target = \"_blank\">Measure Austin</a></span> to shape questionnaire language and hire interviewers that reflected the focus community."
     },
     {
         "contentType" : "paragraph",
-        "content" : "Once a city identifies a potential evidence-based solution to a community problem, it should invest in research and development (R&D) to test the technology and gather evidence of impact in a pilot setting. This R&D enables cities to confirm through rigorous testing that a technology achieves the intended benefits without causing unintended harms—such as privacy violations or inaccessibility for certain groups—before implementation. Respondents stressed that the requirements for R&D should be particularly stringent for technology programs that impact vulnerable populations."
+        "content" : "Once a city identifies a potential evidence-based solution to a community problem, it should invest in research and development (R&D) to test the technology and gather evidence of impact in a pilot setting. This R&D enables cities to confirm through rigorous testing that a technology achieves the intended benefits without causing <span class = \"sectionLink\" data-section=\"consequences\">unintended harms</span>—such as privacy violations or inaccessibility for certain groups—before implementation. Respondents stressed that the requirements for R&D should be particularly stringent for technology programs that impact vulnerable populations."
     },
     {
         "contentType" : "paragraph",
-        "content" : "Cities have identified several ways to conduct R&D around equitable technology. <span class = \"frameworkHighliight\">Philadelphia’s <a href = \"https://www.phila.gov/programs/pitch-and-pilot/\" target = \"_blank\">Pitch & Pilot</a> program</span> has companies submit ideas that leverage technology to address a community challenge, such as reducing waste. <span class = \"frameworkHighliight\">Boston’s <a href = \"https://www.boston.gov/innovation-and-technology/beta-blocks\" target = \"_blank\">Beta Blocks Action Research</a> project</span> facilitates community-driven technology innovation, and <span class = \"frameworkHighliight\">Pittsburgh’s <a href = \"https://pittsburghpa.gov/innovation-performance/pghlab/index.html\" target = \"_blank\">PGH Lab</a></span> provides an incubator for technology startups developing new products to address resident challenges."
+        "content" : "Cities have identified several ways to conduct R&D around equitable technology. <span class = \"frameworkHighliight\">Philadelphia’s <a href = \"https://www.phila.gov/programs/pitch-and-pilot/\" target = \"_blank\">Pitch & Pilot</a> program</span> has companies submit ideas that leverage technology to address a community challenge, such as reducing waste. <span class = \"frameworkHighliight\">Boston’s <a href = \"https://www.boston.gov/innovation-and-technology/beta-blocks\" target = \"_blank\">Beta Blocks Action Research</a> project</span> facilitates community-driven technology innovation, and <span class = \"frameworkHighliight\">Pittsburgh’s <a href = \"https://pittsburghpa.gov/innovation-performance/pghlab/index.html\" target = \"_blank\">PGH Lab</a></span> provides an incubator for technology startups <span class = \"anchorLink same expand\" data-anchor=\"randd\">developing new products</span> to address resident challenges."
     },
     {
         "contentType" : "expand",
+        "anchor" : "randd",
         "content" : {
             "title" : "Technology R&D Approaches",
             "small" : "Philadelphia: As part of the SmartCityPHL initiative, the Pitch & Pilot program has opened four different “<a href = \"https://www.phila.gov/documents/pitch-and-pilot-calls-for-solutions/\" target = \"_blank\">calls for solutions</a>”",
@@ -85,6 +82,7 @@ content.pages.evidence = [
     },      
     {
         "contentType" : "caseStudy",
+        "anchor" : "streetcaster",
         "content": [
             {
                 "contentType" : "title",

@@ -23,11 +23,17 @@ for row in cr:
         c = row[i]
         # print(head[i])
         if(i == 0):
-            tableString += "<td><a href = \"" + row[hMap["Link"]] + "\" target=\"_blank\">" + c + "</a></td>"
+            if row[hMap["Link"]] != "":
+                tableString += "<td><a href = \"" + row[hMap["Link"]] + "\" target=\"_blank\">" + c + "</a></td>"
+            else:
+                tableString += "<td>" + c + "</td>"
         elif(i == hMap["Link"]):
             continue
         elif(i == hMap["Contact"]):
-            tableString += "<td><a href = \"mailto:" + c + "\" target=\"_blank\">" + c + "</a></td>"
+            if c != "":
+                tableString += "<td><a href = \"mailto:" + c + "\" target=\"_blank\">" + c + "</a></td>"
+            else:
+                tableString += "<td>" + c + "</td>"
         elif (i == hMap["Referenced In"]):
             qs = c.split(";")
             tableString += "<td>"

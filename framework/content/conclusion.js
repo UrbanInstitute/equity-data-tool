@@ -9,7 +9,7 @@ content.pages.conclusion = [
     },
     {
         "contentType" : "paragraph",
-        "content" : "For more information on the policies and programs referenced in this guide, please see our resources page.  For help auditing your city’s data assets, please see the Urban Institute’s <span class = \"frameworkHighliight\">Spatial Equity Data Tool</span>."
+        "content" : "For more information on the policies and programs referenced in this guide, please see our resources page.  For help auditing your city’s data assets, please see the Urban Institute’s <span class = \"frameworkHighliight\"><a href = \"https://apps.urban.org/features/equity-data-tool\" target = \"_blank\">Spatial Equity Data Tool</a></span>."
     },
     {
         "contentType" : "paragraph",
