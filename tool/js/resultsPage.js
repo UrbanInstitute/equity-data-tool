@@ -93,7 +93,14 @@ function populateDownloadLinks(links){
     d3.select(".barLink.csv").attr("href", links.demographic_bias_csv)
 
 }
+d3.select(".barButton.barImg").on("click", function(){
+    var clone = d3.selectAll("#barChart .barDot.active").data().slice(0)
 
+    drawBarChart(clone, "static", function(){
+        saveSvgAsPng(document
+            .getElementById("barChartImageSvg"), "spatial_equity_demographic_distribution", {backgroundColor: "#fff", "encoderOptions" : 1, "scale": 4 });
+    })
+})
 
 d3.select(".resultsNav.startOverResults").on("click", startOver)
 

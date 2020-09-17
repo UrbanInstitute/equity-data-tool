@@ -1,36 +1,23 @@
-Framework:
-- scroll in doc links
-- other section links
-- footnote tooltips
-- Language around "box n"
-- mobile
-- expand boxes for 3 stacked list thing
-
-
-
-
 Tool:
-- weight "none selected" counts as text
 - map buttons dropdowns, csv/json and baseline/data
 - style summary stats on results page and hide for N = 0
-- 
-
+- metas
+- samplue uploader statuses
 
 - MAX_PROCESSING_TIME test, timeout error
-- ny wifi data throwing error
 
-- loader error, non csv file
+- loader don't show multiple file error
 - loader error, max file size error
-- fix bar category text
+- push url hash on section, sample d
 
 - post-error navigation
 
 - what to do fyeor sample data display page if user changes preset val?
+- clear data on start over
 - barchart radios income/wealth tooltip
 - export data map json
-- export chart img
-- bar sig diff legend
 - bar dot transition interrupt size
+- if either lat/lon are blank, disable run button
 
 
 
@@ -41,9 +28,3 @@ Tool:
 - x browser
 
 
-Nice to haves
-- Permalink to results page
-- slick transitions for modals http://youronlyfrienddc.com/
-
-
-https://theurbaninstitute.slack.com/archives/GVAPJQV8W/p1595339525014500

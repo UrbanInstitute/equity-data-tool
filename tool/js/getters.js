@@ -58,22 +58,28 @@ function getCurrentFilter(){
     // return ["foo"]
 }
 
-function getBarWidth(){
-    var margin = getBarMargins();
-    return 800 - margin.left - margin.right;
+function getBarWidth(containerType){
+    var margin = getBarMargins(containerType);
+    var h;
+    if(containerType == "static") w = 800
+    else w = 800
+    return w - margin.left - margin.right;
 }
-function getBarHeight(data){
-    var margin = getBarMargins();
+function getBarHeight(containerType, data){
+    var margin = getBarMargins(containerType);
     // var h = (typeof(data) == "undefined") ? 500 : (500/21) * data.length
+    var h;
+    if(containerType == "static") h = 700;
+    else h = 700
     
     var scalar = (typeof(data) == "undefined") ? 19 : data.length
     return ((700 - margin.top - margin.bottom)/19) * scalar;
 }
-function getBarMargins(){
-    return {top: 50, right: 60, bottom: 0, left: 60}
+function getBarMargins(containerType){
+    return (containerType == "dynamic") ? {top: 50, right: 60, bottom: 0, left: 60} : {top: 50, right: 30, bottom: 20, left: 20}
 }
-function getBarX(data){
-    var width = getBarWidth()
+function getBarX(containerType, data){
+    var width = getBarWidth(containerType)
     var max = d3.max(data, function(d){ return d.diff_data_city; }),
         min = Math.abs(d3.min(data, function(d){ return d.diff_data_city; })),
         bound = Math.max(max, min)
@@ -82,9 +88,9 @@ function getBarX(data){
         .domain([-bound, bound]);
 
 }
-function getBarY(data){
-    var height = getBarHeight(data)
-    var margin = getBarMargins();
+function getBarY(containerType, data){
+    var height = getBarHeight(containerType, data)
+    var margin = getBarMargins(containerType);
     return d3.scaleBand()
         .rangeRound([height,0])
         .padding(.2)

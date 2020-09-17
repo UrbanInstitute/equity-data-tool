@@ -42,7 +42,7 @@ function handleFiles(inputFiles){
         console.log("******************************")
         console.log("Lines object:")
         console.log(lines)
-        
+
         if (err){
             loaderError("An error occured reading your CSV", "upload")
         }
@@ -86,6 +86,9 @@ function handleFiles(inputFiles){
 
 }
 function selectSampleData(sample){
+    d3.selectAll(".sampleRect").classed("active", false)
+    d3.select(".sampleRect." + sample).classed("active", true)
+
     var colNames = sampleParams[sample]["colNames"]
     var csvCols = sampleParams[sample]["csvCols"]
     var defaultParams = sampleParams[sample]["defaultParams"]
@@ -152,7 +155,7 @@ function selectSampleData(sample){
 
 }
 function deselectSampleData(){
-//TO DO deselect the sample file
+
     d3.selectAll(".sampleRect").classed("active", false)
 
     d3.selectAll(".sampleDetails").classed("active",false)
@@ -175,7 +178,6 @@ function guessLatLon(colNames, l){
             }
         }
     }
-//TO DO if guess update paramaters w lat/lon
 
     return ""
 }
@@ -208,7 +210,6 @@ function populateDropdowns(colNames){
     d3.select("#weightSelect").selectAll("option").remove()
     d3.select("#columnSelect").selectAll("option").remove()
 
-//TO DO if both lat/lon are blank, disable run button
     $('#latSelect')
         .append(colOptionsLat.join(""))
         .selectmenu({
@@ -244,6 +245,7 @@ function populateDropdowns(colNames){
         .append(colOptions.join(""))
         .selectmenu({
             change: function(event, d){
+                console.log(d, d.item.value)
                 if(getCSVProperties()["cols"][d.item.value] != "number" && d.item.value != ""){
                     loaderError("Oops&hellip; looks like our tool isn&rsquo;t reading this column as numeric. Please choose another column or see our <a href = \"\">FAQ</a> for help.","weight")
                 }else{
@@ -393,8 +395,7 @@ inputElement.addEventListener("change", handleFiles, false);
 
 
 d3.selectAll(".sampleRect").on("click", function(){
-    d3.selectAll(".sampleRect").classed("active", false)
-    d3.select(this).classed("active", true)
+
 
     var sample;
     if(d3.select(this).classed("three11")) sample = "three11"
@@ -541,5 +542,3 @@ d3.selectAll(".runButton").on("click", function(){
 })
 
 
-// showResults();   
-// throwError(["pts_not_in_us_city","data_readin_error"]);

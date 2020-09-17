@@ -66,6 +66,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id = "isShort"></div>
 <div id = "paramsData"></div>
 <div id = "csvProperties"></div>
+<div id = "barChartImage"></div>
 
 <!-- START HEADER -->
 <div id="header-pinned" class="no-touch">
@@ -179,6 +180,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class = "mapButton mapImg baseline">Download baseline map view (.png)</div>
               <div class = "mapButton mapImg data">Download data map view (.png)</div>
               <a class = "mapLink csv" href = ""><div class = "mapButton csv active">Download map data (.csv)</div></a>
+              <a class = "mapLink json" href = ""><div class = "mapButton csv active">Download map data (.geojson)</div></a>
             </div>
         </div>
     </div>
@@ -649,15 +651,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="js/vendor/file-wrapper.min.js"></script>
 <script src="js/vendor/line-navigator.min.js"></script> 
+<script src="js/vendor/saveSvgAsPng.js"></script> 
 
 <script src="js/globals.js"></script>
 <script src="js/header.js"></script>
 <script src="js/getters.js"></script>
 <script src="js/mapDownload.js"></script>
 <script src="js/barchart.js"></script>
+<script src="js/loaderEvents.js"></script>
 <script src="js/loader.js"></script>
 <script src="js/callAPI.js"></script>
-<script src="js/loaderEvents.js"></script>
 <script src="js/resultsPage.js"></script>
 
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>

@@ -183,9 +183,77 @@ function showLoaderSection(loaderSection){
 
 }
 
+function selectSampleData(sample){
+    d3.selectAll(".sampleRect").classed("active", false)
+    d3.select(".sampleRect." + sample).classed("active", true)
+
+    var colNames = sampleParams[sample]["colNames"]
+    var csvCols = sampleParams[sample]["csvCols"]
+    var defaultParams = sampleParams[sample]["defaultParams"]
+    var fileSize = 1000
+
+    const p = Object.assign({}, defaultParams)
+
+    d3.select("#paramsData").datum(p)
+
+    d3.selectAll(".sampleDetails").classed("active",true)
+
+    populateDropdowns(colNames)
+    d3.select("#csvProperties").datum({"size": fileSize, "cols": csvCols })
+    d3.selectAll(".hideOption.sample").classed("hiddenSection",false)
+
+    d3.selectAll(".sampleCard").classed("inactive", true)
+    d3.select(".sampleCard." + sample).classed("inactive", false)
+
+    d3.selectAll(".sampleDownload").style("display","none")
+    d3.selectAll(".sampleDownload." + sample).style("display","block")
+    // sampleDeetHeader
+
+    d3.selectAll(".deetRow").remove()
+    var sampleParamType;
+
+    if(defaultParams.baseline != "pop"){
+        sampleParamType = "baseline"
+        var deetRow = d3.select(".sampleDeetContainer").append("div")
+            .attr("class", "deetRow")
+        deetRow.append("img")
+            .attr("src", "images/check.png")
+        deetRow.append("div")
+            .text(getBaselineText(defaultParams.baseline))
+    }
+    else if(defaultParams.weight != ""){
+        sampleParamType = "weight column"
+        var deetRow = d3.select(".sampleDeetContainer").append("div")
+            .attr("class", "deetRow")
+        deetRow.append("img")
+            .attr("src", "images/check.png")
+        deetRow.append("div")
+            .text(defaultParams.weight)
+    }
+    else if(defaultParams.filters.length > 0){
+        sampleParamType = (defaultParams.filters.length == 1) ? "filter" : "filters"
+
+        var deetRow = d3.select(".sampleDeetContainer")
+            .selectAll(".deetRow")
+            .data(defaultParams.filters)
+            .enter()
+            .append("div")
+            .attr("class", "deetRow")
+        deetRow.append("img")
+            .attr("src", "images/check.png")
+        deetRow.append("div")
+            .text(function(d){
+                return getTagText(d)
+            })        
+    }
+
+    d3.select(".sampleDeetHeader span").text(sampleParamType)
+
+    
+
+}
 
 function startOver(){
-//TO DO clear file, this is causing bugs!
   d3.selectAll(".hideOption").classed("hiddenSection",true)
   d3.select("#dropboxClick").text("Choose a file")
   d3.select("#dropboxDrag").text("or drag it here").classed("filename", false)
@@ -199,8 +267,36 @@ function startOver(){
   showLoaderSection("home")
 }
 function init(){
-  const p = Object.assign({}, defaultParams)
-  d3.select("#paramsData").datum(p)
-  showLoaderSection("home")
+  var slug = window.location.hash.replace("#","")
+
+  if(slug == "three11" || slug == "hotspots" || slug == "bike"){
+    setDatasetType("sample")
+    const p = Object.assign({}, sampleParams[slug]["defaultParams"])
+    d3.select("#paramsData").datum(p)
+
+    showLoaderSection("sample")
+    selectSampleData(slug)
+  }else{
+    const p = Object.assign({}, defaultParams)
+    d3.select("#paramsData").datum(p)
+
+    if(slug == ""){
+      setDatasetType("user")
+      showLoaderSection("home")
+    }
+    else if(slug == "user"){
+      setDatasetType("user")
+      showLoaderSection("user")
+    }
+    else if(slug == "sample"){
+      setDatasetType("sample")
+      showLoaderSection("sample")
+    }
+    else{
+      setDatasetType("user")
+      showLoaderSection("home")
+    }
+  }
+
 }
 init()

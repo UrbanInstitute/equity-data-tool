@@ -177,3 +177,11 @@
     font-family: Lato;
     font-size: 13px;
 }
+#printBarLegend text{
+    font-size: 14px;
+    font-weight: bold;
+}
+#barChartImage{
+    position: fixed;
+    top: -3000px;
+}
