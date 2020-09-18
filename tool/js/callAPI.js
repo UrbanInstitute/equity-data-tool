@@ -120,7 +120,12 @@ function runAnalysis() {
                         var percentComplete = d3.format(".1%")(evt.loaded / evt.total);
                         //Do something with upload progress here
                         // console.log(percentComplete)
-                        d3.select("#statusLoading").html("Uploading " + humanFileSize(evt.loaded,true) + " of " + humanFileSize(evt.total, true) + " (" + percentComplete + ")")
+                        if(getDatasetType() == "user"){
+                            d3.select("#statusLoading").html("Uploading " + humanFileSize(evt.loaded,true) + " of " + humanFileSize(evt.total, true) + " (" + percentComplete + ")")    
+                        }else{
+                            d3.select("#statusLoading").html("Retrieving sample data&hellip;")
+                        }
+                        
                     }
                }, false);
                return xhr;
@@ -194,6 +199,15 @@ function showErrorScreen(errorKeys){
         .html("Oops! Something went wrong. <span class = 'errorLight'>For help, see our <a href = 'spatial_equity_faq.pdf' target = '_blank'> FAQ</a>.</span>")
     
     d3.selectAll(".loadingError").style("display","block")
+    if(errorKeys.indexOf("all_rows_filtered") != -1){
+        d3.select("#errorNavBackFilter").style("display", "inline-block")
+    }else{
+        d3.select("#errorNavBackFilter").style("display", "none")
+    }
+    d3.select("#errorNavBack div span").text(function(){
+        return (getDatasetType() == "user") ? " upload your data" : " select sample data"
+    })
+
     d3.selectAll(".loadingErrorRow").remove()
     d3.selectAll(".loadingImg").style("opacity", 0)
     d3.selectAll(".loaderSectionStatus").style("display","none")
@@ -213,6 +227,7 @@ function showErrorScreen(errorKeys){
         .html(function(d){
             return errorMessages[d]
         })
+
 
 }
 

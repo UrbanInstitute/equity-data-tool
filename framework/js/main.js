@@ -169,9 +169,9 @@ function closeBoorger(){
         .style("bottom","3px")        
     d3.select("#toc")
         .transition()
-        .ease(d3.easeBackOut.overshoot(1.7))
+        // .ease(d3.easeBackOut.overshoot(1.7))
         .duration(800)
-        .style("top", "-600px")
+        .style("top", "-1100px")
 }
 function openBoorger(){
     d3.select("#boorgerContainer").classed("ex", true)
@@ -185,7 +185,7 @@ function openBoorger(){
         .style("bottom","7px")   
     d3.select("#toc")
         .transition()
-        .ease(d3.easeBackIn.overshoot(1.7))
+        // .ease(d3.easeBackIn.overshoot(1.7))
         .duration(800)
         .style("top", "51px")
 }

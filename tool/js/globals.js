@@ -233,6 +233,7 @@ var errorMessages = {
   "df_conversion_to_gdf_failed" : "A mapping error occurred. Latitude and longitude should use the  WGS 84 coordinate reference system (ie EPSG:4326)",
   "filter_coltypes_mismatch" : "A column you selected to filter your data contains a mix of values (e.g., text, number, and/or date).",
   "form-data-parameter-validation-failed" : "An unknown error occurred.",
+  "latlon_cols_not_in_data" : "The provided latitude-longitude coordinates do not fall within a US city. Latitude and longitude should use the WGS 84 coordinate reference system (ie EPSG:4326)",
   "pts_not_in_us_city" : "The provided latitude-longitude coordinates do not fall within a US city. Latitude and longitude should use the WGS 84 coordinate reference system (ie EPSG:4326)",
   "sjoin_failed" : "A mapping error occurred. Latitude and longitude should use the Coordinate Reference System CRS 4326.",
   "weight_coltypes_mismatch" : "The selected weight column contains non-numeric values."

@@ -1,33 +1,33 @@
 Framework:
 - design boxnote edits
+- gh link in credits
+
 
 Tool:
+
+
+- Ajjit
+    - city, state in tt
+    - geojson s3...
+    - fileids for sample data
+
+
+- fix if upload new file
 - design boxnote edits
-- api to prod?
-- global vars for api urls etc
-- if defaults opts on sample data, call thingy directly
-- map buttons dropdowns, csv/json and baseline/data
+- api to prod
 - style summary stats on results page and hide for N = 0
-- metas
-- sample uploader statuses
-- fix filter page, apply filter/ applied filters/ save/ cancel
+- sample data uploader statuses
 
 - MAX_PROCESSING_TIME test, timeout error
-
-- loader don't show multiple file error
-- loader error, max file size error
-- push url hash on section, sample d
 
 - post-error navigation
 
 - what to do fyeor sample data display page if user changes preset val?
-- clear data on start over
-- barchart radios income/wealth tooltip
 - export data map json
 - bar dot transition interrupt size
-- if either lat/lon are blank, disable run button
 
 - dau link in footer
+- gh link in footer
 
 - mmmoooobhiiile
 

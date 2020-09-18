@@ -1,5 +1,8 @@
 function handleFiles(inputFiles){
     var fileList;
+    const p = Object.assign({}, defaultParams)
+    d3.select("#paramsData").datum(p)
+
     if(inputFiles.type == "change"){
         //click to upload
         fileList = this.files
@@ -18,6 +21,7 @@ function handleFiles(inputFiles){
         loaderError("Your file is not a CSV.", "upload")
         return false
     }
+    
     globalFile = fileList[0]
 
     var fileSize = fileList[0]["size"]
@@ -69,17 +73,16 @@ function handleFiles(inputFiles){
         }
         d3.select("#csvProperties").datum({"size": fileSize, "cols": csvCols })
 
-        const p = Object.assign({}, defaultParams)
-        d3.select("#paramsData").datum(p)
-
+        hideLoaderError()
         populateDropdowns(colNames)
         d3.selectAll(".hideOption.user").classed("hiddenSection",false)
-        hideLoaderError()
+        
     });
 
 }
 
 function deselectSampleData(){
+    window.location.hash = "#" + "sample"
 
     d3.selectAll(".sampleRect").classed("active", false)
 
@@ -89,7 +92,9 @@ function deselectSampleData(){
 
     d3.select("#sampleDefaultText").classed("hiddenSection", false)
 
-    d3.selectAll(".sampleCard").classed("inactive", false)
+    d3.selectAll(".sampleCard").classed("inactive", false).classed("singleCard", false)
+
+    d3.selectAll(".sampleDownload").style("display","none")
 
 }
 function guessLatLon(colNames, l){
@@ -126,8 +131,12 @@ function populateDropdowns(colNames){
     var guessedLat = guessLatLon(colNames, "lat")
     var guessedLon = guessLatLon(colNames, "lon")
 
-    var colOptionsLat = [],
-        colOptionsLon = [],
+    // console.log(guessedLon, guessedLat)
+    if(guessedLat == "" || guessedLon == "") d3.selectAll(".runButton").classed("disabled", true)
+    else d3.selectAll(".runButton").classed("disabled", false)
+
+    var colOptionsLat = ["<option value = '' selected>none selected</option>"],
+        colOptionsLon = ["<option value = '' selected>none selected</option>"],
         colOptions = ["<option value = '' selected>none selected</option>"]
     for (i = 0; i < colNames.length; i++) {
         var latSelected = (colNames[i] == guessedLat) ? "selected" : "",
@@ -143,64 +152,73 @@ function populateDropdowns(colNames){
     d3.select("#weightSelect").selectAll("option").remove()
     d3.select("#columnSelect").selectAll("option").remove()
 
-    $('#latSelect')
-        .append(colOptionsLat.join(""))
-        .selectmenu({
-            change: function(event, d){
-                if(getCSVProperties()["cols"][d.item.value] == "number"){
-                    updateParams("lat_column",d.item.value)
-                    if(getCSVProperties()["cols"][ d3.select("#lonSelect").node().value ] == "number"){
+    if(d3.select("#columnSelect-button").node() != null){
+        $("#latSelect").append(colOptionsLat.join("")).selectmenu("refresh")
+        $("#lonSelect").append(colOptionsLon.join("")).selectmenu("refresh")
+        $("#weightSelect").append(colOptions.join("")).selectmenu("refresh")
+        $("#columnSelect").append(colOptions.join("")).selectmenu("refresh")
+    }
+    else{
+    // console.log(colOptionsLat)
+        $('#latSelect')
+            .append(colOptionsLat.join(""))
+            .selectmenu({
+                change: function(event, d){
+                    if(getCSVProperties()["cols"][d.item.value] == "number"){
+                        updateParams("lat_column",d.item.value)
+                        if(getCSVProperties()["cols"][ d3.select("#lonSelect").node().value ] == "number"){
+                            hideLoaderError()
+                        }
+                    }else{
+                        loaderError("Lat/lon cols need to be numeric", "latlon")
+                    }
+                }
+            });
+
+        $('#lonSelect')
+            .append(colOptionsLon.join(""))
+            .selectmenu({
+                change: function(event, d){
+                    if(getCSVProperties()["cols"][d.item.value] == "number"){
+                        updateParams("lon_column",d.item.value)
+                        if(getCSVProperties()["cols"][ d3.select("#latSelect").node().value ] == "number"){
+                            hideLoaderError()
+                        }
+                    }else{
+                        loaderError("Lat/lon cols need to be numeric", "latlon")
+                    }
+                }
+            });
+
+
+        $('#weightSelect')
+            .append(colOptions.join(""))
+            .selectmenu({
+                change: function(event, d){
+                    if(getCSVProperties()["cols"][d.item.value] != "number" && d.item.value != ""){
+                        d3.select("#weightSelected").html("none selected")
+                        loaderError("Oops&hellip; looks like our tool isn’t reading this column as numeric. Please choose another column or see our  <a href = \"spatial_equity_faq.pdf\" target = \"_blank\">FAQ</a> for help.","weight")
+                    }else{
+                        d3.select("#weightSelected").html(function(){
+                          return (d.item.value == "") ? "none selected" : d.item.value
+                        })
                         hideLoaderError()
                     }
-                }else{
-                    loaderError("Lat/lon cols need to be numeric", "latlon")
+
                 }
-            }
-        });
-
-    $('#lonSelect')
-        .append(colOptionsLon.join(""))
-        .selectmenu({
-            change: function(event, d){
-                if(getCSVProperties()["cols"][d.item.value] == "number"){
-                    updateParams("lon_column",d.item.value)
-                    if(getCSVProperties()["cols"][ d3.select("#latSelect").node().value ] == "number"){
-                        hideLoaderError()
-                    }
-                }else{
-                    loaderError("Lat/lon cols need to be numeric", "latlon")
+            });
+            
+        $('#columnSelect')
+            .append(colOptions.join(""))
+            .selectmenu({
+                change: function(event, d){
+                    var col = d.item.value
+                    var filterType = getCSVProperties()["cols"][col]
+                    checkValidFilter("columnSelect", col)
+                    showFilterOptions(filterType)
                 }
-            }
-        });
-
-
-    $('#weightSelect')
-        .append(colOptions.join(""))
-        .selectmenu({
-            change: function(event, d){
-                if(getCSVProperties()["cols"][d.item.value] != "number" && d.item.value != ""){
-                    d3.select("#weightSelected").html("none selected")
-                    loaderError("Oops&hellip; looks like our tool isn’t reading this column as numeric. Please choose another column or see our  <a href = \"spatial_equity_faq.pdf\" target = \"_blank\">FAQ</a> for help.","weight")
-                }else{
-                    d3.select("#weightSelected").html(function(){
-                      return (d.item.value == "") ? "none selected" : d.item.value
-                    })
-                    hideLoaderError()
-                }
-
-            }
-        });
-        
-    $('#columnSelect')
-        .append(colOptions.join(""))
-        .selectmenu({
-            change: function(event, d){
-                var col = d.item.value
-                var filterType = getCSVProperties()["cols"][col]
-                checkValidFilter("columnSelect", col)
-                showFilterOptions(filterType)
-            }
-        });
+            });
+    }
 
     d3.select(".uploadLatLonContainer").classed("hidden", false)
 
@@ -428,22 +446,58 @@ d3.selectAll(".baselineRow").on("click", function(){
 
 d3.select(".saveButton.weight").on("click", function(){
     updateParams("weight", getWeight())
-    showLoaderSection(getDatasetType())    
-})
-d3.select(".saveButton.baseline").on("click", function(){
-    updateParams("baseline", getBaseline())
+    if(getDatasetType() == "sample"){
+        updateSampleParams("weight", getWeight())
+    }
     showLoaderSection(getDatasetType())    
 })
 d3.select(".saveButton.filter").on("click", function(){
     var filters = []
-
     filters = filters.concat(d3.selectAll(".filterTag.visible").data())
     updateParams("filters", filters)
+    
+    if(getDatasetType() == "sample"){
+        updateSampleParams("filters", getWeight())
+    }
+
 
     showLoaderSection(getDatasetType())    
 })
 
-
+d3.select("#errorNavBack")
+    .on("mouseover", function(){
+        d3.select(this).select("img").attr("src", "images/backArrowBold.png")
+    })
+    .on("mouseout", function(){
+      d3.select(this).select("img").attr("src", "images/backArrow.png")  
+    })
+    .on("click", function(){
+        d3.select(".loaderSection.loading .loaderHeader")
+            .html("Sit tight! We’re analyzing your data.")
+        showLoaderSection(getDatasetType())
+    })
+d3.select("#errorNavBackFilter")
+    .on("mouseover", function(){
+        d3.select(this).select("img").attr("src", "images/backArrowBold.png")
+    })
+    .on("mouseout", function(){
+      d3.select(this).select("img").attr("src", "images/backArrow.png")  
+    })
+    .on("click", function(){
+        d3.select(".loaderSection.loading .loaderHeader")
+            .html("Sit tight! We’re analyzing your data.")
+        showLoaderSection("filters")
+    })
+d3.select("#errorStartOver")
+    .on("mouseover", function(){
+        d3.select(this).select("img").attr("src", "images/startOverBlueBold.png")
+    })
+    .on("mouseout", function(){
+      d3.select(this).select("img").attr("src", "images/startOverBlue.png")  
+    })
+    .on("click", function(){
+        startOver()
+    })
 
 //click ALL cancel buttons
 d3.selectAll(".cancelButton").on("click", function(){

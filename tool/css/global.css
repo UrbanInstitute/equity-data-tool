@@ -7,6 +7,10 @@ body, svg{
 }
 a{
     color: #1696d2;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
 }
 select{
     display: none;
@@ -129,7 +133,7 @@ footer {
     bottom: 0;
     overflow: hidden;
     height:auto;
-    z-index: 10;
+    z-index: 999;
 
 }
 

@@ -662,6 +662,14 @@ input[type=date]{
 .sampleCard{
     display: inline-block;
     float: left;
+    width: 260px;
+}
+.sampleCard.singleCard{
+    margin-right: 0px !important;
+    /*margin-left: 64px;*/
+}
+.sampleCard.three11.singleCard{
+    margin-left: 64px;
 }
 .sampleCard.inactive{
     display: none;
@@ -725,16 +733,21 @@ input[type=date]{
     position: relative;
     font-weight: bold;
     text-decoration: underline;
+    padding-bottom: 2px;
+    display: none;
 }
 .sampleDetails{
     display: none;
 }
 .sampleDetails.active{
-    display: inline-block;
-    top: -3px;
+    display: block;
     position: relative;
+    float: left;
+    clear: both;
+    margin-top: 64px;
+    margin-bottom: 34px;
 }
-.sampleDeetHeader{
+.sampleDeetHeader, .appliedDeetHeader{
     font-weight: bold;
     font-size: 22px;
     margin-bottom: 25px;
@@ -755,8 +768,57 @@ input[type=date]{
     font-style: italic;
     margin-top: -14px;
 }
+#sampleDownloadContainer{
+    clear: both;
+    width: fit-content;
+    margin: 0 auto;
+    padding-top: 18px;
+}
+.appliedDeetHeader{
+    margin-top: 60px;
+    display: none;
+}
+.appRow{
+    margin-bottom: 20px;
+}
+.appRow img{
+    float: left;
+    display: inline-block;
+    width: 21px;
+    margin-right: 10px;
+    position: relative;
+    top: 1px;
+}
+.deetSubHed, .appSubHed{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.deetText{
+    width: fit-content;
+    padding-left: 35px;
+}
+.strikethrough{
+    display: block;
+    background: #000;
+    height: 1px;
+    position: relative;
+    top: -9px;
+    left: -43px;
+    width: calc(100% + 53px);
+}
 
-
+.deetRow.none .strikethrough{
+    top: 3px;
+    left: -10px;
+    width: calc(100% + 20px);
+}
+.deetRow.none .deetText{
+    padding-left: 0px;
+}
+.strikethrough.hidden{
+    display: none;
+}
 /********************************************/
 /************ LOADING SCREEN ****************/
 /********************************************/
@@ -811,4 +873,39 @@ input[type=date]{
     display: block;
     margin-bottom: 50px;
     width: fit-content;
+}
+#errorNavContainer{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.errorNavComponent{
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+}
+.errorNavComponent img{
+    height: 30px;
+    display: inline-block;
+}
+.errorNavComponent div{
+    display: inline-block;
+    color: #1696d2;
+    font-weight: 500;
+    font-size: 21px;
+    position: relative;
+    top: -8px;
+}
+.errorNavComponent:hover div{
+    font-weight: 700;
+}
+#errorNavBack, #errorNavBackFilter{
+    margin-right: 40px;
+}
+#errorNavBack img, #errorNavBackFilter img{
+    margin-right: 5px;
+}
+#errorStartOver img{
+    margin-left: 5px;
 }

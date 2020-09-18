@@ -107,7 +107,8 @@ function getSampleDatasetId(){
     else return ""
 }
 function getSampleDatasetSlug(){
-    if (d3.select(".sampleRect.active").classed("three11"))return "three11"
+    if(d3.select(".sampleRect.active").node() == null) return ""
+    else if (d3.select(".sampleRect.active").classed("three11"))return "three11"
     else if (d3.select(".sampleRect.active").classed("hotspots")) return "hotspots"
     else if (d3.select(".sampleRect.active").classed("bike")) return "bike"
     else return ""

@@ -145,7 +145,7 @@
         content: '';
         width: 50px;
         height: 2px;
-        background: #1696d2;
+        background: #E88E2D;
         position: relative;
         top: -12px;
         display: block;
@@ -182,7 +182,7 @@
     }
     #toc{
         left: 0px !important;
-        top: -800px;
+        top: -1200px;
         width: calc(100% - 40px);
         padding-left: 20px;
         font-size: 14px;

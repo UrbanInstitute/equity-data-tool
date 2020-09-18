@@ -33,7 +33,7 @@ function loaderError(error, errorType){
   if(errorType == "upload"){
     d3.selectAll(".hideOption").classed("hiddenSection",true)
     // return false;
-    d3.select(".user.runButton").classed("disabled", true)
+    d3.selectAll(".user.runButton").classed("disabled", true)
   }
   if(errorType == "upload" || errorType == "latlon"){
     d3.select("#uploadErrors").style("display","block")  
@@ -41,7 +41,7 @@ function loaderError(error, errorType){
       .select(".errorText")
       .html(error)
     // return false;
-    d3.select(".user.runButton").classed("disabled", true)
+    d3.selectAll(".user.runButton").classed("disabled", true)
   }
   if(errorType == "weight"){
     d3.select(".saveButton.weight").classed("disabled", true)
@@ -51,12 +51,11 @@ function loaderError(error, errorType){
       .html(error)
     // return false;
   }
-  
 }
 function hideLoaderError(errorType){
   if(errorType != "weight"){
     d3.select("#uploadErrors").style("display","none")
-    d3.select(".user.runButton").classed("disabled", false)
+    d3.selectAll(".user.runButton").classed("disabled", false)
   }
 
   d3.select("#weightError").style("display","none")
@@ -177,14 +176,26 @@ function showLoaderSection(loaderSection){
   else if(loaderSection == "baseline"){
     setLoaderBaseline(params.baseline)
   }
+  
   d3.selectAll(".loaderSection").classed("active", false)
+  
+  if(loaderSection == "user"){
+    window.location.hash = "#" + loaderSection
+  }
+  else if(loaderSection == "sample"){
+    var slug = (getSampleDatasetSlug() == "") ? "sample" : getSampleDatasetSlug()
+    if(slug == "sample") d3.selectAll(".sampleDownload").style("display","none")
+    window.location.hash = "#" + slug
+  }else{
+    window.location.hash = ""
+  }
+
   if(loaderSection != "home"){
     d3.select("#loaderContainer").style("display", "block")
     d3.select(".loaderSection." + loaderSection).classed("active", true)
     $('html, body').animate({ scrollTop: 0 }, 1200);
     d3.select(".loaderHome").style("opacity",0)
   }else if(loaderSection == "sample"){
-
   }
   else{
     d3.select("#loaderContainer").style("display", "none")
@@ -194,8 +205,11 @@ function showLoaderSection(loaderSection){
 }
 
 function selectSampleData(sample){
+    window.location.hash = "#" + sample
+
     d3.selectAll(".sampleRect").classed("active", false)
     d3.select(".sampleRect." + sample).classed("active", true)
+    d3.select(".sampleCard." + sample).classed("active", true).classed("singleCard", true)
     d3.select("#sampleDefaultText").classed("hiddenSection", true)
 
     var colNames = sampleParams[sample]["colNames"]
@@ -219,70 +233,98 @@ function selectSampleData(sample){
     d3.selectAll(".sampleDownload").style("display","none")
     d3.selectAll(".sampleDownload." + sample).style("display","block")
 
-    d3.selectAll(".deetRow").remove()
-    var sampleParamType;
+    d3.selectAll(".deetEl").remove()
+    d3.selectAll(".appEl").remove()
+    d3.select(".appliedDeetHeader").style("display", "none")
 
-    if(defaultParams.baseline != "pop"){
-        sampleParamType = "baseline"
+
+    var currentParams = getParams()
+
+    if(defaultParams.weight != ""){
+        d3.select(".sampleDeetContainer").append("div")
+            .attr("class", "deetSubHed deetEl")
+            .text("Weighted by:")
         var deetRow = d3.select(".sampleDeetContainer").append("div")
-            .attr("class", "deetRow")
+            .attr("class", "deetRow weight deetEl")
         deetRow.append("img")
             .attr("src", "images/check.png")
         deetRow.append("div")
-            .text(getBaselineText(defaultParams.baseline))
-    }
-    else if(defaultParams.weight != ""){
-        sampleParamType = "weight column"
-        var deetRow = d3.select(".sampleDeetContainer").append("div")
-            .attr("class", "deetRow")
-        deetRow.append("img")
-            .attr("src", "images/check.png")
-        deetRow.append("div")
+            .attr("class", "deetText")
             .text(defaultParams.weight)
+            .append("div")
+            .attr("class", "strikethrough deetEl hidden")
     }
     else if(defaultParams.filters.length > 0){
-        sampleParamType = (defaultParams.filters.length == 1) ? "filter" : "filters"
-
+        sampleParamType = (defaultParams.filters.length == 1) ? "Filter:" : "Filters:"
+        d3.select(".sampleDeetContainer").append("div")
+            .attr("class", "deetSubHed deetEl")
+            .text(sampleParamType)
         var deetRow = d3.select(".sampleDeetContainer")
             .selectAll(".deetRow")
             .data(defaultParams.filters)
             .enter()
             .append("div")
-            .attr("class", "deetRow")
+            .attr("class", "deetRow filter deetEl")
         deetRow.append("img")
             .attr("src", "images/check.png")
         deetRow.append("div")
             .text(function(d){
                 return getTagText(d)
-            })        
-    }else{
-        sampleParamType = "weight column"
-        var deetRow = d3.select(".sampleDeetContainer").append("div")
-            .attr("class", "deetRow none")
-        // deetRow.append("img")
-        //     .attr("src", "images/check.png")
+            })     
         deetRow.append("div")
+            .attr("class", "strikethrough deetEl hidden")   
+    }else{
+        var deetRow = d3.select(".sampleDeetContainer").append("div")
+            .attr("class", "deetRow none deetEl")
+
+        deetRow.append("div")
+            .attr("class", "deetText")
             .text("None")
+            .append("div")
+            .attr("class", "strikethrough deetEl hidden")
     }
+}
+function updateSampleParams(paramType){
+  d3.selectAll(".appEl").remove()
 
-    // d3.select(".sampleDeetHeader span").text(sampleParamType)
+  var currentP = getParams(),
+      sampleP = sampleParams[getSampleDatasetSlug()]["defaultParams"]
+  console.log(currentP, sampleP)
 
-    
+  if(d3.select(".deetRow.none").node() != null){
+    console.log(currentP, currentP.filters, currentP.filters.length)
+    if(currentP.weight != "" || currentP.filters.length > 0){
+      d3.select(".deetRow.none .strikethrough").classed("hidden",false)
+    }else{
+      d3.select(".deetRow.none .strikethrough").classed("hidden",true)
+    }
+  }
 
+  if(paramType == "weight"){
+    if(currentP.weight != sampleP.weight){
+      if(d3.select(".deetRow.weight").node() != null) d3.select(".deetRow.weight .strikethrough").classed("hidden",false)
+      d3.select(".appliedDeetHeader").style("display", "block")
+      
+      d3.select(".appliedDeetContainer").append("div")
+          .attr("class", "appSubHed appEl")
+          .text("Weighted by:")
+
+      var appRow = d3.select(".appliedDeetContainer").append("div")
+          .attr("class", "appRow weight appEl")
+      appRow.append("img")
+          .attr("src", "images/check.png")
+      appRow.append("div")
+          .text(function(){
+            return (currentP.weight == "") ? "None" : currentP.weight
+          })
+    }else{
+      if(d3.select(".deetRow.weight").node() != null) d3.select(".deetRow.weight .strikethrough").classed("hidden",true)
+      d3.select(".appliedDeetHeader").style("display", "none")
+    }
+  }
 }
 
 function startOver(){
-  // d3.selectAll(".hideOption").classed("hiddenSection",true)
-  // d3.select("#dropboxClick").text("Choose a file")
-  // d3.select("#dropboxDrag").text("or drag it here").classed("filename", false)
-  // setLoaderBaseline("pop")
-  // populateDropdowns([])
-
-  // deselectSampleData()
-
-  // const p = Object.assign({}, defaultParams)
-  // d3.select("#paramsData").datum(p)
-  // showLoaderSection("home")
   window.location = "index.html"
 }
 function init(){
