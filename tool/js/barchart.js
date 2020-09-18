@@ -12,7 +12,7 @@ function drawBarChart(data, containerType, callback){
     var containerSelector = (containerType == "dynamic") ? "#barChart" : "#barChartImage"
     d3.selectAll(containerSelector + " svg").remove()
 
-    var padder = (containerType == "dynamic") ? 0 : 80;
+    var padder = (containerType == "dynamic") ? 40 : 80;
     var svg = d3.select(containerSelector).append("svg")
         .attr("id", containerSelector.replace("#","") + "Svg")
         .attr("width", width + margin.left + margin.right)

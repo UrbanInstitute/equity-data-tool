@@ -104,7 +104,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class = "resultsContainer wrapper">
     <div id = "resultsNav">
-      <div class = "resultsNav faq"><a href = "" target = "_blank">FAQ</a></div>
+      <div class = "resultsNav faq"><a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a></div>
       <div class = "resultsNav startOverResults">Start over</div>
       <div id = "advancedTextOverlayNav">Advanced options <img src = "images/menuArrowNav.png"></div>
       <select id = "advancedOptionsHeader" class = "resultsNav">
@@ -176,11 +176,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </div>
             <div id = "mapButtonContainer">
-              <div class = "mapButton mapImg diff active">Download map view (.png)</div>
-              <div class = "mapButton mapImg baseline">Download baseline map view (.png)</div>
-              <div class = "mapButton mapImg data">Download data map view (.png)</div>
-              <a class = "mapLink csv" href = ""><div class = "mapButton csv active">Download map data (.csv)</div></a>
-              <a class = "mapLink json" href = ""><div class = "mapButton csv active">Download map data (.geojson)</div></a>
+
+              <div id = "mapDataButtonOverlay">Download map data<img src = "images/menuArrow.png"></div>
+              <select id = "mapDataButton">
+                  <option id = "mapDataCsv" value = "csv">CSV</option>
+                  <option id = "mapDataGeojson" value = "geojson">GEOJSON</option>
+              </select>
+
+              <div class = "mapButton mapImg diff active mapDownloadComponent">Download map image (.PNG)</div>
+
+              <div id = "mapImageButtonOverlay" class = "mapDownloadComponent compare">Download map image (.PNG)<img src = "images/menuArrow.png"></div>
+              <select id = "mapImageButton" class = "mapDownloadComponent compare">
+                  <option value = "yourdata">Map of your data</option>
+                  <option value = "baseline">Baseline map</option>
+              </select>
+
             </div>
         </div>
     </div>
@@ -195,24 +205,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div id = "barCategories">
             <div class = "resultsCopy bars">Choose demographic categories to see which groups are over- and underrepresented in your data</div>
             <div class = "barCategoryRow race active" data-category="race">
-                <span class = "barCategoryCheck active">&check;</span><div class = "barCategoryLabel">Race</div>
+                <span class = "barCategoryCheck active">&check;</span><div class = "barCategoryLabel">Race/ethnicity</div>
                 <div class = "barCategoryDescription">Asian<span></span>Black<span></span>Latinx<span></span>White<span></span>All other races and ethnicities</div>
             </div>
             <div class = "barCategoryRow income active" data-category="income">
                 <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Income/wealth</div>
-                <div class = "barCategoryDescription">Residents living under the poverty line<span></span>Residents living under 200% of the poverty line<span></span>Cost burdened households<span></span>Unemployed residents</div>
+                <div class = "barCategoryDescription">Low-income residents<span></span>Extremely low–income residents<span></span>Cost-burdened renter households<i id = "tt-icon-cost">?</i><span></span>Unemployed residents</div>
             </div>
             <div class = "barCategoryRow education active" data-category="education">
                 <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Education</div>
-                <div class = "barCategoryDescription">Residents with a Bachelor’s degree<span></span>Residents with less than a High School diploma</div>
+                <div class = "barCategoryDescription">Residents with a bachelor’s degree<span></span>Residents with less than a high school diploma</div>
             </div>
             <div class = "barCategoryRow age active" data-category="age">
                 <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Age</div>
-                <div class = "barCategoryDescription">Seniors (65+)<span></span>Children (under 18)</div>
+                <div class = "barCategoryDescription">Seniors (65+)<span></span>Children (< 18)</div>
             </div>
             <div class = "barCategoryRow other active" data-category="other">
                 <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Other demographics</div>
-                <div class = "barCategoryDescription">Renters<span></span>Veterans<span></span>Residents with a dissability<span></span>Uninsured residents<span></span>Households with limited English proficiency<span></span>Households without broadband Internet access</div>
+                <div class = "barCategoryDescription">Renters<span></span>Veterans<span></span>Residents with a disability<span></span>Uninsured residents<span></span>Households without Internet access<span></span>Households with limited English proficiency</div>
             </div>
         </div>
 
@@ -223,8 +233,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <div class = "overunder over">Overrepresented</div>
             <div id = "barButtonContainer">
-              <div class = "barButton barImg active">Download bar image (.png)</div>
-              <a class = "barLink csv" href = ""><div class = "barButton csv active">Download bar data (.csv)</div></a>
+              <div class = "barButton barImg active">Download chart image (.PNG)</div>
+              <a class = "barLink csv" href = ""><div class = "barButton csv active">Download chart data (.CSV)</div></a>
             </div>
         </div>
 
@@ -236,13 +246,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class = "loaderHome">
     <img class = "buildings loader" src = "images/buildings.png">
     <h2 class = "loaderHeader">Spatial Equity Data Tool</h2>
-    <h3 class = "loaderSubHeader">Measuring Spatial Disparities in Your City</h3>
+    <h3 class = "loaderSubHeader">Measuring Disparities in Your City</h3>
 
     <p>How can cities ensure that resources are equitably distributed to all residents? We created this data tool to help city officials, community organizations, and residents quickly assess spatial and demographic disparities in their cities.</p>
 
     <p><em>Are wi-fi hotspots unevenly located in your city? Do all residents have equitable access to bike share stations? Does your dataset accurately reflect your city’s population? What groups or neighborhoods are underrepresented?</em></p>
 
-    <p>This tool can reveal biases in the datasets policymakers use to make decisions or illustrate disparities in how resources are distributed throughout the city. Check out our case studies to see what this tool can do, try a sample dataset, or upload your own data.</p>
+    <p>This tool can reveal biases in the datasets policymakers use to make decisions or illustrate disparities in how resources are distributed throughout the city. Check out our sample datasets or upload your own data.</p>
 
     <div id = "homeButtonRow">
         <div id = "sampleButton" class = "button blue sample">Use sample data</div>
@@ -268,13 +278,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <img src = "images/startOver.png">
             </div>
             <h2 class = "loaderHeader">Use sample data</h2>
-            <p><em>You can filter or weight this sample data set by choosing an advanced option or run the analysis with our preset options.</em></p>
+            <p id = "sampleDefaultText"><em>These are examples of city-level datasets that can be evaluated with the tool. Choose a dataset to explore how the tool works or download the data to see what a compatible file looks like.</em></p>
+            <p class = "hiddenSection hideOption sample"><em>You can filter or weight this sample dataset by choosing an advanced option or run the analysis with our preset options. </em></p>
+
+
+            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
 
             <div id = "sampleCardContainer">
                 <div class = "sampleCard hotspots">
                     <div class = "sampleRect red hotspots draw-border">
                         <div class = "sampleName sampleInner">Public wi-fi hotspots</div>
-                        <div class = "sampleCity sampleInner">Washington, DC</div>
+                        <div class = "sampleCity sampleInner">New York, NY</div>
                         <img class = "sampleImg sampleInner wifi" src = "images/sample-hotspots.png">
                     </div>
                 </div>
@@ -293,11 +307,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                 </div>
                 <div class = "sampleDetails">
-                  <div class = "sampleDeetHeader">Preset <span></span>:</div>
+                  <div class = "sampleDeetHeader">Preset advanced options</div>
                   <div class = "sampleDeetContainer"></div>
-                  <a href = "" class = "sampleDownload hotspots">Download the data</a>
-                  <a href = "" class = "sampleDownload three11">Download the data</a>
-                  <a href = "" class = "sampleDownload bike">Download the data</a>
+                  <div class = "appliedDeetHeader">Your applied advanced options</div>
+                  <div class = "appliedDeetContainer"></div>
+                  <a href = "https://***REMOVED***.s3.amazonaws.com/reference-data/sample-data/NYC_Wi-Fi_Hotspot_Locations_Map.csv" class = "sampleDownload hotspots">Download the data</a>
+                  <a href = "https://***REMOVED***.s3.amazonaws.com/reference-data/sample-data/3iz8-nghx.csv" class = "sampleDownload three11">Download the data</a>
+                  <a href = "https://***REMOVED***.s3.amazonaws.com/reference-data/sample-data/mn_nice_ride_stations.csv" class = "sampleDownload bike">Download the data</a>
                 </div>                
             </div>
             <div id = "sampleButtonContainer" class = "hiddenSection hideOption sample">
@@ -325,8 +341,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div>Start over</div>
                 <img src = "images/startOver.png">
             </div>
-            <h2 class = "loaderHeader">Upload my data</h2>
-            <p><em>Upload a CSV of geographic point data to see how well your dataset represents your city’s population.</em></p>
+            <h2 class = "loaderHeader">Upload your data</h2>
+            <p><em>Upload a CSV of geographic point data to see how well your dataset represents your city’s population. </em></p>
+            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
             <div id = "uploadInstructionContainer">
                 <div id = "dropbox">
                     <div id = "innerDropbox">
@@ -340,9 +357,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <h3 class = "loaderHeader">Instructions</h3>
                     <div class = "instructionRow"><img src = "images/check.png"><span>Your CSV must have unique column headers.</span></div>
                     <div class = "instructionRow"><img src = "images/check.png"><span>Two columns must correspond to longitude and latitude.</span></div>
-                    <div class = "instructionRow"><img src = "images/check.png"><span>Your file size must not exceed 2GB.</span></div>
+                    <div class = "instructionRow"><img src = "images/check.png"><span>Your file size must not exceed 2GB</span></div>
 
-                    <div class = "instructionNote"><strong>Note:</strong> <em>The tool can only analyze data for US cities and for one city at a time. If your file contains data from multiple cities, only the most frequently appearing city in the data will be analyzed.</em></div>
+                    <div class = "instructionNote"><strong>Note:</strong> <em>The tool can only analyze data for US cities and for one city at a time. If your file contains data from multiple cities, only the city most frequently appearing in the data will be analyzed.</em></div>
                 </div>
             </div>
             <div id = "uploadErrors">
@@ -385,13 +402,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <img src = "images/startOver.png">
             </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Filter data</span></h2>
-            <p>Use filters to focus on the data you want to see. For help with these advanced options, see our <a>Frequently Asked Questions.</a></p>
+            <p>Choose a column to filter by and the tool will detect which values—text, numbers, or dates—are in that column. The filters will allow you to focus on data you want to use and hide data you don’t. Columns with both text and numbers will be treated as text fields.</a></p>
+
+            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
 
             <div id = "filterColumnContainer">
                 <div id = "filterControls">
                     <div id = "columnSelectContainer">
                         <h3 class = "loaderHeader">Choose a column to filter by</h3>
                         <select id = "columnSelect"></select>
+                        <div class = "loaderNote filters string small">The values in this column look like text. If they’re not, you may need to reformat this column.</div>
+                        <div class = "loaderNote filters number small">The values in this column look like numbers. If they’re not, you may need to reformat this column.</div>
+                        <div class = "loaderNote filters date small">The values in this column look like dates. If they’re not, you may need to reformat this column.</div>
                     </div>
 
                     <div class = "filterContainer number">
@@ -403,7 +425,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <option value = "==">=</option>
                             <option value = "!=">&ne;</option>
                         </select>
-                        <input id = "numericSelect" type="number">
+                        <input id = "numericSelect" type="number" placeholder = "Enter value">
                     </div>
 
                     <div class = "filterContainer string">
@@ -411,8 +433,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <option value = "==">=</option>
                             <option value = "!=">&ne;</option>
                         </select>
-                        <input id = "textSelect">
-                        <div class = "loaderNote text">List one or more values separated by commas (e.g., elementary,middle). The values are case-sensitive and must match the data exactly.</div>
+                        <input id = "textSelect" placeholder = "Enter value(s)">
+                        <div class = "loaderNote filters string">List one or more values separated by commas (e.g., elementary,middle). The values are case-sensitive and must match the data exactly.</div>
+
                     </div>
 
                     <div class = "filterContainer date">
@@ -436,11 +459,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <span>Date range</span>
                         </div>
                     </div>
+                    <div id = "addButton" class = "disabled">apply filter</div>
                 </div>
 
                 <div id = "filterListContainer">
-                    <div id = "addButton" class = "disabled">+ add another filter</div>
-                    <diiv id = "filterList">
+                  <div id = "appliedHeader" >Applied filters</div>
+                    <div id = "filterList">
                     </diiv>
 
                 </div>
@@ -465,11 +489,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Weight data</span></h2>
             <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of public parks, if you choose “square footage” as your weight column, higher-square-footage parks will be given more weight in assessing representativeness.</em></p>
-            <p><em>For help using this tool, see our <a href = "">FAQ</a>.</em></p>
-
-            <div id = "weightMenuContainer">
-                <h3 class = "loaderHeader">Choose a weight column</h3>
-                <select id = "weightSelect"></select>
+            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <div id = "weightContainer">
+              <div id = "weightMenuContainer">
+                  <h3 class = "loaderHeader">Choose a weight column</h3>
+                  <select id = "weightSelect"></select>
+              </div>
+              <div id = "weightShowContainer">
+                  <h3 class = "loaderHeader">Selected weight</h3>
+                  <div id = "weightSelected">none selected</div>
+              </div>
             </div>
 
             <div id = "weightError">
@@ -485,73 +514,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         </div>
 <!-- END LOADER WEIGHT CARD -->
-
-<!-- START LOADER BASELINE CARD -->
-        <div class = "loaderSection baseline">
-            <div class = "baseline advanced backButton">
-                <img src = "images/backArrow.png">
-                <div>Back</div>
-            </div>
-            <div class = "startOver">
-                <div>Start over</div>
-                <img src = "images/startOver.png">
-            </div>
-            <h2 class = "loaderHeader">Advanced options: <span class = "weak">Set baseline</span></h2>
-            <p><em>The tool compares your dataset with your city’s total population, but you can choose a different baseline for comparison. For help using this tool, see our <a href = "">FAQ</a>.</em>
-            <div id = "baselineColumnContainer">
-                <div id = "baselineOptions">
-                    <h3 class = "loaderHeader">Set your baseline</h3>
-                    <div class = "baselineRow active pop" data-baseline="pop">
-                        <div class = "baselineRadio">
-                            <img class = "radio large checked active" src = "images/checkedRadio.png">
-                            <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
-                        </div>
-                        <div class = "baselineText">Total population</div>
-                    </div>
-                    <div class = "baselineRow under_poverty_line" data-baseline="under_poverty_line">
-                        <div class = "baselineRadio">
-                            <img class = "radio large checked" src = "images/checkedRadio.png">
-                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
-                        </div>                        
-                        <div class = "baselineText">Low-income population</div>
-                    </div>
-                    <div class = "baselineRow nointernet" data-baseline="nointernet">
-                        <div class = "baselineRadio">
-                            <img class = "radio large checked" src = "images/checkedRadio.png">
-                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
-                        </div>    
-                        <div class = "baselineText">Population of households without broadband Internet access</div>
-                    </div>
-                    <div class = "baselineRow foreignborn" data-baseline="foreignborn">
-                        <div class = "baselineRadio">
-                            <img class = "radio large checked" src = "images/checkedRadio.png">
-                            <img class = "radio large unchecked active" src = "images/uncheckedRadio.png">
-                        </div>
-                        <div class = "baselineText">Foreign-born population</div>
-                    </div>
-                </div>
-
-                <div id = "baselineInstructions">
-                    <h3 class = "loaderHeader">The tool will display the following:</h3>
-                    <div class = "baselineInstructionRow">
-                        <img src = "images/map-icon.png">
-                        <div>The geographic distribution of your data compared with the city&rsquo;s <span class="inlineBaselineText">total population</span></div>
-                    </div>
-                    <div class = "baselineInstructionRow">
-                        <img src = "images/bar-icon.png">
-                        <div>The demographic distribution of your data compared with the city&rsquo;s <span class="inlineBaselineText">total population</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class = "advancedButtonRow">
-                <div class = "button white cancelButton baseline">Cancel</div>
-                <div class = "button blue saveButton baseline">Save</div>
-            </div>
-        </div>
-<!-- END LOADER BASELINE CARD -->
-
-
 
 <!-- START LOADING SCREEN  CARD -->
         <div class = "loaderSection loading">
@@ -594,21 +556,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
                     <h5>ABOUT</h5>
-                    <a href = "" target = "_blank">
-                      <div class = "button clear footer readResearchButton">FREQUENTLY ASKED QUESTIONS</div>
+                    <a href = "spatial_equity_faq.pdf" target = "_blank">
+                      <div class = "button clear footer readResearchButton">FAQ</div>
                     </a>
-                    <a href = "" target = "_blank">
+                    <a href = "spatial_equity_technical_appendix.pdf" target = "_blank">
                       <div class = "button clear footer readResearchButton">TECHNICAL APPENDIX</div>
                     </a>
-                    <a href = "" target = "_blank">
-                      <div class = "button clear footer readResearchButton">LINK TO FRAMEWORK TBD</div>
+                    <a href = "https://apps.urban.org/features/how-to-create-equitable-technology-programs" target = "_blank">
+                      <div class = "button clear footer readResearchButton">READ THE RESEARCH</div>
                     </a>
-                    <p>
-                    We use “Hispanic” to be consistent with terminology used by the American Community Survey, but recognize that this term may not be the preferred identifier for many. We remain committed to employing inclusive language whenever possible.</p>
+                    <a href = "" target = "_blank">
+                      <div class = "button clear footer readResearchButton">CASE STUDY</div>
+                    </a>
+                    <p>This tool uses data from the five-year (2014–18) American Community Survey to assess spatial and demographic disparities in your data. Once a user uploads data, the tool geocodes the dataset to a US city and compares the distribution of the uploaded data with the distribution of baseline variables from the ACS. For more information about the specific methodology and variables used, please see the technical appendix.</p>
+                    <p>For the demographic disparity chart, we use `Latinx` to refer to people of Latino or Hispanic origin as asked by the Census. We recognize that this gender-neutral term may not be the preferred identifier for many, but we use it to remain inclusive of gender non-conforming and non-binary people.</p>
+                    <p>This tool is part of a larger project to <a href = "https://www.urban.org/policy-centers/research-action-lab/projects/accelerating-innovation-inclusion" target = "_blank">help cities more equitably use data and technology</a>. Through 40 interviews and a roundtable with city leaders, we identified key questions cities should ask to center equity in technology programs and best practices to answer those questions, which we have documented in <a href = "https://apps.urban.org/features/how-to-create-equitable-technology-programs" target = "_blank"><em>Creating Equitable Technology Programs: A Guide for Cities</em></a>. Our research identified the <a href = "https://www.urban.org/urban-wire/make-smart-cities-more-inclusive-leaders-need-better-tools-and-data" target = "_blank">need for resources</a> to facilitate regular and rigorous examination of the representativeness of data powering city decisionmaking and the distribution of technology, and other, programs. That need was a driving force behind this tool.</p>
 
-                    <p>
-                    For help using this tool or for guidance designing and implementing equitable technology programs, contact <a href = "mailto:anarayanan@urban.org">anarayanan@urban.org</a>.
-                    </p>
+                    <p>For help using this tool or for guidance designing and implementing equitable technology programs, contact  <a href = "mailto:anarayanan@urban.org">anarayanan@urban.org</a>.</p>
                    
                     <h5>Project credits</h5>
                     <div class="urbanstatement">This feature was supported by a grant from the Mastercard Impact Fund, in collaboration with the <a href = "https://www.mastercardcenter.org/" target = "_blank">Mastercard Center for Inclusive Growth</a>. We are grateful to them and to all our funders, who make it possible for Urban to advance its mission. The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of our experts. More information on our funding principles is available <a href = "https://www.urban.org/support" target = "_blank">here</a>. Read our terms of service <a href = "https://www.urban.org/terms-service" target = "_blank">here</a>.</div>
@@ -627,8 +591,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                     <h3 class="job">Writing</h3>
                     Serena Lei
-
-
 
                     <div class="credits"> <a href="" target="_blank">View this project on GitHub.</a></div>
 

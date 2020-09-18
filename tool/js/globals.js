@@ -171,7 +171,7 @@ const sampleParams = {
         "defaultParams" : {
           "filters": [],
           "weight": "",
-          "baseline": "no_internet",
+          "baseline": "pop",
           "lat_column": "Latitude",
           "lon_column": "Longitude"
         }
@@ -226,13 +226,13 @@ var errorMessages = {
   "processing_time_out" : "An unknown error occurred.",
   "upload" : "An unknown error occurred.",
   "all_rows_filtered" : "This combination of filters removes all rows from your data.",
-  "data_readin_error" : "The data file could not be read. Files should use UTF-8, or iso-8859-1 encoding.",
-  "df_conversion_to_gdf_failed" : "A mapping error occurred. Latitude and longitude should use the Coordinate Reference System CRS 4326.",
-  "filter_coltypes_mismatch" : "One of the columns you selected to filter your data contains a mix of values (e.g., text, number, and/or date).",
-  "form-data-parameter-validation-failed" : "",
-  "pts_not_in_us_city" : "The provided latitude/longitude coordinates do not fall within a US city. Latitude and longitude should use the Coordinate Reference System CRS 4326.",
+  "data_readin_error" : "The data file could not be read. Files should use utf-8, utf-16, or iso-8859-1 encoding. ",
+  "df_conversion_to_gdf_failed" : "A mapping error occurred. Latitude and longitude should use the  WGS 84 coordinate reference system (ie EPSG:4326)",
+  "filter_coltypes_mismatch" : "A column you selected to filter your data contains a mix of values (e.g., text, number, and/or date).",
+  "form-data-parameter-validation-failed" : "An unknown error occurred.",
+  "pts_not_in_us_city" : "The provided latitude-longitude coordinates do not fall within a US city. Latitude and longitude should use the WGS 84 coordinate reference system (ie EPSG:4326)",
   "sjoin_failed" : "A mapping error occurred. Latitude and longitude should use the Coordinate Reference System CRS 4326.",
-  "weight_coltypes_mismatch" : "The weighted column contains non-numeric values."
+  "weight_coltypes_mismatch" : "The selected weight column contains non-numeric values."
 }
 
 

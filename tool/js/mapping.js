@@ -4,7 +4,7 @@ var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb"
 d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".controlContainer").classed("active", false)
     d3.select(this).classed("active", true)
-    d3.selectAll(".mapButton.mapImg").classed("active", false)
+    d3.selectAll(".mapDownloadComponent").classed("active", false)
 
 
 
@@ -17,7 +17,8 @@ d3.selectAll(".controlContainer").on("click", function(){
             .transition()
             .duration(1000)
             .style("margin-top", "0px")
-        d3.select(".mapButton.mapImg.diff").classed("active", true)     
+        d3.selectAll(".mapDownloadComponent.diff").classed("active", true)
+        d3.select("#mapImageButton-button").style("display","none")     
     }else{
         d3.select("#diffMap")
             .transition()
@@ -27,8 +28,8 @@ d3.selectAll(".controlContainer").on("click", function(){
             .transition()
             .duration(1000)
             .style("margin-top", -1*MAP_LEGEND_HEIGHT + "px")
-        d3.select(".mapButton.mapImg.baseline").classed("active", true)
-        d3.select(".mapButton.mapImg.data").classed("active", true)
+        d3.selectAll(".mapDownloadComponent.compare").classed("active", true)
+        d3.select("#mapImageButton-button").style("display","inline-block")     
     }
 })
 // var tmp;
@@ -133,25 +134,45 @@ function drawMaps(bbox, geojsonData, bounds){
         })
     })
 
-    $('.mapButton.mapImg.baseline').click(function() {
-        takeScreenshot(baselineMap).then(function(data){
-            var blob = dataURItoBlob(data)
-            downloadBlob(blob, "spatial_equity_" + getBaseline() + "_map.png")
-        })
+    $("#mapImageButtonOverlay").on("click", function(){
+        $('#mapImageButton-button').trigger("click")
     })
-
-    $('.mapButton.mapImg.data').click(function() {
-        takeScreenshot(dataMap).then(function(data){
-            var blob = dataURItoBlob(data)
-            downloadBlob(blob, "spatial_equity_" + getDatasetType() + "data_map.png")
-        })
+    $("#mapImageButtonOverlay").on("mouseover", function(){
+        $('#mapImageButtonOverlay img').attr("src","images/menuArrowWhite.png")
     })
+    $("#mapImageButtonOverlay").on("mouseout", function(){
+        $('#mapImageButtonOverlay img').attr("src","images/menuArrow.png")
+    })
+    $('#mapImageButton')
+        .selectmenu({
+            select: function(event, d){
+                if(d.item.value == "yourdata"){
+                    takeScreenshot(dataMap).then(function(data){
+                        var blob = dataURItoBlob(data)
+                        downloadBlob(blob, "spatial_equity_" + getDatasetType() + "data_map.png")
+                    })
+                }else{
+                    takeScreenshot(baselineMap).then(function(data){
+                        var blob = dataURItoBlob(data)
+                        downloadBlob(blob, "spatial_equity_" + getBaseline() + "_map.png")
+                    })
+                }
+            },
+            open: function(){
+                d3.select("#mapImageButtonOverlay img").style("transform","rotate(180deg)")
+            },
+            close: function(){
+                d3.select("#mapImageButtonOverlay img").style("transform","rotate(0deg)")
+            },
+            create: function( event, ui ) {
+                d3.select("#mapImageButton-button").style("display","none")
+            }
 
+        })   
 
     var baseline = getParams().baseline
 
     baselineMap.on('load', function() {
-
 
         baselineMap.addSource('comparisonSource', {
             'type': 'geojson',
@@ -273,7 +294,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 "case",
                 ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
                     [
-                        "interpolate-hcl",
+                        "interpolate",
                         ["linear"],
                         ["get", "diff_" + baseline],
                         diffMin,
@@ -496,7 +517,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
 
                 var description = "<div class = 'tt-name'>" + p.NAME + "</div>" + 
-                                  "<div class = 'tt-noSigDiff'>" + "There is not a statically significant difference between your data and the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>"
+                                  "<div class = 'tt-noSigDiff'>" + "No statistically significant difference between your data and the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>"
             }
 
 

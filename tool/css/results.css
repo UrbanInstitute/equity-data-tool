@@ -224,3 +224,72 @@
     background: #1696d2;
     color: #fff;
 }
+.mapDownloadComponent{
+    display: none;
+}
+.mapDownloadComponent.active{
+    display: block;
+}
+#mapDataButtonOverlay{
+    float: right;
+    position: absolute;
+    right: 3px;
+    z-index: 1;
+    background: white;
+    pointer-events: fill;
+    top: 1px;
+    color: #1696d2;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+#mapDataButtonOverlay:hover{
+    background: #1696d2;
+    color: #fff;
+}
+#mapDataButtonOverlay img{
+    width: 20px;
+    margin-left: 10px;
+}
+#mapDataButton-button{
+    float: right;
+    width: 200px;
+    height: 39px;
+    border: 1px solid #1696d2;
+}
+#mapDataButton-button.ui-state-hover, #mapDataButton-button:hover{
+    background: #1696d2;
+    color: white;
+}
+
+
+#mapImageButtonOverlay{
+    float: right;
+    position: absolute;
+    right: 225px;
+    z-index: 1;
+    background: white;
+    pointer-events: fill;
+    top: 1px;
+    color: #1696d2;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+#mapImageButtonOverlay:hover{
+    background: #1696d2;
+    color: #fff;
+}
+#mapImageButtonOverlay img{
+    width: 20px;
+    margin-left: 10px;
+}
+#mapImageButton-button{
+    float: right;
+    width: 260px;
+    height: 39px;
+    border: 1px solid #1696d2;
+    margin-right: 20px;
+}
+#mapImageButton-button.ui-state-hover, #mapImageButton-button:hover{
+    background: #1696d2;
+    color: white;
+}

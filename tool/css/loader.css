@@ -49,13 +49,20 @@ h3.loaderSubHeader{
     margin-bottom: 7px;
 }
 
-.loaderNote.text{
+.loaderNote.filters{
     font-size: 16px;
     font-style: italic;
     width: 320px;
     line-height: 146%;
     margin-top: -20px;
     margin-bottom: 30px;
+    display: none;
+}
+.loaderNote.small.filters{
+    font-size: 12px;
+}
+.loaderNote.active{
+    display: block;
 }
 
 /********************************************/
@@ -325,18 +332,27 @@ h3.loaderSubHeader{
 
 
 /********************************************/
-/************* WEIGHT DATA ****************/
+/************* WEIGHT DATA ******************/
 /********************************************/
-#weightMenuContainer{
-    display: table;
+#weightContainer{
+    width: 583px;
     margin: 0 auto;
+    margin-bottom: 21px;
+}
+#weightMenuContainer{
     width: 334px;
+    display: inline-block;
 }
 #weightSelect-button{
     max-width: 334px;
 }
-
-
+#weightShowContainer{
+    width: 193px;
+    display: inline-block;
+    margin-left: 50px;
+    top: -16px;
+    position: relative;
+}
 
 /********************************************/
 /************* SET BASELINE ****************/
@@ -491,9 +507,15 @@ input[type=date]{
     color: #1696d2;
     cursor: pointer;
     border-bottom: 2px solid;
-    width: 138px;
+    width: 80px;
     padding-bottom: 1px;
-    margin-top: 25px;
+    margin-bottom: 24px;
+}
+#appliedHeader{
+    font-size: 16px;
+    font-weight: bold;
+    color: #353535;
+    padding-bottom: 1px;
     margin-bottom: 24px;
 }
 #addButton.disabled{
@@ -719,7 +741,11 @@ input[type=date]{
     position: relative;
     top: 1px;
 }
-
+.deetRow.none div{
+    font-size: 20px;
+    font-style: italic;
+    margin-top: -14px;
+}
 
 
 /********************************************/

@@ -7,7 +7,7 @@ function handleFiles(inputFiles){
         fileList = inputFiles
     }
     if (fileList.length !== 1){
-        loaderError("You may only upload a single file", "upload")
+        // loaderError("You may only upload a single file", "upload")
         return false;
     }
 
@@ -15,13 +15,17 @@ function handleFiles(inputFiles){
         var file = fileList[i]
     }
     if(fileList[0]["type"] != "text/csv" && fileList[0]["type"] != "application/vnd.ms-excel" ){
-        loaderError("File must be CSV", "upload")
+        loaderError("Your file is not a CSV.", "upload")
         return false
     }
     globalFile = fileList[0]
 
     var fileSize = fileList[0]["size"]
     var fileName = fileList[0]["name"]
+
+    if(+fileSize > 2147483648){
+        loaderError("Your file exceeds the maximum size limit.", "upload")
+    }
 
     d3.select("#dropboxClick").text("File uploaded")
     d3.select("#dropboxDrag").text(fileName).classed("filename", true)
@@ -33,7 +37,7 @@ function handleFiles(inputFiles){
     navigator.readLines(0, numberOfLines, function (err, index, lines, isEof, progress) {
 
         if (err){
-            loaderError("An error occured reading your CSV", "upload")
+            loaderError("An error occurred reading your CSV.", "upload")
         }
 
         var lineObject = d3.csvParse(lines.join("\n"), d3.autoType)
@@ -83,6 +87,8 @@ function deselectSampleData(){
 
     d3.selectAll(".hideOption.sample").classed("hiddenSection",true)
 
+    d3.select("#sampleDefaultText").classed("hiddenSection", false)
+
     d3.selectAll(".sampleCard").classed("inactive", false)
 
 }
@@ -107,6 +113,9 @@ function showFilterOptions(filterType){
   clearFilterOptions();
   d3.selectAll(".filterContainer").classed("active", false)
   d3.select(".filterContainer." + filterType).classed("active", true)
+  d3.selectAll(".loaderNote.filters").classed("active", false)
+  d3.selectAll(".loaderNote.filters." + filterType).classed("active", true)
+  
 }
 function populateDropdowns(colNames){
     clearFilterOptions()
@@ -116,7 +125,7 @@ function populateDropdowns(colNames){
 
     var colOptionsLat = [],
         colOptionsLon = [],
-        colOptions = ["<option value = '' selected>None selected</option>"]
+        colOptions = ["<option value = '' selected>none selected</option>"]
     for (i = 0; i < colNames.length; i++) {
         var latSelected = (colNames[i] == guessedLat) ? "selected" : "",
             lonSelected = (colNames[i] == guessedLon) ? "selected" : ""
@@ -166,12 +175,16 @@ function populateDropdowns(colNames){
         .append(colOptions.join(""))
         .selectmenu({
             change: function(event, d){
-                console.log(d, d.item.value)
                 if(getCSVProperties()["cols"][d.item.value] != "number" && d.item.value != ""){
-                    loaderError("Oops&hellip; looks like our tool isn&rsquo;t reading this column as numeric. Please choose another column or see our <a href = \"\">FAQ</a> for help.","weight")
+                    d3.select("#weightSelected").html("none selected")
+                    loaderError("Oops&hellip; looks like our tool isn’t reading this column as numeric. Please choose another column or see our  <a href = \"spatial_equity_faq.pdf\" target = \"_blank\">FAQ</a> for help.","weight")
                 }else{
+                    d3.select("#weightSelected").html(function(){
+                      return (d.item.value == "") ? "none selected" : d.item.value
+                    })
                     hideLoaderError()
                 }
+
             }
         });
         
@@ -276,11 +289,11 @@ d3.select("#userButton").on("click", function(){
 
 
 d3.selectAll(".backButton.user.data").on("click", function(){
-    showLoaderSection("home")
+    startOver()
 })
 d3.selectAll(".backButton.sample.data").on("click", function(){
     if(d3.selectAll(".sampleCard.inactive").nodes().length == 0){
-        showLoaderSection("home")    
+        startOver()    
     }else{
         deselectSampleData()
     }
@@ -317,28 +330,12 @@ inputElement.addEventListener("change", handleFiles, false);
 
 d3.selectAll(".sampleRect").on("click", function(){
 
-
     var sample;
     if(d3.select(this).classed("three11")) sample = "three11"
     else if(d3.select(this).classed("hotspots")) sample = "hotspots"
     else if(d3.select(this).classed("bike")) sample = "bike"
     selectSampleData(sample)
 })
-
-
-
-
-// //click sampledata1
-// populateDropdowns(colNames1)
-
-// //clicksampledata2
-// populateDropdowns(colNames2)
-
-// //clicksampledata3
-// populateDropdowns(colNames3)
-
-
-
 
 
 $('#advancedOptionsUser')
@@ -436,9 +433,7 @@ d3.select(".saveButton.baseline").on("click", function(){
 })
 d3.select(".saveButton.filter").on("click", function(){
     var filters = []
-    if(checkValidFilter("saveButton", "save")){
-        filters.push(getCurrentFilter())
-    }
+
     filters = filters.concat(d3.selectAll(".filterTag.visible").data())
     updateParams("filters", filters)
 

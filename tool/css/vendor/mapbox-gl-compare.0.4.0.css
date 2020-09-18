@@ -24,7 +24,7 @@
 .mapboxgl-compare .compare-swiper-vertical::before{
     content: "Your data";
     position: relative;
-    left: -158px;
+    left: -127px;
     font-size: 26px;
     font-weight: bold;
     /*text-transform: uppercase;*/
@@ -40,7 +40,7 @@
 
 .mapboxgl-compare .compare-swiper-vertical::after{
     position: relative;
-    left: -73px;
+    left: -37px;
     font-size: 26px;
     font-weight: bold;
     /*text-transform: uppercase;*/

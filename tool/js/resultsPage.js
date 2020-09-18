@@ -88,11 +88,48 @@ function populateSummaries(messages, params){
 
 }
 function populateDownloadLinks(links){
-    d3.select(".mapLink.csv").attr("href", links.geo_bias_csv)
-    d3.select(".mapLink.json").attr("href", links.geo_bias_geojson)
+    d3.select("#mapDataCsv").attr("data-link", links.geo_bias_csv)
+    d3.select("#mapDataGeojson").attr("data-link", links.geo_bias_geojson)
+    // d3.select(".mapLink.csv").attr("href", links.geo_bias_csv)
+    // d3.select(".mapLink.json").attr("href", links.geo_bias_geojson)
+
     d3.select(".barLink.csv").attr("href", links.demographic_bias_csv)
 
 }
+$('#advancedOptionsHeader')
+    .selectmenu({
+        select: function(event, d){
+            showLoaderSection(d.item.value)
+        },
+        open: function(){
+            d3.select("#advancedTextOverlayNav img").style("transform","rotate(180deg)")
+        },
+        close: function(){
+            d3.select("#advancedTextOverlayNav img").style("transform","rotate(0deg)")
+        }
+    })
+$("#mapDataButtonOverlay").on("click", function(){
+    $('#mapDataButton-button').trigger("click")
+})
+$("#mapDataButtonOverlay").on("mouseover", function(){
+    $('#mapDataButtonOverlay img').attr("src","images/menuArrowWhite.png")
+})
+$("#mapDataButtonOverlay").on("mouseout", function(){
+    $('#mapDataButtonOverlay img').attr("src","images/menuArrow.png")
+})
+$('#mapDataButton')
+    .selectmenu({
+        select: function(event, d){
+            if(d.item.value == "csv") window.location.href = d3.select("#mapDataCsv").attr("data-link")
+            else window.location.href = d3.select("#mapDataGeojson").attr("data-link")
+        },
+        open: function(){
+            d3.select("#mapDataButtonOverlay img").style("transform","rotate(180deg)")
+        },
+        close: function(){
+            d3.select("#mapDataButtonOverlay img").style("transform","rotate(0deg)")
+        }
+    })    
 d3.select(".barButton.barImg").on("click", function(){
     var clone = d3.selectAll("#barChart .barDot.active").data().slice(0)
 
@@ -116,3 +153,16 @@ $('#advancedOptionsHeader')
             d3.select("#advancedTextOverlayNav img").style("transform","rotate(0deg)")
         }
     })
+
+d3.select("#tt-icon-cost")
+    .on("mouseover", function(){
+        var tt = d3.select(this).append("div").attr("class", "tt-container")
+
+        tt.append("div")
+            .html("Households that pay more than 30 percent of their income on rent.")
+
+    })
+    // .on("mouseout", function(){
+    //     d3.selectAll(".tt-container").remove()
+    // })
+

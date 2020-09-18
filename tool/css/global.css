@@ -11,6 +11,10 @@ a{
 select{
     display: none;
 }
+::placeholder {
+  color: #9d9d9d;
+  font-style: italic;
+}
 .button{
     font-size: 18px;
     font-weight: 400;

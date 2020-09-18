@@ -1,14 +1,15 @@
 Framework:
 - design boxnote edits
-- final screenshots
-- mobile menu
 
 Tool:
 - design boxnote edits
+- api to prod?
+- global vars for api urls etc
+- if defaults opts on sample data, call thingy directly
 - map buttons dropdowns, csv/json and baseline/data
 - style summary stats on results page and hide for N = 0
 - metas
-- samplue uploader statuses
+- sample uploader statuses
 - fix filter page, apply filter/ applied filters/ save/ cancel
 
 - MAX_PROCESSING_TIME test, timeout error
@@ -26,8 +27,7 @@ Tool:
 - bar dot transition interrupt size
 - if either lat/lon are blank, disable run button
 
-
-
+- dau link in footer
 
 - mmmoooobhiiile
 

@@ -47,7 +47,7 @@ function runAnalysis() {
         // formData.append("upload_file", "foo")
         var sample_dataset_id = getSampleDatasetId()
         if(sample_dataset_id == "") throwError(["unknown"])
-            console.log(sample_dataset_id)
+        
         formData.append("sample_dataset_id", sample_dataset_id)
         postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-sample-file/"
     }
@@ -152,7 +152,7 @@ function showErrorScreen(errorKeys){
     showLoaderSection("loading")
 
     d3.select(".loaderSection.loading .loaderHeader")
-        .html("Oops! Something went wrong. <span class = 'errorLight'>For help, see our <a href = '' target = '_blank'> FAQ</a>.</span>")
+        .html("Oops! Something went wrong. <span class = 'errorLight'>For help, see our <a href = 'spatial_equity_faq.pdf' target = '_blank'> FAQ</a>.</span>")
     
     d3.selectAll(".loadingError").style("display","block")
     d3.selectAll(".loadingErrorRow").remove()
