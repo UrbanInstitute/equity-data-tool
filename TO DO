@@ -1,37 +1,28 @@
-Framework:
-- design boxnote edits
-- gh link in credits
+- faq
+- tech appendix
+- dau post link
+- gh repo(s) link
 
 
 Tool:
-
-
 - Ajjit
-    - city, state in tt
+    - city, state in tt, clean city names
     - geojson s3...
     - fileids for sample data
 
+- Dave
+    - api to prod
+    - IP whitelist
+    - change s3 bucket name from -stg
 
-- fix if upload new file
-- design boxnote edits
-- api to prod
+
+
+- design boxnote edits and audit
 - style summary stats on results page and hide for N = 0
-- sample data uploader statuses
-
 - MAX_PROCESSING_TIME test, timeout error
-
-- post-error navigation
-
-- what to do fyeor sample data display page if user changes preset val?
-- export data map json
+- deal w sample data changed vals
 - bar dot transition interrupt size
-
-- dau link in footer
-- gh link in footer
-
 - mmmoooobhiiile
-
-
 - x browser
-
+- document...   
 
