@@ -106,6 +106,7 @@ var defaultParams = {
 
 const sampleParams = {
     "bike" : {
+        "fileId" : "1598989646-151957",
         "colNames" : ["short_name","station_type","station_id","region_id","eightd_has_key_dispenser","has_kiosk","external_id","legacy_id","lon","capacity","electric_bike_surcharge_waiver","lat","name","rack_model","dockless_bikes_parking_zone_capacity","address","region_code","client_station_id"],
         "csvCols" : {
             "short_name": "number",
@@ -136,6 +137,7 @@ const sampleParams = {
           }
     },
     "hotspots" : {
+        "fileId" : "1598989430-872031",
         "colNames" : ["OBJECTID","Borough","Type","Provider","Name","Location","Latitude","Longitude","X","Y","Location_T","Remarks","City","SSID","SourceID","Activated","BoroCode","Borough Name","Neighborhood Tabulation Area Code (NTACODE)","Neighborhood Tabulation Area (NTA)","Council Distrcit","Postcode","BoroCD","Census Tract","BCTCB2010","BIN","BBL","DOITT_ID","Location (Lat, Long)"],
         "csvCols" : {
           "OBJECTID" : "number",
@@ -177,6 +179,7 @@ const sampleParams = {
         }
     },
     "three11" : {
+        "fileId" : "1598989773-447692",
         "colNames" : ["ticket_id","issue_type","ticket_created_date_time","ticket_closed_date_time","ticket_status","issue_description","street_address","neighborhood_district","council_district","city","state","zip_code","location","geom","latitude","longitude","closure_reason","case_title"],
         "csvCols" : {
           "ticket_id" : "number",

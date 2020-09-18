@@ -3,6 +3,7 @@ var statusIntervId;
 var buildingIndex = 0;
 
 var TOKEN = "4b7aa32e17731af9e97d0d2edd061f1b46d7d117"
+var baseApiUrl = "https://equity-tool-api-stg.urban.org/api/v1/"
 
 function humanFileSize(bytes, si=false, dp=1) {
   const thresh = si ? 1000 : 1024;
@@ -38,67 +39,86 @@ function runAnalysis() {
         postURL,
         // postURL = "https://httpbin.org/post"
         formData = new FormData();
+        var callFullApi;
 
     if(datasetType == "user"){
         // formData.append("upload_file", $("#fileInput").prop("files")[0])
         formData.append("upload_file", globalFile)
-        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-file/"
+        postURL = baseApiUrl + "upload-file/"
+        callFullApi = true;
     }else{
-        // formData.append("upload_file", "foo")
         var sample_dataset_id = getSampleDatasetId()
         if(sample_dataset_id == "") throwError(["unknown"])
+
+        var params = getParams(),
+            defaultParams = sampleParams[getSampleDatasetSlug()]["defaultParams"]
+
+        if(
+            false
+            ){
+
+            callFullApi = false;
+        }else{
+            runSample = true;
+            formData.append("sample_dataset_id", sample_dataset_id)
+            postURL = baseApiUrl + "upload-sample-file/"
+            callFullApi = true;
+        }
         
-        formData.append("sample_dataset_id", sample_dataset_id)
-        postURL = "https://equity-tool-api-stg.urban.org/api/v1/upload-sample-file/"
-    }
 
-    for(var k in params){
-        if(params.hasOwnProperty(k)){
-            if(k != "filters"){
-                formData.append(k, params[k])
-            }else{
-                formData.append(k, JSON.stringify(params[k]))
-            }
-            
-        }
     }
-
-    $.ajax({
-        url: postURL,
-        method: "POST",
-        contentType: false,
-        cache: false,
-        processData: false,
-        data:formData,
-        crossDomain: true,
-        beforeSend: function (xhr) {
-            
-            showLoadingScreen();    
-            
-            xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-            xhr.setRequestHeader("X-Mobile", "true");
-        },
-        xhr: function() {
-            var xhr = new window.XMLHttpRequest();
-            xhr.upload.addEventListener("progress", function(evt) {
-                if (evt.lengthComputable) {
-                    // console.log(humanFileSize(evt.loaded,true), humanFileSize(evt.total, true))
-                    var percentComplete = d3.format(".1%")(evt.loaded / evt.total);
-                    //Do something with upload progress here
-                    // console.log(percentComplete)
-                    d3.select("#statusLoading").html("Uploading " + humanFileSize(evt.loaded,true) + " of " + humanFileSize(evt.total, true) + " (" + percentComplete + ")")
+    if(callFullApi){
+        for(var k in params){
+            if(params.hasOwnProperty(k)){
+                if(k != "filters"){
+                    formData.append(k, params[k])
+                }else{
+                    formData.append(k, JSON.stringify(params[k]))
                 }
-           }, false);
-           return xhr;
-        },
-
-        error: function(e){
-            throwError(["upload"])
-        },
-        success: function(msg, status, jqXHR){
-            statusIntervId = setInterval(loopStatus, PROCESSING_INTERVAL, msg);
+                
+            }
         }
-    }); 
+
+        $.ajax({
+            url: postURL,
+            method: "POST",
+            contentType: false,
+            cache: false,
+            processData: false,
+            data:formData,
+            crossDomain: true,
+            beforeSend: function (xhr) {
+                
+                showLoadingScreen();    
+                
+                xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+                xhr.setRequestHeader("X-Mobile", "true");
+            },
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(evt) {
+                    if (evt.lengthComputable) {
+                        // console.log(humanFileSize(evt.loaded,true), humanFileSize(evt.total, true))
+                        var percentComplete = d3.format(".1%")(evt.loaded / evt.total);
+                        //Do something with upload progress here
+                        // console.log(percentComplete)
+                        d3.select("#statusLoading").html("Uploading " + humanFileSize(evt.loaded,true) + " of " + humanFileSize(evt.total, true) + " (" + percentComplete + ")")
+                    }
+               }, false);
+               return xhr;
+            },
+
+            error: function(e){
+                throwError(["upload"])
+            },
+            success: function(msg, status, jqXHR){
+                statusIntervId = setInterval(loopStatus, PROCESSING_INTERVAL, msg);
+            }
+        }); 
+    }else{
+        return false;
+
+    }
 }
 
 function showLoadingScreen(){
@@ -120,7 +140,7 @@ function showResults(fileId){
 }
 
 function drawResultsData(fileId){
-    var resultsUrl = "https://equity-tool-api-stg.urban.org/api/v1/get-equity-file/" + fileId
+    var resultsUrl = baseApiUrl + "get-equity-file/" + fileId
     $.ajax({
         url: resultsUrl,
         method: "GET",
@@ -178,7 +198,7 @@ function showErrorScreen(errorKeys){
 }
 
 function loopStatus(msg){
-    var statusURL = "https://equity-tool-api-stg.urban.org/api/v1/get-equity-status/" + msg.file_id
+    var statusURL = baseApiUrl + "get-equity-status/" + msg.file_id
     $.ajax({
         url: statusURL,
         method: "GET",
@@ -190,8 +210,8 @@ function loopStatus(msg){
         error: function(e){
             throwError(["api"])
         },
-        success: function(msg2, status, xhr){
-            checkStatus(msg2.results)
+        success: function(msg, status, xhr){
+            checkStatus(msg.results)
         }
     }); 
 }

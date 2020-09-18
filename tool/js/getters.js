@@ -106,3 +106,9 @@ function getSampleDatasetId(){
     else if (d3.select(".sampleRect.active").classed("bike")) return "minneapolis_bikes.csv"
     else return ""
 }
+function getSampleDatasetSlug(){
+    if (d3.select(".sampleRect.active").classed("three11"))return "three11"
+    else if (d3.select(".sampleRect.active").classed("hotspots")) return "hotspots"
+    else if (d3.select(".sampleRect.active").classed("bike")) return "bike"
+    else return ""
+}
