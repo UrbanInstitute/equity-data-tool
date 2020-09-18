@@ -6,7 +6,7 @@ function getParams(){
   return  d3.select("#paramsData").datum()
 }
 function getWeight(){
-    return (d3.select("#weightSelect").node().value == "") ? null : d3.select("#weightSelect").node().value;
+    return (d3.select("#weightSelect").node().value == "") ? "" : d3.select("#weightSelect").node().value;
 }
 function getBaseline(){
     return d3.select("#baselineSelect").node().value

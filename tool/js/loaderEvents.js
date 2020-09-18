@@ -111,6 +111,9 @@ function guessLatLon(colNames, l){
 
 function showFilterOptions(filterType){
   clearFilterOptions();
+  var addPad = (typeof(filterType) == "undefined") ? "-17px" : "-30px"
+  // addButton -17 -30
+  d3.select("#addButton").style("margin-top", addPad) 
   d3.selectAll(".filterContainer").classed("active", false)
   d3.select(".filterContainer." + filterType).classed("active", true)
   d3.selectAll(".loaderNote.filters").classed("active", false)

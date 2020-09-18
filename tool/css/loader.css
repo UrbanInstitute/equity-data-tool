@@ -61,6 +61,9 @@ h3.loaderSubHeader{
 .loaderNote.small.filters{
     font-size: 12px;
 }
+.loaderNote.biggun.filters{
+    margin-bottom: 42px;
+}
 .loaderNote.active{
     display: block;
 }
@@ -422,6 +425,9 @@ h3.loaderSubHeader{
     float: left;
     width: calc(50% - 10px);
 }
+#filterListContainer{
+    margin-top: 17px;    
+}
 #filterControls{
     margin-right: 20px;
 }
@@ -481,6 +487,7 @@ input[type=date]{
 }
 #dateRangeRow{
     cursor: pointer;
+    margin-bottom: 44px;
 }
 #dateRangeBox{
     display: inline-block;
@@ -502,21 +509,23 @@ input[type=date]{
     display: none !important;
 }
 #addButton{
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: #1696d2;
     cursor: pointer;
     border-bottom: 2px solid;
-    width: 80px;
+    width: 116px;
     padding-bottom: 1px;
-    margin-bottom: 24px;
+    text-transform: uppercase;
+    margin-top: -17px;
+    margin-bottom: 74px;
 }
 #appliedHeader{
-    font-size: 16px;
+    font-size: 1.17em;
     font-weight: bold;
     color: #353535;
     padding-bottom: 1px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 #addButton.disabled{
     color: #9D9D9D;

@@ -155,6 +155,11 @@ function showLoaderSection(loaderSection){
   d3.select(".loaderHome").style("display","block")
 
   if(loaderSection == "filters"){
+    showFilterOptions()
+    d3.select("#columnSelect").selectAll("option")
+      .property("selected", function(){
+        return this.value == ""
+      })
     var currentFilters = params.filters
     populateFilters(currentFilters)
     $('#columnSelect').selectmenu("refresh")

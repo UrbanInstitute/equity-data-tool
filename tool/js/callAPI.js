@@ -52,14 +52,32 @@ function runAnalysis() {
 
         var params = getParams(),
             defaultParams = sampleParams[getSampleDatasetSlug()]["defaultParams"]
-
+        console.log(params, defaultParams)
+        var sameFilters = true;
+        if(params.filters.length != defaultParams.filters.length){
+            sameFilters = false;
+        }else{
+            for(var i = 0; i < params.length; i++){
+                if(
+                    params["filters"][i]["filter_column"] != defaultParams["filters"][i]["filter_column"] ||
+                    params["filters"][i]["filter_comparison"] != defaultParams["filters"][i]["filter_comparison"] ||
+                    params["filters"][i]["filter_val"] != defaultParams["filters"][i]["filter_val"]
+                ){
+                    console.log("blorp")
+                    sameFilters = false;
+                    break
+                }
+            }
+        }
         if(
-            false
-            ){
-
+            params.weight == defaultParams.weight &&
+            params.lat_column == defaultParams.lat_column &&
+            params.lon_column == defaultParams.lon_column &&
+            sameFilters
+        ){
+            console.log("bleep")
             callFullApi = false;
         }else{
-            runSample = true;
             formData.append("sample_dataset_id", sample_dataset_id)
             postURL = baseApiUrl + "upload-sample-file/"
             callFullApi = true;
@@ -116,8 +134,9 @@ function runAnalysis() {
             }
         }); 
     }else{
+        console.log(sampleParams[getSampleDatasetSlug()]["fileId"])
+        showResults(sampleParams[getSampleDatasetSlug()]["fileId"])
         return false;
-
     }
 }
 
