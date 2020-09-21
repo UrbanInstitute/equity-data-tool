@@ -126,7 +126,7 @@
 #barChartContainer{
     float: left;
     display: inline-block;
-    width: 935px;
+    width: calc(100% - 370px);
     position: relative;
 
 }
@@ -169,12 +169,13 @@
 .overunder.over{
     float: revert;
     top: 20px;
-    top: 45px;
-    right: -135px;
+    top: 335px;
+    right: -11px;
     left: auto;
     position: absolute;
     transform: rotate(90deg);
     color: #73bfe2;
+    transform-origin: right top;
 }
 
 

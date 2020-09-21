@@ -119,9 +119,8 @@
 /********************************************/
 .summaryContainer{
     /*display: none;*/
-    border-top: 1px solid #353535;
-    /*width: 650px;*/
-    border-bottom: 1px solid #353535;
+    border-top: 1px solid #9d9d9d;
+    border-bottom: 1px solid #9d9d9d;
     /* padding-top: 10px; */
     /* padding-bottom: 10px; */
     padding: 25px;    
@@ -170,18 +169,56 @@
     position: absolute;
     top: 11.5px;
 }
+#sumContainer{
+    width: fit-content;
+}
+.summaryColumn{
+    width: calc(25% - 39px);
+    margin-right: 52px;
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    word-break: break-all;
+}
+.summaryColumn.lat{
+    margin-right: 0px;
+}
+.summaryRows{
+    position: relative;
+}
 .summaryRows span{
     font-weight: 900;
     color: #1696d2;
     font-weight: 900;
     color: #1696d2;
-    width: 40px;
     display: inline-block;
     text-align: right;
     margin-bottom: 9px;
 }
+.summaryRows.summaryNegative span{
+    /*color: #E88E2D;*/
+    color: #353535;
+}
+.summaryRows.summaryWarning span{
+    color: #E88E2D;
+}
+.summaryRows.hidden{
+    display: none;
+}
+.summaryRows.bottomRow{
+    border-top: 1px solid #353535;
+    padding-top: 3px;
+}
+.warningIcon{
+    position: absolute;
+    left: -25px;
+    top: 0px;
+    width: 21px;
+}
 .paramRow{
     font-size: 18px;
+    display: table;
+    width: 100%;
     /*margin-bottom: 20px;*/
 }
 .paramRow span{
@@ -189,6 +226,14 @@
 }
 .paramRow div{
     margin-bottom: 20px;
+}
+.deetRow.none.summaryEl img{
+    display: none;
+}
+.deetRow.none.summaryEl .deetText{
+    font-size: 17px;
+    font-style: italic;
+    display: inline;
 }
 
 
@@ -199,11 +244,12 @@
 #barButtonContainer{
     display: inline-block;
     clear: both;
+    float: right;
+    top: -90px;
+    position: relative;
 }
 #mapButtonContainer{
-    width: 1150px;
     float: right;
-    left: -80px;
     position: relative;
     margin-top: 36px;
 }

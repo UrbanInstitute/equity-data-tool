@@ -332,9 +332,7 @@ function drawMaps(bbox, geojsonData, bounds){
         var compareColors = ["#DCEDD9","#BCDEB4","#98CF90","#78C26D","#55B748","#408941","#2C5C2D","#1A2E19"]
 
 
-        var legendWidth = 400,
-            legendHeight = 20,
-            legendMargin = 18;
+
 
         d3.selectAll(".mapLegend").selectAll("svg").remove()
         d3.selectAll(".mapLegend").selectAll(".dynamicLegend").remove()
@@ -512,7 +510,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 d3.select("#pointUp")
                     .style("display", "block")
                     .transition()
-                    .style("left", "454px")
+                    .style("left", (legendWidth + 54) + "px")
                 d3.select("#pointUpText").text("")
 
 

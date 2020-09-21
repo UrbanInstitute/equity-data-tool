@@ -265,14 +265,18 @@ function selectSampleData(sample){
             .enter()
             .append("div")
             .attr("class", "deetRow filter deetEl")
+            .attr("data-column", function(d){ return d.filter_column})
+            .attr("data-comparison", function(d){ return d.filter_comparison})
+            .attr("data-val", function(d){ return d.filter_val})
         deetRow.append("img")
             .attr("src", "images/check.png")
         deetRow.append("div")
+            .attr("class", "deetText")
             .text(function(d){
                 return getTagText(d)
             })     
-        deetRow.append("div")
-            .attr("class", "strikethrough deetEl hidden")   
+            .append("div")
+            .attr("class", "strikethrough filter deetEl hidden")   
     }else{
         var deetRow = d3.select(".sampleDeetContainer").append("div")
             .attr("class", "deetRow none deetEl")
@@ -289,39 +293,98 @@ function updateSampleParams(paramType){
 
   var currentP = getParams(),
       sampleP = sampleParams[getSampleDatasetSlug()]["defaultParams"]
-  console.log(currentP, sampleP)
 
+//none
   if(d3.select(".deetRow.none").node() != null){
-    console.log(currentP, currentP.filters, currentP.filters.length)
     if(currentP.weight != "" || currentP.filters.length > 0){
       d3.select(".deetRow.none .strikethrough").classed("hidden",false)
+      d3.select(".deetRow.none").classed("strike", true)
     }else{
       d3.select(".deetRow.none .strikethrough").classed("hidden",true)
+      d3.select(".deetRow.none").classed("strike", false)
     }
   }
 
-  if(paramType == "weight"){
-    if(currentP.weight != sampleP.weight){
-      if(d3.select(".deetRow.weight").node() != null) d3.select(".deetRow.weight .strikethrough").classed("hidden",false)
-      d3.select(".appliedDeetHeader").style("display", "block")
-      
-      d3.select(".appliedDeetContainer").append("div")
-          .attr("class", "appSubHed appEl")
-          .text("Weighted by:")
+//weight
+  if(currentP.weight != sampleP.weight){
+    if(d3.select(".deetRow.weight").node() != null){
+      d3.select(".deetRow.weight .strikethrough").classed("hidden",false)
+      d3.select(".deetRow.weight").classed("strike", true)
+    }
+    
+    d3.select(".appliedDeetContainer").append("div")
+        .attr("class", "appSubHed appEl")
+        .text("Weighted by:")
 
-      var appRow = d3.select(".appliedDeetContainer").append("div")
-          .attr("class", "appRow weight appEl")
+    var appRow = d3.select(".appliedDeetContainer").append("div")
+        .attr("class", "appRow weight appEl")
+    appRow.append("img")
+        .attr("src", "images/check.png")
+    appRow.append("div")
+        .text(function(){
+          return (currentP.weight == "") ? "None" : currentP.weight
+        })
+  }else{
+    if(d3.select(".deetRow.weight").node() != null){
+      d3.select(".deetRow.weight .strikethrough").classed("hidden",true)
+      d3.select(".deetRow.weight").classed("strike", false)
+    }
+  }
+
+
+//filters
+  var newFilters = 0;
+  
+  d3.select(".appliedDeetContainer").append("div")
+      .attr("class", "appSubHed filter appEl")
+
+  d3.selectAll(".strike.filter").classed("strike", false)
+  d3.selectAll(".filter.strikethrough").classed("hidden",true)
+  d3.selectAll(".deetRow.filter")
+    .each(function(d){
+      if(currentP.filters.filter(function(o){
+        return o.filter_column == d.filter_column && o.filter_comparison == d.filter_comparison && o.filter_val == d.filter_val
+      }).length == 0){
+        var strikeRow = d3.select(".deetRow[data-comparison='" + d.filter_comparison + "'][data-column='" + d.filter_column + "'][data-val='" + d.filter_val + "']")
+        strikeRow.classed("strike", true)
+        strikeRow.select(".strikethrough").classed("hidden", false)
+      }
+    })
+
+  for(var i = 0; i < currentP.filters.length; i++){
+    var f = currentP.filters[i]
+    var match = d3.select(".deetRow[data-comparison='" + f.filter_comparison + "'][data-column='" + f.filter_column + "'][data-val='" + f.filter_val + "']")
+
+    if(match.node() == null){
+      newFilters += 1
+      var appRow = d3.select(".appliedDeetContainer")
+          .append("div")
+          .datum(f)
+          .attr("class", "appRow filter appEl")
       appRow.append("img")
           .attr("src", "images/check.png")
       appRow.append("div")
-          .text(function(){
-            return (currentP.weight == "") ? "None" : currentP.weight
-          })
-    }else{
-      if(d3.select(".deetRow.weight").node() != null) d3.select(".deetRow.weight .strikethrough").classed("hidden",true)
-      d3.select(".appliedDeetHeader").style("display", "none")
+          .html(function(d){
+              return getTagText(d)
+          })     
+      }
     }
-  }
+
+    if(newFilters == 0){
+      d3.select(".appSubHed.filter").style("display", "none")
+    }
+    else if(newFilters == 1){
+      d3.select(".appSubHed.filter").text("Filter:")
+    }else{
+      d3.select(".appSubHed.filter").text("Filters:")
+    }   
+
+    if(newFilters == 0 && currentP.weight == sampleP.weight){
+      d3.select(".appliedDeetHeader").style("display", "none")
+    }else{
+      d3.select(".appliedDeetHeader").style("display", "block")
+    }
+
 }
 
 function startOver(){

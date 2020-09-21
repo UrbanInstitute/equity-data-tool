@@ -80,6 +80,7 @@ function drawBarChart(data, containerType, callback){
 
     svg
         .append("g")
+        .attr("class","x axis")
         .attr("transform", "translate(0,50)")      
         .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0).tickFormat(function(t){
             return t + "%"
@@ -115,11 +116,12 @@ function drawBarChart(data, containerType, callback){
         .attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
 
     svg.append("line")
+        .attr("id", "barZeroLine")
         .attr("x1", x(0))
         .attr("x2", x(0))
         .attr("y1", 0 + margin.top)
         .attr("y2", height + padder)
-        .attr("stroke", "#3a403d")
+        .attr("stroke", "#000000")
         .attr("stroke-width", "1px");
 
     svg.selectAll(".barDot")
@@ -270,5 +272,43 @@ d3.selectAll(".barCategoryRow")
     })
 
 
+$( window ).resize( function(){
+    if(d3.select("#barChartSvg").node() != null){
+        var data = d3.selectAll(".barDot").data(),
+            margin = getBarMargins("dynamic"),
+            width = getBarWidth("dynamic"),
+            height = getBarHeight("dynamic"),
+            x = getBarX("dynamic", data);
 
+        d3.select("#barChartSvg .x.axis")
+            .attr("transform", "translate(0,50)")      
+            .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0).tickFormat(function(t){
+                return t + "%"
+            }));
+
+        d3.selectAll("#barChartSvg .lollipop.background")
+            .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
+            .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
+
+        d3.selectAll("#barChartSvg .lollipop.foreground")
+            .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
+            .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
+
+        d3.selectAll("#barChartSvg #barZeroLine")
+            .attr("x1", x(0))
+            .attr("x2", x(0))
+
+        d3.selectAll("#barChartSvg .barDot")
+            .attr("cx", function(d){ return x(d.diff_data_city); })
+
+        d3.selectAll("#barChartSvg .bar_full_name.background")
+            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
+
+        d3.selectAll("#barChartSvg .bar_full_name.foreground")
+            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
+
+
+
+    }
+})
 

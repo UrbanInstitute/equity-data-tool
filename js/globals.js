@@ -239,7 +239,9 @@ var errorMessages = {
   "weight_coltypes_mismatch" : "The selected weight column contains non-numeric values."
 }
 
-
+var legendWidth = 380,
+    legendHeight = 20,
+    legendMargin = 18;
 const BAR_DOT_RADIUS = 8;
 const BAR_LABEL_SCOOTCH = 9;
 const MAP_BINS = 8;

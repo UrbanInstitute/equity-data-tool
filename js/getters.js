@@ -60,9 +60,9 @@ function getCurrentFilter(){
 
 function getBarWidth(containerType){
     var margin = getBarMargins(containerType);
-    var h;
+    var w;
     if(containerType == "static") w = 800
-    else w = 800
+    else w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width - 365
     return w - margin.left - margin.right;
 }
 function getBarHeight(containerType, data){

@@ -12,7 +12,12 @@ function populateSummaries(messages, params){
         .text("SUMMARY: ")
     headName.append("span")
         .html(function(){
-            return (datasetType == "user") ? "Your data from " + messages.updates.city_used : "Name of sample data set"
+            if(datasetType == "user"){
+                return "Your data from " + messages.updates.city_used
+            }else{
+              var card = d3.select(".sampleCard." + getSampleDatasetSlug())
+              return "Your data on " + card.select(".sampleName").text().toLowerCase() + " from " + card.select(".sampleCity").text()
+            } 
         })
     var headX = header.append("div")
         .attr("class", "headerX closed")
@@ -21,43 +26,146 @@ function populateSummaries(messages, params){
     headX.append("div")
         .attr("class", "headX hor")
         // .text(messages.updates.city_used)
-
-// N total rows in your data
-// N rows removed by filters
-// N rows removed with null or missing weight columns
-// N rows removed with null or missing latitude and/or longitude columns
-// N rows removed with null or missing filter columns
-
     var fRow = container.append("div").attr("class","paramRow")
 
-    // fRow.append("img").attr("src", "images/check.png")
-    fRow.append("div").html("<span>Filters:</span> none")
-    fRow.append("div").html("<span>Weight column:</span> none")
+    var col4 = fRow.append("div")
+        .attr("class", "summaryColumn filter")
+    col4.append("div")
+        .attr("class", "deetSubHed summaryEl")
+        .text(function(){
+            return (params.filters.length != 1) ? "Filters:" : "Filter:"
+        })
+    var summaryRow4 = col4.selectAll(".deetRow")
+        .data(params.filters)
+        .enter()
+        .append("div")
+        .attr("class", "deetRow filter summaryEl")
+    summaryRow4.append("img")
+        .attr("src", "images/check.png")
+    summaryRow4.append("div")
+        .attr("class", "deetText")
+        .text(function(d){
+            return getTagText(d)
+        })
+    if(params.filters.length == 0){
+        var noneRow = col4.append("div")
+            .attr("class", "deetRow none filter summaryEl")
+        noneRow.append("img")
+            .attr("src", "images/check.png")
+        noneRow.append("div")
+            .attr("class", "deetText")
+            .text("None")
+    } 
 
 
-    container.append("div")
+    var col1 = fRow.append("div")
+        .attr("class", "summaryColumn weight")
+    col1.append("div")
+        .attr("class", "deetSubHed summaryEl")
+        .text("Weighted by:")
+    var summaryRow = col1.append("div")
+        .attr("class", "deetRow weight summaryEl")
+        .classed("none", function(){
+            return params.weight == ""
+        })
+    summaryRow.append("img")
+        .attr("src", "images/check.png")
+    summaryRow.append("div")
+        .attr("class", "deetText")
+        .html(function(){
+            return (params.weight == "") ? "None" : params.weight
+        })
+
+
+    var col2 = fRow.append("div")
+        .attr("class", "summaryColumn lon")
+    col2.append("div")
+        .attr("class", "deetSubHed summaryEl")
+        .text("Longitude:")
+    var summaryRow2 = col2.append("div")
+        .attr("class", "deetRow weight summaryEl")
+    summaryRow2.append("img")
+        .attr("src", "images/check.png")
+    summaryRow2.append("div")
+        .attr("class", "deetText")
+        .html(params.lon_column)
+
+
+    var col3 = fRow.append("div")
+        .attr("class", "summaryColumn lat")
+    col3.append("div")
+        .attr("class", "deetSubHed summaryEl")
+        .text("Latitude:")
+    var summaryRow3 = col3.append("div")
+        .attr("class", "deetRow weight summaryEl")
+    summaryRow3.append("img")
+        .attr("src", "images/check.png")
+    summaryRow3.append("div")
+        .attr("class", "deetText")
+        .html(params.lat_column)
+
+
+
+
+
+// N total rows in your data           updates.num_rows_file
+// N rows removed by filters           updates.num_filter_rows_dropped
+// [Warning icon]N rows removed with null or missing weight columns        warnings.num_null_weight_rows_dropped
+// [Warning icon]N rows removed with null or missing latitude and/or longitude columns         warnings.num_null_latlon_rows_dropped
+// [Warning icon]N rows removed with null or missing filter columns        warnings.num_null_weight_rows_dropped
+// [Warning icon]N rows removed that were not in [city name] warnings.num_out_of_city_rows_dropped
+
+// N total rows analyzed       updates.num_rows_final
+
+
+
+    var comma = d3.format(",")
+    var numWidth = comma(messages.updates.num_rows_file).length * 9
+
+    var sumContainer = container.append("div").attr("id", "sumContainer")
+
+    sumContainer.append("div")
         .attr("class","summaryRows")
-        .html("<span>" + messages.updates.num_rows_file + "</span> total rows in your data")
+        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_file) + "</span> total rows in file")
 
-    container.append("div")
-        .attr("class","summaryRows")
-        .html("<span>" + messages.updates.num_filter_rows_dropped + "</span> rows removed by filters")
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative")
+        .html("<span style = \"width:" + numWidth +"px\";>-" + comma(messages.updates.num_filter_rows_dropped) + "</span> rows removed by filters")
+        .classed("hidden", function(){
+            return +messages.updates.num_filter_rows_dropped == 0
+        })
 
-    container.append("div")
-        .attr("class","summaryRows")
-        .html("<span>" + messages.warnings.num_null_weight_rows_dropped + "</span> rows removed with null or missing weight columns")
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_null_weight_rows_dropped) + "</span> rows removed with null or missing weight columns")
+        .classed("hidden", function(){
+            return +messages.warnings.num_null_weight_rows_dropped == 0
+        })
 
-    container.append("div")
-        .attr("class","summaryRows")
-        .html("<span>" + messages.warnings.num_null_filter_rows_dropped + "</span> rows removed with null or missing filter columns")
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_null_filter_rows_dropped) + "</span> rows removed with null or missing filter columns")
+        .classed("hidden", function(){
+            return +messages.warnings.num_null_filter_rows_dropped == 0
+        })
 
-    container.append("div")
-        .attr("class","summaryRows")
-        .html("<span>" + messages.warnings.num_null_latlon_rows_dropped + "</span> rows removed with null or missing latitude and/or longitude columns")
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_null_latlon_rows_dropped) + "</span> removed with null or missing latitude and/or longitude columns")
+        .classed("hidden", function(){
+            return +messages.warnings.num_null_latlon_rows_dropped == 0
+        })
 
-    container.append("div")
-        .attr("class","summaryRows")
-        .html("<span>" + messages.warnings.num_out_of_city_rows_dropped + "</span> rows removed that were not within " + messages.updates.city_used)
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</span> rows removed that were not within " + messages.updates.city_used)
+        .classed("hidden", function(){
+            return +messages.warnings.num_out_of_city_rows_dropped == 0
+        })
+
+    sumContainer.append("div")
+        .attr("class","summaryRows bottomRow")
+        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_final) + "</span> total rows analyzed")
 
 
 
@@ -159,10 +267,10 @@ d3.select("#tt-icon-cost")
         var tt = d3.select(this).append("div").attr("class", "tt-container")
 
         tt.append("div")
-            .html("Households that pay more than 30 percent of their income on rent.")
+            .html("Households that pay more than 35 percent of their income on rent.")
 
     })
-    // .on("mouseout", function(){
-    //     d3.selectAll(".tt-container").remove()
-    // })
+    .on("mouseout", function(){
+        d3.selectAll(".tt-container").remove()
+    })
 

@@ -89,12 +89,13 @@ select{
 }
 .startOver{
     position: fixed;
-    border-top: 30px solid #fff;
+    border-top: 25px solid #fff;
     right: 0px;
     top: 0px;
     border-right: 30px solid #fff;
     background: #fff;
     cursor: pointer;
+
 }
 .startOver div{
     color: #696969;
@@ -109,6 +110,15 @@ select{
     margin-left: 10px;
     position: relative;
     top: 7px;
+}
+.loaderFixedHeader{
+    position: fixed;
+    width: 100%;
+    height: 56px;
+    left: 0px;
+    top: 0px;
+    background: white;
+    z-index: 3;
 }
 
 #header-pinned{
@@ -265,4 +275,20 @@ footer p{
 }
 form{
     display: none;
+}
+.iconContainer{
+    display: inline-block;
+}
+.inlineIcon{
+    width: 30px;
+    margin-right: 7px;
+    position: relative;
+    margin-left: 10px;
+    top: 7px;
+}
+.headerIcon{
+    width: 40px;
+    margin-right: 13px;
+    position: relative;
+    top: 12px;
 }

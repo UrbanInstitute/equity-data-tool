@@ -1,0 +1,78 @@
+.mobileOnly{
+    display: none;
+}
+@media(max-width: 768px){
+    .loaderHome, .loaderSection p, #loadingStatusContainer{
+        max-width: 650px;
+        width: calc(100% - 60px);
+    }
+
+    .buildings.loader, .buildings.results {
+        width: 100%;
+        max-width: 350px;
+    }
+    #homeButtonRow{
+        margin-left: 0px;
+        margin-right: 0px;
+        width: calc(100% - 40px);
+        font-size: 16px;
+    }
+    h3.loaderSubHeader{
+        font-size: 24px;
+    }
+    h2.loaderHeader{
+        font-size: 26px;
+    }
+    .loaderHome{
+        font-size: 16px;
+    }
+    .loaderSection{
+        width: calc(100% - 60px);
+        left: 0px;
+    }
+    #uploadInstructions{
+        position: initial;
+        width: 100%;
+        display: block;
+        left: 0px;
+    }
+    #dropbox{
+
+    position: initial;
+    width: 100%;
+    display: block;
+    margin-left: 30px;
+
+    }
+}
+@media(max-width: 550px){
+    #homeButtonRow .button{
+        width: 100%;
+    }
+    .mobileOnly.or{
+        display: block;
+        width: calc(100% + 40px);
+        color: #696969;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    #orLine{
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: #696969;
+        top: 13px;
+        position: relative;       
+    }
+    #orOr{
+        display: block;
+        background: white;
+        /* padding: 10px; */
+        z-index: 2;
+        position: relative;
+        width: 55px;
+        text-align: center;
+        margin: 0 auto;
+    }
+}

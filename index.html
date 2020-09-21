@@ -19,6 +19,7 @@
   <link rel="stylesheet" type="text/css" href="css/results.css"/>
   <link rel="stylesheet" type="text/css" href="css/barchart.css"/>
   <link rel="stylesheet" type="text/css" href="css/maps.css"/>
+  <link rel="stylesheet" type="text/css" href="css/mobile.css"/>
 
   <link rel="stylesheet" href="css/vendor/mapbox-gl-compare.0.4.0.css" type="text/css"/>
   <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic,900,900italic" rel="stylesheet" type="text/css">
@@ -117,7 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <img class = "buildings results" src = "images/buildings.png">
         <h2 class = "loaderHeader">Spatial Equity Data Tool</h2>
         <h3 class = "loaderSubHeader">Measuring Disparities in Your City</h3>
-        <p class = "results intro">How can cities ensure that resources are equitably distributed to all residents? We created this tool to help city officials and community organizations quickly assess spatial disparities in their data.</p>
+        <p class = "results intro">How can cities ensure that resources are equitably distributed to all residents? We created this tool to help city officials and community organizations quickly assess <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> disparities in their cities.</p>
      <div class = "summaryContainer visible">
      </div>
      <div class = "summaryContainer clone">
@@ -126,7 +127,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 
     <div id = "resultsFiguresTop">
-        <div class = "resultsHeader maps">Geographic distribution of your data compared with the city’s</div>
+        <div class = "resultsHeader maps"><img class = "headerIcon" src = "images/map-icon.png">Geographic distribution of your data compared with the city’s</div>
 
         <select id = "baselineSelect">
             <option value = "pop">total population</option> 
@@ -200,7 +201,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class = "resultsContainer wrapper">
     <div id = "resultsFiguresBottom">
-        <div class = "resultsHeader bars">Demographic distribution of your data compared with the city’s total population</div>
+        <div class = "resultsHeader bars"><img class = "headerIcon" src = "images/bar-icon.png"> Demographic distribution of your data compared with the city’s total population</div>
 
         <div id = "barCategories">
             <div class = "resultsCopy bars">Choose demographic categories to see which groups are over- and underrepresented in your data</div>
@@ -248,7 +249,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class = "loaderHeader">Spatial Equity Data Tool</h2>
     <h3 class = "loaderSubHeader">Measuring Disparities in Your City</h3>
 
-    <p>How can cities ensure that resources are equitably distributed to all residents? We created this data tool to help city officials, community organizations, and residents quickly assess spatial and demographic disparities in their cities.</p>
+    <p>How can cities ensure that resources are equitably distributed to all residents? We created this data tool to help city officials, community organizations, and residents quickly assess <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> disparities in their cities.</p>
 
     <p><em>Are wi-fi hotspots unevenly located in your city? Do all residents have equitable access to bike share stations? Does your dataset accurately reflect your city’s population? What groups or neighborhoods are underrepresented?</em></p>
 
@@ -256,6 +257,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <div id = "homeButtonRow">
         <div id = "sampleButton" class = "button blue sample">Use sample data</div>
+        <div class = "mobileOnly or">
+          <div id = "orLine"></div>
+          <div id = "orOr">OR</div>
+        </div>
         <div id = "userButton" class = "button blue user">Upload your own data</div>
     </div>
 </div>
@@ -269,13 +274,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <form name = "sampleDataForm" id = "sampleDataForm">
                 <input type="file" id="sampleInput">
             </form>
-            <div class = "sample data backButton">
-                <img src = "images/backArrow.png">
-                <div>Back</div>
-            </div>
-            <div class = "startOver">
-                <div>Start over</div>
-                <img src = "images/startOver.png">
+            <div class = "loaderFixedHeader">
+              <div class = "sample data backButton">
+                  <img src = "images/backArrow.png">
+                  <div>Back</div>
+              </div>
+              <div class = "startOver">
+                  <div>Start over</div>
+                  <img src = "images/startOver.png">
+              </div>
             </div>
             <h2 class = "loaderHeader">Use sample data</h2>
             <p id = "sampleDefaultText"><em>These are examples of city-level datasets that can be evaluated with the tool. Choose a dataset to explore how the tool works or download the data to see what a compatible file looks like.</em></p>
@@ -336,13 +343,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <form name = "userDataForm" id = "userDataForm">
                 <input type="file" id="fileInput">
             </form>
-            <div class = "user data backButton">
-                <img src = "images/backArrow.png">
-                <div>Back</div>
-            </div>
-            <div class = "startOver">
-                <div>Start over</div>
-                <img src = "images/startOver.png">
+            <div class = "loaderFixedHeader">
+              <div class = "user data backButton">
+                  <img src = "images/backArrow.png">
+                  <div>Back</div>
+              </div>
+              <div class = "startOver">
+                  <div>Start over</div>
+                  <img src = "images/startOver.png">
+              </div>
             </div>
             <h2 class = "loaderHeader">Upload your data</h2>
             <p><em>Upload a CSV of geographic point data to see how well your dataset represents your city’s population. </em></p>
@@ -396,13 +405,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START LOADER FILTER DATA CARD -->
         <div class = "loaderSection filters">
-            <div class = "filter advanced backButton">
-                <img src = "images/backArrow.png">
-                <div>Back</div>
-            </div>
-            <div class = "startOver">
-                <div>Start over</div>
-                <img src = "images/startOver.png">
+            <div class = "loaderFixedHeader">
+              <div class = "filter advanced backButton">
+                  <img src = "images/backArrow.png">
+                  <div>Back</div>
+              </div>
+              <div class = "startOver">
+                  <div>Start over</div>
+                  <img src = "images/startOver.png">
+              </div>
             </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Filter data</span></h2>
             <p>Choose a column to filter by and the tool will detect which values—text, numbers, or dates—are in that column. The filters will allow you to focus on data you want to use and hide data you don’t. Columns with both text and numbers will be treated as text fields.</a></p>
@@ -483,13 +494,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START LOADER WEIGHT CARD -->
         <div class = "loaderSection weight">
-            <div class = "weight advanced backButton">
-                <img src = "images/backArrow.png">
-                <div>Back</div>
-            </div>
-            <div class = "startOver">
-                <div>Start over</div>
-                <img src = "images/startOver.png">
+            <div class = "loaderFixedHeader">
+              <div class = "weight advanced backButton">
+                  <img src = "images/backArrow.png">
+                  <div>Back</div>
+              </div>
+              <div class = "startOver">
+                  <div>Start over</div>
+                  <img src = "images/startOver.png">
+              </div>
             </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Weight data</span></h2>
             <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of public parks, if you choose “square footage” as your weight column, higher-square-footage parks will be given more weight in assessing representativeness.</em></p>
@@ -591,6 +604,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p>This tool is part of a larger project to <a href = "https://www.urban.org/policy-centers/research-action-lab/projects/accelerating-innovation-inclusion" target = "_blank">help cities more equitably use data and technology</a>. Through 40 interviews and a roundtable with city leaders, we identified key questions cities should ask to center equity in technology programs and best practices to answer those questions, which we have documented in <a href = "https://apps.urban.org/features/how-to-create-equitable-technology-programs" target = "_blank"><em>Creating Equitable Technology Programs: A Guide for Cities</em></a>. Our research identified the <a href = "https://www.urban.org/urban-wire/make-smart-cities-more-inclusive-leaders-need-better-tools-and-data" target = "_blank">need for resources</a> to facilitate regular and rigorous examination of the representativeness of data powering city decisionmaking and the distribution of technology, and other, programs. That need was a driving force behind this tool.</p>
 
                     <p>For help using this tool or for guidance designing and implementing equitable technology programs, contact  <a href = "mailto:anarayanan@urban.org">anarayanan@urban.org</a>.</p>
+
+                    <p>Before you upload data to this tool, please review our <a href = "spatial_equity_faq.pdf" target = "_blank">terms of use</a>.</p>
                    
                     <h5>Project credits</h5>
                     <div class="urbanstatement">This feature was supported by a grant from the Mastercard Impact Fund, in collaboration with the <a href = "https://www.mastercardcenter.org/" target = "_blank">Mastercard Center for Inclusive Growth</a>. We are grateful to them and to all our funders, who make it possible for Urban to advance its mission. The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of our experts. More information on our funding principles is available <a href = "https://www.urban.org/support" target = "_blank">here</a>. Read our terms of service <a href = "https://www.urban.org/terms-service" target = "_blank">here</a>.</div>
@@ -610,7 +625,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <h3 class="job">Writing</h3>
                     Serena Lei
 
-                    <div class="credits"> <a href="" target="_blank">View this project on GitHub.</a></div>
+                    <div class="credits">Github repositories are available for <a href="https://github.com/UrbanInstitute/equity-data-tool" target="_blank">this web tool</a> and for <a href="https://github.com/UrbanInstitute/ui-equity-tool" target="_blank">the code</a> used to analyze the data</div>
 
 
     </div>

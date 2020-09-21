@@ -139,8 +139,8 @@ function runAnalysis() {
             }
         }); 
     }else{
-        console.log(sampleParams[getSampleDatasetSlug()]["fileId"])
-        showResults(sampleParams[getSampleDatasetSlug()]["fileId"])
+        // console.log(sampleParams[getSampleDatasetSlug()]["fileId"])
+        showResults(getSampleDatasetId().replace(".csv",""))
         return false;
     }
 }
@@ -164,6 +164,7 @@ function showResults(fileId){
 }
 
 function drawResultsData(fileId){
+    console.log(fileId)
     var resultsUrl = baseApiUrl + "get-equity-file/" + fileId
     $.ajax({
         url: resultsUrl,
@@ -178,6 +179,7 @@ function drawResultsData(fileId){
         },
         success: function(msg, status, xhr){
             var params = getParams()
+
             drawBarChart(msg.results.result.demographic_bias_data, "dynamic", function(){})
             drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
             populateSummaries(msg.results.result.messages, params)

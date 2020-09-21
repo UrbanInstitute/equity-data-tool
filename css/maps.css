@@ -23,7 +23,7 @@
     white-space: nowrap;
     position: relative;
     overflow: hidden;
-    width: 800px;
+    width: 65%;
     height: 500px;
 }
 #mapComparison{
@@ -33,18 +33,21 @@
     
 }
 #mapComparison, #diffMap{
-    width: 800px;
+    width: 100%;
     height: 500px;
     position: relative;
     display: inline-block;
     float: left;
+}
+.mapboxgl-canvas {
+    cursor: url(../images/point-up-cursor.png) 0 3, pointer !important
 }
 /********************************************/
 /**************** CONTROLS ******************/
 /********************************************/
 
 #mapControls{
-    width: 330px;
+    width: calc(35% - 70px);
     display: inline-block;
     margin-right: 70px;
     float: left;
@@ -196,7 +199,7 @@
     position: relative;
     overflow-y: hidden;
     overflow-x: visible;
-    width: 800px;
+    width: 575px;
     height: 91px;
     left: -18px;
 }
