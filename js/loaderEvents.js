@@ -135,8 +135,8 @@ function populateDropdowns(colNames){
     if(guessedLat == "" || guessedLon == "") d3.selectAll(".runButton").classed("disabled", true)
     else d3.selectAll(".runButton").classed("disabled", false)
 
-    var colOptionsLat = ["<option value = '' selected>none selected</option>"],
-        colOptionsLon = ["<option value = '' selected>none selected</option>"],
+    var colOptionsLat = ["<option value = ''>none selected</option>"],
+        colOptionsLon = ["<option value = ''>none selected</option>"],
         colOptions = ["<option value = '' selected>none selected</option>"]
     for (i = 0; i < colNames.length; i++) {
         var latSelected = (colNames[i] == guessedLat) ? "selected" : "",
