@@ -108,8 +108,8 @@ function runAnalysis() {
                 
                 showLoadingScreen();    
                 
-                // xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-                // xhr.setRequestHeader("X-Mobile", "true");
+                xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+                xhr.setRequestHeader("X-Mobile", "true");
             },
             xhr: function() {
                 var xhr = new window.XMLHttpRequest();
@@ -169,10 +169,10 @@ function drawResultsData(fileId){
         url: resultsUrl,
         method: "GET",
         crossDomain: true,
-        // beforeSend: function (xhr) {
-        //     xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-        //     xhr.setRequestHeader("X-Mobile", "true");
-        // }, 
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+            xhr.setRequestHeader("X-Mobile", "true");
+        }, 
         error: function(e){
             throwError(["api"])
         },
@@ -238,10 +238,10 @@ function loopStatus(msg){
         url: statusURL,
         method: "GET",
         crossDomain: true,
-        // beforeSend: function (xhr) {
-        //     xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-        //     xhr.setRequestHeader("X-Mobile", "true");
-        // }, 
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+            xhr.setRequestHeader("X-Mobile", "true");
+        }, 
         error: function(e){
             throwError(["api"])
         },
