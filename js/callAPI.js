@@ -2,8 +2,7 @@ var buildingIntervId;
 var statusIntervId;
 var buildingIndex = 0;
 
-var TOKEN = "4b7aa32e17731af9e97d0d2edd061f1b46d7d117"
-var baseApiUrl = "https://equity-tool-api.urban.org/api/v1/"
+
 
 function humanFileSize(bytes, si=false, dp=1) {
   const thresh = si ? 1000 : 1024;
@@ -108,8 +107,10 @@ function runAnalysis() {
                 
                 showLoadingScreen();    
                 
-                xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-                xhr.setRequestHeader("X-Mobile", "true");
+                if(TOKEN){
+                    xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+                    xhr.setRequestHeader("X-Mobile", "true");
+                }
             },
             xhr: function() {
                 var xhr = new window.XMLHttpRequest();
@@ -170,8 +171,10 @@ function drawResultsData(fileId){
         method: "GET",
         crossDomain: true,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-            xhr.setRequestHeader("X-Mobile", "true");
+            if(TOKEN){
+                xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+                xhr.setRequestHeader("X-Mobile", "true");
+            }
         }, 
         error: function(e){
             throwError(["api"])
@@ -239,8 +242,10 @@ function loopStatus(msg){
         method: "GET",
         crossDomain: true,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-            xhr.setRequestHeader("X-Mobile", "true");
+            if(TOKEN){
+                xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+                xhr.setRequestHeader("X-Mobile", "true");
+            }
         }, 
         error: function(e){
             throwError(["api"])
