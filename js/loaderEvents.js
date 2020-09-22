@@ -351,13 +351,31 @@ inputElement.addEventListener("change", handleFiles, false);
 
 
 
-d3.selectAll(".sampleRect").on("click", function(){
+d3.selectAll(".sampleCard").on("click", function(){
 
     var sample;
     if(d3.select(this).classed("three11")) sample = "three11"
     else if(d3.select(this).classed("hotspots")) sample = "hotspots"
     else if(d3.select(this).classed("bike")) sample = "bike"
     selectSampleData(sample)
+})
+.on("mouseover", function(){
+    if(d3.select(this).classed("singleCard")){
+        return false;
+    }else{
+        d3.select(this).select("img.fg")
+            .transition()
+            .style("opacity",1)
+    }
+})
+.on("mouseout", function(){
+    if(d3.select(this).classed("singleCard")){
+        return false;
+    }else{
+        d3.select(this).select("img.fg")
+            .transition()
+            .style("opacity",.8)
+    }
 })
 
 

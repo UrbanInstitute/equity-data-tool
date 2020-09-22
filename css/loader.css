@@ -728,6 +728,12 @@ input[type=date]{
     position: absolute;
     top: 45px;
 }
+.sampleCard.singleCard img.fg{
+    opacity: 1;
+}
+.sampleCard img.fg{
+    opacity: .8;
+}
 .sampleImg{
     position: absolute;
     z-index: 2;
@@ -744,9 +750,9 @@ input[type=date]{
 }
 .sampleImg.bike{
     position: absolute;
-    height: 77px;
-    right: 13px;
-    top: -14px;
+    height: 85px;
+    right: 15px;
+    top: -15px;
 }
 .sampleDownload{
     color: #1696d2;

@@ -10,9 +10,10 @@
 .resultsCopy.bars{
     margin-bottom: 30px;
     width: 100%;
+    font-size: 18px;
 }
 .barCategoryRow{
-    margin-bottom: 10px;
+    margin-bottom: 28px;
     cursor: pointer;
 }
 .barCategoryCheck{
@@ -41,8 +42,9 @@
 }
 .barCategoryLabel{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     display: inline-block;
+    margin-bottom: 2px;
 }
 .barCategoryDescription{
     font-style: italic;
