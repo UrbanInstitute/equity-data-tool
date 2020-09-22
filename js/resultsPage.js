@@ -130,38 +130,42 @@ function populateSummaries(messages, params){
 
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative")
-        .html("<span style = \"width:" + numWidth +"px\";>-" + comma(messages.updates.num_filter_rows_dropped) + "</span> rows removed by filters")
+        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_filter_rows_dropped) + "</span> rows removed by filters")
         .classed("hidden", function(){
             return +messages.updates.num_filter_rows_dropped == 0
         })
 
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_null_weight_rows_dropped) + "</span> rows removed with null or missing weight columns")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_weight_rows_dropped) + "</span> rows removed with null or missing weight columns")
         .classed("hidden", function(){
             return +messages.warnings.num_null_weight_rows_dropped == 0
         })
 
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_null_filter_rows_dropped) + "</span> rows removed with null or missing filter columns")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_filter_rows_dropped) + "</span> rows removed with null or missing filter columns")
         .classed("hidden", function(){
             return +messages.warnings.num_null_filter_rows_dropped == 0
         })
 
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_null_latlon_rows_dropped) + "</span> removed with null or missing latitude and/or longitude columns")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_latlon_rows_dropped) + "</span> removed with null or missing latitude and/or longitude columns")
         .classed("hidden", function(){
             return +messages.warnings.num_null_latlon_rows_dropped == 0
         })
 
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>-" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</span> rows removed that were not within " + messages.updates.city_used)
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</span> rows removed that were not within " + messages.updates.city_used)
         .classed("hidden", function(){
             return +messages.warnings.num_out_of_city_rows_dropped == 0
         })
+
+    sumContainer.append("div")
+        .attr("class","summaryRows negativeSign")
+        // .html("")
 
     sumContainer.append("div")
         .attr("class","summaryRows bottomRow")

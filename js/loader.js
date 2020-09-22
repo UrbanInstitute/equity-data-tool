@@ -62,10 +62,21 @@ function hideLoaderError(errorType){
   d3.select(".saveButton.weight").classed("disabled", false)
 }
 function clearFilterOptions(){
+    d3.select("#addButton").style("margin-top", "-17px") 
+    d3.selectAll(".filterContainer").classed("active", false)
+    d3.selectAll(".loaderNote.filters").classed("active", false)
+
     d3.select("#numericSelect").property("value","")
     d3.select("#textSelect").property("value","")
     d3.select("#startDateSelect").property("value","")
     d3.select("#endDateSelect").property("value","")
+
+    // d3.select("#columnSelect").selectAll("option")
+    //   .property("selected", function(){
+    //     return this.value == ""
+    //   })
+    // $('#columnSelect').selectmenu("refresh")
+
 }
 function populateFilters(filters){
   d3.selectAll(".filterTag").remove()

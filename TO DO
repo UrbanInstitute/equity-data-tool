@@ -4,10 +4,12 @@
 - dau post link
 
 Tool:
+- Serena
+    Analyzed [number] rows and [number] columns out of [total-number] rows and [total-number] columns
+    (drop columns)
 - Ajjit
     - city, state in tt, clean city names
-    - geojson s3...
-    - fileids for sample data
+    - getstatus endpoint for finished 
 
 - Dave
     - api to prod
@@ -16,12 +18,97 @@ Tool:
 
 
 
-- design boxnote edits and audit
-- style summary stats on results page and hide for N = 0
 - MAX_PROCESSING_TIME test, timeout error
-- deal w sample data changed vals
 - bar dot transition interrupt size
 - mmmoooobhiiile
 - x browser
-- document...   
+- documentation...   
 
+
+
+home screen tool
+- equal space around demographic icon
+
+sample data
+- bigger bike sample card image
+- anything under last line of intro text, 50px away
+- from download data to top of header, 50px
+- btwn your presets and applied preset, 30px
+- new orleans card, single view, card not centered
+- make preset and selected same width as card
+- make filer/weight sub sub hed 300 weight
+
+Filter view
+- text ital
+- col select same width as tags, so everythign centered (white space centered right down the middle)
+- after applying filter, default back to none selected
+- "Apply filter", 24px, 300 weight, no underline, underline on hover
+
+
+Weight view is good
+
+
+
+User data
+- note same width as long/lat note, then center the whole thing
+- spacing from bottom of note to lat/lon header, 30px, flag for allison if weird looking
+- "Note" ital
+- "Instructions" same size as lat/lon
+- match alignment/spacing btwn upload container and list
+
+
+Results
+- header link hover styles
+- on headers, map/bar icons hanging into margin
+- closed summary, vertical center and too much space after colon
+- open summary, too much space at the bottom
+- open summary, headers bottom border allison to send
+- open summary, allison sending mocks
+- make the HR the same orange as the bricks on the darkest bldg
+
+
+Map screen:
+- for dropdown, same left padding as right, then increase space btwn city's and dropdown, so total text -> text space the same
+- make left col text same width as on barchart
+- move no sig diff text to the right of item and centered
+- no sig diff text same size as on bar legend
+- thicker stroke icon both on cursor and legend
+- make legend icon smaller, same size as on map
+- disparity score and other bold label 18px
+- maybe make radios larger? Same size as checkboxes
+
+
+Bar chart:
+- more space betwn axis and chart to prevent dot/text overlap
+- tooltip icon ? in Lato
+- bottom whitespace same as btwn map and HR
+- "Choose demographic categories to see.." 18px
+
+Error screen/ loading screen
+- move error(s) underneath bldgs 30px beneath
+- faq line same style (ital, smaller) as other subheds, 50px to bldgs
+- 50px from error to nav
+- move x icon closer to errors
+- all 3 nav icons height 23px, and centered
+
+
+
+Framework
+- tooltip icon ? in Lato
+- swap mp4 for gif
+- align map w top of "Home"
+- more space under pub date, maybe 20px more    
+- home space btwn 2 pghs should be idential spacing btwn all elements
+- home for example, space btwn network: and start of list same as btwn list els or bottom list and next pgh
+- key takeaways 75 bottom -50top marg
+- city labels above imgs 24px, 300, roman
+
+
+Mobile, down to 1000
+- results: baseline menu too long
+
+
+Small mobile
+
+
+Boxnote

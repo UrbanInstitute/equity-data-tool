@@ -3,7 +3,7 @@ var statusIntervId;
 var buildingIndex = 0;
 
 var TOKEN = "4b7aa32e17731af9e97d0d2edd061f1b46d7d117"
-var baseApiUrl = "https://equity-tool-api-stg.urban.org/api/v1/"
+var baseApiUrl = "https://equity-tool-api.urban.org/api/v1/"
 
 function humanFileSize(bytes, si=false, dp=1) {
   const thresh = si ? 1000 : 1024;

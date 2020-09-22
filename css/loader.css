@@ -67,6 +67,9 @@ h3.loaderSubHeader{
 .loaderNote.active{
     display: block;
 }
+.loaderNote{
+    white-space: normal;
+}
 
 /********************************************/
 /************* LOADER LAYOUT ****************/
@@ -90,6 +93,9 @@ h3.loaderSubHeader{
     top: 0px;
     left: calc(50% - 440px);
     z-index: 6;
+}
+.loaderSection.filters p{
+    font-style: italic;
 }
 .loaderSection.active{
     display: block;
@@ -423,13 +429,18 @@ h3.loaderSubHeader{
 #filterControls, #filterListContainer{
     display: inline-block;
     float: left;
-    width: calc(50% - 10px);
+    width: 323px;
+    white-space: nowrap;
+}
+#filterColumnContainer{
+    width: fit-content;
+    margin: 0 auto;
 }
 #filterListContainer{
     margin-top: 17px;    
 }
 #filterControls{
-    margin-right: 20px;
+    margin-right: 55px;
 }
 .filterContainer{
     display: none;
@@ -509,16 +520,17 @@ input[type=date]{
     display: none !important;
 }
 #addButton{
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 300;
     color: #1696d2;
     cursor: pointer;
-    border-bottom: 2px solid;
-    width: 116px;
     padding-bottom: 1px;
     text-transform: uppercase;
     margin-top: -17px;
     margin-bottom: 45px;
+}
+#addButton:hover{
+    text-decoration: underline;
 }
 #appliedHeader{
     font-size: 1.17em;
@@ -538,6 +550,9 @@ input[type=date]{
     margin-bottom: 18px;
     display: none;
     position: relative;
+}
+.filterTag.visible:last-child{
+    margin-bottom: 50px;
 }
 .filterTag.visible{
     display: block;
@@ -658,6 +673,7 @@ input[type=date]{
 #sampleCardContainer{
     width: fit-content;
     margin: 0 auto;
+    margin-top: 44px;
 }
 .sampleCard{
     display: inline-block;
@@ -666,7 +682,7 @@ input[type=date]{
 }
 .sampleCard.singleCard{
     margin-right: 0px !important;
-    /*margin-left: 64px;*/
+    margin-left: 0px !important;
 }
 .sampleCard.three11.singleCard{
     margin-left: 64px;
@@ -722,9 +738,9 @@ input[type=date]{
 }
 .sampleImg.bike{
     position: absolute;
-    height: 71px;
+    height: 77px;
     right: 13px;
-    top: -9px;
+    top: -14px;
 }
 .sampleDownload{
     color: #1696d2;
@@ -744,8 +760,9 @@ input[type=date]{
     position: relative;
     float: left;
     clear: both;
-    margin-top: 64px;
+    margin-top: 44px;
     margin-bottom: 34px;
+    width: 260px;
 }
 .sampleDeetHeader, .appliedDeetHeader{
     font-weight: bold;
@@ -778,7 +795,7 @@ input[type=date]{
     padding-top: 18px;
 }
 .appliedDeetHeader{
-    margin-top: 60px;
+    margin-top: 33px;
     display: none;
 }
 .appRow{
@@ -793,8 +810,8 @@ input[type=date]{
     top: 1px;
 }
 .deetSubHed, .appSubHed{
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 300;
     margin-bottom: 10px;
 }
 .deetText{
