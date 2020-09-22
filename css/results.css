@@ -187,6 +187,8 @@
 .sumSectionImg.user{
     top: -47px;
     width: 60px;
+    position: relative;
+    opacity: 0;
 }
 
 .sumSectionText{

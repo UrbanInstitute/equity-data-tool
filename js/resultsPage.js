@@ -204,6 +204,7 @@ function populateSummaries(messages, params){
             d3.select(this).classed("closed", false)
             d3.select(".headX.vert").transition()
                 .style("transform", "rotate(90deg)")
+            d3.select(".sumSectionImg").transition().style("opacity",1)
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
@@ -213,7 +214,7 @@ function populateSummaries(messages, params){
             d3.select(this).classed("closed", true)
             d3.select(".headX.vert").transition()
                 .style("transform", "rotate(0deg)")
-
+            d3.select(".sumSectionImg").transition().style("opacity",0)
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
