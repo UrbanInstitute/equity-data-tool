@@ -248,6 +248,7 @@ const MAP_BINS = 8;
 const MAP_LEGEND_HEIGHT = 87;
 const MAX_PROCESSING_TIME = 10000
 const PROCESSING_INTERVAL = 500
+const BAR_AXIS_LABEL_SCOOTCH = 13;
 
 
 var globalFile;

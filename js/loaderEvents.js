@@ -98,7 +98,7 @@ function deselectSampleData(){
 
 }
 function guessLatLon(colNames, l){
-    var guesses = (l == "lat") ? ["latitude", "lat", "x"] : ["longitude", "lon","long","y"];
+    var guesses = (l == "lat") ? ["latitude", "lat", "y"] : ["longitude", "lon","long","x"];
     for(var g = 0; g < guesses.length; g++){
         var guess = guesses[g]
         for(var c = 0; c < colNames.length; c++){
@@ -267,6 +267,7 @@ function dropboxClick(e){
 function checkValidFilter(inputName, val){
     var validFilter;
     if(val == ""){
+        console.log("vf", validFilter)
         validFilter = false
     }else{
         var colName = d3.select("#columnSelect").node().value,
@@ -291,6 +292,7 @@ function checkValidFilter(inputName, val){
             validFilter = false;
         }
     }
+
     d3.select("#addButton").classed("disabled", !validFilter)
     return validFilter
 }
@@ -393,6 +395,11 @@ d3.select("#addButton").on("click", function(){
     if(checkValidFilter("saveButton", "save")){
         addToFilterList(getCurrentFilter())
     }
+    d3.select("#columnSelect").selectAll("option")
+        .property("selected", function(){
+            return this.value == ""
+        })
+    $('#columnSelect').selectmenu("refresh")
     d3.select(this).classed("disabled", true)
 })
 

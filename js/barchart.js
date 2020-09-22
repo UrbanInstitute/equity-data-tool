@@ -143,7 +143,7 @@ function drawBarChart(data, containerType, callback){
         var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
             return "bar_full_name background active chartPart " + barCategories[d.census_var]["class"] + overunder
         })
-        .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
+        .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
         .attr("y", function(d){ return y(d.census_var) + margin.top; })
         .attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
         .style("filter","url(#textShadow)")
@@ -157,7 +157,7 @@ function drawBarChart(data, containerType, callback){
         var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
             return "bar_full_name foreground active chartPart " + barCategories[d.census_var]["class"] + overunder
         })
-        .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
+        .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
         .attr("y", function(d){ return y(d.census_var) + margin.top; })
         .attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
         .attr("text-anchor", function(d){ return d.diff_data_city < 0 ? "start" : "end"; })
@@ -302,10 +302,10 @@ $( window ).resize( function(){
             .attr("cx", function(d){ return x(d.diff_data_city); })
 
         d3.selectAll("#barChartSvg .bar_full_name.background")
-            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
+            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
 
         d3.selectAll("#barChartSvg .bar_full_name.foreground")
-            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + 2.55 : x(0) - 2.55 })
+            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
 
 
 

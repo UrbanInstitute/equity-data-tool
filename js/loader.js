@@ -71,12 +71,6 @@ function clearFilterOptions(){
     d3.select("#startDateSelect").property("value","")
     d3.select("#endDateSelect").property("value","")
 
-    // d3.select("#columnSelect").selectAll("option")
-    //   .property("selected", function(){
-    //     return this.value == ""
-    //   })
-    // $('#columnSelect').selectmenu("refresh")
-
 }
 function populateFilters(filters){
   d3.selectAll(".filterTag").remove()

@@ -21,7 +21,7 @@
     display: none;
     width: 100%;
     height: 2px;
-    background: #E88E2D;
+    background: #FDB160;
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -31,21 +31,25 @@
 #baselineSelect-button{
     display: inline-block;
     top: 10px;
+    margin-left: 7px;
+}
+#baselineSelect-button .ui-selectmenu-text{
+    left: 11px;
 }
 #baselineSelect-button.pop{
-    max-width: 194px;
+    max-width: 187px;
 }
-#baselineSelect-button.under_poverty_line{
-    max-width: 248px;
+#baselineSelect-button.under_200_poverty_line{
+    max-width: 241px;
 }
 #baselineSelect-button.no_internet{
-    max-width: 535px;
+    max-width: 329px;
 }
 #baselineSelect-button.cb_renter_hh{
-    max-width: 430px;
+    max-width: 423px;
 }
 #baselineSelect-button.seniors{
-    max-width: 199px;
+    max-width: 192px;
 }
 
 
@@ -90,7 +94,29 @@
     position: fixed;
     top: 13px;
     right: 73px;
+    height: 0px;
 }
+.resultsNav:hover, .resultsNav.faq a:hover{
+    color: #1696d2;
+    font-weight: bold;
+}
+
+/*<div id = "advancedTextOverlayNav">Advanced options <img class = "navNohoverImg" src = "images/menuArrowNav.png"><img class = "navHoveImgr" src = "images/dropdown-bg.png"></div>
+*//*navHover*/
+.navHoveImgr{
+    display: none;
+}
+#advancedTextOverlayNav.navHover .navNohoverImg{
+    display: none;
+}
+#advancedTextOverlayNav.navHover .navHoveImgr{
+    display: inline-block;
+}
+#advancedTextOverlayNav.navHover{
+    color: #1696d2;
+    font-weight: bold;
+}
+
 #advancedTextOverlayNav{
     pointer-events: none;
     color: #353535;
@@ -139,9 +165,24 @@
     position: relative;
     margin-bottom: 30px;
 }
+#sumSectionContainer{
+    background: #F5F5F5;
+    display: flex;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+#sumSectionImgContainer{
+    float: left;
+}
+.sumSectionImg{
+    width: 70px;
+    margin-right: 50px;
+}
+.sumSectionText{
+    display: none;
+}
 .summaryStrong{
     font-weight: bold;
-    margin-right: 10px;
 }
 .summaryHeadName{
     font-size: 22px;
@@ -182,6 +223,12 @@
 }
 .summaryColumn.lat{
     margin-right: 0px;
+}
+.summaryColumn .deetSubHed{
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #D2D2D2;
+    padding-bottom: 6px;
 }
 .summaryRows{
     position: relative;
@@ -247,6 +294,7 @@
     float: right;
     top: -90px;
     position: relative;
+    margin-bottom: -10px;
 }
 #mapButtonContainer{
     float: right;

@@ -189,6 +189,9 @@ h3.loaderSubHeader{
 
 #uploadInstructionContainer{
     position: relative;
+    width: 894px;
+    margin-left: 63px;
+    display: block;
 }
 #dropbox {
     display: inline-block;
@@ -196,7 +199,7 @@ h3.loaderSubHeader{
     height: 186px;
     cursor: pointer;
     position: absolute;
-    top: 43px;
+    top: 38px;
 }
 #innerDropbox{
     border: 2px dashed #FCE39E;
@@ -240,10 +243,13 @@ h3.loaderSubHeader{
 
 #uploadInstructions{
     display: inline-block;
-    width: calc(100% - 316px);
+    width: calc(100% - 458px);
     margin-left: 50px;
     position: relative;
     left: 260px;
+}
+#uploadInstructions h3{
+    font-size: 22px;
 }
 .instructionRow{
     margin-bottom: 16px;
@@ -269,7 +275,7 @@ h3.loaderSubHeader{
 #uploadLatLonContainer h4{
     font-size: 22px;
     margin-bottom: 28px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 #latContainer, #lonContainer{
     display: inline-block;
@@ -847,7 +853,7 @@ input[type=date]{
     width: 544px;
     position: relative;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 50px;
 }
 .loadingErrorImg{
     display: none;
@@ -865,9 +871,16 @@ input[type=date]{
 .errorLight{
     font-weight: 300;
     display: block;
+    font-size: 24px;
+    font-style: italic;
+    margin-top: 31px;
 }
 #loadingErrorContainer{
-    margin-top: -20px;
+     display: block;
+    width: 570px;
+    margin: 0 auto;
+    left: -25px;
+    position: relative;
 }
 .loadingError{
     display: none;
@@ -886,7 +899,10 @@ input[type=date]{
     float: left;
     width: 100%;
     text-align: left;
-    padding-left: 46px;
+    padding-left: 37px;
+    font-size: 24px;
+    font-weight: 300;
+    font-style: italic;
 }
 .loadingErrorRow{
     clear: both;
@@ -898,7 +914,7 @@ input[type=date]{
     display: block;
     width: fit-content;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: -6px;
 }
 .errorNavComponent{
     display: inline-block;
@@ -906,8 +922,10 @@ input[type=date]{
     cursor: pointer;
 }
 .errorNavComponent img{
-    height: 30px;
+    height: 23px;
+    top: -4px;
     display: inline-block;
+    position: relative;
 }
 .errorNavComponent div{
     display: inline-block;

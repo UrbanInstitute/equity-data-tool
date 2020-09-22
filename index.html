@@ -29,10 +29,10 @@
   <meta name="twitter:creator" content="@urbaninstitute">
   <meta name="twitter:title" content="Spatial Equity Data Tool">
   <meta name="twitter:description" content="How can cities ensure that resources are equitably distributed to all residents?">
-  <meta name="twitter:image" content="https://apps.urban.org/features/equity-data-tool/images/social.png">
+  <meta name="twitter:image" content="https://apps.urban.org/features/equity-data-tool/images/social-twitter.png">
   <meta property="og:title" content="Spatial Equity Data Tool" />
   <meta property="og:description" content="How can cities ensure that resources are equitably distributed to all residents?" />
-  <meta property="og:image" content="https://apps.urban.org/features/equity-data-tool/images/social.png" />
+  <meta property="og:image" content="https://apps.urban.org/features/equity-data-tool/images/social-og.png" />
   <meta property="og:image:type" content="image/png">
   <meta property="og:url" content="http://urbn.is/equitytool">
 
@@ -43,7 +43,7 @@
 "@type": "NewsArticle",
 "headline": "Spatial Equity Data Tool",
 "url": "https://apps.urban.org/features/equity-data-tool ",
-"thumbnailUrl": "https://apps.urban.org/features/equity-data-tool/images/social.png",
+"thumbnailUrl": "https://apps.urban.org/features/equity-data-tool/images/social-og.png",
 "dateCreated": "2020-09-24T04:00:00.000Z",
 "articleSection": "Interactive Feature",
 "creator": ["Ajjit Narayanan","Alena Stern","Graham MacDonald","Allison Feldman","Ben Chartoff","Dave D’Orio","Fiona Blackshaw","Serena Lei"],
@@ -107,7 +107,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id = "resultsNav">
       <div class = "resultsNav faq"><a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a></div>
       <div class = "resultsNav startOverResults">Start over</div>
-      <div id = "advancedTextOverlayNav">Advanced options <img src = "images/menuArrowNav.png"></div>
+      <div id = "advancedTextOverlayNav">Advanced options <img class = "navNohoverImg" src = "images/menuArrowNav.png"><img class = "navHoveImgr" src = "images/menuArrow.png"></div>
       <select id = "advancedOptionsHeader" class = "resultsNav">
           <option value = "filters">Filter data</option>
           <option value = "weight">Weight data</option>
@@ -371,7 +371,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <div class = "instructionRow"><img src = "images/check.png"><span>Two columns must correspond to longitude and latitude.</span></div>
                     <div class = "instructionRow"><img src = "images/check.png"><span>Your file size must not exceed 2GB</span></div>
 
-                    <div class = "instructionNote"><strong>Note:</strong> <em>The tool can only analyze data for US cities and for one city at a time. If your file contains data from multiple cities, only the city most frequently appearing in the data will be analyzed.</em></div>
+                    <div class = "instructionNote"><em><strong>Note:</strong> The tool can only analyze data for US cities and for one city at a time. If your file contains data from multiple cities, only the city most frequently appearing in the data will be analyzed.</em></div>
                 </div>
             </div>
             <div id = "uploadErrors">
@@ -540,7 +540,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div id = "statusLoading" class = "loaderSectionStatus"></div>
                 <div id = "statusProcessing" class = "loaderSectionStatus">Processing <span id = "num_rows_processed"></span> of <span id = "num_rows_file"></span> rows of data</div>
                 <div id = "statusDone" class = "loaderSectionStatus">Wrapping up&hellip;</div>
-                <div id = "loadingErrorContainer" class = "loadingError"></div>
             </em>
             </div>
 
@@ -558,6 +557,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                 <img class = "loadingErrorImg loadingError" src = "images/errorBuildings.png">
             </div>
+            <div id = "loadingErrorContainer" class = "loadingError"></div>
+
             <div id = "errorNavContainer" class = "loadingError">
               <div id = "errorNavBack" class = "errorNavComponent">
                 <img src = "images/backArrow.png">
@@ -658,7 +659,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="js/callAPI.js"></script>
 <script src="js/resultsPage.js"></script>
 
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+<script src="js/vendor/mapbox-gl-compare.js"></script>
 
 <script src="js/mapping.js"></script>
 

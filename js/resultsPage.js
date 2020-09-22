@@ -25,7 +25,86 @@ function populateSummaries(messages, params){
         .attr("class", "headX vert")
     headX.append("div")
         .attr("class", "headX hor")
-        // .text(messages.updates.city_used)
+
+
+    var comma = d3.format(",")
+    var numWidth = comma(messages.updates.num_rows_file).length * 9
+
+    var sumSection = container.append("div").attr("id", "sumSectionContainer")
+    var imgContainer = sumSection.append("div")
+        .attr("class", "sumSectionImgContainer")
+    imgContainer.append("img")
+        .attr("class", "sumSectionImg")
+        .attr("src", function(){
+            if(getDatasetType() == "user"){
+                return "images/upload-grey.png"
+            }else{
+                if(getSampleDatasetSlug() == "three11") return "images/sample-311-grey.png"
+                else if(getSampleDatasetSlug() == "hotspots") return "images/sample-hotspots-grey.png"
+                else return "images/sample-bike-grey.png"
+            }
+        })
+    imgContainer.append("div")
+        .attr("class", "sumSectionText")
+        .text(function(){
+            if(getDatasetType() == "user"){
+                return d3.select("#dropboxDrag.filename").text()
+
+            }else{
+                return ""
+            }
+        })
+    var sumContainer = sumSection.append("div").attr("id", "sumContainer")
+
+    sumContainer.append("div")
+        .attr("class","summaryRows")
+        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_file) + "</span> total rows in file")
+
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative")
+        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_filter_rows_dropped) + "</span> rows removed by filters")
+        .classed("hidden", function(){
+            return +messages.updates.num_filter_rows_dropped == 0
+        })
+
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_weight_rows_dropped) + "</span> rows removed with null or missing weight columns")
+        .classed("hidden", function(){
+            return +messages.warnings.num_null_weight_rows_dropped == 0
+        })
+
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_filter_rows_dropped) + "</span> rows removed with null or missing filter columns")
+        .classed("hidden", function(){
+            return +messages.warnings.num_null_filter_rows_dropped == 0
+        })
+
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_latlon_rows_dropped) + "</span> removed with null or missing latitude and/or longitude columns")
+        .classed("hidden", function(){
+            return +messages.warnings.num_null_latlon_rows_dropped == 0
+        })
+
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</span> rows removed that were not within " + messages.updates.city_used)
+        .classed("hidden", function(){
+            return +messages.warnings.num_out_of_city_rows_dropped == 0
+        })
+
+
+
+    sumContainer.append("div")
+        .attr("class","summaryRows bottomRow")
+        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_final) + "</span> total rows analyzed")
+
+
+
+
+
     var fRow = container.append("div").attr("class","paramRow")
 
     var col4 = fRow.append("div")
@@ -118,81 +197,25 @@ function populateSummaries(messages, params){
 // N total rows analyzed       updates.num_rows_final
 
 
-
-    var comma = d3.format(",")
-    var numWidth = comma(messages.updates.num_rows_file).length * 9
-
-    var sumContainer = container.append("div").attr("id", "sumContainer")
-
-    sumContainer.append("div")
-        .attr("class","summaryRows")
-        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_file) + "</span> total rows in file")
-
-    sumContainer.append("div")
-        .attr("class","summaryRows summaryNegative")
-        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_filter_rows_dropped) + "</span> rows removed by filters")
-        .classed("hidden", function(){
-            return +messages.updates.num_filter_rows_dropped == 0
-        })
-
-    sumContainer.append("div")
-        .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_weight_rows_dropped) + "</span> rows removed with null or missing weight columns")
-        .classed("hidden", function(){
-            return +messages.warnings.num_null_weight_rows_dropped == 0
-        })
-
-    sumContainer.append("div")
-        .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_filter_rows_dropped) + "</span> rows removed with null or missing filter columns")
-        .classed("hidden", function(){
-            return +messages.warnings.num_null_filter_rows_dropped == 0
-        })
-
-    sumContainer.append("div")
-        .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_latlon_rows_dropped) + "</span> removed with null or missing latitude and/or longitude columns")
-        .classed("hidden", function(){
-            return +messages.warnings.num_null_latlon_rows_dropped == 0
-        })
-
-    sumContainer.append("div")
-        .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</span> rows removed that were not within " + messages.updates.city_used)
-        .classed("hidden", function(){
-            return +messages.warnings.num_out_of_city_rows_dropped == 0
-        })
-
-    sumContainer.append("div")
-        .attr("class","summaryRows negativeSign")
-        // .html("")
-
-    sumContainer.append("div")
-        .attr("class","summaryRows bottomRow")
-        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_final) + "</span> total rows analyzed")
-
-
-
-
     headX.on("click", function(){
         if(d3.select(this).classed("closed")){
             d3.select(this).classed("closed", false)
-                .transition()
-                .style("transform", "rotate(45deg)")
+            d3.select(".headX.vert").transition()
+                .style("transform", "rotate(90deg)")
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    return d3.select(".summaryContainer.clone").node().getBoundingClientRect().height + "px"
+                    return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - 70) + "px"
                 })
         }else{
             d3.select(this).classed("closed", true)
-                .transition()
+            d3.select(".headX.vert").transition()
                 .style("transform", "rotate(0deg)")
 
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    return "29px"
+                    return "26px"
                 })
 
         }
@@ -264,6 +287,14 @@ $('#advancedOptionsHeader')
         close: function(){
             d3.select("#advancedTextOverlayNav img").style("transform","rotate(0deg)")
         }
+    })
+
+d3.select("#advancedOptionsHeader-button")
+    .on("mouseover", function(){
+        d3.select("#advancedTextOverlayNav").classed("navHover", true)
+    })
+    .on("mouseout", function(){
+        d3.select("#advancedTextOverlayNav").classed("navHover", false)
     })
 
 d3.select("#tt-icon-cost")

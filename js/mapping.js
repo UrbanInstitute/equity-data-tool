@@ -680,7 +680,7 @@ function drawMaps(bbox, geojsonData, bounds){
                     d3.select("#controlBaselineName").text(getBaselineText(d.item.value))
 
                     d3.select("#baselineSelect-button").classed("pop",false)
-                    d3.select("#baselineSelect-button").classed("under_poverty_line",false)
+                    d3.select("#baselineSelect-button").classed("under_200_poverty_line",false)
                     d3.select("#baselineSelect-button").classed("no_internet",false)
                     d3.select("#baselineSelect-button").classed("cb_renter_hh",false)
                     d3.select("#baselineSelect-button").classed("seniors",false)
@@ -689,7 +689,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
 
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("pop",false)
-                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("under_poverty_line",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("under_200_poverty_line",false)
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("no_internet",false)
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("cb_renter_hh",false)
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("seniors",false)
