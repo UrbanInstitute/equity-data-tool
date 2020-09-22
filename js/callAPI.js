@@ -288,6 +288,7 @@ function checkStatus(status){
         d3.select("#statusDone").style("display","block")
     }
     else{
+        console.log(status)
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusProcessing").style("display","block")
         var processed = (status.formdata.updates.num_rows_processed == null) ? 0 : status.formdata.updates.num_rows_processed

@@ -178,6 +178,17 @@
     width: 70px;
     margin-right: 50px;
 }
+.sumSectionImg.three11{
+    width: 125px;
+}
+.sumSectionImg.bike{
+    width: 71px;
+}
+.sumSectionImg.user{
+    top: -47px;
+    width: 60px;
+}
+
 .sumSectionText{
     display: none;
 }

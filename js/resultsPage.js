@@ -12,6 +12,7 @@ function populateSummaries(messages, params){
         .text("SUMMARY: ")
     headName.append("span")
         .html(function(){
+            console.log(messages)
             if(datasetType == "user"){
                 return "Your data from " + messages.updates.city_used
             }else{
@@ -33,8 +34,9 @@ function populateSummaries(messages, params){
     var sumSection = container.append("div").attr("id", "sumSectionContainer")
     var imgContainer = sumSection.append("div")
         .attr("class", "sumSectionImgContainer")
+    var imgClass = (getDatasetType() == "user") ? "user" : getSampleDatasetSlug();
     imgContainer.append("img")
-        .attr("class", "sumSectionImg")
+        .attr("class", "sumSectionImg " + imgClass)
         .attr("src", function(){
             if(getDatasetType() == "user"){
                 return "images/upload-grey.png"
