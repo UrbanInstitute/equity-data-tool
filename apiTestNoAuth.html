@@ -78,18 +78,7 @@ function runAnalysis() {
             
         }
     }
-    console.log("*************************")
-    console.log("params",params)
-    console.log("*************************")
-    console.log("formData object\n")
 
-    // var fd = formData.values()
-    for (var pair of formData.entries()) {
-        console.log("key", pair[0])
-        console.log("value", pair[1])
-        console.log('\n')
-    }
-    console.log("*************************")
 
     $.ajax({
         url: postURL,
@@ -99,14 +88,16 @@ function runAnalysis() {
         processData: false,
         data:formData,
         crossDomain: true,
-        // beforeSend: function (xhr) {
+        beforeSend: function (xhr) {
             /* Authorization header */
             // xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-            // xhr.setRequestHeader("X-Mobile", "true");
-        // },        
+            xhr.setRequestHeader("X-Mobile", "true");
+        },        
         success: function(msg, status, jqXHR){
+            console.log("msg",JSON.stringify(msg))
             $("#postResponse textarea").val(JSON.stringify(msg))
             showLoadingScreen();    
+            // $("#postResponse textarea").val(msg)
             tmpCount = 0;        
             statusIntervId = setInterval(loopStatus, 500, msg)
         },
@@ -122,11 +113,11 @@ function testGet(){
         url: "https://equity-tool-api.urban.org/api/v1/get-equity-status/1600733434-294555",
         method: "GET",
         crossDomain: true,
-        // beforeSend: function (xhr) {
+        beforeSend: function (xhr) {
             /* Authorization header */
             // xhr.setRequestHeader("Authorization", "Token " + TOKEN);
             // xhr.setRequestHeader("X-Mobile", "true");
-        // },  
+        },  
         error: function(e){
             $("#getResponse textarea").val(e.responseText)
         },
