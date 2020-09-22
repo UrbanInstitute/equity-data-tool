@@ -171,8 +171,9 @@
     padding: 20px;
     margin-bottom: 20px;
 }
-#sumSectionImgContainer{
+.sumSectionImgContainer{
     float: left;
+    height: 0px;
 }
 .sumSectionImg{
     width: 70px;
@@ -268,6 +269,9 @@
 .summaryRows.bottomRow{
     border-top: 1px solid #353535;
     padding-top: 3px;
+}
+.summaryRows.bottomRow span{
+    margin-bottom: 0px;
 }
 .warningIcon{
     position: absolute;

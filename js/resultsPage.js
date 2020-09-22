@@ -17,7 +17,7 @@ function populateSummaries(messages, params){
                 return "Your data from " + messages.updates.city_used
             }else{
               var card = d3.select(".sampleCard." + getSampleDatasetSlug())
-              return "Your data on " + card.select(".sampleName").text().toLowerCase() + " from " + card.select(".sampleCity").text()
+              return "Your data on " + card.select(".sampleName").text().toLowerCase() + " from " + messages.updates.city_used
             } 
         })
     var headX = header.append("div")
@@ -208,7 +208,7 @@ function populateSummaries(messages, params){
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - 70) + "px"
+                    return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - 90) + "px"
                 })
         }else{
             d3.select(this).classed("closed", true)
