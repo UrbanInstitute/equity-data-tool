@@ -1,7 +1,8 @@
-function setCSVProperties(){
-
+function populateDownloadLinks(){
+  d3.select(".sampleDownload.hotspots").attr("href", baseDownloadUrl + "new_york_wifi.csv")
+  d3.select(".sampleDownload.three11").attr("href", baseDownloadUrl + "new_orleans_311.csv")
+  d3.select(".sampleDownload.bike").attr("href", baseDownloadUrl + "minneapolis_bikes.csv")
 }
-
 
 function setDatasetType(datasetType){
   d3.selectAll(".activeDatasetType").classed("activeDatasetType", false)
@@ -24,10 +25,6 @@ function setLoaderBaseline(baseline){
     d3.select(".baselineRow." + baseline + " .radio.checked").classed("active", true)
     d3.select(".baselineRow." + baseline + " .radio.unchecked").classed("active", false)
 }
-
-
-
-
 
 function loaderError(error, errorType){
   if(errorType == "upload"){
@@ -417,7 +414,7 @@ function startOver(slug){
 }
 function init(){
   var slug = window.location.hash.replace("#","")
-
+  populateDownloadLinks();
   if(slug == "three11" || slug == "hotspots" || slug == "bike"){
     setDatasetType("sample")
     const p = Object.assign({}, sampleParams[slug]["defaultParams"])

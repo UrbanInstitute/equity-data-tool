@@ -46,8 +46,9 @@
     .sampleCard, .sampleRect{
         width: 230px;
     }
-    .sampleCard.three11, .sampleCard.hotspots{
-        margin-right: 16px;
+    .sampleCard{
+        left: 11px;
+        position: relative;
     }
     .sampleName {
         top: 22px;
@@ -187,9 +188,15 @@
     .loaderHome{
         font-size: 16px;
     }
+
     .loaderSection{
         width: calc(100% - 60px) !important;
-        left: 30px !important;
+        /*left: 30px !important;*/
+        left: calc(50% - 220px) !important;
+        max-width: 440px;
+    }
+    #uploadErrors{
+        max-width: 440px;
     }
     #uploadInstructionContainer{
         width: 100%;
@@ -315,6 +322,7 @@
     }
     .sampleCard{
         margin-bottom: 30px;
+        left: 0px;
     }
     .sampleName{
         position: absolute;
@@ -572,9 +580,10 @@
     }
     #weightErrorContent{
         margin-left: -58px;
+        width: calc(100% + 81px);
     }
     #weightErrorContent .errorText{
-        width: 100%;
+        width: calc(100% - 40px);
     }
     .loadingErrorImg{
         width: 100%;
@@ -781,5 +790,12 @@
     }
     #widthBelow500{
         display: block;
+    }
+    .loaderSection{
+        left: 30px !important;
+    }
+    #uploadErrors{
+        left: 30px;
+        width: calc(100% - 60px);
     }
 }

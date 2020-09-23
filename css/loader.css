@@ -805,9 +805,11 @@ input[type=date]{
 }
 #sampleDownloadContainer{
     clear: both;
-    width: fit-content;
+    /*width: fit-content;*/
     margin: 0 auto;
     padding-top: 18px;
+    width: 100%;
+    text-align: center;
 }
 .appliedDeetHeader{
     margin-top: 33px;
