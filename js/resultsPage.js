@@ -305,3 +305,8 @@ d3.select("#tt-icon-cost")
         d3.selectAll(".tt-container").remove()
     })
 
+
+
+$(window).resize(function(){
+    resizeLoader()
+})

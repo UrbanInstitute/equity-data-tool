@@ -311,6 +311,7 @@ function selectSampleData(sample){
             .append("div")
             .attr("class", "strikethrough deetEl hidden")
     }
+    resizeLoader()
 }
 function updateSampleParams(paramType){
   d3.selectAll(".appEl").remove()

@@ -101,6 +101,8 @@ function deselectSampleData(){
 
     d3.select("#sampleCardContainer").classed("single", false)
 
+    resizeLoader()
+
 }
 function guessLatLon(colNames, l){
     var guesses = (l == "lat") ? ["latitude", "lat", "y"] : ["longitude", "lon","long","x"];
@@ -128,6 +130,7 @@ function showFilterOptions(filterType){
   d3.select(".filterContainer." + filterType).classed("active", true)
   d3.selectAll(".loaderNote.filters").classed("active", false)
   d3.selectAll(".loaderNote.filters." + filterType).classed("active", true)
+  resizeLoader()
   
 }
 function populateDropdowns(colNames){
