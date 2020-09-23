@@ -198,6 +198,9 @@
         left: calc(50% - 220px) !important;
         max-width: 440px;
     }
+    .loaderSection.user{
+        padding-bottom: 26px;
+    }
     #uploadErrors{
         max-width: 440px;
     }
@@ -816,10 +819,18 @@
         width: calc(100% - 44px);
         text-align: center;
         left: 0px;
+        position: initial;
     }
     .runButton.user{
         width: calc(100% - 44px);
         margin: 0 auto;
         display: inline-block;
+        position: initial;
+        margin-top: 20px;
+    }
+    #sampleButtonContainer {
+        top: -20px;
+        position: relative;
+        margin-bottom: -19px;
     }
 }

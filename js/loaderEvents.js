@@ -77,6 +77,7 @@ function handleFiles(inputFiles){
         populateDropdowns(colNames)
         d3.selectAll(".hideOption.user").classed("hiddenSection",false)
         d3.select("#mobileAdvanced").classed("hidden", false)
+        resizeLoader()
         
     });
 
@@ -233,7 +234,7 @@ function populateDropdowns(colNames){
         d3.select("#uploadInstructions").classed("hidden", true)
     }
 
-
+    // resizeLoader()
 
 }
 
@@ -609,6 +610,7 @@ d3.select(".mobileTabFilter").on("click", function(){
     d3.select("#filterControls").style("display", "block")
     d3.select("#filterListContainer").style("display", "none")
     d3.select(".loaderSection.filters .mobileOnlyHeader").style("display", "block")
+    resizeLoader()
 })
 d3.selectAll(".mobileTabFilterList").on("click", function(){
     d3.select(this).classed("active", true)
@@ -616,5 +618,6 @@ d3.selectAll(".mobileTabFilterList").on("click", function(){
     d3.select("#filterControls").style("display", "none")
     d3.select("#filterListContainer").style("display", "block")
     d3.select(".loaderSection.filters .mobileOnlyHeader").style("display", "none")
+    resizeLoader()
 })
 

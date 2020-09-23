@@ -59,6 +59,7 @@ function hideLoaderError(errorType){
 
   d3.select("#weightError").style("display","none")
   d3.select(".saveButton.weight").classed("disabled", false)
+  resizeLoader()
 }
 function clearFilterOptions(){
     d3.select("#addButton").style("margin-top", "-17px") 
@@ -69,6 +70,7 @@ function clearFilterOptions(){
     d3.select("#textSelect").property("value","")
     d3.select("#startDateSelect").property("value","")
     d3.select("#endDateSelect").property("value","")
+    // resizeLoader()
 
 }
 function populateFilters(filters){
@@ -152,7 +154,7 @@ function addToFilterList(filter){
 
     clearFilterOptions();
     d3.select(".mobileTabFilterList span").text(d3.selectAll(".filterTag.visible").nodes().length)
-
+    resizeLoader()
 }
 function showLoaderSection(loaderSection){
   var params = getParams()
@@ -220,6 +222,7 @@ function showLoaderSection(loaderSection){
 }
 
 function resizeLoader(){
+  if(d3.select(".loaderSection.active").node() == null) return false
   var sectionHeight = d3.select(".loaderSection.active").node().getBoundingClientRect().height
   var homeHeight = (widthBelow(768) || widthBelow(500)) ? sectionHeight + 10 : sectionHeight + 130;
   d3.select(".loaderHome").style("height", homeHeight + "px")
@@ -409,6 +412,7 @@ function updateSampleParams(paramType){
     }else{
       d3.select(".appliedDeetHeader").style("display", "block")
     }
+    resizeLoader()
 
 }
 

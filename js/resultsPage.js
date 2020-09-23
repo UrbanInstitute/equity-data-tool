@@ -308,5 +308,6 @@ d3.select("#tt-icon-cost")
 
 
 $(window).resize(function(){
+    console.log("foo")
     resizeLoader()
 })
