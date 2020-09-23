@@ -5,13 +5,51 @@
 
 
 
+- make advanced a ghost button next to run
+- test advanced options on phone mobile safari
+- z-index issue w advanced options, header
+- loaderNote 16px
+- project credits in menu?
+    - or decrease white space abover footer, 80px, ~220 on desktop
+
+- upload notes, full width, 18px list, 16px note
+- more breathing room on large-ish upload your own data. Ping allison when done.
+- give user upload sticky error f5 background
+- weight error, too wide below 440
+- singlecard sample data page new text back to 3 card view
+
+-filters page, gap under choose a col
+
+results
+- SUMMARY -> Summary: 
+- summary if sum rows go to 2 lines, tab it in
+- open summary same whitespace bottom/top
+- drop header bar/map icons when small text
+- resultsHeader 18px
+- baseline dropdown stay same width, 16px text
+- map shouldn't wrap 925px -> 768
+- all legend text other than title, normal weight
+- drop some ticks on map legend at small size?
+- bug: map img dropdown position
+- all barchart control text other than title, 16px
+- tooltips on both FRAMEWORK and tool, full screen, see figma, mobile drafts, tooltip board
+- 
+
+set up staging redirects
+set up prod redirect from / to /index.html
+
+
+
 - MAX_PROCESSING_TIME test, timeout error
 - bar dot transition interrupt size
 - mmmoooobhiiile
 - x browser
 - documentation...   
-- summary row(s) for 1 row
+- summary row(s) for 1 row (check all lang eg were/was)
 - moz-fit-content
+- results 1000 -> 768
+- restuls 768 down
+- uploadErrors css
 
 Allison:
 on single sample card, where is back arrow

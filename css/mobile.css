@@ -47,8 +47,11 @@
         width: 230px;
     }
     .sampleCard{
-        left: 11px;
+        /*left: 11px;*/
         position: relative;
+    }
+    .sampleCard.three11, .sampleCard.hotspots{
+        margin-right: 16px;
     }
     .sampleName {
         top: 22px;
@@ -115,7 +118,7 @@
         transform: rotate(0deg);
     }
     #header-pinned{
-        z-index: 99;
+        z-index: 998;
         width: 100%;
         background: white;
         height: 50px;
@@ -131,7 +134,7 @@
         position: fixed;
         z-index: 999;
         left: 0px;
-        font-size: 14px;
+        font-size: 18px;
         width: 100%;
         background: #fff;
         cursor: pointer;
@@ -357,7 +360,8 @@
     }
     .loaderSection.sample p{
         width: 100%;
-        font-size: 16px;
+        font-size: 24px;
+        font-weight: 100;
         text-align: left;
         line-height: 1.2;
     }
@@ -370,27 +374,30 @@
         /*line-height: 182%;*/
     }
     #advancedTextOverlaySample, #advancedTextOverlayUser{
-        position: absolute;
-        top: 50px;
-        left: calc(50% - 62px);
-        /* font-weight: bold; */
-        font-size: 16px;
-        padding-bottom: 2px;
-        border-bottom: 1px solid;
+        top: -13px;
         pointer-events: auto;
         cursor: pointer;
-        margin-right: 0px;
+        border: 2px solid #1696d2;
+        background: #fff;
+        padding: 12px 20px;
+        width: calc(50% - 60px);
+        text-align: center;
+        right: 0px;
+        left: initial;
+        display: inline-block;
     }
+
     #advancedTextOverlaySample img, #advancedTextOverlayUser img{
         display: none;
     }
     .runButton.user{
-        width: calc(100% - 45px);
+        width: calc(50% - 60px);
         margin: 0 auto;
+        display: inline-block;
     }
-    .loaderSection.user .runButton.user{
-        width: calc(100% - 43px);
-    }
+/*    .loaderSection.user .runButton.user{
+        width: calc(50% - 60px);
+    }*/
     #uploadButtonContainer{
         width: 100%;
         margin: 0 auto;
@@ -415,10 +422,10 @@
         top: 50px;
         left: -1000px;
         width: 100%;
-        height: 100%;
+        height: calc(100% - 100px);
         z-index: 999999;
         background: white;
-        padding-top: calc(50% - 40px);
+        padding-top: 100px;
     }
     #mobileMainMenu{
         z-index: 999998;
@@ -441,8 +448,8 @@
         top: 4px;
     }
     #mobileAdvancedBack{
-        position: fixed;
-        bottom: 20px;
+        position: absolute;
+        bottom: 40px;
         color: #1696d2;
     }
     #mobileFaq a{
@@ -491,12 +498,13 @@
     }
     .loaderNote.filters{
         width: 100%;
+        font-size: 16px;
     }
     #numericSelect, #textSelect{
         width: calc(100% - 109px);
     }
     .loaderNote.filters.string.biggun.active{
-        font-size: 14px;
+        font-size: 16px;
         margin-top: -35px;
     }
     #startDateContainer, #endDateContainer{
@@ -557,10 +565,10 @@
     .loaderSection.weight p{
         width: 100%;
         margin: 0 auto;
-        line-height: 15px;
+        line-height: 18px;
         text-align: left;
         margin-bottom: 0px;
-        font-size: 14px;
+        font-size: 16px;
     }
     #weightContainer{
         width: 100%;
@@ -756,8 +764,8 @@
         width: calc(100% + 40px);
         color: #696969;
         display: block;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 13px;
+        margin-bottom: 13px;
     }
     #orLine{
         display: block;
@@ -797,5 +805,21 @@
     #uploadErrors{
         left: 30px;
         width: calc(100% - 60px);
+    }
+    #advancedTextOverlaySample, #advancedTextOverlayUser{
+        top: 67px;
+        pointer-events: auto;
+        cursor: pointer;
+        border: 2px solid #1696d2;
+        background: #fff;
+        padding: 12px 20px;
+        width: calc(100% - 44px);
+        text-align: center;
+        left: 0px;
+    }
+    .runButton.user{
+        width: calc(100% - 44px);
+        margin: 0 auto;
+        display: inline-block;
     }
 }

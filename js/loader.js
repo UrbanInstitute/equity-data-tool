@@ -214,6 +214,15 @@ function showLoaderSection(loaderSection){
     d3.select(".loaderHome").style("opacity",1)
   }
 
+  resizeLoader()
+  // d3.select("")
+
+}
+
+function resizeLoader(){
+  var sectionHeight = d3.select(".loaderSection.active").node().getBoundingClientRect().height
+  var homeHeight = (widthBelow(768) || widthBelow(500)) ? sectionHeight + 10 : sectionHeight + 130;
+  d3.select(".loaderHome").style("height", homeHeight + "px")
 }
 
 function selectSampleData(sample){
@@ -407,8 +416,8 @@ function startOver(slug){
   if(hash == ""){
     window.location = "index.html"
   }else{
-    window.location = "index.html" + hash
-    location.reload()
+    showLoaderSection(slug)
+    setTimeout(function(){location.reload()}, 10);
   }
 
 }
