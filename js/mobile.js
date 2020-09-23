@@ -1,4 +1,6 @@
+var CURRENT_SCROLL = 0;
 function showMobileAdvanced(){
+    CURRENT_SCROLL = $(window).scrollTop()
     d3.select("#boorgerContainer").classed("ex", true)
     d3.select("#boorgerTop")
         .transition()
@@ -10,9 +12,14 @@ function showMobileAdvanced(){
         .style("bottom","7px")   
     d3.select("#mobileAdvancedMenu")
         .transition()
-        .style("left", "0px ")
+        .style("left", "0px")
+        .on("end", function(){
+            d3.select("body").classed("hideScroll", true)
+        })
 }
 function hideMobileAdvanced(){
+    d3.select("body").classed("hideScroll", false)
+    window.scrollTo(0,CURRENT_SCROLL)
     d3.select("#mobileAdvancedMenu")
         .transition()
         .style("left", "-1000px ")
@@ -21,6 +28,7 @@ function hideMobileAdvanced(){
 
 }
 function showMobileMain(){
+    CURRENT_SCROLL = $(window).scrollTop()
     d3.select("#boorgerContainer").classed("ex", true)
     d3.select("#boorgerTop")
         .transition()
@@ -36,9 +44,14 @@ function showMobileMain(){
     d3.select("#mobileMainMenu")
         .transition()
         .style("left", "0px")
+        .on("end", function(){
+            d3.select("body").classed("hideScroll", true)
+        })
 
 }
 function hideMobileMain(){
+    d3.select("body").classed("hideScroll", false)
+    window.scrollTo(0,CURRENT_SCROLL)
     d3.select("#mobileMainMenu")
         .transition()
         .style("left", "-1000px")
@@ -54,22 +67,4 @@ function hideMobileMain(){
         .transition()
         .style("transform","rotate(0deg)")
         .style("bottom","3px")   
-}
-
-
-// function closeBoorger(){
-     
-//     d3.select("#toc")
-//         .transition()
-//         // .ease(d3.easeBackOut.overshoot(1.7))
-//         .duration(800)
-//         .style("top", "-1100px")
-// }
-function openBoorger(){
-
-    d3.select("#toc")
-        .transition()
-        // .ease(d3.easeBackIn.overshoot(1.7))
-        .duration(800)
-        .style("top", "51px")
 }

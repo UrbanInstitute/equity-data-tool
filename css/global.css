@@ -1,5 +1,16 @@
 body, html{
     margin: 0px;
+    overscroll-behavior: none;
+}
+body.hideScroll {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    overflow-y: hidden;
+    position: fixed;
+}
+
+body.hideScroll::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
 }
 body, svg{
     font-family: Lato;
