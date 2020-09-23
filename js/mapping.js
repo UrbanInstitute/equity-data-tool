@@ -27,7 +27,7 @@ d3.selectAll(".controlContainer").on("click", function(){
         d3.select(".mapLegend.diff")
             .transition()
             .duration(1000)
-            .style("margin-top", -1*MAP_LEGEND_HEIGHT + "px")
+            .style("margin-top", -1*getMapLegendHeight() + "px")
         d3.selectAll(".mapDownloadComponent.compare").classed("active", true)
         d3.select("#mapImageButton-button").style("display","inline-block")     
     }
@@ -126,6 +126,12 @@ function drawMaps(bbox, geojsonData, bounds){
     dataMap
         .addControl(new mapboxgl.NavigationControl({"showCompass": false}), 'top-right')
         .addControl(new mapboxgl.AttributionControl({compact: true}));
+
+    if(widthBelow(768) || widthBelow(500)){
+        diffMap.scrollZoom.disable();
+        baselineMap.scrollZoom.disable();
+        dataMap.scrollZoom.disable();
+    }
 
     $('.mapButton.mapImg.diff').click(function() {
         takeScreenshot(diffMap).then(function(data){
@@ -338,7 +344,7 @@ function drawMaps(bbox, geojsonData, bounds){
         d3.selectAll(".mapLegend").selectAll(".dynamicLegend").remove()
 
         var diffSvg = d3.select(".mapLegend.diff").append("svg")
-            .attr("width", legendWidth + 2*legendMargin)
+            .attr("width", getLegendWidth() + 2*legendMargin)
             .attr("height", legendHeight + 50)
         
         var diffDefs = diffSvg.append("defs")
@@ -371,7 +377,7 @@ function drawMaps(bbox, geojsonData, bounds){
             .attr("class", "legendRect")
             .attr("x", legendMargin)
             .attr("y", 30)
-            .attr("width", legendWidth)
+            .attr("width", getLegendWidth())
             .attr("height", legendHeight)
             .style("fill", "url(#gradient-diff-colors)");
     
@@ -393,7 +399,7 @@ function drawMaps(bbox, geojsonData, bounds){
             .attr("text-anchor", "middle")
             .attr("y", 20)
             .attr("x", function(d,i){
-                return legendMargin + ((i*diffStep)/(2*diffMax)) * legendWidth
+                return legendMargin + ((i*diffStep)/(2*diffMax)) * getLegendWidth()
             })
             .text(function(d,i){
                 return legendPercent(diffMin + i*diffStep)
@@ -401,7 +407,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
 
         var compareSvg = d3.select(".mapLegend.compare").append("svg")
-            .attr("width", legendWidth + 2*legendMargin)
+            .attr("width", getLegendWidth() + 2*legendMargin)
             .attr("height", legendHeight + 50)
         
         var compareDefs = compareSvg.append("defs")
@@ -420,7 +426,7 @@ function drawMaps(bbox, geojsonData, bounds){
             .attr("class", "legendRect")
             .attr("x", legendMargin)
             .attr("y", 30)
-            .attr("width", legendWidth)
+            .attr("width", getLegendWidth())
             .attr("height", legendHeight)
             .style("fill", "url(#gradient-compare-colors)");
     
@@ -442,7 +448,7 @@ function drawMaps(bbox, geojsonData, bounds){
             .attr("text-anchor", "middle")
             .attr("y", 20)
             .attr("x", function(d,i){
-                return legendMargin + ((i*comparisonStep)/(comparisonMax)) * legendWidth
+                return legendMargin + ((i*comparisonStep)/(comparisonMax)) * getLegendWidth()
             })
             .text(function(d,i){
                 return legendPercent(comparisonMin + i*comparisonStep)
@@ -485,7 +491,7 @@ function drawMaps(bbox, geojsonData, bounds){
                     .style("display", "block")
                     .transition()
                     .style("left", function(){
-                        return (legendWidth * (mouseMax + diffVal) / (2*mouseMax)) + "px"
+                        return (getLegendWidth() * (mouseMax + diffVal) / (2*mouseMax)) + "px"
                     })
                 d3.select("#pointUpText").text(ttPercent(diffVal))
 
@@ -510,7 +516,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 d3.select("#pointUp")
                     .style("display", "block")
                     .transition()
-                    .style("left", (legendWidth + 54) + "px")
+                    .style("left", (getLegendWidth() + 54) + "px")
                 d3.select("#pointUpText").text("")
 
 
@@ -589,7 +595,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 .style("display", "block")
                 .transition()
                 .style("left", function(){
-                    return (legendWidth * (baselineVal) / (mouseMaxBaseline)) + "px"
+                    return (getLegendWidth() * (baselineVal) / (mouseMaxBaseline)) + "px"
                 })
             d3.select("#pointUpText").text(ttPercent(baselineVal))
 
@@ -650,7 +656,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 .style("display", "block")
                 .transition()
                 .style("left", function(){
-                    return (legendWidth * (dataVal) / (mouseMaxData)) + "px"
+                    return (getLegendWidth() * (dataVal) / (mouseMaxData)) + "px"
                 })
             d3.select("#pointUpText").text(ttPercent(dataVal))
 

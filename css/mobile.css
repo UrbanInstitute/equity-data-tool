@@ -1,10 +1,167 @@
-.mobileOnly{
+.mobileOnly, #boorgerContainer, .mobileOnlyHeader, .mobileTabs, .dropboxDrag.mobile{
     display: none;
 }
+#widthBelow1000, #widthBelow1200, #widthBelow768, #widthBelow500{
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+#mobileAdvancedMenu, #mobileMainMenu{
+    display: none;
+}
+@media(max-width: 1400px){
+    .headerIcon, .resultsHeader.maps .headerIcon {
+        margin-right: 6px;
+        margin-left: -43px;
+    }
+}
+@media(max-width: 1200px){
+    #widthBelow1200{
+        display: block;
+    }
+    #diffNA{
+        clear: both;
+        margin-top: 0;
+        height: 10px;
+        position: relative;
+        top: -37px;
+        left: -4px;
+    }
+    #legendSlideContainer{
+        height: 105px;
+        width: 425px;
+    }
+    .mapLegend{
+        height: 111px;
+    }
+}
+@media(max-width: 1000px){
+    #widthBelow1000{
+        display: block;
+    }
+    #widthBelow1200{
+        display: none;
+    }
+    .sampleCard, .sampleRect{
+        width: 230px;
+    }
+    .sampleCard.three11, .sampleCard.hotspots{
+        margin-right: 16px;
+    }
+    .sampleName {
+        top: 22px;
+        left: 15px;
+        font-size: 16px;
+    }
+    .sampleCiity{
+        left: 14px;
+        position: absolute;
+        top: 42px;
+    }
+    .sampleImg.bike {
+        position: absolute;
+        height: 69px;
+        right: 14px;
+        top: -6px;
+    }
+    .sampleImg.three11 {
+        height: 50px;
+        top: 18px;
+        right: 10px;
+    }
+
+}
 @media(max-width: 768px){
+    #widthBelow1000{
+        display: none;
+    }
+    #widthBelow1200{
+        display: none;
+    }
+    #widthBelow768{
+        display: block;
+    }
+    .startOver, .backButton, #header-pinned .title, #advancedOptionsSample-button, #advancedOptionsUser-button, #sampleDefaultText, .faqP, .loaderSection.user p, .dropboxDrag.desktop, .loaderSection.filters p, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer{
+        display: none;  
+    }
+    #boorgerContainer{
+        width: 20px;
+        height: 16px;
+        position: fixed;
+        right: 12px;
+        top: 18px;
+        display: block;
+        z-index: 998;
+    }
+    #boorgerTop{
+        height: 2px;
+        background: #353535;
+        position: absolute;
+        top: 3px;
+        width: 20px;
+        transform: rotate(0deg);
+    }
+    #boorgerBottom{
+        height: 2px;
+        background: #353535;
+        position: absolute;
+        bottom: 3px;
+        width: 20px;
+        transform: rotate(0deg);
+    }
+    #header-pinned{
+        z-index: 99;
+        width: 100%;
+        background: white;
+        height: 50px;
+    }
+    #header-pinned .share-icons .shareThisP{
+        right: 32px;
+        position: relative;
+    }
+    .mobileTabs{
+        top: 55px;
+        padding-top: 5px;        
+        display: block;
+        position: fixed;
+        z-index: 999;
+        left: 0px;
+        font-size: 14px;
+        width: 100%;
+        background: #fff;
+        cursor: pointer;
+    }
+    .mobileTabs div{
+        width: 50%;
+        display: inline-block;
+        text-align: center;
+        float: left;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #ffffff;
+    }
+    .mobileTabs div.active{
+        color: #1696d2;
+        border-bottom: 1px solid #1696d2;
+    }
+    .loaderHeader{
+        visibility: hidden;
+    }
+
+    .loaderHome .loaderHeader{
+        visibility: initial;
+    }
+    .inlineIcon{
+        width: 25px;
+    }
     .loaderHome, .loaderSection p, #loadingStatusContainer{
         max-width: 650px;
         width: calc(100% - 60px);
+        line-height: 182%;
+
+    }
+    .sampleButton{
+        text-align: center;
     }
 
     .buildings.loader, .buildings.results {
@@ -19,6 +176,7 @@
     }
     h3.loaderSubHeader{
         font-size: 24px;
+        font-weight: 100;
     }
     h2.loaderHeader{
         font-size: 26px;
@@ -30,20 +188,533 @@
         width: calc(100% - 60px);
         left: 0px;
     }
+    #uploadInstructionContainer{
+        width: 100%;
+        margin-left: 30px;
+    }
     #uploadInstructions{
         position: initial;
-        width: 100%;
+        width: 260px;
         display: block;
         left: 0px;
+        margin: 0 auto;
+        font-size: 14px !important;
+    }
+    .instructionRow span{
+        display: inherit;
+        position: relative;
+        font-size: 14px;
+        top: -19px;
+        left: 28px;
+        width: 233px;
     }
     #dropbox{
-
-    position: initial;
-    width: 100%;
-    display: block;
-    margin-left: 30px;
-
+        display: block;
+        width: 260px;
+        left: 0px;
+        position: relative;
+        margin: 0 auto;
+        height: 100px;
     }
+    #dropboxIcon {
+        width: 65px;
+        margin: 0 auto;
+        margin-top: -35px;
+        display: block;
+        position: relative;
+        right: -157px;
+        margin: 0;
+        top: -30px;
+    }
+    #innerDropbox{
+        height: 91px;
+        width: 100%;
+    }
+    #dropboxClick{
+        font-weight: 100;
+        font-size: 24px;
+        color: #353535;
+        top: -158px;
+        position: relative;
+        left: -66px;
+    }
+    .dropboxDrag.mobile{
+        display: block;
+        position: relative;
+        top: -102px;
+        left: 0px;
+        color: #E88E2D;
+        font-weight: bold;
+        font-size: 18px;
+        width: 142px;
+    }
+
+    .instructionNote{
+        width: 260px;
+    }
+    .instructionRow {
+        margin-bottom: -5px;
+    }
+    #uploadErrors{
+        position: fixed;
+        bottom: 0px;
+        background: white;
+        margin-bottom: 14px;
+    }
+    #uploadLatLonContainer{
+        width: 260px;
+        margin: 0 auto;
+        left: 38px;
+        position: relative;
+        top: 27px;
+    }
+    #uploadLatLonContainer .loaderHeader{
+        visibility: inherit;
+        font-size: 24px;
+        font-weight: 100;
+    }
+    #latContainer, #lonContainer{
+        width: 260px;
+    }
+    #uploadLatLonContainer .ui-selectmenu-button.ui-button{
+        display: inline-block;
+        float: left;
+        width: 163px;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    #uploadLatLonContainer .ui-selectmenu-button.ui-button .ui-selectmenu-text{
+        font-size: 14px;
+    }
+    #uploadLatLonContainer .inputLabel{
+        width: 83px;
+    }
+
+    #sampleCardContainer{
+        width: 260px;
+    }
+    .sampleRect, .sampleCard{
+        width: 100%;
+    }
+    #sampleCardContainer.single .mobileOnlyHeader{
+        display: none;
+    }
+    .mobileOnlyHeader{
+        display: block;
+        font-size: 24px;
+        font-weight: 100;
+        margin-bottom: 20px;
+    }
+    .sampleCard{
+        margin-bottom: 30px;
+    }
+    .sampleName{
+        position: absolute;
+        top: 19px;
+        left: 16px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .sampleCity{
+        left: 16px;
+        position: absolute;
+        top: 45px;
+    }
+    .sampleImg.wifi{
+        height: 67px;
+        right: -12px;
+        top: 13px;
+    }
+    .sampleImg.three11{
+        height: 60px;
+        top: 14px;
+        right: 10px;
+    }
+    .sampleImg.bike{
+        position: absolute;
+        height: 85px;
+        right: 15px;
+        top: -15px;
+    }
+    .sampleDetails.active{
+        width: 260px;
+    }
+    .loaderSection.sample p{
+        width: 260px;
+        font-size: 16px;
+        text-align: left;
+        line-height: 1.2;
+    }
+    .loaderHome, .loaderSection p, #loadingStatusContainer {
+/*        max-width: 650px;
+        width: calc(100% - 60px);
+        width: 439px;
+        font-size: 16px;
+        text-align: left;*/
+        /*line-height: 182%;*/
+    }
+    #advancedTextOverlaySample, #advancedTextOverlayUser{
+        position: absolute;
+        top: 50px;
+        left: calc(50% - 62px);
+        /* font-weight: bold; */
+        font-size: 16px;
+        padding-bottom: 2px;
+        border-bottom: 1px solid;
+        pointer-events: auto;
+        cursor: pointer;
+    }
+    #advancedTextOverlaySample img, #advancedTextOverlayUser img{
+        display: none;
+    }
+    .runButton.user{
+        width: 220px;
+        margin: 0 auto;
+    }
+    .loaderSection.user .runButton.user{
+        width: 212px;
+    }
+    #uploadButtonContainer{
+        width: 260px;
+        margin: 0 auto;
+        left: 40px;
+        top: 39px;
+    }
+    #sampleButtonContainer{
+        width: 260px;
+    }
+    #sampleDownloadContainer{
+        padding-top: 0px;
+    }
+    #mobileAdvanced.hidden{
+        display: none;
+    }
+    #mobileAdvanced{
+        display: block;
+    }
+    #mobileAdvancedMenu, #mobileMainMenu{
+        display: block;
+        position: fixed;
+        top: 50px;
+        left: -1000px;
+        width: 100%;
+        height: 100%;
+        z-index: 999999;
+        background: white;
+        padding-top: calc(50% - 40px);
+    }
+    #mobileMainMenu{
+        z-index: 999998;
+    }
+    #mobileAdvancedMenu div, #mobileMainMenu div{
+        font-weight: 100;
+        font-size: 2em;
+        margin-bottom: 30px;
+        width: 100%;
+        text-align: center
+    }
+    #mobileAdvancedMenu div:hover, #mobileMainMenu div:hover{
+        color: #1696d2;
+        font-weight: normal;
+    }
+    #mobileAdvancedBack img{
+        height: .9em;
+        margin-right: 10px;
+        position: relative;
+        top: 4px;
+    }
+    #mobileAdvancedBack{
+        position: fixed;
+        bottom: 20px;
+        color: #1696d2;
+    }
+    #mobileFaq a{
+        color: #353535;
+    }
+    #mobileAdvanced span{
+        width: 22px;
+        height: 22px;
+        border-top: 2px solid #353535;
+        border-right: 2px solid #353535;
+        display: inline-block;
+        transform: rotate(45deg);
+        position: relative;
+        top: 3px;
+    }
+    #mobileAdvanced:hover span{
+        border-top: 3px solid #1696d2;
+        border-right: 3px solid #1696d2;
+    }
+    .button.footer{
+        width: calc(100% - 60px);
+        text-align: center;
+    }
+    .loaderSection.filters{
+        width: 100%;
+    }
+    .loaderSection.filters .mobileOnlyHeader{
+        position: absolute;
+        top: 100px;
+        left: calc(50% - 134px);
+    }
+    #filterColumnContainer{
+        width: 100%;
+    }
+    #filterControls{
+        width: 260px;
+        margin: 0 auto;
+        display: block;
+        float: inherit;
+    }
+    #filterListContainer{
+        display: none;
+    }
+    .loaderNote.filters{
+        width: 260px;
+    }
+    #numericSelect, #textSelect{
+        width: 150px;
+    }
+    .loaderNote.filters.string.biggun.active{
+        font-size: 14px;
+        margin-top: -35px;
+    }
+    input[type=date]{
+        width: 106px;
+        font-size: 11px;
+    }
+    #dateTo{
+        margin-right: 2px;
+    }
+    #filterListContainer{
+        width: 260px;
+        margin: 0px auto;
+        left: calc(50% - 130px);
+        position: relative;
+    }
+    .filterTag{
+        width: 230px;
+        margin-right: 0px;
+    }
+    .filterTagText{
+        width: 211px;
+    }
+    .cancelButton{
+        margin-right: 30px;
+    }
+    .advancedButtonRow .button {
+        width: 71px;
+    }
+
+    .loaderSection.loading{
+        width: calc(100% - 20px);
+        padding: 30px 10px 30px 10px;
+    }
+    .loaderSection.loading .loaderHeader{
+        visibility: initial;
+        font-weight: 100;
+        font-size: 30px;
+    }
+    #loadingContainer{
+        width: 100%;
+        max-width: 560px;
+    }
+    #loadingStatusContainer{
+        font-size: 20px;
+        line-height: 1.2;
+    }
+    .loaderSection.weight{
+        width: 100%;
+    }
+    .loaderSection.weight p{
+        width: 260px;
+        margin: 0 auto;
+        line-height: 15px;
+        text-align: left;
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
+    #weightContainer{
+        width: 260px;
+    }
+    #weightMenuContainer{
+        width: 260px;
+        margin-top: -39px;
+    }
+    #weightSelect-button{
+        width: 260px;
+        margin-top: 15px;
+    }
+    .mobileWeightTab{
+        width: 100% !important;
+    }
+    #weightErrorContent{
+        margin-left: -58px;
+    }
+    #weightErrorContent .errorText{
+        width: 260px;
+    }
+    .loadingErrorImg{
+        width: 100%;
+    }
+    .loadingErrorText{
+        font-size: 15px;    
+    }
+    #loadingErrorContainer{
+        width: calc(100% - 50px);
+    }
+    .errorNavComponent{
+        margin: 0 auto !important;
+        display: block;
+        margin-bottom: 20px !important;
+        float: initial;
+        width: fit-content;
+    }
+    .summaryColumn{
+        width: 100%;
+    }
+    .summaryColumn.lat{
+        margin-bottom: 0px;
+    }
+
+
+
+
+/************ RESULTS ****************/
+    #resultsHeader{
+        padding-right: 30px;
+        padding-left: 30px;
+        width: calc(100% - 60px);
+    }
+    #resultsHeader .loaderHeader{
+        visibility: initial;
+    }
+    .buildings.results{
+        width: calc(100% - 20px);
+    }
+    .results.intro{
+        font-size: 16px;
+        line-height: 2;
+    }
+    .resultsHeader{
+        font-size: 16px;
+    }
+    #resultsFiguresBottom, #resultsFiguresTop {
+        width: calc(100% - 60px);
+        margin-left: 30px;
+    }
+    #baselineSelect-button{
+        height: 29px;
+        margin-top: -49px;
+        left: -7px;
+    }
+    #mapControls{
+        margin-right: 0px;
+        width: 100%;
+    }
+    .controlDescription{
+        width: calc(100% - 30px);
+    }
+    #mapSlideContainer{
+        width: calc(100% + 67px);
+        left: -30px;
+    }
+    .warningIcon{
+        left: -46px;
+    }
+    .summaryRows span {
+        /*text-align: left;*/
+        margin-bottom: 0px;
+    }
+    .summaryRows {
+        position: relative;
+        font-size: 14px;
+        line-height: 1;
+        margin-bottom: 9px;
+    }
+    .summaryColumn .deetSubHed{
+        font-size: 24px;
+        font-weight: 100;
+    }
+    .summaryHeader, .summaryHeadName{
+        font-size: 16px;
+    }
+    .summaryHeadName{
+        width: calc(100% - 25px);
+    }
+    .headerIcon {
+        margin-left: 0px !important;
+        width: 25px;
+        top: 5px;
+        margin-right: 6px;
+    }
+    #baselineSelect-button .ui-selectmenu-text {
+        left: 11px;
+        font-weight: bold;
+        font-size: 16px;
+        top: -3px;
+    }
+    #baselineSelect-button{
+        height: 29px;
+        margin-top: -40px;
+        left: -7px;
+    }
+    #legendSlideContainer{
+        width: calc(100% + 33px);
+    }
+    .controlName{
+        font-size: 16px;
+    }
+    #mapButtonContainer{
+        clear: both;
+        width: 100%;
+    }
+    #mapDataButton-button{
+        width: 100%;
+        left: 0px;
+        display: block;
+        position: relative;
+    }
+
+    #mapImageButton-button{
+        width: 100%;
+        left: 0px;
+        display: block;
+        position: relative;
+        margin: 0px;
+    }
+    #mapDataButtonOverlay{
+        clear: both;
+        width: calc(100% - 30px);
+        left: -3px;
+        text-align: center;
+    }
+    .mapButton.mapImg.diff{
+        width: calc(100% - 20px);
+        margin: 0px;
+        text-align: center;
+    }
+    #mapImageButtonOverlay{
+        display: block;
+        width: calc(100% - 30px);
+        left: -1px;
+        top: 72px;
+        text-align: center;
+    }
+    #barCategories{
+        width: 100%;
+        display: block;
+        float: left;
+        clear: both;
+    }
+    .resultsCopy.bars{
+        font-size: 16px;
+        margin-top: -13px;
+    }
+    #barChartContainer{
+        width: 100%;
+    }
+
 }
 @media(max-width: 550px){
     #homeButtonRow .button{
@@ -74,5 +745,19 @@
         width: 55px;
         text-align: center;
         margin: 0 auto;
+    }
+}
+@media(max-width: 500px){
+    #widthBelow1000{
+        display: none;
+    }
+    #widthBelow1200{
+        display: none;
+    }
+    #widthBelow768{
+        display: none;
+    }
+    #widthBelow500{
+        display: block;
     }
 }

@@ -62,9 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MKBD2W');</script>
 <!-- End Google Tag Manager -->
 
-<div id = "isMobile"></div>
-<div id = "isPhone"></div>
-<div id = "isShort"></div>
+<div id = "widthBelow1200"></div>
+<div id = "widthBelow1000"></div>
+<div id = "widthBelow768"></div>
+<div id = "widthBelow500"></div>
+
 <div id = "paramsData"></div>
 <div id = "csvProperties"></div>
 <div id = "barChartImage"></div>
@@ -271,6 +273,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id = "loaderContainer">
 <!-- START LOADER SAMPLE DATA CARD -->
         <div class = "loaderSection sample">
+          <div class = "mobileTabs">
+            <div class = "mobileTabSample">Sample data</div>
+            <div class = "mobileTabUser">Your data</div>
+          </div>
+
             <form name = "sampleDataForm" id = "sampleDataForm">
                 <input type="file" id="sampleInput">
             </form>
@@ -289,9 +296,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <p class = "hiddenSection hideOption sample"><em>You can filter or weight this sample dataset by choosing an advanced option or run the analysis with our preset options. </em></p>
 
 
-            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
 
             <div id = "sampleCardContainer">
+                <div class = "mobileOnlyHeader">Choose one</div>
                 <div class = "sampleCard hotspots">
                     <div class = "sampleRect red hotspots draw-border">
                         <div class = "sampleName sampleInner">Public wi-fi hotspots</div>
@@ -342,6 +350,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START LOADER USER DATA CARD -->
         <div class = "loaderSection user">
+          <div class = "mobileTabs">
+            <div class = "mobileTabSample">Sample data</div>
+            <div class = "mobileTabUser">Your data</div>
+          </div>
+
             <form name = "userDataForm" id = "userDataForm">
                 <input type="file" id="fileInput">
             </form>
@@ -357,13 +370,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <h2 class = "loaderHeader">Upload your data</h2>
             <p><em>Upload a CSV of geographic point data to see how well your dataset represents your city’s population. </em></p>
-            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
             <div id = "uploadInstructionContainer">
                 <div id = "dropbox">
                     <div id = "innerDropbox">
                         <img src = "images/upload.png" id = "dropboxIcon">
                         <div id = "dropboxClick">Choose a file</div>
-                        <div id = "dropboxDrag">or drag it here</div>
+                        <div class = "dropboxDrag desktop">or drag it here</div>
+                        <div class = "dropboxDrag mobile">Upload a CSV file</div>
                     </div>
                 </div>
 
@@ -407,6 +421,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START LOADER FILTER DATA CARD -->
         <div class = "loaderSection filters">
+          <div class = "mobileTabs">
+            <div class = "mobileTabFilter active">Filter data</div>
+            <div class = "mobileTabFilterList">Filters applied (<span>0</span>)</div>
+          </div>
+
             <div class = "loaderFixedHeader">
               <div class = "filter advanced backButton">
                   <img src = "images/backArrow.png">
@@ -417,10 +436,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img src = "images/startOver.png">
               </div>
             </div>
+            <div class = "mobileOnlyHeader">Choose a column</div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Filter data</span></h2>
             <p>Choose a column to filter by and the tool will detect which values—text, numbers, or dates—are in that column. The filters will allow you to focus on data you want to use and hide data you don’t. Columns with both text and numbers will be treated as text fields.</a></p>
 
-            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
 
             <div id = "filterColumnContainer">
                 <div id = "filterControls">
@@ -496,6 +516,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START LOADER WEIGHT CARD -->
         <div class = "loaderSection weight">
+          <div class = "mobileTabs">
+            <div class = "mobileWeightTab active">Weight data</div>
+          </div>          
             <div class = "loaderFixedHeader">
               <div class = "weight advanced backButton">
                   <img src = "images/backArrow.png">
@@ -508,7 +531,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Weight data</span></h2>
             <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of public parks, if you choose “square footage” as your weight column, higher-square-footage parks will be given more weight in assessing representativeness.</em></p>
-            <p><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
             <div id = "weightContainer">
               <div id = "weightMenuContainer">
                   <h3 class = "loaderHeader">Choose a weight column</h3>
@@ -634,6 +657,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </footer>
 
+<div id = "mobileMainMenu">
+  <div id = "mobileHome">Home</div>
+  <div id = "mobileFaq"><a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a></div>
+  <div id = "mobileAdvanced" class = "hidden">Advanced options<span></span></div>
+</div>
+
+<div id = "mobileAdvancedMenu">
+  <div id = "mobileFilter">Filter data</div>
+  <div id = "mobileWeight">Weight data</div>
+  <div id = "mobileAdvancedBack"><img src = "images/backArrow.png">Back</div>
+</div>
+
+<div id = "boorgerContainer">
+  <div id = "boorgerTop"></div>
+  <div id = "boorgerBottom"></div>
+</div>
+
+
 
 <script src="js/vendor/es6-promise.min.js"></script>
 <script src="js/vendor/es6-promise.auto.min.js"></script>
@@ -657,6 +698,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="js/getters.js"></script>
 <script src="js/mapDownload.js"></script>
 <script src="js/barchart.js"></script>
+<script src="js/mobile.js"></script>
 <script src="js/loaderEvents.js"></script>
 <script src="js/loader.js"></script>
 <script src="js/callAPI.js"></script>

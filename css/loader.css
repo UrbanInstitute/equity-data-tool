@@ -8,7 +8,6 @@
     height: 1000px;
     background: white;
     position: absolute;
-    text-align: 0;
     top: 0px;
     display: none;
 }
@@ -227,7 +226,7 @@ h3.loaderSubHeader{
     width: 100%;
     color: #1696d2;
 }
-#dropboxDrag{
+.dropboxDrag{
     font-size: 20px;
     line-height: 24px;
     width: calc(100% - 20px);
@@ -237,10 +236,13 @@ h3.loaderSubHeader{
     padding-left: 10px;
     padding-right: 10px;
 }
-#dropboxDrag.filename{
+.dropboxDrag.filename{
     font-style: italic;
 }
 
+#uploadInstructions.hidden{
+    display: none;
+}
 #uploadInstructions{
     display: inline-block;
     width: calc(100% - 458px);
@@ -672,6 +674,7 @@ input[type=date]{
 /************** END BORDER ANIMATION *****************/
 .loaderSection.sample{
     width: 945px;
+    left: calc(50% - 472.5px);
 }
 #sampleButtonContainer {
     margin-top: 71px;

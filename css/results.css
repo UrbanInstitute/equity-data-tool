@@ -153,8 +153,11 @@
     overflow: hidden;
     margin-bottom: 53px;
 }
-.summaryContainer.visible{
-    height: 29px;
+.summaryContainer.visible.onLoad #sumSectionContainer, .summaryContainer.visible.onLoad .paramRow{
+    display: none;
+}
+.summaryContainer.visible.onLoad .summaryHeader{
+    margin-bottom: 0px;
 }
 .summaryContainer.clone{
     position: fixed;

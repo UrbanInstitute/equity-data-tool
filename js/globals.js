@@ -239,16 +239,18 @@ var errorMessages = {
   "weight_coltypes_mismatch" : "The selected weight column contains non-numeric values."
 }
 
-var legendWidth = 380,
-    legendHeight = 20,
+var legendHeight = 20,
     legendMargin = 18;
 const BAR_DOT_RADIUS = 8;
 const BAR_LABEL_SCOOTCH = 9;
 const MAP_BINS = 8;
-const MAP_LEGEND_HEIGHT = 87;
-const MAX_PROCESSING_TIME = 10000
+const MAX_PROCESSING_TIME = 60000
 const PROCESSING_INTERVAL = 500
 const BAR_AXIS_LABEL_SCOOTCH = 13;
 
 
 var globalFile;
+
+function widthBelow(w){
+  return d3.select("#widthBelow" + w).style("display") == "block"
+}

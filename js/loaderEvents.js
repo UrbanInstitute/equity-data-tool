@@ -32,7 +32,7 @@ function handleFiles(inputFiles){
     }
 
     d3.select("#dropboxClick").text("File uploaded")
-    d3.select("#dropboxDrag").text(fileName).classed("filename", true)
+    d3.selectAll(".dropboxDrag").text(fileName).classed("filename", true)
 
 
     var navigator = new LineNavigator(fileList[0]);
@@ -76,6 +76,7 @@ function handleFiles(inputFiles){
         hideLoaderError()
         populateDropdowns(colNames)
         d3.selectAll(".hideOption.user").classed("hiddenSection",false)
+        d3.select("#mobileAdvanced").classed("hidden", false)
         
     });
 
@@ -90,11 +91,15 @@ function deselectSampleData(){
 
     d3.selectAll(".hideOption.sample").classed("hiddenSection",true)
 
+    d3.select("#mobileAdvanced").classed("hidden", true)
+
     d3.select("#sampleDefaultText").classed("hiddenSection", false)
 
     d3.selectAll(".sampleCard").classed("inactive", false).classed("singleCard", false)
 
     d3.selectAll(".sampleDownload").style("display","none")
+
+    d3.select("#sampleCardContainer").classed("single", false)
 
 }
 function guessLatLon(colNames, l){
@@ -221,6 +226,9 @@ function populateDropdowns(colNames){
     }
 
     d3.select(".uploadLatLonContainer").classed("hidden", false)
+    if(widthBelow(768) || widthBelow(500)){
+        d3.select("#uploadInstructions").classed("hidden", true)
+    }
 
 
 
@@ -540,4 +548,70 @@ d3.selectAll(".runButton").on("click", function(){
 })
 
 
+d3.select("#advancedTextOverlaySample").on("click", function(){
+    if(widthBelow(768) || widthBelow(500)){
+        showMobileAdvanced()
+    }
+})
+d3.select("#advancedTextOverlayUser").on("click", function(){
+    if(widthBelow(768) || widthBelow(500)){
+        showMobileAdvanced()
+    }
+})
+// showMobileMain
+var lastAdvanced = false;
+d3.select("#mobileFilter").on("click", function(){
+    lastAdvanced = false;
+    hideMobileMain()
+    showLoaderSection("filters")
+})
+d3.select("#mobileWeight").on("click", function(){
+    lastAdvanced = false;
+    hideMobileMain()
+    showLoaderSection("weight")
+})
+d3.select("#mobileAdvancedBack").on("click", function(){
+    if(lastAdvanced) showMobileMain()
+    else{
+        hideMobileMain()
+        showLoaderSection(getDatasetType())
+    }
+})
+d3.select("#mobileHome").on("click", function(){
+    lastAdvanced = false;
+    startOver()
+})
+d3.select("#mobileAdvanced").on("click", function(){
+    lastAdvanced = true;
+    showMobileAdvanced()
+})
+d3.select("#boorgerContainer").on("click", function(){
+    lastAdvanced = false;
+    if(d3.select(this).classed("ex")){
+        hideMobileMain()
+    }else{
+        showMobileMain()
+    }
+})
+d3.selectAll(".mobileTabSample").on("click", function(){
+
+    startOver("sample")
+})
+d3.selectAll(".mobileTabUser").on("click", function(){
+    startOver("user")
+})
+d3.select(".mobileTabFilter").on("click", function(){
+    d3.select(this).classed("active", true)
+    d3.select(".mobileTabFilterList").classed("active", false)
+    d3.select("#filterControls").style("display", "block")
+    d3.select("#filterListContainer").style("display", "none")
+    d3.select(".loaderSection.filters .mobileOnlyHeader").style("display", "block")
+})
+d3.selectAll(".mobileTabFilterList").on("click", function(){
+    d3.select(this).classed("active", true)
+    d3.select(".mobileTabFilter").classed("active", false)
+    d3.select("#filterControls").style("display", "none")
+    d3.select("#filterListContainer").style("display", "block")
+    d3.select(".loaderSection.filters .mobileOnlyHeader").style("display", "none")
+})
 

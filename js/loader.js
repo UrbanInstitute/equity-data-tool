@@ -31,9 +31,11 @@ function setLoaderBaseline(baseline){
 
 function loaderError(error, errorType){
   if(errorType == "upload"){
+    d3.select("#mobileAdvanced").classed("hidden", true)
     d3.selectAll(".hideOption").classed("hiddenSection",true)
     // return false;
     d3.selectAll(".user.runButton").classed("disabled", true)
+    d3.select("#uploadInstructions").classed("hidden", false)
   }
   if(errorType == "upload" || errorType == "latlon"){
     d3.select("#uploadErrors").style("display","block")  
@@ -141,6 +143,7 @@ function addToFilterList(filter){
     })
     .on("click", function(){
       d3.select(this.parentNode).classed("visible",false)
+      d3.select(".mobileTabFilterList span").text(d3.selectAll(".filterTag.visible").nodes().length)
     })
 
   tag.on("mouseover", function(){
@@ -151,6 +154,8 @@ function addToFilterList(filter){
     })
 
     clearFilterOptions();
+    d3.select(".mobileTabFilterList span").text(d3.selectAll(".filterTag.visible").nodes().length)
+
 }
 function showLoaderSection(loaderSection){
   var params = getParams()
@@ -186,8 +191,12 @@ function showLoaderSection(loaderSection){
   
   if(loaderSection == "user"){
     window.location.hash = "#" + loaderSection
+    d3.selectAll(".mobileTabSample").classed("active", false)
+    d3.selectAll(".mobileTabUser").classed("active", true)
   }
   else if(loaderSection == "sample"){
+    d3.selectAll(".mobileTabSample").classed("active", true)
+    d3.selectAll(".mobileTabUser").classed("active", false)
     var slug = (getSampleDatasetSlug() == "") ? "sample" : getSampleDatasetSlug()
     if(slug == "sample") d3.selectAll(".sampleDownload").style("display","none")
     window.location.hash = "#" + slug
@@ -198,7 +207,8 @@ function showLoaderSection(loaderSection){
   if(loaderSection != "home"){
     d3.select("#loaderContainer").style("display", "block")
     d3.select(".loaderSection." + loaderSection).classed("active", true)
-    $('html, body').animate({ scrollTop: 0 }, 1200);
+    var animateTime = (widthBelow(768) || widthBelow(500)) ? 10 : 1200
+    $('html, body').animate({ scrollTop: 0 }, animateTime);
     d3.select(".loaderHome").style("opacity",0)
   }else if(loaderSection == "sample"){
   }
@@ -211,6 +221,8 @@ function showLoaderSection(loaderSection){
 
 function selectSampleData(sample){
     window.location.hash = "#" + sample
+
+    d3.select("#sampleCardContainer").classed("single", true)
 
     d3.selectAll(".sampleRect").classed("active", false)
     d3.select(".sampleRect." + sample).classed("active", true)
@@ -230,6 +242,7 @@ function selectSampleData(sample){
 
     populateDropdowns(colNames)
     d3.select("#csvProperties").datum({"size": fileSize, "cols": csvCols })
+    d3.select("#mobileAdvanced").classed("hidden", false)
     d3.selectAll(".hideOption.sample").classed("hiddenSection",false)
 
     d3.selectAll(".sampleCard").classed("inactive", true)
@@ -392,8 +405,15 @@ function updateSampleParams(paramType){
 
 }
 
-function startOver(){
-  window.location = "index.html"
+function startOver(slug){
+  var hash = (typeof(slug) == "undefined") ? "" : "#" + slug
+  if(hash == ""){
+    window.location = "index.html"
+  }else{
+    window.location = "index.html" + hash
+    location.reload()
+  }
+
 }
 function init(){
   var slug = window.location.hash.replace("#","")

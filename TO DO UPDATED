@@ -4,7 +4,6 @@
 - dau post link
 
 
-allison note about map cursor
 
 - MAX_PROCESSING_TIME test, timeout error
 - bar dot transition interrupt size
@@ -12,27 +11,7 @@ allison note about map cursor
 - x browser
 - documentation...   
 - summary row(s) for 1 row
+- moz-fit-content
 
-
-Test new summary section w sample data sets icons, will need to tweak sizes probs
-
-
-Framewor
-- tooltip icon ? in Lato
-- swap mp4 for gif
-- align map w top of "Home"
-- more space under pub date, maybe 20px more    
-- home space btwn 2 pghs should be idential spacing btwn all elements
-- home for example, space btwn network: and start of list same as btwn list els or bottom list and next pgh
-- key takeaways 75 bottom -50top marg
-- city labels above imgs 24px, 300, roman
-
-
-Mobile, down to 1000
-- results: baseline menu too long
-
-
-Small mobile
-
-
-Boxnote
+Allison:
+on single sample card, where is back arrow

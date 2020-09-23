@@ -2,6 +2,7 @@ function populateSummaries(messages, params){
     var datasetType = getDatasetType()
     var container = d3.selectAll(".summaryContainer")
     container.selectAll("*").remove()
+    container.classed("onLoad", true)
 
     var header = container.append("div")
         .attr("class","summaryHeader")
@@ -46,16 +47,7 @@ function populateSummaries(messages, params){
                 else return "images/sample-bike-grey.png"
             }
         })
-    imgContainer.append("div")
-        .attr("class", "sumSectionText")
-        .text(function(){
-            if(getDatasetType() == "user"){
-                return d3.select("#dropboxDrag.filename").text()
 
-            }else{
-                return ""
-            }
-        })
     var sumContainer = sumSection.append("div").attr("id", "sumContainer")
 
     sumContainer.append("div")
@@ -96,7 +88,6 @@ function populateSummaries(messages, params){
         .classed("hidden", function(){
             return +messages.warnings.num_out_of_city_rows_dropped == 0
         })
-
 
 
     sumContainer.append("div")
@@ -200,6 +191,7 @@ function populateSummaries(messages, params){
 
 
     headX.on("click", function(){
+        d3.selectAll(".summaryContainer").classed("onLoad",false)
         if(d3.select(this).classed("closed")){
             d3.select(this).classed("closed", false)
             d3.select(".headX.vert").transition()
@@ -208,7 +200,8 @@ function populateSummaries(messages, params){
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - 90) + "px"
+                    var dePadder = (widthBelow(768) || widthBelow(500)) ? 0 : 90;
+                    return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - dePadder) + "px"
                 })
         }else{
             d3.select(this).classed("closed", true)
@@ -218,7 +211,7 @@ function populateSummaries(messages, params){
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    return "26px"
+                    return d3.select(".summaryContainer.visible .summaryHeadName").node().getBoundingClientRect().height + "px"
                 })
 
         }

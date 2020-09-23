@@ -196,6 +196,7 @@ function throwError(errorKeys){
     showErrorScreen(errorKeys);
 }
 function showErrorScreen(errorKeys){
+    console.log(errorKeys)
     console.log("kaplooie")
     showLoaderSection("loading")
 
@@ -258,6 +259,7 @@ function loopStatus(msg){
 
 var loopCount = 0;
 function checkStatus(status){
+    console.log(status)
     if(loopCount >= MAX_PROCESSING_TIME/PROCESSING_INTERVAL){
         throwError(["processing_time_out"])
     }
