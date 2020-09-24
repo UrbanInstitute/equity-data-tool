@@ -74,7 +74,7 @@ function populateSummaries(messages, params){
     var s4 = (messages.warnings.num_null_filter_rows_dropped == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_filter_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s4 + "removed with null or missing filter columns</div>")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_filter_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s4 + " removed with null or missing filter columns</div>")
         .classed("hidden", function(){
             return +messages.warnings.num_null_filter_rows_dropped == 0
         })
