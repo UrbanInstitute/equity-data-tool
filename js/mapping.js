@@ -83,7 +83,6 @@ function getRange(baseline, bounds, mapType){
 
 
 function drawMaps(bbox, geojsonData, bounds){
-    console.log(bbox, JSON.stringify(geojsonData), bounds)
     d3.selectAll(".mapboxgl-canvas").remove()
     d3.selectAll(".mapboxgl-canary").remove()
     d3.selectAll(".mapboxgl-control-container").remove()
