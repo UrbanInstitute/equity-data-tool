@@ -104,7 +104,7 @@ function getMapLegendHeight(){
     return (widthBelow(1200) || widthBelow(1000) || widthBelow(768) || widthBelow(500)) ? 105 : 87;
 }
 function getLegendWidth(){
- return widthBelow(500) ? d3.select("#mapControls").node().getBoundingClientRect().width : 380;   
+    return widthBelow(500) ? d3.select("#mapControls").node().getBoundingClientRect().width : 380;   
 }
 function getSampleDatasetId(){
     if (d3.select(".sampleRect.active").classed("three11"))return "new_orleans_311.csv"

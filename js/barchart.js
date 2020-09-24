@@ -83,7 +83,7 @@ function drawBarChart(data, containerType, callback){
         .attr("class","x axis")
         .attr("transform", "translate(0,50)")      
         .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0).tickFormat(function(t){
-            return t + "%"
+            return t*100 + "%"
         }));
 
 
@@ -283,7 +283,7 @@ $( window ).resize( function(){
         d3.select("#barChartSvg .x.axis")
             .attr("transform", "translate(0,50)")      
             .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0).tickFormat(function(t){
-                return t + "%"
+                return t*100 + "%"
             }));
 
         d3.selectAll("#barChartSvg .lollipop.background")

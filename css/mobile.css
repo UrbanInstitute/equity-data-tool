@@ -10,6 +10,9 @@
 #mobileAdvancedMenu, #mobileMainMenu{
     display: none;
 }
+.backButton .mobilearrow{
+    display: none;
+}
 @media(max-width: 1400px){
     .headerIcon, .resultsHeader.maps .headerIcon {
         margin-right: 6px;
@@ -74,6 +77,37 @@
         top: 18px;
         right: 10px;
     }
+    #mapControls{
+        margin-right: 0px;
+        width: 100%;
+    }
+    .controlDescription{
+        width: calc(100% - 30px);
+    }
+    #mapSlideContainer{
+        width: calc(100% + 67px);
+        left: -30px;
+    }
+        #baselineSelect-button .ui-selectmenu-text {
+        left: 11px;
+        font-weight: bold;
+        font-size: 16px;
+        top: -3px;
+    }
+    #baselineSelect-button{
+        height: 29px;
+        margin-top: -40px;
+        left: -7px;
+        width: 100%;
+        max-width: 400px !important;
+    }
+
+    #mapControls .controlContainer{
+        width: 50%;
+        display: inline-block;
+        float: left;
+    }
+
 
 }
 @media(max-width: 768px){
@@ -90,8 +124,32 @@
         display: none;  
     }
 
+    #baselineSelect-button{
+        max-width: unset !important;
+    }
     .backButton{
-        top: -13px;
+        top: -11px;
+    }
+    .backButton div{
+        text-transform: uppercase;
+        color: #353535;
+        font-size: 14px;
+        top: -1px;
+        margin-left: -5px;
+    }
+    .backButton img{
+        display: none;
+    }
+    .backButton .mobilearrow{
+        width: 11px;
+        height: 11px;
+        /* background: red; */
+        display: inline-block;
+        border-top: 2px solid #353535;
+        border-left: 2px solid #353535;
+        transform: rotate(-45deg);
+        top: 1px;
+        position: relative;
     }
     #header-pinned.sample, #header-pinned.user, #header-pinned.filters, #header-pinned.weight{
         width: calc(100% - 110px);
@@ -347,6 +405,9 @@
     }
     #sampleCardContainer.single .mobileOnlyHeader{
         display: none;
+    }
+    .sampleCard.singleCard .sampleRect{
+        margin-left: 0px;
     }
     .mobileOnlyHeader{
         display: block;
@@ -655,7 +716,7 @@
     .summaryColumn{
         width: 100%;
     }
-    .summaryColumn.lat{
+    .summaryColumn.lat, .summaryColumn.lat .deetText{
         margin-bottom: 0px;
     }
 
@@ -667,6 +728,7 @@
         padding-right: 30px;
         padding-left: 30px;
         width: calc(100% - 60px);
+        font-size: 18px;
     }
     #resultsHeader .loaderHeader{
         visibility: initial;
@@ -692,6 +754,9 @@
     }
     #mapControls{
         margin-right: 0px;
+        width: 100%;
+    }
+    #mapControls .controlContainer{
         width: 100%;
     }
     .controlDescription{
@@ -725,22 +790,13 @@
         width: calc(100% - 25px);
     }
     .headerIcon {
-        margin-left: 0px !important;
+/*        margin-left: 0px !important;
         width: 25px;
         top: 5px;
-        margin-right: 6px;
+        margin-right: 6px;*/
+        display: none;
     }
-    #baselineSelect-button .ui-selectmenu-text {
-        left: 11px;
-        font-weight: bold;
-        font-size: 16px;
-        top: -3px;
-    }
-    #baselineSelect-button{
-        height: 29px;
-        margin-top: -40px;
-        left: -7px;
-    }
+
     #legendSlideContainer{
         width: calc(100% + 33px);
     }
@@ -777,7 +833,7 @@
         text-align: center;
     }
     #mapImageButtonOverlay{
-        display: block;
+        display: none;
         width: calc(100% - 30px);
         left: -1px;
         top: 72px;
@@ -788,6 +844,9 @@
         display: block;
         float: left;
         clear: both;
+    }
+    .barCategoryLabel, .barCategoryDescription{
+        font-size: 16px;
     }
     .resultsCopy.bars{
         font-size: 16px;

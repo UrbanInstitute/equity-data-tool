@@ -154,6 +154,7 @@ function showLoadingScreen(){
 }
 
 function showResults(fileId){
+    d3.select("#header-pinned").attr("class", "no-touch results")
     d3.selectAll(".resultsContainer").style("display", "block")
     d3.select("#loaderContainer").style("display", "none")
     d3.select("#loaderContainer").style("display", "none")

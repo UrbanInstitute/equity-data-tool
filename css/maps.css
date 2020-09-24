@@ -217,7 +217,7 @@
 }
 .legendStop, #diffNAText{
     font-size: 12px;
-    font-weight: bold;
+    font-weight: normal;
 }
 #diffNARect{
     background: #9d9d9d;
@@ -236,7 +236,7 @@
     position: relative;
     top: 25px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: normal;
     left: 30px;   
 }
 #pointUp{

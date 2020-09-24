@@ -249,8 +249,18 @@
 }
 .summaryRows{
     position: relative;
+    float: left;
 }
-.summaryRows span{
+.sumRowNum{
+    display: inline-block;
+    float: left;
+    margin-right: 4px;
+}
+.sumRowText{
+    display: inline-block;
+    float: left;
+}
+.summaryRows .sumRowNum{
     font-weight: 900;
     color: #1696d2;
     font-weight: 900;
@@ -259,11 +269,11 @@
     text-align: right;
     margin-bottom: 9px;
 }
-.summaryRows.summaryNegative span{
+.summaryRows.summaryNegative .sumRowNum{
     /*color: #E88E2D;*/
     color: #353535;
 }
-.summaryRows.summaryWarning span{
+.summaryRows.summaryWarning .sumRowNum{
     color: #E88E2D;
 }
 .summaryRows.hidden{
@@ -273,7 +283,7 @@
     border-top: 1px solid #353535;
     padding-top: 3px;
 }
-.summaryRows.bottomRow span{
+.summaryRows.bottomRow .sumRowNum{
     margin-bottom: 0px;
 }
 .warningIcon{

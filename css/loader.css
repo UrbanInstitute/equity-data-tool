@@ -703,6 +703,9 @@ input[type=date]{
     margin-right: 0px !important;
     margin-left: 0px !important;
 }
+.sampleCard.singleCard .sampleRect{
+    margin-left: 10px;
+}
 .sampleCard.three11.singleCard{
     margin-left: 64px;
 }

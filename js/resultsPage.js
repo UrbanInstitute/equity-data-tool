@@ -10,7 +10,7 @@ function populateSummaries(messages, params){
         .attr("class","summaryHeadName")
     headName.append("span")
         .attr("class", "summaryStrong")
-        .text("SUMMARY: ")
+        .text("Summary: ")
     headName.append("span")
         .html(function(){
             console.log(messages)
@@ -50,49 +50,56 @@ function populateSummaries(messages, params){
 
     var sumContainer = sumSection.append("div").attr("id", "sumContainer")
 
+    var s1 = (messages.updates.num_rows_file == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows")
-        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_file) + "</span> total rows in file")
+        .html("<div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_file) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> total row" + s1 + " in file</div>")
 
+    var s2 = (messages.updates.num_filter_rows_dropped == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative")
-        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_filter_rows_dropped) + "</span> rows removed by filters")
+        .html("<div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_filter_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s2 + " removed by filters</div>")
         .classed("hidden", function(){
             return +messages.updates.num_filter_rows_dropped == 0
         })
 
+    var s3 = (messages.warnings.num_null_weight_rows_dropped == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_weight_rows_dropped) + "</span> rows removed with null or missing weight columns")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_weight_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s3 + " removed with null or missing weight columns</div>")
         .classed("hidden", function(){
             return +messages.warnings.num_null_weight_rows_dropped == 0
         })
 
+    var s4 = (messages.warnings.num_null_filter_rows_dropped == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_filter_rows_dropped) + "</span> rows removed with null or missing filter columns")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_filter_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s4 + "removed with null or missing filter columns</div>")
         .classed("hidden", function(){
             return +messages.warnings.num_null_filter_rows_dropped == 0
         })
 
+    var s5 = (messages.warnings.num_null_latlon_rows_dropped == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_latlon_rows_dropped) + "</span> removed with null or missing latitude and/or longitude columns")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_latlon_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s5 + " removed with null or missing latitude and/or longitude columns</div>")
         .classed("hidden", function(){
             return +messages.warnings.num_null_latlon_rows_dropped == 0
         })
 
+    var s6 = (messages.warnings.num_out_of_city_rows_dropped == 1) ? "" : "s"
+    var w6 = (messages.warnings.num_out_of_city_rows_dropped == 1) ? "was" : "were"
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><span style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</span> rows removed that were not within " + messages.updates.city_used)
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s6 + " removed that " + w6 + " not within " + messages.updates.city_used + "</div>")
         .classed("hidden", function(){
             return +messages.warnings.num_out_of_city_rows_dropped == 0
         })
 
-
+    var s7 = (messages.updates.num_rows_final == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows bottomRow")
-        .html("<span style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_final) + "</span> total rows analyzed")
+        .html("<div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_final) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> total row" + s7 + " analyzed</div>")
 
 
 
@@ -200,7 +207,7 @@ function populateSummaries(messages, params){
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    var dePadder = (widthBelow(768) || widthBelow(500)) ? 0 : 90;
+                    var dePadder = (widthBelow(768) || widthBelow(500)) ? -17 : 65;
                     return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - dePadder) + "px"
                 })
         }else{
