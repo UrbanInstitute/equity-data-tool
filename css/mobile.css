@@ -107,6 +107,9 @@
         display: inline-block;
         float: left;
     }
+    #barCategories, #barChartContainer{
+        width: 100%;
+    }
 
 
 }
@@ -716,7 +719,7 @@
     .summaryColumn{
         width: 100%;
     }
-    .summaryColumn.lat, .summaryColumn.lat .deetText{
+    .summaryColumn.lat, .summaryColumn.lat .deetText, .summaryColumn.lat .deetRow{
         margin-bottom: 0px;
     }
 
@@ -854,13 +857,39 @@
     }
     #barChartContainer{
         width: 100%;
+        left: -60px;
     }
 
     #uploadLatLonContainer h4{
         margin-top: 43px;
         margin-bottom: 36px;
     }
-
+    .mobileLeg{
+        display: block;
+    }
+    .overunder{
+        display: none;
+    }
+    .bar_full_name{
+        font-size: 12px;
+    }
+    #barChart{
+        top: -70px;
+    }
+    #barButtonContainer{
+        top: -50px;
+        /* right: -60px; */
+        width: 100%;
+        left: 60px;
+    }
+    .barButton{
+        width: calc(100% - 20px);
+        text-align: center;
+        margin-bottom: 20px;
+        left: 0px;
+        position: relative;
+        float: initial;
+    }
 
 }
 @media(max-width: 550px){

@@ -129,7 +129,7 @@ function drawMaps(bbox, geojsonData, bounds){
         .addControl(new mapboxgl.NavigationControl({"showCompass": false}), 'top-right')
         .addControl(new mapboxgl.AttributionControl({compact: true}));
 
-    if(widthBelow(768) || widthBelow(500)){
+    if(widthBelow(1000) || widthBelow(768) || widthBelow(500)){
         diffMap.scrollZoom.disable();
         baselineMap.scrollZoom.disable();
         dataMap.scrollZoom.disable();

@@ -207,7 +207,7 @@ function populateSummaries(messages, params){
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    var dePadder = (widthBelow(768) || widthBelow(500)) ? -17 : 65;
+                    var dePadder = (widthBelow(768) || widthBelow(500)) ? 50 : 50;
                     return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - dePadder) + "px"
                 })
         }else{
@@ -313,8 +313,55 @@ d3.select("#tt-icon-cost")
     })
 
 
-
-$(window).resize(function(){
-    console.log("foo")
+$( window ).resize( function(){
     resizeLoader()
+    if(d3.select("#barChartSvg").node() != null){
+        var data = d3.selectAll(".barDot").data(),
+            margin = getBarMargins("dynamic"),
+            width = getBarWidth("dynamic"),
+            height = getBarHeight("dynamic"),
+            x = getBarX("dynamic", data);
+
+        d3.select("#barChartSvg .x.axis")
+            .attr("transform", "translate(0,50)")      
+            .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0).tickFormat(function(t){
+                return t*100 + "%"
+            }));
+
+        d3.selectAll("#barChartSvg .lollipop.background")
+            .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
+            .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
+
+        d3.selectAll("#barChartSvg .lollipop.foreground")
+            .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
+            .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
+
+        d3.selectAll("#barChartSvg #barZeroLine")
+            .attr("x1", x(0))
+            .attr("x2", x(0))
+
+        d3.selectAll("#barChartSvg .barDot")
+            .attr("cx", function(d){ return x(d.diff_data_city); })
+
+        d3.selectAll("#barChartSvg .bar_full_name.background")
+            .attr("x", function(d){
+                if(widthBelow(500)) return 0
+                else return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH
+            })
+
+        d3.selectAll("#barChartSvg .bar_full_name.foreground")
+            .attr("x", function(d){
+                if(widthBelow(500)) return 0
+                else return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH
+            })
+
+
+
+
+    }
 })
+
+// $(window).resize(function(){
+//     console.log("foo")
+//     
+// })

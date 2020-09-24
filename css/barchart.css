@@ -138,21 +138,32 @@
     top: -110px;
     position: relative;
 }
-.barNoSig{
+.mobileLeg{
+    display: none;
+}
+.barNoSig, .mobileLeg{
     font-size: 14px;
     font-weight: normal;
     margin-bottom: 9px;
     margin-left: 60px;
 }
-.barNoSig span{
+.barNoSig span, .mobileLeg span{
     width: 16px;
     height: 16px;
-    background: #9d9d9d;
     display: inline-block;
     margin-right: 8px;
     position: relative;
     top: 3.5px;
     border-radius: 100%;
+}
+.barNoSig span{
+    background: #9d9d9d;
+}
+.mobileUnder span{
+    background: #ca5800;   
+}
+.mobileOver span{
+    background: #1696d2;   
 }
 .overunder{
     display: inline-block;

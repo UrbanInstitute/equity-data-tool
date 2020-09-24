@@ -160,9 +160,11 @@
     margin-bottom: 0px;
 }
 .summaryContainer.clone{
-    position: fixed;
-    top: -10000px;
-    left: -10000px;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    /*top: -10000px;*/
+    /*left: -10000px;*/
 }
 .summaryHeader{
     position: relative;

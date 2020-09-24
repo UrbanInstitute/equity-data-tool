@@ -143,11 +143,20 @@ function drawBarChart(data, containerType, callback){
         var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
             return "bar_full_name background active chartPart " + barCategories[d.census_var]["class"] + overunder
         })
-        .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
-        .attr("y", function(d){ return y(d.census_var) + margin.top; })
+        .attr("x", function(d){
+            if(widthBelow(500)) return 0
+            else return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH
+        })
+        .attr("y", function(d){
+            if(widthBelow(500)) return y(d.census_var) + margin.top - 13;
+            else return y(d.census_var) + margin.top;
+        })
         .attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
         .style("filter","url(#textShadow)")
-        .attr("text-anchor", function(d){ return d.diff_data_city < 0 ? "start" : "end"; })
+        .attr("text-anchor", function(d){
+            if(widthBelow(500)) return "start"
+            else return d.diff_data_city < 0 ? "start" : "end";
+        })
         .html(function(d){ return barCategories[d.census_var]["full_name"]; });
 
     svg.selectAll(".bar_full_name.foreground")
@@ -157,10 +166,19 @@ function drawBarChart(data, containerType, callback){
         var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
             return "bar_full_name foreground active chartPart " + barCategories[d.census_var]["class"] + overunder
         })
-        .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
-        .attr("y", function(d){ return y(d.census_var) + margin.top; })
+        .attr("x", function(d){
+            if(widthBelow(500)) return 0
+            else return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH
+        })
+        .attr("y", function(d){
+            if(widthBelow(500)) return y(d.census_var) + margin.top - 13;
+            else return y(d.census_var) + margin.top;
+        })
         .attr("dy", y.bandwidth() - BAR_LABEL_SCOOTCH)
-        .attr("text-anchor", function(d){ return d.diff_data_city < 0 ? "start" : "end"; })
+        .attr("text-anchor", function(d){
+            if(widthBelow(500)) return "start"
+            else return d.diff_data_city < 0 ? "start" : "end";
+        })
         .html(function(d){ return barCategories[d.census_var]["full_name"]; });
 
     callback();
@@ -272,43 +290,5 @@ d3.selectAll(".barCategoryRow")
     })
 
 
-$( window ).resize( function(){
-    if(d3.select("#barChartSvg").node() != null){
-        var data = d3.selectAll(".barDot").data(),
-            margin = getBarMargins("dynamic"),
-            width = getBarWidth("dynamic"),
-            height = getBarHeight("dynamic"),
-            x = getBarX("dynamic", data);
 
-        d3.select("#barChartSvg .x.axis")
-            .attr("transform", "translate(0,50)")      
-            .call(d3.axisTop(x).tickSize(-height).tickSizeOuter(0).tickFormat(function(t){
-                return t*100 + "%"
-            }));
-
-        d3.selectAll("#barChartSvg .lollipop.background")
-            .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
-            .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
-
-        d3.selectAll("#barChartSvg .lollipop.foreground")
-            .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
-            .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
-
-        d3.selectAll("#barChartSvg #barZeroLine")
-            .attr("x1", x(0))
-            .attr("x2", x(0))
-
-        d3.selectAll("#barChartSvg .barDot")
-            .attr("cx", function(d){ return x(d.diff_data_city); })
-
-        d3.selectAll("#barChartSvg .bar_full_name.background")
-            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
-
-        d3.selectAll("#barChartSvg .bar_full_name.foreground")
-            .attr("x", function(d){ return d.diff_data_city < 0 ? x(0) + BAR_AXIS_LABEL_SCOOTCH : x(0) - BAR_AXIS_LABEL_SCOOTCH })
-
-
-
-    }
-})
 
