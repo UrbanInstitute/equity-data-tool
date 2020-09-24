@@ -245,6 +245,9 @@
     position: absolute;
     top: 21px;
 }
+#pointUp.slide{
+    top: 27px;
+}
 #pointUp img{
     width: 24px;
     top: 40px;

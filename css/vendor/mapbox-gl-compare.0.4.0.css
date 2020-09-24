@@ -56,7 +56,7 @@
 .mapboxgl-compare .compare-swiper-vertical.pop::after{
     content: "Total population";
 }
-.mapboxgl-compare .compare-swiper-vertical.under_poverty_line::after{
+.mapboxgl-compare .compare-swiper-vertical.under_200_poverty_line::after{
     content: "Low-income population";
 }
 .mapboxgl-compare .compare-swiper-vertical.no_internet::after{

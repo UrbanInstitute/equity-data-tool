@@ -20,6 +20,7 @@ d3.selectAll(".controlContainer").on("click", function(){
         d3.selectAll(".mapDownloadComponent.diff").classed("active", true)
         d3.select("#mapImageButton-button").style("display","none")  
         d3.select("#mapImageButtonOverlay").style("display","none")
+        d3.select("#pointUp").classed("slide", false)
     }else{
         d3.select("#diffMap")
             .transition()
@@ -31,7 +32,8 @@ d3.selectAll(".controlContainer").on("click", function(){
             .style("margin-top", -1*getMapLegendHeight() + "px")
         d3.selectAll(".mapDownloadComponent.compare").classed("active", true)
         d3.select("#mapImageButton-button").style("display","inline-block")  
-        d3.select("#mapImageButtonOverlay").style("display","block")   
+        d3.select("#mapImageButtonOverlay").style("display","block")  
+        d3.select("#pointUp").classed("slide", true) 
     }
 })
 // var tmp;
@@ -81,6 +83,7 @@ function getRange(baseline, bounds, mapType){
 
 
 function drawMaps(bbox, geojsonData, bounds){
+    console.log(bbox, JSON.stringify(geojsonData), bounds)
     d3.selectAll(".mapboxgl-canvas").remove()
     d3.selectAll(".mapboxgl-canary").remove()
     d3.selectAll(".mapboxgl-control-container").remove()
