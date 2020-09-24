@@ -136,6 +136,12 @@
     .resultsHeader{
         margin-bottom: 40px;
     }
+    .resultsHeader.maps{
+        margin-bottom: 50px;
+    }
+    .resultsHeader.bars{
+        margin-bottom: 27px;
+    }
     .backButton{
         top: -11px;
     }
@@ -862,6 +868,7 @@
         left: -1px;
         top: 72px;
         text-align: center;
+        height: 17px;
     }
     #barCategories{
         width: 100%;
