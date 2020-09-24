@@ -7,7 +7,7 @@
     top: 0px;
     left: 0px;
 }
-#mobileAdvancedMenu, #mobileMainMenu{
+#mobileAdvancedMenu, #mobileMainMenu, #mobileTT{
     display: none;
 }
 .backButton .mobilearrow{
@@ -511,7 +511,7 @@
     #mobileAdvanced{
         display: block;
     }
-    #mobileAdvancedMenu, #mobileMainMenu{
+    #mobileAdvancedMenu, #mobileMainMenu, #mobileTT{
         display: block;
         position: fixed;
         top: 50px;
@@ -521,6 +521,19 @@
         z-index: 999999;
         background: white;
         padding-top: 100px;
+    }
+    #ttHead{
+        font-size: 24px;
+        font-weight: 100;
+        margin-bottom: 20px;
+        width: calc(100% - 60px);
+        margin-left: 30px;
+    }
+    #ttBody{
+        font-size: 16px;
+        font-style: italic;
+        width: calc(100% - 60px);
+        margin-left: 30px;
     }
     #mobileMainMenu{
         z-index: 999998;
@@ -744,7 +757,7 @@
         line-height: 2;
     }
     .resultsHeader{
-        font-size: 16px;
+        font-size: 18px;
     }
     #resultsFiguresBottom, #resultsFiguresTop {
         width: calc(100% - 60px);

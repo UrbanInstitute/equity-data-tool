@@ -302,10 +302,14 @@ d3.select("#advancedOptionsHeader-button")
 
 d3.select("#tt-icon-cost")
     .on("mouseover", function(){
-        var tt = d3.select(this).append("div").attr("class", "tt-container")
+        if(widthBelow(768) || widthBelow(500)){
+            showMobileTT()
+        }else{
+            var tt = d3.select(this).append("div").attr("class", "tt-container")
 
-        tt.append("div")
-            .html("Households that pay more than 35 percent of their income on rent.")
+            tt.append("div")
+                .html("Households that pay more than 35 percent of their income on rent.")
+        }
 
     })
     .on("mouseout", function(){

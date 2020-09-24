@@ -596,6 +596,7 @@ d3.select("#boorgerContainer").on("click", function(){
     lastAdvanced = false;
     if(d3.select(this).classed("ex")){
         hideMobileMain()
+        hideMobileTT()
     }else{
         showMobileMain()
     }
