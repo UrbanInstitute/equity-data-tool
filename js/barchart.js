@@ -254,14 +254,25 @@ function updateBars(category, hide){
                 .transition()
                 .attr("cx", function(d){ return x(d.diff_data_city); })
                 .attr("r", BAR_DOT_RADIUS)
+                .on("interrupt", function(){
+                    d3.select(this).attr("r", BAR_DOT_RADIUS).attr("cx", function(d){ return x(d.diff_data_city); })
+                })
             d3.selectAll(".lollipop." + category)
                 .transition()
                 .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
                 .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
+                .on("interrupt", function(){
+                    d3.select(this).attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); }).attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
+                })
             d3.selectAll(".bar_full_name." + category)
                 .transition()
                 .style("opacity", function(){
                     return (d3.select(this).classed("foreground")) ? 1 : 0;
+                })
+                .on("interrupt", function(){
+                    d3.select(this).style("opacity", function(){
+                    return (d3.select(this).classed("foreground")) ? 1 : 0;
+                    })
                 })
         })
 

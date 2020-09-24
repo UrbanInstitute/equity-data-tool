@@ -13,7 +13,6 @@ function populateSummaries(messages, params){
         .text("Summary: ")
     headName.append("span")
         .html(function(){
-            console.log(messages)
             if(datasetType == "user"){
                 return "Your data from " + messages.updates.city_used
             }else{
@@ -21,8 +20,9 @@ function populateSummaries(messages, params){
               return "Your data on " + card.select(".sampleName").text().toLowerCase() + " from " + messages.updates.city_used
             } 
         })
+    var headOfClass = (headName.node().getBoundingClientRect().height > 30) ? "headerX closed tall" : "headerX closed"
     var headX = header.append("div")
-        .attr("class", "headerX closed")
+        .attr("class", headOfClass)
     headX.append("div")
         .attr("class", "headX vert")
     headX.append("div")
@@ -225,6 +225,13 @@ function populateSummaries(messages, params){
     })
 
 }
+function scootchHeaderX(){
+    if(d3.select(".summaryHeader").node().getBoundingClientRect().height > 30){
+        d3.select(".headerX").classed("tall", true)
+    }else{
+        d3.select(".headerX").classed("tall", false)
+    }
+}
 function populateDownloadLinks(links){
     d3.select("#mapDataCsv").attr("data-link", links.geo_bias_csv)
     d3.select("#mapDataGeojson").attr("data-link", links.geo_bias_geojson)
@@ -319,6 +326,7 @@ d3.select("#tt-icon-cost")
 
 $( window ).resize( function(){
     resizeLoader()
+    scootchHeaderX()
     if(d3.select("#barChartSvg").node() != null){
         var data = d3.selectAll(".barDot").data(),
             margin = getBarMargins("dynamic"),
@@ -364,8 +372,3 @@ $( window ).resize( function(){
 
     }
 })
-
-// $(window).resize(function(){
-//     console.log("foo")
-//     
-// })

@@ -143,7 +143,6 @@ function populateDropdowns(colNames){
     var guessedLat = guessLatLon(colNames, "lat")
     var guessedLon = guessLatLon(colNames, "lon")
 
-    // console.log(guessedLon, guessedLat)
     if(guessedLat == "" || guessedLon == "") d3.selectAll(".runButton").classed("disabled", true)
     else d3.selectAll(".runButton").classed("disabled", false)
 
@@ -171,7 +170,6 @@ function populateDropdowns(colNames){
         $("#columnSelect").append(colOptions.join("")).selectmenu("refresh")
     }
     else{
-    // console.log(colOptionsLat)
         $('#latSelect')
             .append(colOptionsLat.join(""))
             .selectmenu({

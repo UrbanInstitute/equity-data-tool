@@ -32,7 +32,6 @@ function dataURItoBlob(dataURI) {
 
     // write the ArrayBuffer to a blob, and you're done
     var blob = new Blob([ab], {type: mimeString});
-    console.log(blob)
     return blob;
 
 }

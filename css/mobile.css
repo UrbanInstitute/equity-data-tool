@@ -110,6 +110,9 @@
     #barCategories, #barChartContainer{
         width: 100%;
     }
+    #resultsHeader{
+        width: calc(100% - 60px);
+    }
 
 
 }
@@ -129,6 +132,9 @@
 
     #baselineSelect-button{
         max-width: unset !important;
+    }
+    .resultsHeader{
+        margin-bottom: 40px;
     }
     .backButton{
         top: -11px;
@@ -840,9 +846,10 @@
     }
     #mapDataButtonOverlay{
         clear: both;
-        width: calc(100% - 30px);
-        left: -3px;
+        width: calc(100% - 34px);
+        left: -1px;
         text-align: center;
+        height: 17px;
     }
     .mapButton.mapImg.diff{
         width: calc(100% - 20px);
@@ -991,6 +998,9 @@
         top: -20px;
         position: relative;
         margin-bottom: -19px;
+    }
+    .headerX{
+        top: 6px;
     }
 }
 @media(max-width: 400px){

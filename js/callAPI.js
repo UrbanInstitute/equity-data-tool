@@ -33,9 +33,6 @@ if(typeof(dp) == "undefined") dp = 1
 
 function runAnalysis() {
     
-    // console.log(event, JSON.toString(getParams()))
-    // event.preventDefault();
-  // log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
   var datasetType = getDatasetType(),
         params = getParams(),
         postURL,
@@ -54,7 +51,6 @@ function runAnalysis() {
 
         var params = getParams(),
             defaultParams = sampleParams[getSampleDatasetSlug()]["defaultParams"]
-        console.log(params, defaultParams)
         var sameFilters = true;
         if(params.filters.length != defaultParams.filters.length){
             sameFilters = false;
@@ -65,7 +61,6 @@ function runAnalysis() {
                     params["filters"][i]["filter_comparison"] != defaultParams["filters"][i]["filter_comparison"] ||
                     params["filters"][i]["filter_val"] != defaultParams["filters"][i]["filter_val"]
                 ){
-                    console.log("blorp")
                     sameFilters = false;
                     break
                 }
@@ -119,10 +114,8 @@ function runAnalysis() {
                 var xhr = new window.XMLHttpRequest();
                 xhr.upload.addEventListener("progress", function(evt) {
                     if (evt.lengthComputable) {
-                        // console.log(humanFileSize(evt.loaded,true), humanFileSize(evt.total, true))
                         var percentComplete = d3.format(".1%")(evt.loaded / evt.total);
                         //Do something with upload progress here
-                        // console.log(percentComplete)
                         if(getDatasetType() == "user"){
                             d3.select("#statusLoading").html("Uploading " + humanFileSize(evt.loaded,true) + " of " + humanFileSize(evt.total, true) + " (" + percentComplete + ")")    
                         }else{
@@ -142,7 +135,6 @@ function runAnalysis() {
             }
         }); 
     }else{
-        // console.log(sampleParams[getSampleDatasetSlug()]["fileId"])
         showResults(getSampleDatasetId().replace(".csv",""))
         return false;
     }
@@ -168,7 +160,6 @@ function showResults(fileId){
 }
 
 function drawResultsData(fileId){
-    console.log(fileId)
     var resultsUrl = baseApiUrl + "get-equity-file/" + fileId
     $.ajax({
         url: resultsUrl,
@@ -181,7 +172,6 @@ function drawResultsData(fileId){
             }
         }, 
         error: function(e){
-            console.log(e)
             throwError(["api"])
         },
         success: function(msg, status, xhr){
@@ -201,8 +191,6 @@ function throwError(errorKeys){
     showErrorScreen(errorKeys);
 }
 function showErrorScreen(errorKeys){
-    console.log(errorKeys)
-    console.log("kaplooie")
     showLoaderSection("loading")
 
     d3.select(".loaderSection.loading .loaderHeader")
@@ -254,7 +242,6 @@ function loopStatus(msg){
             }
         }, 
         error: function(e){
-            console.log(e)
             throwError(["api"])
         },
         success: function(msg, status, xhr){
@@ -265,7 +252,6 @@ function loopStatus(msg){
 
 var loopCount = 0;
 function checkStatus(status){
-    console.log(status)
     if(loopCount >= MAX_PROCESSING_TIME/PROCESSING_INTERVAL){
         throwError(["processing_time_out"])
     }
@@ -281,7 +267,6 @@ function checkStatus(status){
         Object.keys(status["formdata"]["error-messages"]).forEach(function(key){
             if (!status["formdata"]["error-messages"][key]) delete status["formdata"]["error-messages"][key];
         });
-        console.log(status)
         throwError(Object.keys(status["formdata"]["error-messages"]))
     }
     else if(status.formdata.updates.finished){
@@ -300,7 +285,6 @@ function checkStatus(status){
         d3.select("#statusDone").style("display","block")
     }
     else{
-        console.log(status)
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusProcessing").style("display","block")
         var processed = (status.formdata.updates.num_rows_processed == null) ? 0 : status.formdata.updates.num_rows_processed
