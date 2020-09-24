@@ -38,7 +38,7 @@ function dataURItoBlob(dataURI) {
 }
 
 // downloadBlob modified from https://dev.to/nombrekeff/download-file-from-blob-21ho
-function downloadBlob(blob, name = 'file.txt') {
+function downloadBlob(blob, name ) {
     // Convert your blob into a Blob URL (a special url that points to an object in the browser's memory)
     const blobUrl = URL.createObjectURL(blob);
 

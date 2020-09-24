@@ -102,6 +102,7 @@
     border-radius: 0px;
     font-family: Lato;
     width: fit-content;
+    width: -moz-fit-content;
     padding-bottom: 0px;
     content: #353535;
 }

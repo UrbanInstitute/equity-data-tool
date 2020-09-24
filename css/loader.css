@@ -444,6 +444,7 @@ h3.loaderSubHeader{
 }
 #filterColumnContainer{
     width: fit-content;
+    width: -moz-fit-content;
     margin: 0 auto;
 }
 #filterListContainer{
@@ -691,6 +692,7 @@ input[type=date]{
 }
 #sampleCardContainer{
     width: fit-content;
+    width: -moz-fit-content;
     margin: 0 auto;
     margin-top: 44px;
 }
@@ -846,6 +848,7 @@ input[type=date]{
 }
 .deetText{
     width: fit-content;
+    width: -moz-fit-content;
     padding-left: 35px;
 }
 .strikethrough{
@@ -933,10 +936,12 @@ input[type=date]{
     display: block;
     margin-bottom: 50px;
     width: fit-content;
+    width: -moz-fit-content;
 }
 #errorNavContainer{
     display: block;
     width: fit-content;
+    width: -moz-fit-content;
     margin: 0 auto;
     margin-top: -6px;
 }

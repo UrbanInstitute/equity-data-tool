@@ -728,6 +728,7 @@
         margin-bottom: 20px !important;
         float: initial;
         width: fit-content;
+        width: -moz-fit-content;
     }
     .summaryColumn{
         width: 100%;

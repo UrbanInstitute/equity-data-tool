@@ -231,6 +231,7 @@
 }
 #sumContainer{
     width: fit-content;
+    width: -moz-fit-content;
 }
 .summaryColumn{
     width: calc(25% - 39px);
@@ -252,6 +253,7 @@
 .summaryRows{
     position: relative;
     float: left;
+    clear: both;
 }
 .sumRowNum{
     display: inline-block;
@@ -339,6 +341,7 @@
 .mapButton, .barButton{
     padding: 10px;
     width: fit-content;
+    width: -moz-fit-content;
     border: 1px solid #1696d2;
     color: #1696d2;
     display: none;
