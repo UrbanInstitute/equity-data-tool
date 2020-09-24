@@ -86,9 +86,24 @@
     #widthBelow768{
         display: block;
     }
-    .startOver, .backButton, #header-pinned .title, #advancedOptionsSample-button, #advancedOptionsUser-button, #sampleDefaultText, .faqP, .loaderSection.user p, .dropboxDrag.desktop, .loaderSection.filters p, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer{
+    .startOver, #header-pinned .title, #advancedOptionsSample-button, #advancedOptionsUser-button, #sampleDefaultText, .faqP, .loaderSection.user p, .dropboxDrag.desktop, .loaderSection.filters p, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer{
         display: none;  
     }
+
+    .backButton{
+        top: -13px;
+    }
+    #header-pinned.sample, #header-pinned.user, #header-pinned.filters, #header-pinned.weight{
+        width: calc(100% - 110px);
+        right: 0px;
+        background: white;
+        left: inherit;
+    }
+    #header-pinned.sample .site-logo, #header-pinned.user .site-logo, #header-pinned.filters .site-logo, #header-pinned.weight .site-logo{
+        display: none;
+    }
+
+
     .ui-selectmenu-button.ui-button{
         max-width: unset;
     }
@@ -151,6 +166,10 @@
         color: #1696d2;
         border-bottom: 1px solid #1696d2;
     }
+    .mobileTabFilterList.disabled{
+        color: #d2d2d2;
+        pointer-events: none;
+    }
     .loaderHeader{
         visibility: hidden;
     }
@@ -203,6 +222,9 @@
     }
     #uploadErrors{
         max-width: 440px;
+        top: 55px;
+        height: 0px;
+        position: absolute;
     }
     #uploadInstructionContainer{
         width: 100%;
@@ -220,9 +242,14 @@
         display: inherit;
         position: relative;
         font-size: 14px;
-        top: -19px;
+        top: -21px;
         left: 28px;
-        width: 233px;
+        width: calc(100% - 23px);
+        margin-right: 0px;
+        font-size: 18px;
+    }
+    #dropbox.uploadError{
+        margin-top: 40px;
     }
     #dropbox{
         display: block;
@@ -270,15 +297,16 @@
 
     .instructionNote{
         width: 100%;
+        font-size: 16px;
     }
     .instructionRow {
         margin-bottom: -5px;
     }
     #uploadErrors{
-        position: fixed;
+/*        position: fixed;
         bottom: 0px;
         background: white;
-        margin-bottom: 14px;
+        margin-bottom: 14px;*/
     }
     #uploadLatLonContainer{
         width: 100%;
@@ -301,7 +329,7 @@
         float: left;
         width: calc(100% - 95px);
         font-size: 14px;
-        margin-bottom: 16px;
+        margin-bottom: 35px;
         margin-right: 0px;
     }
     #uploadLatLonContainer .ui-selectmenu-button.ui-button .ui-selectmenu-text{
@@ -405,7 +433,7 @@
         width: 100%;
         margin: 0 auto;
         left: 0px;
-        top: 39px;
+        top: 47px;
     }
     #sampleButtonContainer{
         width: 100%;
@@ -496,6 +524,14 @@
         display: block;
         float: inherit;
     }
+    #filterControls.date{
+        left: initial;
+        position: initial;
+    }
+    #filterControls.date #columnSelect-button{
+        width: initial;
+        max-width: initial;
+    }
     #filterListContainer{
         display: none;
     }
@@ -548,6 +584,7 @@
     .loaderSection.loading{
         width: calc(100% - 20px);
         padding: 30px 10px 30px 10px;
+        padding-bottom: 200%;
     }
     .loaderSection.loading .loaderHeader{
         visibility: initial;
@@ -592,6 +629,9 @@
     #weightErrorContent{
         margin-left: -58px;
         width: calc(100% + 81px);
+    }
+    #weightError{
+        width: calc(100% - 33px);
     }
     #weightErrorContent .errorText{
         width: calc(100% - 40px);
@@ -757,6 +797,12 @@
         width: 100%;
     }
 
+    #uploadLatLonContainer h4{
+        margin-top: 43px;
+        margin-bottom: 36px;
+    }
+
+
 }
 @media(max-width: 550px){
     #homeButtonRow .button{
@@ -788,8 +834,19 @@
         text-align: center;
         margin: 0 auto;
     }
+
 }
 @media(max-width: 500px){
+    #uploadLatLonContainer h4 {
+        margin-bottom: 28px;
+        margin-top: 30px;
+    }
+    #uploadLatLonContainer .ui-selectmenu-button.ui-button{
+        margin-bottom: 16px;
+    }
+    #uploadButtonContainer{
+        top: 39px;
+    }
     #widthBelow1000{
         display: none;
     }
@@ -806,8 +863,8 @@
         left: 30px !important;
     }
     #uploadErrors{
-        left: 30px;
-        width: calc(100% - 60px);
+/*        left: 30px;
+        width: calc(100% - 60px);*/
     }
     #advancedTextOverlaySample, #advancedTextOverlayUser{
         top: 67px;
@@ -832,5 +889,10 @@
         top: -20px;
         position: relative;
         margin-bottom: -19px;
+    }
+}
+@media(max-width: 400px){
+    #filterControls{
+        margin-top: -30px;
     }
 }

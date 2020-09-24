@@ -40,6 +40,7 @@ function loaderError(error, errorType){
       .select(".errorText")
       .html(error)
     // return false;
+    d3.select("#dropbox").classed("uploadError", true)
     d3.selectAll(".user.runButton").classed("disabled", true)
   }
   if(errorType == "weight"){
@@ -50,6 +51,7 @@ function loaderError(error, errorType){
       .html(error)
     // return false;
   }
+  resizeLoader()
 }
 function hideLoaderError(errorType){
   if(errorType != "weight"){
@@ -59,6 +61,7 @@ function hideLoaderError(errorType){
 
   d3.select("#weightError").style("display","none")
   d3.select(".saveButton.weight").classed("disabled", false)
+  d3.select("#dropbox").classed("uploadError", false)
   resizeLoader()
 }
 function clearFilterOptions(){
@@ -143,6 +146,9 @@ function addToFilterList(filter){
     .on("click", function(){
       d3.select(this.parentNode).classed("visible",false)
       d3.select(".mobileTabFilterList span").text(d3.selectAll(".filterTag.visible").nodes().length)
+      d3.select(".mobileTabFilterList").classed("disabled", function(){
+        return (d3.selectAll(".filterTag.visible").nodes().length == 0);
+      })
     })
 
   tag.on("mouseover", function(){
@@ -154,6 +160,9 @@ function addToFilterList(filter){
 
     clearFilterOptions();
     d3.select(".mobileTabFilterList span").text(d3.selectAll(".filterTag.visible").nodes().length)
+    d3.select(".mobileTabFilterList").classed("disabled", function(){
+      return (d3.selectAll(".filterTag.visible").nodes().length == 0);
+    })
     resizeLoader()
 }
 function showLoaderSection(loaderSection){
@@ -161,6 +170,7 @@ function showLoaderSection(loaderSection){
   d3.selectAll(".resultsContainer").style("display", "none")
   d3.selectAll(".loadingError").style("display","none")
   d3.select(".loaderHome").style("display","block")
+  d3.select("#header-pinned").attr("class", "no-touch " + loaderSection)
 
   if(loaderSection == "filters"){
     showFilterOptions()

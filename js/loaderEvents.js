@@ -131,6 +131,9 @@ function showFilterOptions(filterType){
   d3.select(".filterContainer." + filterType).classed("active", true)
   d3.selectAll(".loaderNote.filters").classed("active", false)
   d3.selectAll(".loaderNote.filters." + filterType).classed("active", true)
+
+  d3.select("#filterControls").attr("class", filterType)
+
   resizeLoader()
   
 }
@@ -610,6 +613,7 @@ d3.select(".mobileTabFilter").on("click", function(){
     d3.select("#filterControls").style("display", "block")
     d3.select("#filterListContainer").style("display", "none")
     d3.select(".loaderSection.filters .mobileOnlyHeader").style("display", "block")
+    d3.select("#filterColumnContainer .advancedButtonRow").style("display", "table")
     resizeLoader()
 })
 d3.selectAll(".mobileTabFilterList").on("click", function(){
@@ -618,6 +622,7 @@ d3.selectAll(".mobileTabFilterList").on("click", function(){
     d3.select("#filterControls").style("display", "none")
     d3.select("#filterListContainer").style("display", "block")
     d3.select(".loaderSection.filters .mobileOnlyHeader").style("display", "none")
+    d3.select("#filterColumnContainer .advancedButtonRow").style("display", "none")
     resizeLoader()
 })
 

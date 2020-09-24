@@ -43,8 +43,7 @@ h3.loaderSubHeader{
     margin-bottom: 24px;
 }
 .inputLabel{
-    text-transform: uppercase;
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 7px;
 }
 
@@ -93,6 +92,9 @@ h3.loaderSubHeader{
     left: calc(50% - 440px);
     z-index: 6;
 }
+.loaderSection.loading{
+    padding-bottom: 200%;
+}
 .loaderSection.filters p{
     font-style: italic;
 }
@@ -137,7 +139,7 @@ h3.loaderSubHeader{
     display: inline-block;
     position: relative;
     top: 4px;
-    margin-right: 8px;
+    margin-right: 2px;
 }
 #weightError .errorX{
     position: relative;
@@ -297,7 +299,7 @@ h3.loaderSubHeader{
     float: left;
     position: relative;
     margin-right: 10px;
-    top: 16px;
+    top: 11px;
 }
 #uploadButtonContainer, #sampleButtonContainer{
     position: relative;
@@ -449,6 +451,14 @@ h3.loaderSubHeader{
 }
 #filterControls{
     margin-right: 55px;
+}
+#filterControls.date{
+    left: -29px;
+    position: relative;
+}
+#filterControls.date #columnSelect-button{
+    width: 358px;
+    max-width: unset;
 }
 .filterContainer{
     display: none;

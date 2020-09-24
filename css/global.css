@@ -267,6 +267,7 @@ footer{
   display: block;
     float: left;
     width: 100%;
+    z-index: 99999;
 }
 footer p{
   clear: both;
