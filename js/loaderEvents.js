@@ -18,6 +18,8 @@ function handleFiles(inputFiles){
         var file = fileList[i]
     }
     if(fileList[0]["type"] != "text/csv" && fileList[0]["type"] != "application/vnd.ms-excel" ){
+        console.log("File type: ", fileList[0]["type"])
+        console.log("File list: ", fileList)
         loaderError("Your file is not a CSV.", "upload")
         return false
     }
