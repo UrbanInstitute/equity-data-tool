@@ -17,7 +17,17 @@ function handleFiles(inputFiles){
     for (var i = 0; i < fileList.length; i++){
         var file = fileList[i]
     }
-    if(fileList[0]["type"] != "text/csv" && fileList[0]["type"] != "text/comma-separated-values" && fileList[0]["type"] != "application/vnd.ms-excel" ){
+    if(fileList[0]["type"] != "text/csv" &&
+        fileList[0]["type"] != "text/comma-separated-values" &&
+        fileList[0]["type"] != "application/vnd.ms-excel" &&
+        fileList[0]["type"] != "application/csv" &&
+        fileList[0]["type"] != "text/plain" &&
+        fileList[0]["type"] != "text/x-csv" &&
+        fileList[0]["type"] != "application/x-csv" &&
+        fileList[0]["type"] != "text/x-comma-separated-values" &&
+        fileList[0]["type"] != "text/tab-separated-values"
+    )
+    {
         loaderError("Your file is not a CSV.", "upload")
         return false
     }
