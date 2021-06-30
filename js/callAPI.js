@@ -177,6 +177,10 @@ function drawResultsData(fileId){
         success: function(msg, status, xhr){
             var params = getParams()
 
+            console.log(msg)
+            window.open("data:text/json," + encodeURIComponent(msg),
+                       "_blank");
+
             drawBarChart(msg.results.result.demographic_bias_data, "dynamic", function(){})
             drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
             populateSummaries(msg.results.result.messages, params)
