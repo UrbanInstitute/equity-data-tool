@@ -1,0 +1,13 @@
+old_name, new_name
+cb_renter_hh_prop, prop_cb_renter_hh
+no_internet_prop, prop_no_internet
+pop_prop, prop_pop
+seniors_prop, prop_seniors
+under_200_poverty_line_prop, prop_under_200_poverty_line
+tract_geoid, GEOID
+,prop_children
+,prop_pov
+,sig_diff_children
+,sig_diff_pov
+,diff_children
+,diff_pov

@@ -1,0 +1,933 @@
+{
+    "next": null,
+    "previous": null,
+    "results": {
+        "result": {
+            "geo_bias_data": {
+                "type": "FeatureCollection",
+                "features": [
+                    {
+                        "id": "0",
+                        "type": "Feature",
+                        "properties": {
+                            "GEOID": "01001020100",
+                            "NAME": "Census Tract 201, Autauga County, Alabama",
+                            "data_prop": 0.00003,
+                            "diff_cb_renter_hh": -0.00002,
+                            "diff_children": -0.00002,
+                            "diff_no_internet": -0.00002,
+                            "diff_pop": -0.00002,
+                            "diff_pov": -0.00002,
+                            "diff_seniors": -0.00002,
+                            "diff_under_200_poverty_line": -0.00002,
+                            "prop_cb_renter_hh": 0.00001,
+                            "prop_children": 0.00001,
+                            "prop_no_internet": 0.00001,
+                            "prop_pop": 0.00001,
+                            "prop_pov": 0,
+                            "prop_seniors": 0,
+                            "prop_under_200_poverty_line": 0,
+                            "sig_diff_cb_renter_hh": "TRUE",
+                            "sig_diff_children": "TRUE",
+                            "sig_diff_no_internet": "TRUE",
+                            "sig_diff_pop": "TRUE",
+                            "sig_diff_pov": "TRUE",
+                            "sig_diff_seniors": "TRUE",
+                            "sig_diff_under_200_poverty_line": "TRUE"
+                        },
+                        "geometry": {
+                            "type": "MultiPolygon",
+                            "coordinates": [
+                                [
+                                    [
+                                        [
+                                            -86.509162,
+                                            32.473444
+                                        ],
+                                        [
+                                            -86.506197,
+                                            32.475316
+                                        ],
+                                        [
+                                            -86.504636,
+                                            32.47721
+                                        ],
+                                        [
+                                            -86.504068,
+                                            32.477193
+                                        ],
+                                        [
+                                            -86.503551,
+                                            32.478952
+                                        ],
+                                        [
+                                            -86.503227,
+                                            32.4799
+                                        ],
+                                        [
+                                            -86.503449,
+                                            32.481143
+                                        ],
+                                        [
+                                            -86.503396,
+                                            32.481217
+                                        ],
+                                        [
+                                            -86.502527,
+                                            32.482107
+                                        ],
+                                        [
+                                            -86.50003,
+                                            32.48744
+                                        ],
+                                        [
+                                            -86.497635,
+                                            32.491582
+                                        ],
+                                        [
+                                            -86.496288,
+                                            32.493155
+                                        ],
+                                        [
+                                            -86.494654,
+                                            32.494625
+                                        ],
+                                        [
+                                            -86.493622,
+                                            32.496293
+                                        ],
+                                        [
+                                            -86.491853,
+                                            32.498907
+                                        ],
+                                        [
+                                            -86.491109,
+                                            32.500524
+                                        ],
+                                        [
+                                            -86.490839,
+                                            32.501702
+                                        ],
+                                        [
+                                            -86.490599,
+                                            32.502142
+                                        ],
+                                        [
+                                            -86.490042,
+                                            32.502661
+                                        ],
+                                        [
+                                            -86.489923,
+                                            32.502881
+                                        ],
+                                        [
+                                            -86.489436,
+                                            32.503618
+                                        ],
+                                        [
+                                            -86.488262,
+                                            32.505159
+                                        ],
+                                        [
+                                            -86.487226,
+                                            32.504249
+                                        ],
+                                        [
+                                            -86.483714,
+                                            32.501095
+                                        ],
+                                        [
+                                            -86.482825,
+                                            32.50004
+                                        ],
+                                        [
+                                            -86.481959,
+                                            32.498763
+                                        ],
+                                        [
+                                            -86.480796,
+                                            32.496868
+                                        ],
+                                        [
+                                            -86.480681,
+                                            32.496626
+                                        ],
+                                        [
+                                            -86.478694,
+                                            32.491811
+                                        ],
+                                        [
+                                            -86.478792,
+                                            32.489936
+                                        ],
+                                        [
+                                            -86.478867,
+                                            32.489342
+                                        ],
+                                        [
+                                            -86.479452,
+                                            32.48597
+                                        ],
+                                        [
+                                            -86.480929,
+                                            32.481544
+                                        ],
+                                        [
+                                            -86.481131,
+                                            32.476078
+                                        ],
+                                        [
+                                            -86.479682,
+                                            32.473962
+                                        ],
+                                        [
+                                            -86.476108,
+                                            32.467647
+                                        ],
+                                        [
+                                            -86.475244,
+                                            32.465954
+                                        ],
+                                        [
+                                            -86.475368,
+                                            32.459307
+                                        ],
+                                        [
+                                            -86.479449,
+                                            32.46334
+                                        ],
+                                        [
+                                            -86.48188,
+                                            32.463496
+                                        ],
+                                        [
+                                            -86.480291,
+                                            32.461393
+                                        ],
+                                        [
+                                            -86.480431,
+                                            32.459972
+                                        ],
+                                        [
+                                            -86.48218,
+                                            32.45846
+                                        ],
+                                        [
+                                            -86.48785,
+                                            32.451805
+                                        ],
+                                        [
+                                            -86.488683,
+                                            32.449727
+                                        ],
+                                        [
+                                            -86.490355,
+                                            32.452126
+                                        ],
+                                        [
+                                            -86.498244,
+                                            32.464848
+                                        ],
+                                        [
+                                            -86.501889,
+                                            32.468125
+                                        ],
+                                        [
+                                            -86.508552,
+                                            32.470262
+                                        ],
+                                        [
+                                            -86.508709,
+                                            32.470407
+                                        ],
+                                        [
+                                            -86.510291,
+                                            32.472032
+                                        ],
+                                        [
+                                            -86.509162,
+                                            32.473444
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        }
+                    },
+                    {
+                        "id": "1",
+                        "type": "Feature",
+                        "properties": {
+                            "GEOID": "01001020200",
+                            "NAME": "Census Tract 202, Autauga County, Alabama",
+                            "data_prop": 0,
+                            "diff_cb_renter_hh": 0,
+                            "diff_children": 0,
+                            "diff_no_internet": 0.00001,
+                            "diff_pop": 0,
+                            "diff_pov": 0.00001,
+                            "diff_seniors": 0,
+                            "diff_under_200_poverty_line": 0.00001,
+                            "prop_cb_renter_hh": 0.00001,
+                            "prop_children": 0.00001,
+                            "prop_no_internet": 0.00001,
+                            "prop_pop": 0.00001,
+                            "prop_pov": 0.00001,
+                            "prop_seniors": 0.00001,
+                            "prop_under_200_poverty_line": 0.00001,
+                            "sig_diff_cb_renter_hh": "FALSE",
+                            "sig_diff_children": "TRUE",
+                            "sig_diff_no_internet": "TRUE",
+                            "sig_diff_pop": "FALSE",
+                            "sig_diff_pov": "TRUE",
+                            "sig_diff_seniors": "TRUE",
+                            "sig_diff_under_200_poverty_line": "TRUE"
+                        },
+                        "geometry": {
+                            "type": "MultiPolygon",
+                            "coordinates": [
+                                [
+                                    [
+                                        [
+                                            -86.480929,
+                                            32.481544
+                                        ],
+                                        [
+                                            -86.479452,
+                                            32.48597
+                                        ],
+                                        [
+                                            -86.478867,
+                                            32.489342
+                                        ],
+                                        [
+                                            -86.476485,
+                                            32.489159
+                                        ],
+                                        [
+                                            -86.474121,
+                                            32.489199
+                                        ],
+                                        [
+                                            -86.472239,
+                                            32.489268
+                                        ],
+                                        [
+                                            -86.47078,
+                                            32.489316
+                                        ],
+                                        [
+                                            -86.469486,
+                                            32.489314
+                                        ],
+                                        [
+                                            -86.46731,
+                                            32.489203
+                                        ],
+                                        [
+                                            -86.469452,
+                                            32.485557
+                                        ],
+                                        [
+                                            -86.469636,
+                                            32.478825
+                                        ],
+                                        [
+                                            -86.470871,
+                                            32.47573
+                                        ],
+                                        [
+                                            -86.470619,
+                                            32.473658
+                                        ],
+                                        [
+                                            -86.465376,
+                                            32.473723
+                                        ],
+                                        [
+                                            -86.467502,
+                                            32.467182
+                                        ],
+                                        [
+                                            -86.467455,
+                                            32.465753
+                                        ],
+                                        [
+                                            -86.467099,
+                                            32.461736
+                                        ],
+                                        [
+                                            -86.467354,
+                                            32.459308
+                                        ],
+                                        [
+                                            -86.46764,
+                                            32.456683
+                                        ],
+                                        [
+                                            -86.470287,
+                                            32.457217
+                                        ],
+                                        [
+                                            -86.470354,
+                                            32.456228
+                                        ],
+                                        [
+                                            -86.471048,
+                                            32.456206
+                                        ],
+                                        [
+                                            -86.475368,
+                                            32.459307
+                                        ],
+                                        [
+                                            -86.475244,
+                                            32.465954
+                                        ],
+                                        [
+                                            -86.476108,
+                                            32.467647
+                                        ],
+                                        [
+                                            -86.479682,
+                                            32.473962
+                                        ],
+                                        [
+                                            -86.481131,
+                                            32.476078
+                                        ],
+                                        [
+                                            -86.480929,
+                                            32.481544
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            },
+            "demographic_bias_data": [
+                {
+                    "census_var": "pct_white",
+                    "data_value": 0.09533,
+                    "city_value": 0.2774,
+                    "diff_data_city": -0.18206,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_black",
+                    "data_value": 0.82973,
+                    "city_value": 0.61717,
+                    "diff_data_city": 0.21255,
+                    "data_value_sd": 0.00598,
+                    "city_value_sd": 0.00642,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_asian",
+                    "data_value": 0.01308,
+                    "city_value": 0.02599,
+                    "diff_data_city": -0.01291,
+                    "data_value_sd": 0.00231,
+                    "city_value_sd": 0.00197,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_hisp",
+                    "data_value": 0.03616,
+                    "city_value": 0.05118,
+                    "diff_data_city": -0.01502,
+                    "data_value_sd": 0.00474,
+                    "city_value_sd": 0.00387,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_all_other_races",
+                    "data_value": 0.02573,
+                    "city_value": 0.02826,
+                    "diff_data_city": -0.00253,
+                    "data_value_sd": 0.00326,
+                    "city_value_sd": 0.02826,
+                    "sig_diff": false,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_less_hs_diploma",
+                    "data_value": 0.24315,
+                    "city_value": 0.1507,
+                    "diff_data_city": -0.09245,
+                    "data_value_sd": 0.00657,
+                    "city_value_sd": 0.00362,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_seniors",
+                    "data_value": 0.12763,
+                    "city_value": 0.13156,
+                    "diff_data_city": -0.00393,
+                    "data_value_sd": 0.00299,
+                    "city_value_sd": 0.00196,
+                    "sig_diff": false,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_children",
+                    "data_value": 0.25086,
+                    "city_value": 0.20893,
+                    "diff_data_city": 0.04193,
+                    "data_value_sd": 0.00545,
+                    "city_value_sd": 0.00479,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_veterans",
+                    "data_value": 0.06409,
+                    "city_value": 0.0603,
+                    "diff_data_city": 0.00379,
+                    "data_value_sd": 0.00313,
+                    "city_value_sd": 0.00232,
+                    "sig_diff": false,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_unins",
+                    "data_value": 0.08667,
+                    "city_value": 0.07198,
+                    "diff_data_city": 0.01468,
+                    "data_value_sd": 0.00425,
+                    "city_value_sd": 0.00349,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_disability",
+                    "data_value": 0.2059,
+                    "city_value": 0.15061,
+                    "diff_data_city": 0.05529,
+                    "data_value_sd": 0.00524,
+                    "city_value_sd": 0.00334,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_renters",
+                    "data_value": 0.61345,
+                    "city_value": 0.52534,
+                    "diff_data_city": 0.08811,
+                    "data_value_sd": 0.00768,
+                    "city_value_sd": 0.0064,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_cb_renter_hh",
+                    "data_value": 0.52105,
+                    "city_value": 0.43114,
+                    "diff_data_city": 0.08992,
+                    "data_value_sd": 0.01212,
+                    "city_value_sd": 0.01025,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_no_internet",
+                    "data_value": 0.32382,
+                    "city_value": 0.22028,
+                    "diff_data_city": 0.10354,
+                    "data_value_sd": 0.00848,
+                    "city_value_sd": 0.00554,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_limited_eng_hh",
+                    "data_value": 0.0172,
+                    "city_value": 0.02018,
+                    "diff_data_city": -0.00297,
+                    "data_value_sd": 0.00319,
+                    "city_value_sd": 0.00201,
+                    "sig_diff": false,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_bach",
+                    "data_value": 0.07237,
+                    "city_value": 0.16373,
+                    "diff_data_city": -0.09135,
+                    "data_value_sd": 0.00341,
+                    "city_value_sd": 0.00397,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_under_poverty_line",
+                    "data_value": 0.33667,
+                    "city_value": 0.21688,
+                    "diff_data_city": 0.11979,
+                    "data_value_sd": 0.00979,
+                    "city_value_sd": 0.00681,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_under_200_poverty_line",
+                    "data_value": 0.58499,
+                    "city_value": 0.415,
+                    "diff_data_city": 0.16999,
+                    "data_value_sd": 0.01019,
+                    "city_value_sd": 0.00836,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_unemp",
+                    "data_value": 0.45788,
+                    "city_value": 0.38328,
+                    "diff_data_city": 0.0746,
+                    "data_value_sd": 0.00704,
+                    "city_value_sd": 0.00552,
+                    "sig_diff": true,
+                    "baseline_pop": "total_pop"
+                },
+                {
+                    "census_var": "pct_under18_disability",
+                    "data_value": 0.08232,
+                    "city_value": 0.0774,
+                    "diff_data_city": 0.00492,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": false,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_unins",
+                    "data_value": 0.11439,
+                    "city_value": 0.09783,
+                    "diff_data_city": 0.01656,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_renters",
+                    "data_value": 0.2159,
+                    "city_value": 0.2774,
+                    "diff_data_city": -0.0615,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_pov",
+                    "data_value": 0.421,
+                    "city_value": 0.3812,
+                    "diff_data_city": 0.0398,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_white_alone",
+                    "data_value": 0.289,
+                    "city_value": 0.2774,
+                    "diff_data_city": 0.0116,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": false,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_black_alone",
+                    "data_value": 0.276,
+                    "city_value": 0.2774,
+                    "diff_data_city": -0.0014,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": false,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_asian_alone",
+                    "data_value": 0.13,
+                    "city_value": 0.17343,
+                    "diff_data_city": -0.04343,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_white",
+                    "data_value": 0.589,
+                    "city_value": 0.5129,
+                    "diff_data_city": 0.0761,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_hisp",
+                    "data_value": 0.412,
+                    "city_value": 0.331,
+                    "diff_data_city": 0.081,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_all_other_races_alone",
+                    "data_value": 0.05213,
+                    "city_value": 0.08232,
+                    "diff_data_city": -0.03019,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_under18_limited_eng_hh",
+                    "data_value": 0.1627,
+                    "city_value": 0.14178,
+                    "diff_data_city": 0.02092,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "under18_pop"
+                },
+                {
+                    "census_var": "pct_pov_children",
+                    "data_value": 0.08232,
+                    "city_value": 0.0774,
+                    "diff_data_city": 0.00492,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": false,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_seniors",
+                    "data_value": 0.11439,
+                    "city_value": 0.09783,
+                    "diff_data_city": 0.01656,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_white_alone",
+                    "data_value": 0.2159,
+                    "city_value": 0.2774,
+                    "diff_data_city": -0.0615,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_black_alone",
+                    "data_value": 0.421,
+                    "city_value": 0.3812,
+                    "diff_data_city": 0.0398,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_asian_alone",
+                    "data_value": 0.289,
+                    "city_value": 0.2774,
+                    "diff_data_city": 0.0116,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": false,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_hisp",
+                    "data_value": 0.276,
+                    "city_value": 0.2774,
+                    "diff_data_city": -0.0014,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": false,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_white",
+                    "data_value": 0.13,
+                    "city_value": 0.17343,
+                    "diff_data_city": -0.04343,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_all_other_races_alone",
+                    "data_value": 0.589,
+                    "city_value": 0.5129,
+                    "diff_data_city": 0.0761,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_bach",
+                    "data_value": 0.412,
+                    "city_value": 0.331,
+                    "diff_data_city": 0.081,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_less_than_hs",
+                    "data_value": 0.05213,
+                    "city_value": 0.08232,
+                    "diff_data_city": -0.03019,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_foreign_born",
+                    "data_value": 0.1627,
+                    "city_value": 0.14178,
+                    "diff_data_city": 0.02092,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_unemployed",
+                    "data_value": 0.09322,
+                    "city_value": 0.112,
+                    "diff_data_city": -0.01878,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": false,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_disability",
+                    "data_value": 0.09123,
+                    "city_value": 0.1132,
+                    "diff_data_city": -0.02197,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                },
+                {
+                    "census_var": "pct_pov_unins",
+                    "data_value": 0.12384,
+                    "city_value": 0.09823,
+                    "diff_data_city": 0.02561,
+                    "data_value_sd": 0.00475,
+                    "city_value_sd": 0.00393,
+                    "sig_diff": true,
+                    "baseline_pop": "pov_pop"
+                }
+            ],
+            "messages": {
+                "updates": {
+                    "started_processing": true,
+                    "read_in_file": true,
+                    "num_rows_file": 303735,
+                    "num_filter_rows_dropped": 67710,
+                    "num_null_rows_dropped": 12797,
+                    "num_rows_dropped_total": 80560,
+                    "num_rows_for_processing": 223228,
+                    "num_rows_processed": 223228,
+                    "num_rows_final": 223175,
+                    "geography_used": "national",
+                    "sjoin_started": true,
+                    "finished": false,
+                    "error-messages": false
+                },
+                "warnings": {
+                    "multiple_geographies_flag": true,
+                    "num_null_latlon_rows_dropped": 0,
+                    "num_null_filter_rows_dropped": 12797,
+                    "num_null_weight_rows_dropped": 0,
+                    "num_out_of_geography_rows_dropped": 53,
+                    "multiple_geography_list": []
+                },
+                "error-messages": {
+                    "form-data-parameter-validation-failed": false,
+                    "data_readin_error": false,
+                    "df_conversion_to_gdf_failed": false,
+                    "filter_coltypes_mismatch": false,
+                    "weight_coltypes_mismatch": false,
+                    "all_rows_filtered": false,
+                    "pts_not_in_us_city": false,
+                    "sjoin_failed": false
+                }
+            },
+            "download_links": {
+                "geo_bias_geojson": "https://ui-equity-tool-prod.s3.amazonaws.com/output-data/geo-bias/geojson/new_orleans_311.geojson",
+                "geo_bias_csv": "https://ui-equity-tool-prod.s3.amazonaws.com/output-data/geo-bias/csv/new_orleans_311.csv",
+                "demographic_bias_csv": "https://ui-equity-tool-prod.s3.amazonaws.com/output-data/demographic-bias/csv/new_orleans_311.csv"
+            },
+            "bounds": {
+                "diff_pop_min": -0.00002,
+                "diff_under_200_poverty_line_min": -0.00002,
+                "diff_no_internet_min": -0.00002,
+                "diff_seniors_min": -0.00002,
+                "diff_cb_renter_hh_min": -0.00002,
+                "diff_children_min": -0.00002,
+                "diff_pov_min": -0.00002,
+                "prop_pop_min": 0.00001,
+                "prop_under_200_poverty_line_min": 0,
+                "prop_no_internet_min": 0.00001,
+                "prop_seniors_min": 0,
+                "prop_cb_renter_hh_min": 0.00001,
+                "prop_children_min": 0.00001,
+                "prop_pov_min": 0,
+                "data_prop_min": 0,
+                "diff_pop_max": 0,
+                "diff_under_200_poverty_line_max": 0.00001,
+                "diff_no_internet_max": 0.00001,
+                "diff_seniors_max": 0,
+                "diff_cb_renter_hh_max": 0,
+                "diff_children_max": 0,
+                "diff_pov_max": 0.00001,
+                "prop_pop_max": 0.00001,
+                "prop_under_200_poverty_line_max": 0.00001,
+                "prop_no_internet_max": 0.00001,
+                "prop_seniors_max": 0.00001,
+                "prop_cb_renter_hh_max": 0.00001,
+                "prop_children_max": 0.00001,
+                "prop_pov_max": 0.00001,
+                "data_prop_max": 0.00003
+            },
+            "bbox": [
+                -86.510291,
+                32.449727,
+                -86.465376,
+                32.505159
+            ]
+        },
+        "fileid": "fake_ben_data",
+        "file_exists": true
+    }
+}
