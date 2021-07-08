@@ -1,9 +1,14 @@
 
 
-
+function getBarBaseline(){
+    return "total_pop"
+}
 
 function drawBarChart(data, containerType, callback){
-    
+    data = data.filter(function(d){
+        return d.baseline_pop == getBarBaseline()
+    })
+
     var margin = getBarMargins(containerType),
         width = getBarWidth(containerType)
     

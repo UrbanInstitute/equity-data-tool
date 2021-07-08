@@ -160,29 +160,44 @@ function showResults(fileId){
 }
 
 function drawResultsData(fileId){
-    var resultsUrl = baseApiUrl + "get-equity-file/" + fileId
-    $.ajax({
-        url: resultsUrl,
-        method: "GET",
-        crossDomain: true,
-        beforeSend: function (xhr) {
-            if(TOKEN){
-                xhr.setRequestHeader("Authorization", "Token " + TOKEN);
-                xhr.setRequestHeader("X-Mobile", "true");
-            }
-        }, 
-        error: function(e){
-            throwError(["api"])
-        },
-        success: function(msg, status, xhr){
+    // var resultsUrl = baseApiUrl + "get-equity-file/" + fileId
+    // $.ajax({
+    //     url: resultsUrl,
+    //     method: "GET",
+    //     crossDomain: true,
+    //     beforeSend: function (xhr) {
+    //         if(TOKEN){
+    //             xhr.setRequestHeader("Authorization", "Token " + TOKEN);
+    //             xhr.setRequestHeader("X-Mobile", "true");
+    //         }
+    //     }, 
+    //     error: function(e){
+    //         throwError(["api"])
+    //     },
+    //     success: function(msg, status, xhr){
+    //         var params = getParams()
+
+    //         drawBarChart(msg.results.result.demographic_bias_data, "dynamic", function(){})
+    //         drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
+    //         populateSummaries(msg.results.result.messages, params)
+    //         populateDownloadLinks(msg.results.result.download_links)
+    //     }
+    // }); 
+
+
+    $.getJSON("data/fake_response_data_all_tracts.json", function(msg) {
             var params = getParams()
 
+            // console.log(msg)
+            var hardBbox = [-124.7844079, 24.7433195, -66.9513812, 49.3457868]
+
             drawBarChart(msg.results.result.demographic_bias_data, "dynamic", function(){})
-            drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
+            drawMaps(hardBbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
             populateSummaries(msg.results.result.messages, params)
             populateDownloadLinks(msg.results.result.download_links)
-        }
-    }); 
+    })
+
+
 }
 
 function throwError(errorKeys){

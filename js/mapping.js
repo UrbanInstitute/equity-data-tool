@@ -1,5 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJiYW5pbnN0aXR1dGUiLCJhIjoiTEJUbmNDcyJ9.mbuZTy4hI_PWXw3C3UFbDQ';
-var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb"
+var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckqv6lc9k0ap417pfyctcbdx0/draft"
 
 d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".controlContainer").classed("active", false)
@@ -63,8 +63,8 @@ d3.selectAll(".controlContainer").on("click", function(){
 // }
 
 function getRange(baseline, bounds, mapType){
-        var baselineMin = bounds[baseline + "_prop_min"],
-            baselineMax = bounds[baseline + "_prop_max"],
+        var baselineMin = bounds["prop_" + baseline + "_min"],
+            baselineMax = bounds["prop_" + baseline + "_max"],
             dataMin = bounds["data_prop_min"],
             dataMax = bounds["data_prop_max"],
             diffMin = bounds["diff_" + baseline + "_min"],
@@ -216,7 +216,7 @@ function drawMaps(bbox, geojsonData, bounds){
             'type': 'fill',
             'source': 'dataSource',
             'paint': {
-            'fill-outline-color': "#696969", 
+            // 'fill-outline-color': "#696969", 
             'fill-color': [
                 "interpolate",
                 ["linear"],
@@ -248,11 +248,11 @@ function drawMaps(bbox, geojsonData, bounds){
             'type': 'fill',
             'source': 'comparisonSource',
             'paint': {
-            'fill-outline-color': "#696969", 
+            // 'fill-outline-color': "#696969", 
             'fill-color': [
                 "interpolate",
                 ["linear"],
-                ["get", baseline + "_prop"],
+                ["get", "prop_" + baseline ],
                 comparisonMin,
                 "#dcedd9",
                 comparisonMin + comparisonStep,
@@ -293,13 +293,13 @@ function drawMaps(bbox, geojsonData, bounds){
             'type': 'fill',
             'source': 'diffSource',
             'paint': {
-            'fill-outline-color': 
-            [
-                "case",
-                ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
-                "#696969",
-                "#353535"
-            ],
+            // 'fill-outline-color': 
+            // [
+            //     "case",
+            //     ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
+            //     "#696969",
+            //     "#353535"
+            // ],
             'fill-color': [
                 "case",
                 ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
@@ -337,7 +337,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
         
 
-        var legendPercent = d3.format(".1%")
+        var legendPercent = function(v){ return d3.format(".2e")(v*100) + "%" }
         var diffColors = ["#ca5800","#fdbf11","#fdd870","#fff2cf","#ffffff","#cfe8f3","#73bfe2","#1696d2","#0a4c6a"]
         var compareColors = ["#DCEDD9","#BCDEB4","#98CF90","#78C26D","#55B748","#408941","#2C5C2D","#1A2E19"]
 
@@ -468,7 +468,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
 
 
-        var ttPercent = d3.format(".2%")
+        var ttPercent = function(v){ return d3.format(".2e")(v*100) + "%" }
         var popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: true
@@ -516,7 +516,7 @@ function drawMaps(bbox, geojsonData, bounds){
                                         "<div class = 'tt-text data'>" + " of your data points" + "</div>" + 
                                     "</div>" + 
                                     "<div class = 'tt-row'>" +
-                                        "<span class = 'tt-val baseline'> <span>-</span>" + ttPercent(p[getBaseline() + "_prop"]) + "</span>" +
+                                        "<span class = 'tt-val baseline'> <span>-</span>" + ttPercent( p["prop_" + getBaseline() ]) + "</span>" +
                                         "<div class = 'tt-text baseline'>" + " of the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>" + 
                                     "</div>" +
                                     "<div class = 'tt-diff-row' style='background-color:" + diffColor +"; color:" + textColor+ ";' >" +
@@ -571,7 +571,7 @@ function drawMaps(bbox, geojsonData, bounds){
             var p = e.features[0].properties
 
             var colors = e.features[0].layer.paint["fill-color"]
-            var baselineVal = p[getBaseline() + "_prop"]
+            var baselineVal = p["prop_" + getBaseline() ]
             var baselineColor;
 
             for(var i = 3; i < colors.length; i+= 2){
@@ -588,7 +588,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
             var description =   "<div class = 'tt-name'>" + p.NAME + "</div>" + 
                                 "<div class = 'tt-contains slider'>" + "This tract contains " +
-                                    "<span class = 'tt-val slider baseline' style='border-bottom: 5px solid " + baselineColor + "'>" + ttPercent(p[getBaseline() + "_prop"]) + "</span>" +
+                                    "<span class = 'tt-val slider baseline' style='border-bottom: 5px solid " + baselineColor + "'>" + ttPercent(p["prop_" + getBaseline()]) + "</span>" +
                                     "<span class = 'tt-text baseline slider'>" + " of the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>" + 
                                 "</div>"
 
@@ -726,7 +726,7 @@ function drawMaps(bbox, geojsonData, bounds){
                         'fill-color', [
                             "interpolate",
                             ["linear"],
-                            ["get", d.item.value + "_prop"],
+                            ["get", "prop_" + d.item.value ],
                             comparisonMin,
                             "#dcedd9",
                             comparisonMin + comparisonStep,
