@@ -183,18 +183,24 @@ function drawResultsData(fileId){
     //         populateDownloadLinks(msg.results.result.download_links)
     //     }
     // }); 
+    console.log(fileId)
+    var testStatic;
 
 
-    $.getJSON("data/fake_response_data_all_tracts.json", function(msg) {
+    if(fileId == "new_york_wifi") testStatic = "library_outlets_reshape"
+    else if(fileId == "new_orleans_311") testStatic = "child_care_centers_reshape"
+    else if(fileId == "minneapolis_bikes") testStatic = "alt_fuel_stations_reshape"
+
+    $.getJSON("data/" + testStatic + ".json", function(msg) {
             var params = getParams()
+            // console.log("foo")
+            console.log(msg)
+            // var hardBbox = [-124.7844079, 24.7433195, -66.9513812, 49.3457868]
 
-            // console.log(msg)
-            var hardBbox = [-124.7844079, 24.7433195, -66.9513812, 49.3457868]
-
-            drawBarChart(msg.results.result.demographic_bias_data, "dynamic", function(){})
-            drawMaps(hardBbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
-            populateSummaries(msg.results.result.messages, params)
-            populateDownloadLinks(msg.results.result.download_links)
+            drawBarChart(msg.demographic_bias_data, "dynamic", function(){})
+            drawMaps(msg.bbox, msg.geo_bias_data.features, msg.bounds)
+            // populateSummaries(msg.messages, params)
+            // populateDownloadLinks(msg.download_links)
     })
 
 

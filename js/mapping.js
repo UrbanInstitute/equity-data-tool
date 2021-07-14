@@ -1,5 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJiYW5pbnN0aXR1dGUiLCJhIjoiTEJUbmNDcyJ9.mbuZTy4hI_PWXw3C3UFbDQ';
-var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckqv6lc9k0ap417pfyctcbdx0/draft"
+var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckr3g1qo72pvq18qpmcdgtaq4/draft"
 
 d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".controlContainer").classed("active", false)

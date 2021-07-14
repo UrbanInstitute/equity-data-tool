@@ -6,9 +6,11 @@ function getBarBaseline(){
 
 function drawBarChart(data, containerType, callback){
     data = data.filter(function(d){
-        return d.baseline_pop == getBarBaseline()
+        // return d.baseline_pop == getBarBaseline()
+        // console.log(d, getBarBaseline(d))
+        return barCategories.hasOwnProperty(d.census_var)
     })
-
+console.log(data)
     var margin = getBarMargins(containerType),
         width = getBarWidth(containerType)
     
@@ -98,6 +100,7 @@ function drawBarChart(data, containerType, callback){
             .attr("class", function(d){
             var sigdiff = (d.sig_diff) ? " sig" : " insig"
             var overunder = (d.diff_data_city < 0) ? " underRepresented" : " overRepresented"
+            // console.log(d)
                 return "lollipop background active chartPart " + barCategories[d.census_var]["class"] + overunder + sigdiff
             })
             .attr("x1", function(d){ return d.diff_data_city < 0 ? x(d.diff_data_city) : x(0); })
@@ -119,7 +122,7 @@ function drawBarChart(data, containerType, callback){
         .attr("x2", function(d){ return d.diff_data_city < 0 ? x(0) : x(d.diff_data_city)  })
         .attr("y1", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
         .attr("y2", function(d){ return y(d.census_var) + margin.top + y.bandwidth()*.5; })
-
+// console.log(data)
     svg.append("line")
         .attr("id", "barZeroLine")
         .attr("x1", x(0))
