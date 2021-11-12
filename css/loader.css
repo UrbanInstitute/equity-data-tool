@@ -76,6 +76,13 @@ h4.datePublished{
 .loaderNote{
     white-space: normal;
 }
+.inlineHome{
+    color: #1696d2;
+    cursor: pointer;
+}
+.inlineHome:hover{
+    text-decoration: underline;
+}
 
 /********************************************/
 /************* LOADER LAYOUT ****************/
@@ -165,6 +172,12 @@ h4.datePublished{
     margin: 0 auto;
     width: auto;
 }
+.instructionNote li{
+    margin-bottom: 10px;
+}
+.instructionNote ul{
+    padding-inline-start: 17px;
+}
 
 /********************************************/
 /************* HOME ****************/
@@ -178,14 +191,84 @@ h4.datePublished{
 #sampleButton{
     margin-right: 46px;
 }
+.homeInstructions{
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 50px;
+}
 #homeButtonRow{
-    display: table;
+    display: block;
     margin: 0 auto;
     margin-top: 45px;
-    margin-bottom: 122px;
+    width: 1052px;
+    margin-left: -107px;
+    margin-bottom: 300px;
+}
+.homeButtonContainer{
+    position: relative;
+    float: left;
+    display: block;
+    width: 230px;
+    height: 173px;
+    background: white;
+    margin-right: 44px;
+}
+.homeButtonContainer.city{
+    margin-right: 0px;
+}
+.homeButton{
+    position: absolute; 
+    left: 0px;
+    top: 0px;
+    width: 226px;
+    font-size: 20px;
+    font-weight: bold;
+    border-width: 2px;
+    border-style: solid;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background: white;
+}
+.homeButton.national{
+    border-color: #F1AAA9;
+    color: #E25552;
+}
+.homeButton.national:hover, .homeButton.national.active{
+    border-color: #E25552;
+    color: #fff;
+    background: #E25552;
+}
+.homeButton.state{
+    border-color: #78C26D;
+    color: #408941;
+}
+.homeButton.state:hover, .homeButton.state.active{
+    border-color: #408941;
+    color: #fff;
+    background: #408941;
+}
+.homeButton.county{
+    border-color: #FDC180;
+    color: #E88E2D;
+}
+.homeButton.county:hover, .homeButton.county.active{
+    border-color: #E88E2D;
+    color: #fff;
+    background: #E88E2D;
+}
+.homeButton.city{
+    border-color: #73BFE2;
+    color: #12719E;
+}
+.homeButton.city:hover, .homeButton.city.active{
+    border-color: #12719E;
+    color: #fff;
+    background: #12719E;
 }
 .loaderHome{
-    max-width: 650px;
+    max-width: 837px;
     margin: 0 auto;
     line-height: 146%;
     text-align: center;
@@ -637,6 +720,22 @@ input[type=date]{
   border-color: #408941;
 }  
 
+
+.draw-border.orange{
+  box-shadow: inset 0 0 0 2px #FDC180;
+  color: #FDC180;
+}
+.draw-border.orange:hover, .draw-border.orange.active {
+  color: #CA5800;
+}
+.draw-border.orange.active{
+  box-shadow: inset 0 0 0 2px #CA5800;
+}
+.draw-border.orange:hover::before, .draw-border.orange:hover::after, .draw-border.orange.active::before, .draw-border.orange.active::after  {
+  border-color: #CA5800;
+}  
+
+
 .draw-border.blue{
   box-shadow: inset 0 0 0 2px #73BFE2;
   color: #73BFE2;
@@ -707,33 +806,33 @@ input[type=date]{
 .sampleCard{
     display: inline-block;
     float: left;
-    width: 260px;
+    width: 240px;
 }
 .sampleCard.singleCard{
     margin-right: 0px !important;
     margin-left: 0px !important;
 }
 .sampleCard.singleCard .sampleRect{
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 .sampleCard.three11.singleCard{
     margin-left: 64px;
 }
-.sampleCard.inactive{
+.sampleCard.inactive, .sampleCard.hidden{
     display: none;
 }
 .sampleCard.three11{
     margin-right: 76px;
 }
-.sampleCard.hotspots{
+.sampleCard.hotspots, .sampleCard.three11, .sampleCard.electric, .sampleCard.health, .sampleCard.playgrounds{
     margin-right: 76px;
 }
 .sampleRect{
     background: white;
     cursor: pointer;
     border: none;
-    width: 260px;
-    height: 85px;
+    width: 240px;
+    height: 260px;
     position: relative;
 }
 .sampleRect.bike.active{
@@ -744,15 +843,22 @@ input[type=date]{
 }
 .sampleName{
     position: absolute;
-    top: 19px;
-    left: 16px;
+    bottom: 57px;
+    line-height: 1.4;
+    left: 0px;
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
+    width: 100%;
 }
 .sampleCity{
-    left: 16px;
+    left: 0px;
     position: absolute;
-    top: 45px;
+    bottom: 32px;
+    width: 100%;
+    text-align: center;
+    color: #9D9D9D;
+    font-size: 16px;
 }
 .sampleCard.singleCard img.fg{
     opacity: 1;
@@ -764,21 +870,50 @@ input[type=date]{
     position: absolute;
     z-index: 2;
 }
-.sampleImg.wifi{
-    height: 67px;
-    right: -12px;
-    top: 13px;
+.sampleImg.electric{
+    width: 205px;
+    left: 50px;
+    top: 65px;
+}
+.sampleImg.libraries{
+    width: 107px;
+    top: 50px;
+    left: 67px;
+}
+.sampleImg.health{
+    width: 96px;
+    top: 40px;
+    left: 74px;
+}
+.sampleImg.housing{
+    width: 121px;
+    left: 59px;
+    top: 50px;
+}
+.sampleImg.playgrounds{
+    width: 155px;
+    top: 40px;
+    left: 42.5px;
+}
+.sampleImg.polling{
+    width: 95px;
+    left: 72.5px;
+    top: 41px;
+}
+.sampleImg.hotspots{
+    width: 175px;
+    right: -17px;
+    top: 40px;
 }
 .sampleImg.three11{
-    height: 60px;
-    top: 14px;
-    right: 10px;
+    width: 136px;
+    top: 40px;
+    left: 52px;
 }
 .sampleImg.bike{
-    position: absolute;
-    height: 85px;
-    right: 15px;
-    top: -15px;
+    width: 120px;
+    left: 60px;
+    top: -21px;
 }
 .sampleDownload{
     color: #1696d2;
@@ -800,11 +935,11 @@ input[type=date]{
     clear: both;
     margin-top: 44px;
     margin-bottom: 34px;
-    width: 260px;
+    width: 240px;
 }
 .sampleDeetHeader, .appliedDeetHeader{
     font-weight: bold;
-    font-size: 22px;
+    font-size: 21px;
     margin-bottom: 14px;
 }
 .deetRow{

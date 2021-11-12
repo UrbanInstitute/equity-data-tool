@@ -12,6 +12,9 @@
     display: block;
     margin: 0 auto;
 }
+.resultsHeaderLevel{
+    font-weight: normal;
+}
 #resultsFiguresBottom, #resultsFiguresTop{
     width: calc(100% - 100px);
     margin-left: 50px;
@@ -71,7 +74,13 @@
 .resultsCopy{
     font-size: 16px;
 }
-
+.startOverInline{
+    color: #1696d2;
+    cursor: pointer;
+}
+.startOverInline:hover{
+    text-decoration: underline;
+}
 
 /********************************************/
 /***************** HEADER *******************/
@@ -189,6 +198,7 @@
 }
 .sumSectionImg.bike{
     width: 71px;
+    margin-top: -16px;
 }
 .sumSectionImg.user{
     top: -47px;
@@ -196,7 +206,25 @@
     position: relative;
     opacity: 0;
 }
-
+.sumSectionImg.housing {
+    width: 90px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+.sumSectionImg.playgrounds{
+    width: 108px;
+    margin-right: 40px;
+    margin-top: 9px;
+}
+.sumSectionImg.hotspots{
+        width: 113px;
+    margin-right: 26px;
+    margin-top: 8px;
+}
+.sumSectionImg.electric{
+width: 140px;
+    margin-right: 12px;
+}
 .sumSectionText{
     display: none;
 }
@@ -329,9 +357,9 @@
     display: inline-block;
     clear: both;
     float: right;
-    top: -90px;
     position: relative;
-    margin-bottom: -10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 #mapButtonContainer{
     float: right;
@@ -403,7 +431,7 @@
     pointer-events: fill;
     top: 1px;
     color: #1696d2;
-    padding: 10px 15px;
+    padding: 10px 16.5px;
     cursor: pointer;
 }
 #mapImageButtonOverlay:hover{

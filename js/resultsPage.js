@@ -1,4 +1,5 @@
 function populateSummaries(messages, params){
+    console.log(messages, params)
     var datasetType = getDatasetType()
     var container = d3.selectAll(".summaryContainer")
     container.selectAll("*").remove()
@@ -14,10 +15,10 @@ function populateSummaries(messages, params){
     headName.append("span")
         .html(function(){
             if(datasetType == "user"){
-                return "Your data from " + messages.updates.city_used
+                return "Your data in " + messages.updates.g_disp
             }else{
               var card = d3.select(".sampleCard." + getSampleDatasetSlug())
-              return "Your data on " + card.select(".sampleName").text().toLowerCase() + " from " + messages.updates.city_used
+              return "Your data on " + card.select(".sampleName").text().toLowerCase().split("(")[0].trim() + " from " + messages.updates.g_disp
             } 
         })
     var headOfClass = (headName.node().getBoundingClientRect().height > 30) ? "headerX closed tall" : "headerX closed"
@@ -27,7 +28,7 @@ function populateSummaries(messages, params){
         .attr("class", "headX vert")
     headX.append("div")
         .attr("class", "headX hor")
-
+console.log(messages)
 
     var comma = d3.format(",")
     var numWidth = comma(messages.updates.num_rows_file).length * 9
@@ -42,9 +43,7 @@ function populateSummaries(messages, params){
             if(getDatasetType() == "user"){
                 return "images/upload-grey.png"
             }else{
-                if(getSampleDatasetSlug() == "three11") return "images/sample-311-grey.png"
-                else if(getSampleDatasetSlug() == "hotspots") return "images/sample-hotspots-grey.png"
-                else return "images/sample-bike-grey.png"
+                return "images/sample-" + getSampleDatasetSlug() + "-grey.png"
             }
         })
 
@@ -56,19 +55,12 @@ function populateSummaries(messages, params){
         .html("<div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_rows_file) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> total row" + s1 + " in file</div>")
 
     var s2 = (messages.updates.num_filter_rows_dropped == 1) ? "" : "s"
+    var s2a = (params.filters.length == 1) ? "" : "s";
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative")
-        .html("<div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_filter_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s2 + " removed by filters</div>")
+        .html("<div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.updates.num_filter_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s2 + " removed by filter" + s2a + "</div>")
         .classed("hidden", function(){
             return +messages.updates.num_filter_rows_dropped == 0
-        })
-
-    var s3 = (messages.warnings.num_null_weight_rows_dropped == 1) ? "" : "s"
-    sumContainer.append("div")
-        .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_weight_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s3 + " removed with null or missing weight columns</div>")
-        .classed("hidden", function(){
-            return +messages.warnings.num_null_weight_rows_dropped == 0
         })
 
     var s4 = (messages.warnings.num_null_filter_rows_dropped == 1) ? "" : "s"
@@ -79,6 +71,23 @@ function populateSummaries(messages, params){
             return +messages.warnings.num_null_filter_rows_dropped == 0
         })
 
+    var s6 = (messages.warnings.num_out_of_geography_rows_dropped == 1) ? "" : "s"
+    var w6 = (messages.warnings.num_out_of_geography_rows_dropped == 1) ? "was" : "were"
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_out_of_geography_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s6 + " removed that " + w6 + " not within " + messages.updates.g_disp + "</div>")
+        .classed("hidden", function(){
+            return +messages.warnings.num_out_of_geography_rows_dropped == 0
+        })
+
+    var s3 = (messages.warnings.num_null_weight_rows_dropped == 1) ? "" : "s"
+    sumContainer.append("div")
+        .attr("class","summaryRows summaryNegative summaryWarning")
+        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_null_weight_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s3 + " removed with null or missing weight columns</div>")
+        .classed("hidden", function(){
+            return +messages.warnings.num_null_weight_rows_dropped == 0
+        })
+
     var s5 = (messages.warnings.num_null_latlon_rows_dropped == 1) ? "" : "s"
     sumContainer.append("div")
         .attr("class","summaryRows summaryNegative summaryWarning")
@@ -87,14 +96,6 @@ function populateSummaries(messages, params){
             return +messages.warnings.num_null_latlon_rows_dropped == 0
         })
 
-    var s6 = (messages.warnings.num_out_of_city_rows_dropped == 1) ? "" : "s"
-    var w6 = (messages.warnings.num_out_of_city_rows_dropped == 1) ? "was" : "were"
-    sumContainer.append("div")
-        .attr("class","summaryRows summaryNegative summaryWarning")
-        .html("<img class = \"warningIcon\" src = \"images/warnings.png\"><div class = \"sumRowNum\" style = \"width:" + numWidth +"px\";>" + comma(messages.warnings.num_out_of_city_rows_dropped) + "</div><div class = \"sumRowText\" style=\"width: calc(100% - " + (numWidth + 4) + "px)\"> row" + s6 + " removed that " + w6 + " not within " + messages.updates.city_used + "</div>")
-        .classed("hidden", function(){
-            return +messages.warnings.num_out_of_city_rows_dropped == 0
-        })
 
     var s7 = (messages.updates.num_rows_final == 1) ? "" : "s"
     sumContainer.append("div")
@@ -244,7 +245,7 @@ function populateDownloadLinks(links){
 $('#advancedOptionsHeader')
     .selectmenu({
         select: function(event, d){
-            showLoaderSection(d.item.value)
+            showLoaderSection(d.item.value, getGeographyLevel())
         },
         open: function(){
             d3.select("#advancedTextOverlayNav img").style("transform","rotate(180deg)")
@@ -284,12 +285,13 @@ d3.select(".barButton.barImg").on("click", function(){
     })
 })
 
+//TO DO, more robust for geo level
 d3.select(".resultsNav.startOverResults").on("click", startOver)
 
 $('#advancedOptionsHeader')
     .selectmenu({
         select: function(event, d){
-            showLoaderSection(d.item.value)
+            showLoaderSection(d.item.value, getGeographyLevel())
         },
         open: function(){
             d3.select("#advancedTextOverlayNav img").style("transform","rotate(180deg)")
@@ -307,15 +309,44 @@ d3.select("#advancedOptionsHeader-button")
         d3.select("#advancedTextOverlayNav").classed("navHover", false)
     })
 
-d3.select("#tt-icon-cost")
+d3.selectAll(".tt-icon")
     .on("mouseover", function(){
+        var ttText, ttTitle;
+        var dtt = d3.select(this).attr("data-tt")
+        if(dtt=="cbr"){
+            ttText = "Households that pay more than 35 percent of their income on rent"
+            ttTitle = "Cost-burdened renter households"
+        }
+        else if(dtt=="pov"){
+            ttText = "Residents with income under the federal poverty level"
+            ttTitle = "Residents with extremely low incomes"
+        }
+        else if(dtt=="pov2"){
+            ttText = "Residents with income under 200 percent of the federal poverty level"
+            ttTitle = "Residents with low incomes"
+        }
+        else if(dtt=="disparity"){
+            var gtt,
+                geo = getGeographyLevel();
+            if(geo == "national") gtt = "States"
+            else if(geo == "state") gtt = "Counties"
+            else gtt = "Census tracts"
+
+            ttText = gtt + " with positive disparity scores have more data points than we’d expect if resources were equitably distributed in accordance with your baseline. " + gtt + " with negative disparity scores have fewer"
+            ttTitle = "Disparity score"
+        }
+        else if(dtt=="demographic"){
+            ttText = "We compare the demographics in your chosen baseline with the demographics across the neighborhoods containing your data points. Overrepresented groups tend to have more access to data points than we’d expect; underrepresented groups have less."
+            ttTitle = "Demographic distribution"
+        }
+
         if(widthBelow(768) || widthBelow(500)){
-            showMobileTT()
+            showMobileTT(ttTitle, ttText)
         }else{
             var tt = d3.select(this).append("div").attr("class", "tt-container")
 
             tt.append("div")
-                .html("Households that pay more than 35 percent of their income on rent.")
+                .html(ttText)
         }
 
     })

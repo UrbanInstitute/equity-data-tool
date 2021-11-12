@@ -1,0 +1,10 @@
+{
+    "job_id": "new_york_wifi",
+    "file_size": 100,
+    "filters": [],
+    "weight": "",
+    "baseline": "no_bband",
+    "lat_column": "Latitude",
+    "lon_column": "Longitude",
+    "geo": "city"
+}

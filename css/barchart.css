@@ -1,68 +1,5 @@
-/********************************************/
-/********** INDICATOR SELECTION *************/
-/********************************************/
-#barCategories{
-    float: left;
-    display: inline-block;
-    width: 330px;
-    margin-right: 35px;
-}
-.resultsCopy.bars{
-    margin-bottom: 30px;
-    width: 100%;
-    font-size: 18px;
-}
-.barCategoryRow{
-    margin-bottom: 28px;
-    cursor: pointer;
-}
-.barCategoryCheck{
-    display: inline-block;
-    position: relative;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #353535;
-    top: 3px;
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    background: #fff;
-    margin-right: 9px;
-}
-.barCategoryRow.active .barCategoryCheck{
-    color: #1696d2;
-    border: 1px solid #1696d2;
-}
-.barCategoryRow:hover .barCategoryCheck{
-    border: 1px solid #fdbf11;
-}
-.barCategoryRow.active:hover .barCategoryCheck{
-    color: #fdbf11;
-}
-.barCategoryLabel{
-    font-weight: bold;
-    font-size: 18px;
-    display: inline-block;
-    margin-bottom: 2px;
-}
-.barCategoryDescription{
-    font-style: italic;
-    margin-left: 34px;
-}
-.barCategoryDescription span{
-    margin-left: 5px;
-    margin-right: 5px;
-    font-style: normal;
-    top: -3px;
-    position: relative;
-    width: 6px;
-    height: 6px;
-    border-radius: 100%;
-    background: #353535;
-    display: inline-block;
-}
-#tt-icon-cost{
+
+.tt-icon {
     font-style: normal;
     width: 18px;
     height: 13px;
@@ -76,9 +13,13 @@
     border-radius: 100%;
     padding-bottom: 5px;
     position: relative;
-    top: -6px;
+    top: -3px;
+    line-height: 1.2;
     margin-left: 5px;
     cursor: pointer;
+}
+.tt-icon[data-tt=disparity]{
+
 }
 
 .tt-container {
@@ -133,112 +74,57 @@
 
 }
 #barChart{
-    float: left;
     display: inline-block;    
-    top: -110px;
     position: relative;
 }
 .mobileLeg{
     display: none;
 }
-.barNoSig, .mobileLeg{
-    font-size: 14px;
-    font-weight: normal;
-    margin-bottom: 9px;
-    margin-left: 60px;
-}
-.barNoSig span, .mobileLeg span{
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    margin-right: 8px;
+
+.chartRow{
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    display: block;
     position: relative;
-    top: 3.5px;
-    border-radius: 100%;
 }
-.barNoSig span{
-    background: #9d9d9d;
+.chartToolTip{
+    position: absolute;
+    width: 400px;
+    text-align: right;
+    font-size: 16px;
+    font-style: italic;
+    top: 33px;
 }
-.mobileUnder span{
-    background: #ca5800;   
+.chartRow.even{
+    background: #feffff;
 }
-.mobileOver span{
-    background: #1696d2;   
+.chartRow.odd{
+    background: #f5f5f5;
+    cursor: pointer;
 }
-.overunder{
+.chartCatLabel{
+    width: 400px;
+    text-align: right;
+    padding-top: 9px;
+    padding-right: 10px;
     display: inline-block;
     float: left;
-    transform-origin: top left;
-    transform: rotate(-90deg);
-    top: 598px;
-    position: relative;
-    text-transform: uppercase;
-    font-size: 22px;
-    letter-spacing: 5px;
-    font-weight: 900;
-    color: #e88e2d;
-    left: 20px;
 }
-.overunder.over{
-    float: revert;
-    top: 20px;
-    top: 335px;
-    right: -11px;
-    left: auto;
-    position: absolute;
-    transform: rotate(90deg);
-    color: #73bfe2;
-    transform-origin: right top;
+.chartRow svg{
+    display: inline-block;
+    float: left;
 }
 
-
-.bar_full_name{
-    font-size: 14px;
+.x.axis path, .x.axisTop path{
+    display: none;
 }
-.bar_full_name.background{
-    fill: #fdbf11;
-    opacity: 0;
-}
-.bar_full_name.hover{
-    opacity: 1; 
-}
-
-.barDot{
-    fill: #1696d2;
-}
-.barDot.underRepresented{
-    fill: #ca5800;
-}
-.barDot.hover{
-    stroke: #fdbf11;
-    stroke-width: 4px;
-}
-.barDot.insig{
-    /*stroke: #353535 !important;*/
-    /*stroke-width: 2px !important;*/
-    fill: #9d9d9d !important;
-}
-.lollipop{
-    stroke: #46abdb;
+.y.axis{
+    stroke: #353535;
     stroke-width: 2px;
+    fill: none;
 }
-.lollipop.underRepresented{
-    stroke: #e88e2d;
-}
-.lollipop.foreground.insig{
-    stroke: #d2d2d2 !important;
-}
-.lollipop.background{
-    stroke: #fce39e;
-    stroke-width: 8px;
-    opacity: 0;
-}
-.lollipop.background.hover{
-    opacity: 1;
-}
-.lollipop.foreground.hover{
-    stroke-width: 4px;
-}
+
 .tick line{
     stroke: #dedddd;
     stroke-width: .5px;
@@ -254,4 +140,55 @@
 #barChartImage{
     position: fixed;
     top: -3000px;
+}
+.chartDot.hover.geo, .chartDot.hoverDrawer.geo{
+    stroke: #fdbf11;
+    stroke-width: 3px;
+}
+.chartDot.hover.subgeo,.chartDot.hoverDrawer.subgeo{
+    fill: #fdbf11;
+}
+
+
+/********************************************/
+/********** TOP LEGEND CONTROLS *************/
+/********************************************/
+#barChartTopContainer{
+    display: block;
+    position: relative;
+    height: 140px;
+    border-bottom: 2px solid black;
+}
+#barChartInstruction{
+        /* height: 100px; */
+    width: 380px;
+    padding-right: 30px;
+    /* float: left; */
+    /* display: inline-block; */
+    /* vertical-align: bottom; */
+    position: absolute;
+    bottom: 0px;
+}
+#barChartTopControls{
+    display: inline-block;
+    width: calc(100% - 410px);
+    left: 410px;
+    position: absolute;
+    top: 0px;
+}
+#barChartTopLegend{
+    display: inline-block;
+    float: left;
+    width: 300px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#barChartTopMenuContainer{
+    display: inline-block;
+}
+#barChartTopAxisContainer{
+    height: 50px;
+    width: 100%;
+    top: 100px;
+    position: absolute;
 }

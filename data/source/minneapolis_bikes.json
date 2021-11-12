@@ -1,0 +1,10 @@
+{
+    "job_id": "minneapolis_bikes",
+    "file_size": 100,
+    "filters": [],
+    "weight": "capacity",
+    "baseline": "total_pop",
+    "lat_column": "lat",
+    "lon_column": "lon",
+    "geo": "city"
+}

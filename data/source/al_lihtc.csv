@@ -1,0 +1,10 @@
+{
+    "job_id": "al_lihtc",
+    "file_size": 100,
+    "filters": [],
+    "weight": "LI_UNITS",
+    "baseline": "total_pop",
+    "lat_column": "LATITUDE",
+    "lon_column": "LONGITUDE",
+    "geo": "state"
+}

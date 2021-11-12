@@ -56,15 +56,27 @@
 .mapboxgl-compare .compare-swiper-vertical.pop::after{
     content: "Total population";
 }
-.mapboxgl-compare .compare-swiper-vertical.under_200_poverty_line::after{
-    content: "Low-income population";
+.mapboxgl-compare .compare-swiper-vertical.pov2::after{
+    content: "Population with low incomes";
 }
-.mapboxgl-compare .compare-swiper-vertical.no_internet::after{
+.mapboxgl-compare .compare-swiper-vertical.pov::after{
+    content: "Population with extremely low incomes";
+}
+.mapboxgl-compare .compare-swiper-vertical.int::after{
     content: "Population without Internet access";
 }
-.mapboxgl-compare .compare-swiper-vertical.cb_renter_hh::after{
-    content: "Population of cost burdened renter households ";
+.mapboxgl-compare .compare-swiper-vertical.cbr::after{
+    content: "Population of cost-burdened renter households";
 }
-.mapboxgl-compare .compare-swiper-vertical.seniors::after{
+.mapboxgl-compare .compare-swiper-vertical.sen::after{
     content: "Senior population";
 }
+.mapboxgl-compare .compare-swiper-vertical.chi::after{
+    content: "Child population";
+}
+
+
+
+
+
+

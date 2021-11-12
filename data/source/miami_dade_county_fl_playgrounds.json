@@ -1,0 +1,15 @@
+{
+    "job_id": "miami_dade_county_fl_playgrounds",
+    "file_size": 100,
+    "filters": [{
+        "filter_type": "string",
+        "filter_column": "TOTLOT",
+        "filter_comparison": "==",
+        "filter_val": "Yes"
+    }],
+    "weight": "",
+    "baseline": "total_pop",
+    "lat_column": "LAT",
+    "lon_column": "LON",
+    "geo": "county"
+}

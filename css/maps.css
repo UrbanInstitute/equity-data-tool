@@ -98,7 +98,7 @@
 /********************************************/
 /*************** TOOLTIP ********************/
 /********************************************/
-.mapboxgl-popup-content{
+/*.mapboxgl-popup-content{
     border-radius: 0px;
     font-family: Lato;
     width: fit-content;
@@ -190,8 +190,49 @@
     padding-bottom: 12px;
     color: #9d9d9d;
 }
+*/
 
-
+#mtt-container{
+    font-size: 14px;
+    margin-left: 31px;
+    margin-top: 13px;
+    display: none;
+}
+#mtt-title{
+    text-transform: uppercase;
+    color: #9d9d9d;
+    margin-bottom: 4px;
+}
+#mtt-data-hed{
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+#mtt-data{
+    position: relative;
+}
+.mtt-data-row{
+    margin-left: 30px;
+    margin-bottom: 13px;
+}
+#mtt-da_prop, #mtt-da_baseline, #mtt-da_rep{
+    font-weight: 700;
+}
+#mtt-takeaway, #mtt-no_sig{
+    line-height: 21px;
+}
+#mtt-no_sig{
+    display: block;
+    font-size: 16px;
+    color: #9d9d9d;
+    font-style: italic;
+}
+#mtt-background{
+    position: absolute;
+    width: 275px;
+    height: 34px;
+    z-index: -1;
+    top: 17px;
+}
 
 
 
@@ -263,4 +304,11 @@
 .mapLegend.diff svg{
     display: inline-block;
     float: left;
+}
+#exploreMore{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 90px;
+    text-align: center;
+    margin-top: 47px;
 }

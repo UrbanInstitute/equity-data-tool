@@ -1,0 +1,23 @@
+{
+    "job_id": "new_orleans_311",
+    "file_size": 100,
+    "filters": [
+        {
+            "filter_type": "string",
+            "filter_column": "city",
+            "filter_comparison": "==",
+            "filter_val": "NEW ORLEANS"
+        },
+        {
+            "filter_type": "date",
+            "filter_column": "ticket_created_date_time",
+            "filter_comparison": "dateRange",
+            "filter_val": "01/01/2014-01/01/2019"
+        }
+    ],
+    "weight": "",
+    "baseline": "total_pop",
+    "lat_column": "latitude",
+    "lon_column": "longitude",
+    "geo": "city"
+}

@@ -1,3 +1,35 @@
 
 - MAX_PROCESSING_TIME test, timeout error
 
+
+
+Tues night
+- jerry maps email
+- jmpc blog post email
+- email back contractors
+- update intake form
+- luis boxnote update
+
+
+spatial eq
+- header
+- loading screen img
+- set map baseline on load (for sample sets)
+- fix legend for all geos (good on natl)
+- fix + icon overlapping summary box
+- check filter text
+- subgeo menus
+- chartRow height set by max of beeswarm and tooltip height
+- handle no subgeos on city/county
+    - no mouseover highlight at all
+- png of bar chart
+- bar chart baseline menu and header
+- "Across THE US" in bar tootlip
+    - check other geos
+- small tooltips on bar dots
+- bring dots to front as needed
+- note under barchart
+- warnings and errors, including "yes continue"
+- mobile
+
+

@@ -1,5 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJiYW5pbnN0aXR1dGUiLCJhIjoiTEJUbmNDcyJ9.mbuZTy4hI_PWXw3C3UFbDQ';
-var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckecx3n9l2npi1aql5avokshb"
+var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckvtyaa3m1cds14ph2lowc45t/draft"
 
 d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".controlContainer").classed("active", false)
@@ -63,12 +63,13 @@ d3.selectAll(".controlContainer").on("click", function(){
 // }
 
 function getRange(baseline, bounds, mapType){
-        var baselineMin = bounds[baseline + "_prop_min"],
-            baselineMax = bounds[baseline + "_prop_max"],
-            dataMin = bounds["data_prop_min"],
-            dataMax = bounds["data_prop_max"],
-            diffMin = bounds["diff_" + baseline + "_min"],
-            diffMax = bounds["diff_" + baseline + "_max"],
+    // console.log(bounds)
+        var baselineMin = bounds["p_" + baseline + "_min"],
+            baselineMax = bounds["p_" + baseline + "_max"],
+            dataMin = bounds["da_prop_min"],
+            dataMax = bounds["da_prop_max"],
+            diffMin = bounds["d_" + baseline + "_min"],
+            diffMax = bounds["d_" + baseline + "_max"],
             comparisonMin = Math.min(baselineMin, dataMin),
             comparisonMax = Math.max(baselineMax, dataMax),
             diffBound = Math.max(Math.abs(diffMin), diffMax)
@@ -182,6 +183,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
     var baseline = getParams().baseline
 
+
     baselineMap.on('load', function() {
 
         baselineMap.addSource('comparisonSource', {
@@ -220,7 +222,7 @@ function drawMaps(bbox, geojsonData, bounds){
             'fill-color': [
                 "interpolate",
                 ["linear"],
-                ["get", "data_prop"],
+                ["get", "da_prop"],
                 comparisonMin,
                 "#dcedd9",
                 comparisonMin + comparisonStep,
@@ -252,7 +254,7 @@ function drawMaps(bbox, geojsonData, bounds){
             'fill-color': [
                 "interpolate",
                 ["linear"],
-                ["get", baseline + "_prop"],
+                ["get", "p_" + baseline],
                 comparisonMin,
                 "#dcedd9",
                 comparisonMin + comparisonStep,
@@ -284,7 +286,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
 
         var rangeDiff = getRange(baseline, bounds, "diff")
-
+// console.log(baseline, bounds)
         var diffMin = rangeDiff[0],
             diffMax = rangeDiff[1],
             diffStep = diffMax/4
@@ -296,17 +298,17 @@ function drawMaps(bbox, geojsonData, bounds){
             'fill-outline-color': 
             [
                 "case",
-                ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
+                ["==",['string', ['get', 's_' + baseline]],"TRUE"],
                 "#696969",
                 "#353535"
             ],
             'fill-color': [
                 "case",
-                ["==",['string', ['get', 'sig_diff_' + baseline]],"TRUE"],
+                ["==",['string', ['get', 's_' + baseline]],"TRUE"],
                     [
                         "interpolate",
                         ["linear"],
-                        ["get", "diff_" + baseline],
+                        ["get", "d_" + baseline],
                         diffMin,
                         "#ca5800",
                         diffMin + diffStep,
@@ -403,6 +405,7 @@ function drawMaps(bbox, geojsonData, bounds){
             .attr("text-anchor", "middle")
             .attr("y", 20)
             .attr("x", function(d,i){
+                // console.log(d,i, diffStep, diffMap, getLegendWidth())
                 return legendMargin + ((i*diffStep)/(2*diffMax)) * getLegendWidth()
             })
             .text(function(d,i){
@@ -468,11 +471,67 @@ function drawMaps(bbox, geojsonData, bounds){
 
 
 
-        var ttPercent = d3.format(".2%")
+        var ttPercent = d3.format(".1%")
         var popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: true
         });
+
+        function updateMapTooltip(e, allSignif){
+            // console.log(e.features[0].properties)
+            d3.select("#mtt-container").style("display", "block")
+
+            var coordinates = e.lngLat;
+            var p = e.features[0].properties
+
+            if(p["s_" + getBaseline()] == "TRUE" || allSignif){
+
+                var repText = (p["d_" + getBaseline()] < 0) ? "underrepresented" : "overrepresented",
+                    compText = (p["d_" + getBaseline()] < 0) ? "fewer" : "more",
+                    geo1, geo2;
+                if(getGeographyLevel() == "national"){
+                    geo1 = "state"
+                    geo2 = p.m_disp
+                }
+                else if(getGeographyLevel() == "state"){
+                    geo1 = "county",
+                    geo2 = p.m_disp
+                }else{
+                    geo1 = "tract"
+                    geo2 = "This neighborhood"
+                }
+                d3.select("#mtt-title").html(p.m_disp)
+                d3.select("#mtt-geo1").text(geo1)
+                d3.select("#mtt-geo2").text(geo2)
+                d3.select("#mtt-da_prop").text(ttPercent(p.da_prop))
+                d3.select("#mtt-da_baseline").text(ttPercent(p["p_" + getBaseline()]))
+                d3.selectAll(".mtt-baseline-text").html(getBaselineText(getBaseline()).toLowerCase())
+                d3.select("#mtt-da_rep").html(ttPercent(p["d_" + getBaseline()]))
+                d3.select("#mtt-rep_text").text(repText)
+                d3.select("#mtt-compText").text(compText)
+                d3.select("#mtt-da_takeaway").text(ttPercent(Math.abs(p["d_" + getBaseline()])).replace("%",""))
+
+                d3.select("#mtt-data").style("display", "block")
+                d3.select("#mtt-no_sig").style("display","none")
+
+
+            }else{
+
+                d3.select("#mtt-data").style("display", "none")
+                d3.select("#mtt-no_sig").style("display","block")     
+
+                d3.select("#pointUp")
+                    .style("display", "block")
+                    .transition()
+                    .style("left", (getLegendWidth() + 54) + "px")
+                d3.select("#pointUpText").text("")
+
+                d3.select("#mtt-title").html(p.m_disp)
+
+            }
+
+        }
+
          
         diffMap.on('mousemove', 'diffLayer', function(e) {
 
@@ -481,11 +540,21 @@ function drawMaps(bbox, geojsonData, bounds){
             var p = e.features[0].properties
             
             var colors = e.features[0].layer.paint["fill-color"][2]
-            var diffVal = p["diff_" + getBaseline()]
+            var diffVal = p["d_" + getBaseline()]
             var diffColor, textColor;
 
             for(var i = 3; i < colors.length; i+= 2){
-                if(diffVal > colors[i] && diffVal <= colors[i+2]){
+                if(diffVal == colors[3]){
+                    diffColor = colors[4]
+                    textColor = "#ffffff"
+                    break;
+                }
+                else if(i == colors.length - 2){
+                    diffColor = colors[colors.length - 1]
+                    textColor =  "#353535";
+                    break
+                }
+                else if(diffVal > colors[i] && diffVal <= colors[i+2]){
                     diffColor = d3.interpolateRgb(colors[i+1], colors[i+3])( (diffVal - colors[i])/(colors[i+2] - colors[i]))
                     colors[i+1]
                     textColor = (i <= 5 || i >= 15 ) ? "#fff" : "#353535"
@@ -493,67 +562,28 @@ function drawMaps(bbox, geojsonData, bounds){
                 }
             }
 
-            if(p["sig_diff_" + getBaseline()] == "TRUE"){
+            var rangeMouse = getRange(getBaseline(), bounds, "diff"),
+                mouseMax = rangeMouse[1];
 
-                var rangeMouse = getRange(getBaseline(), bounds, "diff"),
-                    mouseMax = rangeMouse[1];
+            d3.select("#pointUp")
+                .style("display", "block")
+                .transition()
+                .style("left", function(){
+                    return (getLegendWidth() * (mouseMax + diffVal) / (2*mouseMax)) + "px"
+                })
+            d3.select("#pointUpText").text(ttPercent(diffVal))
 
-
-                d3.select("#pointUp")
-                    .style("display", "block")
-                    .transition()
-                    .style("left", function(){
-                        return (getLegendWidth() * (mouseMax + diffVal) / (2*mouseMax)) + "px"
-                    })
-                d3.select("#pointUpText").text(ttPercent(diffVal))
-
-
-                var repText = (p["diff_" + getBaseline()] < 0) ? "underrepresented" : "overrepresented"
-                var description =   "<div class = 'tt-name'>" + p.NAME + "</div>" + 
-                                    "<div class = 'tt-contains'>" + "This tract contains:" + "</div>" + 
-                                    "<div class = 'tt-row'>" +
-                                        "<span class = 'tt-val data'>" + ttPercent(p.data_prop) + "</span>" +
-                                        "<div class = 'tt-text data'>" + " of your data points" + "</div>" + 
-                                    "</div>" + 
-                                    "<div class = 'tt-row'>" +
-                                        "<span class = 'tt-val baseline'> <span>-</span>" + ttPercent(p[getBaseline() + "_prop"]) + "</span>" +
-                                        "<div class = 'tt-text baseline'>" + " of the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>" + 
-                                    "</div>" +
-                                    "<div class = 'tt-diff-row' style='background-color:" + diffColor +"; color:" + textColor+ ";' >" +
-                                        "<span class = 'tt-val diff'>" + ttPercent(p["diff_" + getBaseline()]) + "</span>" +
-                                        "<div class = 'tt-text diff'>" + repText + "</div>" + 
-                                    "</div>"
-            }else{
-
-                d3.select("#pointUp")
-                    .style("display", "block")
-                    .transition()
-                    .style("left", (getLegendWidth() + 54) + "px")
-                d3.select("#pointUpText").text("")
-
-
-                var description = "<div class = 'tt-name'>" + p.NAME + "</div>" + 
-                                  "<div class = 'tt-noSigDiff'>" + "No statistically significant difference between your data and the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>"
-            }
-
-
-            popup
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(diffMap);
-
-            if(d3.select(".mapboxgl-popup").classed("mapboxgl-popup-anchor-bottom") && p["sig_diff_" + getBaseline()] == "TRUE"){
-                d3.select(".mapboxgl-popup-tip").style("border-top-color", diffColor)
-            }
-            else{
-                d3.select(".mapboxgl-popup-tip").style("border-top-color", "#fff")
-            }
+            updateMapTooltip(e, false)
+            d3.transition().select("#mtt-background").style("background", diffColor).style("top","77px")
+            d3.transition().selectAll(".mtt-data-row").style("color", "#353535")
+            d3.transition().select(".mtt-data-row.r3").style("color", textColor)
 
         }); 
          
         diffMap.on('mouseleave', 'diffLayer', function() {
+            d3.select("#mtt-container").style("display", "none")
+
             diffMap.getCanvas().style.cursor = '';
-            popup.remove();
 
             d3.select("#pointUp")
                 .style("display", "none")
@@ -571,32 +601,28 @@ function drawMaps(bbox, geojsonData, bounds){
             var p = e.features[0].properties
 
             var colors = e.features[0].layer.paint["fill-color"]
-            var baselineVal = p[getBaseline() + "_prop"]
+            var baselineVal = p["p_" + getBaseline()]
             var baselineColor;
-
-            for(var i = 3; i < colors.length; i+= 2){
-                if(i == colors.length - 2){
+            for(var i = 3; i <= colors.length; i+= 2){
+                if(baselineVal == colors[3]){
+                    baselineColor = colors[4]
+                    textColor = "#353535"
+                    break;
+                }
+                else if(i == colors.length - 2){
                     baselineColor = colors[colors.length - 1]
+                    textColor =  "#fff";
                     break
                 }
                 else if(baselineVal > colors[i] && baselineVal <= colors[i+2]){
                     baselineColor = d3.interpolateRgb(colors[i+1], colors[i+3])( (baselineVal - colors[i])/(colors[i+2] - colors[i]))
                     colors[i+1]
+                    textColor = (i >= 11) ? "#fff" : "#353535"
                     break;
                 }
             }
 
-            var description =   "<div class = 'tt-name'>" + p.NAME + "</div>" + 
-                                "<div class = 'tt-contains slider'>" + "This tract contains " +
-                                    "<span class = 'tt-val slider baseline' style='border-bottom: 5px solid " + baselineColor + "'>" + ttPercent(p[getBaseline() + "_prop"]) + "</span>" +
-                                    "<span class = 'tt-text baseline slider'>" + " of the city's " + getBaselineText(getBaseline()).toLowerCase() + "</div>" + 
-                                "</div>"
-
-
-            popup
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(baselineMap);
+            updateMapTooltip(e, true)
 
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverBaseline",true)
 
@@ -611,11 +637,17 @@ function drawMaps(bbox, geojsonData, bounds){
                 })
             d3.select("#pointUpText").text(ttPercent(baselineVal))
 
+            d3.transition().select("#mtt-background").style("background", baselineColor).style("top","47px")
+            d3.transition().selectAll(".mtt-data-row").style("color", "#353535")
+            d3.transition().select(".mtt-data-row.r2").style("color", textColor)
+
         }); 
          
         baselineMap.on('mouseleave', 'baselineLayer', function() {
             baselineMap.getCanvas().style.cursor = '';
-            popup.remove();
+            
+            d3.select("#mtt-container").style("display", "none")
+
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverBaseline",false)
 
             d3.select("#pointUp")
@@ -631,35 +663,31 @@ function drawMaps(bbox, geojsonData, bounds){
             var p = e.features[0].properties
 
             var colors = e.features[0].layer.paint["fill-color"]
-            var dataVal = p["data_prop"]
+            var dataVal = p["da_prop"]
             var dataColor;
 
 
             for(var i = 3; i < colors.length; i+= 2){
-                if(i == colors.length - 2){
+                if(dataVal == colors[3]){
+                    dataColor = colors[4]
+                    textColor = "#353535"
+                    break;
+                }
+                else if(i == colors.length - 2){
                     dataColor = colors[colors.length - 1]
+                    textColor = "#fff";
                     break
                 }
                 else if(dataVal >= colors[i] && dataVal < colors[i+2]){
                     dataColor = d3.interpolateRgb(colors[i+1], colors[i+3])( (dataVal - colors[i])/(colors[i+2] - colors[i]))
                     colors[i+1]
+                    textColor = (i >= 11) ? "#fff" : "#353535"
                     break;
                 }
             }
 
-            var description =   "<div class = 'tt-name'>" + p.NAME + "</div>" + 
-                                "<div class = 'tt-contains slider'>" + "This tract contains " +
-                                    "<span class = 'tt-val slider data' style='border-bottom: 5px solid " + dataColor + "'>" + ttPercent(p["data_prop"]) + "</span>" +
-                                    "<span class = 'tt-text data slider'>" + " of your data points</div>" + 
-                                "</div>"
+            updateMapTooltip(e, true)
 
-
-            popup
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(dataMap);
-
-            d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverData",true)
 
             var rangeMouseData = getRange(getBaseline(), bounds, "compare"),
                 mouseMaxData = rangeMouseData[1];
@@ -671,12 +699,18 @@ function drawMaps(bbox, geojsonData, bounds){
                     return (getLegendWidth() * (dataVal) / (mouseMaxData)) + "px"
                 })
             d3.select("#pointUpText").text(ttPercent(dataVal))
+            
+            d3.transition().select("#mtt-background").style("background", dataColor).style("top","17px")
+            d3.transition().selectAll(".mtt-data-row").style("color", "#353535")
+            d3.transition().select(".mtt-data-row.r1").style("color", textColor)
 
         }); 
          
         dataMap.on('mouseleave', 'dataLayer', function() {
             dataMap.getCanvas().style.cursor = '';
-            popup.remove();
+            
+            d3.select("#mtt-container").style("display", "none")
+
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverData",false)
 
             d3.select("#pointUp")
@@ -726,7 +760,7 @@ function drawMaps(bbox, geojsonData, bounds){
                         'fill-color', [
                             "interpolate",
                             ["linear"],
-                            ["get", d.item.value + "_prop"],
+                            ["get", "p_" + d.item.value],
                             comparisonMin,
                             "#dcedd9",
                             comparisonMin + comparisonStep,
@@ -750,7 +784,7 @@ function drawMaps(bbox, geojsonData, bounds){
                         'fill-color', [
                             "interpolate",
                             ["linear"],
-                            ["get", "data_prop"],
+                            ["get", "da_prop"],
                             comparisonMin,
                             "#dcedd9",
                             comparisonMin + comparisonStep,
@@ -790,11 +824,11 @@ function drawMaps(bbox, geojsonData, bounds){
                     diffMap.setPaintProperty("diffLayer", 
                         'fill-color', [
                             "case",
-                            ["==",['string', ['get', 'sig_diff_' + d.item.value]],"TRUE"],
+                            ["==",['string', ['get', 's_' + d.item.value]],"TRUE"],
                                 [
                                     "interpolate",
                                     ["linear"],
-                                    ["get", "diff_" + d.item.value],
+                                    ["get", "d_" + d.item.value],
                                     diffMin,
                                     "#ca5800",
                                     diffMin + diffStep,

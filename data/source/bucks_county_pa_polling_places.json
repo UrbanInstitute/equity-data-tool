@@ -1,0 +1,10 @@
+{
+    "job_id": "bucks_county_pa_polling_places",
+    "file_size": 100,
+    "filters": [],
+    "weight": "",
+    "baseline": "extremely_low_income_pop",
+    "lat_column": "Y",
+    "lon_column": "X",
+    "geo": "county"
+}

@@ -1,0 +1,10 @@
+{
+    "job_id": "us_library_outlets",
+    "file_size": 100,
+    "filters": [],
+    "weight": "HOURS",
+    "baseline": "total_pop",
+    "lat_column": "LATITUDE",
+    "lon_column": "LONGITUD",
+    "geo": "national"
+}

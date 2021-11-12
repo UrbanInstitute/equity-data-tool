@@ -31,7 +31,7 @@ function hideMobileAdvanced(){
         })
 
 }
-function showMobileTT(){
+function showMobileTT(title, text){
     d3.selectAll(".backButton").style("display","none")
     CURRENT_SCROLL = $(window).scrollTop()
     d3.select("#boorgerContainer").classed("ex", true)
@@ -49,6 +49,8 @@ function showMobileTT(){
         .on("end", function(){
             d3.select("body").classed("hideScroll", true)
         })
+    d3.select("#mobileTT").select("#ttHead").html(title)
+    d3.select("#mobileTT").select("#ttBody").html(text)
 }
 function hideMobileTT(){
     d3.select("body").classed("hideScroll", false)

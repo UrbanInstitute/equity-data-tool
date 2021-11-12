@@ -38,7 +38,7 @@ function handleFiles(inputFiles){
     var fileName = fileList[0]["name"]
 
     if(+fileSize > 2147483648){
-        loaderError("Your file exceeds the maximum size limit.", "upload")
+        loaderError("Your file exceeds the maximum size limit of 2 GB.", "upload")
     }
 
     d3.select("#dropboxClick").text("File uploaded")
@@ -94,7 +94,7 @@ function handleFiles(inputFiles){
 }
 
 function deselectSampleData(){
-    window.location.hash = "#" + "sample"
+    window.location.hash = "#" + "sample-" + getGeographyLevel()
 
     d3.selectAll(".sampleRect").classed("active", false)
 
@@ -116,7 +116,7 @@ function deselectSampleData(){
 
 }
 function guessLatLon(colNames, l){
-    var guesses = (l == "lat") ? ["latitude", "lat", "y"] : ["longitude", "lon","long","x"];
+    var guesses = (l == "lat") ? ["latitude", "lat", "y"] : ["longitud", "longitude", "lon","long","x"];
     for(var g = 0; g < guesses.length; g++){
         var guess = guesses[g]
         for(var c = 0; c < colNames.length; c++){
@@ -148,11 +148,11 @@ function showFilterOptions(filterType){
   
 }
 function populateDropdowns(colNames){
+    // console.log(colNames)
     clearFilterOptions()
 
     var guessedLat = guessLatLon(colNames, "lat")
     var guessedLon = guessLatLon(colNames, "lon")
-
     if(guessedLat == "" || guessedLon == "") d3.selectAll(".runButton").classed("disabled", true)
     else d3.selectAll(".runButton").classed("disabled", false)
 
@@ -321,20 +321,47 @@ function checkValidFilter(inputName, val){
 }
 
 
-d3.select("#sampleButton").on("click", function(){
-    setDatasetType("sample")
-    showLoaderSection("sample")    
+d3.selectAll(".homeButton.sample").on("click", function(){
+    setDatasetType("sample", d3.select(this).attr("data-geo"))
+    showLoaderSection("sample", getGeographyLevel())
 })
 
 
-d3.select("#userButton").on("click", function(){
-    setDatasetType("user")
-    showLoaderSection("user")    
+d3.selectAll(".homeButton.user").on("click", function(){
+    setDatasetType("user", d3.select(this).attr("data-geo"))
+    showLoaderSection("user", getGeographyLevel())    
 })
 
+
+d3.selectAll(".homeButtonContainer")
+    .on("mouseover", function(){
+        d3.select(this).select(".homeButton.user")
+            .transition()
+            .style("top", "97px")
+        d3.select(this).select(".homeButton.sample")
+            .transition()
+            .style("opacity",1)
+        d3.select(this).select(".homeButton.geographyLevel")
+            .style("opacity", 0)
+            .style("z-index",-1)
+    })
+    .on("mouseout", function(){
+        d3.select(this).select(".homeButton.user")
+            .transition()
+            .style("top", "0px")
+        d3.select(this).select(".homeButton.sample")
+            .transition()
+            .style("opacity",0)
+        d3.select(this).select(".homeButton.geographyLevel")
+            .style("opacity", 1)
+            .style("z-index",1)
+    })
 
 
 d3.selectAll(".backButton.user.data").on("click", function(){
+    startOver()
+})
+d3.selectAll(".inlineHome").on("click", function(){
     startOver()
 })
 d3.selectAll(".backButton.sample.data").on("click", function(){
@@ -345,9 +372,12 @@ d3.selectAll(".backButton.sample.data").on("click", function(){
     }
 })
 d3.selectAll(".backButton.advanced").on("click", function(){
-    showLoaderSection(getDatasetType())
+    showLoaderSection(getDatasetType(), getGeographyLevel())
 })
 d3.selectAll(".startOver").on("click", function(){
+    startOver()
+})
+d3.selectAll(".startOverInline").on("click", function(){
     startOver()
 })
 
@@ -377,9 +407,10 @@ inputElement.addEventListener("change", handleFiles, false);
 d3.selectAll(".sampleCard").on("click", function(){
 
     var sample;
-    if(d3.select(this).classed("three11")) sample = "three11"
-    else if(d3.select(this).classed("hotspots")) sample = "hotspots"
-    else if(d3.select(this).classed("bike")) sample = "bike"
+
+    for(var prop in sampleParams){
+        if(d3.select(this).classed(prop)) sample = prop
+    }
     selectSampleData(sample)
 })
 .on("mouseover", function(){
@@ -405,7 +436,7 @@ d3.selectAll(".sampleCard").on("click", function(){
 $('#advancedOptionsUser')
     .selectmenu({
         select: function(event, d){
-            showLoaderSection(d.item.value)
+            showLoaderSection(d.item.value, getGeographyLevel())
         },
         open: function(){
             d3.select("#advancedTextOverlayUser img").style("transform","rotate(180deg)")
@@ -418,7 +449,7 @@ $('#advancedOptionsUser')
 $('#advancedOptionsSample')
     .selectmenu({
         select: function(event, d){
-            showLoaderSection(d.item.value)
+            showLoaderSection(d.item.value, getGeographyLevel())
         },
         open: function(){
             d3.select("#advancedTextOverlaySample img").style("transform","rotate(180deg)")
@@ -497,7 +528,7 @@ d3.select(".saveButton.weight").on("click", function(){
     if(getDatasetType() == "sample"){
         updateSampleParams("weight", getWeight())
     }
-    showLoaderSection(getDatasetType())    
+    showLoaderSection(getDatasetType(), getGeographyLevel())    
 })
 d3.select(".saveButton.filter").on("click", function(){
     var filters = []
@@ -509,7 +540,7 @@ d3.select(".saveButton.filter").on("click", function(){
     }
 
 
-    showLoaderSection(getDatasetType())    
+    showLoaderSection(getDatasetType(), getGeographyLevel())    
 })
 
 d3.select("#errorNavBack")
@@ -522,7 +553,7 @@ d3.select("#errorNavBack")
     .on("click", function(){
         d3.select(".loaderSection.loading .loaderHeader")
             .html("Sit tight! We’re analyzing your data.")
-        showLoaderSection(getDatasetType())
+        showLoaderSection(getDatasetType(), getGeographyLevel())
     })
 d3.select("#errorNavBackFilter")
     .on("mouseover", function(){
@@ -534,7 +565,7 @@ d3.select("#errorNavBackFilter")
     .on("click", function(){
         d3.select(".loaderSection.loading .loaderHeader")
             .html("Sit tight! We’re analyzing your data.")
-        showLoaderSection("filters")
+        showLoaderSection("filters", getGeographyLevel())
     })
 d3.select("#errorStartOver")
     .on("mouseover", function(){
@@ -549,7 +580,7 @@ d3.select("#errorStartOver")
 
 //click ALL cancel buttons
 d3.selectAll(".cancelButton").on("click", function(){
-    showLoaderSection(getDatasetType())
+    showLoaderSection(getDatasetType(), getGeographyLevel())
     hideLoaderError("weight") 
 })
 
@@ -578,18 +609,18 @@ var lastAdvanced = false;
 d3.select("#mobileFilter").on("click", function(){
     lastAdvanced = false;
     hideMobileMain()
-    showLoaderSection("filters")
+    showLoaderSection("filters", getGeographyLevel())
 })
 d3.select("#mobileWeight").on("click", function(){
     lastAdvanced = false;
     hideMobileMain()
-    showLoaderSection("weight")
+    showLoaderSection("weight", getGeographyLevel())
 })
 d3.select("#mobileAdvancedBack").on("click", function(){
     if(lastAdvanced) showMobileMain()
     else{
         hideMobileMain()
-        showLoaderSection(getDatasetType())
+        showLoaderSection(getDatasetType(), getGeographyLevel())
     }
 })
 d3.select("#mobileHome").on("click", function(){
@@ -610,11 +641,10 @@ d3.select("#boorgerContainer").on("click", function(){
     }
 })
 d3.selectAll(".mobileTabSample").on("click", function(){
-
-    startOver("sample")
+    startOver("sample", getGeographyLevel())
 })
 d3.selectAll(".mobileTabUser").on("click", function(){
-    startOver("user")
+    startOver("user", getGeographyLevel())
 })
 d3.select(".mobileTabFilter").on("click", function(){
     d3.select(this).classed("active", true)

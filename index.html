@@ -116,10 +116,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </select>  
     </div>
     <div id = "resultsHeader">
-        <img class = "buildings results" src = "images/buildings.png">
-        <h2 class = "loaderHeader">Spatial Equity Data Tool</h2>
-        <h3 class = "loaderSubHeader">Measuring Disparities in Your City</h3>
-        <p class = "results intro">How can cities ensure that resources are equitably distributed to all residents? We created this tool to help city officials and community organizations quickly assess <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> disparities in their cities.</p>
+        <h2 class = "loaderHeader">Spatial Equity Data Tool: <span class = "resultsHeaderLevel"><span class = "geographyLevelText sentencecase"></span> Level</span></h2>
+        <h3 class = "loaderSubHeader">Measure Disparities in Your Data</h3>
+        <p class = "results intro">Assess <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> disparities <span class = "geographyLevelText resultsIntro"></span> to see if resources are equitably distributed.</p>
      <div class = "summaryContainer visible">
      </div>
      <div class = "summaryContainer clone">
@@ -127,16 +126,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     </div>
 
-    <div id = "resultsFiguresTop">
-        <div class = "resultsHeader maps"><img class = "headerIcon" src = "images/map-icon.png">Geographic distribution of your data compared with the city’s</div>
+    <div id = "resultsFiguresBottom">
+        <div class = "resultsHeader bars"><img class = "headerIcon" src = "images/bar-icon.png"> Demographic distribution of your data compared with the city’s total population</div>
 
+        <div id = "barChartContainer">
+            <div id = "barLegendContainer">
+            </div>
+            <div id = "barChart">
+              <div id = "barChartTopContainer">
+                <div id = "barChartInstruction">Hover over the dots to see how demographic groups are over- and underrepresented in your data<i data-tt="demographic" class = "tt-icon">?</i></div>
+
+                <div id = "barChartTopControls">
+                  <div id = "barChartTopLegend">
+                  </div>
+                  <div id = "barChartTopMenuContainer">
+                  </div>
+                  <div id = "barChartTopAxisContainer">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id = "barButtonContainer">
+              <div class = "barButton barImg active">Download chart image (.PNG)</div>
+              <a class = "barLink csv" href = ""><div class = "barButton csv active">Download chart data (.CSV)</div></a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div id = "resultsDivider" class = "resultsContainer divider"></div>
+
+<div class = "resultsContainer wrapper">
+    <div id = "resultsFiguresTop">
+        <div class = "resultsHeader maps"><img class = "headerIcon" src = "images/map-icon.png">Geographic distribution of your data compared with the</div>
         <select id = "baselineSelect">
             <option value = "pop">total population</option> 
-            <option value = "under_200_poverty_line">low-income population</option> 
-            <option value = "no_internet">population without Internet access</option> 
-            <option value = "cb_renter_hh">population of cost burdened renter households</option>
-            <option value = "seniors">senior population</option>       
+            <option value = "pov2">population with low incomes</option> 
+            <option value = "pov">population with extremely low incomes</option> 
+            <option value = "int">population without internet access</option> 
+            <option value = "cbr">population of cost-burdened renter households</option> 
+            <option value = "sen">senior (&ge; 65) population</option> 
+            <option value = "chi">child (&lt; 18) population</option> 
         </select>
+
+
+
+         <div class = "resultsHeader maps">in the <span class ="geographyLevelText US"></span></div>
+
 
         <div id = "mapContainer">
             <div id = "mapControls">
@@ -146,7 +186,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
                     </div>
                     <div class = "controlName">Disparity Score</div>
-                    <div class = "controlDescription">See which census tracts are over- and underrepresented in your data</div>
+                    <div class = "controlDescription">See which <span class ="geographyLevelText subgeo"></span> are over- and underrepresented in your data<i data-tt="disparity" class = "tt-icon">?</i></div>
+
+                    <div id = "mtt-container">
+                        <div id = "mtt-title"></div>
+                        <div id = "mtt-data">
+                          <div id = "mtt-data-hed">This <span id = "mtt-geo1"></span> contains:</div>
+                          <div id = "mtt-background"></div>
+                          <div class = "mtt-data-row r1"><span id = "mtt-da_prop"></span> of your data points</div>
+                          <div class = "mtt-data-row r2"><span id = "mtt-da_baseline"></span> of the <span class = "mtt-baseline-text"></span></div>
+                          <div class = "mtt-data-row r3"><span id = "mtt-da_rep"></span> <span id = "mtt-rep_text"></span></div>
+
+                          <div id = "mtt-takeaway">
+                            <span id="mtt-geo2"></span> has <span id = "mtt-da_takeaway"></span> percent <span id = "mtt-compText"></span> of the data points than we’d expect if the data were distributed in accordance with your baseline.
+                          </div>
+                        </div>
+                        <div id = "mtt-no_sig">
+                          No statistically significant difference between your data and the <span class = "mtt-baseline-text"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class = "controlContainer compare">
                     <div class = "radioContainer">
@@ -154,12 +212,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <img class = "radio large unchecked" src = "images/uncheckedRadio.png">
                     </div>
                     <div class = "controlName">Data comparison</div>
-                    <div class = "controlDescription">See your data side by side with the city’s <span id = "controlBaselineName">total population</span></div>
+                    <div class = "controlDescription">See your data side by side with the <span id = "controlBaselineName">total population</span> in the <span class ="geographyLevelText US"></span></div>
                 </div>
             </div>
             <div id = "legendSlideContainer">
               <div class = "mapLegend diff">
-                  <div class = "legendTitle">Neighborhood Disparity Score</div>
+                  <div class = "legendTitle">Disparity Score</div>
               </div>
               <div class = "mapLegend compare">
                 <div class = "legendTitle">Percent of data / Percent of baseline</div>
@@ -182,90 +240,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div id = "mapDataButtonOverlay">Download map data<img src = "images/menuArrow.png"></div>
               <select id = "mapDataButton">
                   <option id = "mapDataCsv" value = "csv">CSV</option>
-                  <option id = "mapDataGeojson" value = "geojson">GEOJSON</option>
+                  <option id = "mapDataGeojson" value = "geojson">GeoJSON</option>
               </select>
 
-              <div class = "mapButton mapImg diff active mapDownloadComponent">Download map image (.PNG)</div>
+              <div class = "mapButton mapImg diff active mapDownloadComponent">Download map image (PNG)</div>
 
-              <div id = "mapImageButtonOverlay" class = "mapDownloadComponent compare">Download map image (.PNG)<img src = "images/menuArrow.png"></div>
+              <div id = "mapImageButtonOverlay" class = "mapDownloadComponent compare">Download map image (PNG)<img src = "images/menuArrow.png"></div>
               <select id = "mapImageButton" class = "mapDownloadComponent compare">
                   <option value = "yourdata">Map of your data</option>
                   <option value = "baseline">Baseline map</option>
               </select>
 
             </div>
+            <div id = "exploreMore">Want to explore more? Analyze disparities at the <span class="startOverInline">national, state, county, or city</span> level.</div>
         </div>
     </div>
-</div>
 
-<div id = "resultsDivider" class = "resultsContainer divider"></div>
 
-<div class = "resultsContainer wrapper">
-    <div id = "resultsFiguresBottom">
-        <div class = "resultsHeader bars"><img class = "headerIcon" src = "images/bar-icon.png"> Demographic distribution of your data compared with the city’s total population</div>
 
-        <div id = "barCategories">
-            <div class = "resultsCopy bars">Choose demographic categories to see which groups are over- and underrepresented in your data</div>
-            <div class = "barCategoryRow race active" data-category="race">
-                <span class = "barCategoryCheck active">&check;</span><div class = "barCategoryLabel">Race/ethnicity</div>
-                <div class = "barCategoryDescription">Asian<span></span>Black<span></span>Latinx<span></span>White<span></span>All other races and ethnicities</div>
-            </div>
-            <div class = "barCategoryRow income active" data-category="income">
-                <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Income/wealth</div>
-                <div class = "barCategoryDescription">Low-income residents<span></span>Extremely low–income residents<span></span>Cost-burdened renter households<i id = "tt-icon-cost">?</i><span></span>Unemployed residents</div>
-            </div>
-            <div class = "barCategoryRow education active" data-category="education">
-                <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Education</div>
-                <div class = "barCategoryDescription">Residents with a bachelor’s degree<span></span>Residents with less than a high school diploma</div>
-            </div>
-            <div class = "barCategoryRow age active" data-category="age">
-                <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Age</div>
-                <div class = "barCategoryDescription">Seniors (65+)<span></span>Children (< 18)</div>
-            </div>
-            <div class = "barCategoryRow other active" data-category="other">
-                <span class = "barCategoryCheck active">&check;</span> <div class = "barCategoryLabel">Other demographics</div>
-                <div class = "barCategoryDescription">Renters<span></span>Veterans<span></span>Residents with a disability<span></span>Uninsured residents<span></span>Households without Internet access<span></span>Households with limited English proficiency</div>
-            </div>
-        </div>
 
-        <div id = "barChartContainer">
-            <div class = "barNoSig"><span></span>No significant difference</div>
-            <div class = "mobileUnder mobileLeg"><span></span>Underrepresented</div>
-            <div class = "mobileOver mobileLeg"><span></span>Overrepresented</div>
-            <div class = "overunder under">Underrepresented</div>
-            <div id = "barChart">
-            </div>
-            <div class = "overunder over">Overrepresented</div>
-            <div id = "barButtonContainer">
-              <div class = "barButton barImg active">Download chart image (.PNG)</div>
-              <a class = "barLink csv" href = ""><div class = "barButton csv active">Download chart data (.CSV)</div></a>
-            </div>
-        </div>
 
-    </div>
+
+
 
 </div>
 
 <!-- START LOADER HOME CARD -->
 <div class = "loaderHome">
-    <img class = "buildings loader" src = "images/buildings.png">
     <h2 class = "loaderHeader">Spatial Equity Data Tool</h2>
-    <h3 class = "loaderSubHeader">Measuring Disparities in Your City</h3>
-    <h4 class = "datePublished">September 24, 2020</h4>
+    <h3 class = "loaderSubHeader">Measure Disparities in Your Data</h3>
+    <h4 class = "datePublished">Last updated November 18, 2021</h4>
 
-    <p>How can cities ensure that resources are equitably distributed to all residents? We created this data tool to help city officials, community organizations, and residents quickly assess <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> disparities in their cities.</p>
+    <p>Are libraries evenly located across the country? Do all residents in your state—regardless of race or income—have equitable access to polling places? Does your dataset accurately reflect your county’s or city’s population?</p>
 
-    <p><em>Are wi-fi hotspots unevenly located in your city? Do all residents have equitable access to bike share stations? Does your dataset accurately reflect your city’s population? What groups or neighborhoods are underrepresented?</em></p>
+    <p>This tool can help government agencies, policymakers, and community advocates easily answer such questions by assessing <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> disparities in their data.</p>
 
-    <p>This tool can reveal biases in the datasets policymakers use to make decisions or illustrate disparities in how resources are distributed throughout the city. Check out our sample datasets or upload your own data.</p>
+    <p class = "homeInstructions">Choose a geography below to get started. Then check out our sample datasets or upload your own data.</p>
 
     <div id = "homeButtonRow">
-        <div id = "sampleButton" class = "button blue sample">Use sample data</div>
-        <div class = "mobileOnly or">
-          <div id = "orLine"></div>
-          <div id = "orOr">OR</div>
+
+        <div class = "homeButtonContainer national">
+          <div class = "button homeButton national user" data-geo="national" data-type="user">Upload your own data</div>
+          <div class = "button homeButton national sample" data-geo="national" data-type="sample">Use sample data</div>
+          <div class = "button homeButton national geographyLevel">National-level data</div>
         </div>
-        <div id = "userButton" class = "button blue user">Upload your own data</div>
+
+        <div class = "homeButtonContainer state">
+          <div class = "button homeButton state user" data-geo="state" data-type="user">Upload your own data</div>
+          <div class = "button homeButton state sample" data-geo="state" data-type="sample">Use sample data</div>
+          <div class = "button homeButton state geographyLevel">State-level data</div>
+        </div>
+
+        <div class = "homeButtonContainer county">
+          <div class = "button homeButton county user" data-geo="county" data-type="user">Upload your own data</div>
+          <div class = "button homeButton county sample" data-geo="county" data-type="sample">Use sample data</div>
+          <div class = "button homeButton county geographyLevel">County-level data</div>
+        </div>
+
+        <div class = "homeButtonContainer city">
+          <div class = "button homeButton city user" data-geo="city" data-type="user">Upload your own data</div>
+          <div class = "button homeButton city sample" data-geo="city" data-type="sample">Use sample data</div>
+          <div class = "button homeButton city geographyLevel">City-level data</div>
+        </div>
     </div>
 </div>
 <!-- END LOADER HOME CARD -->
@@ -294,47 +330,111 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
             <h2 class = "loaderHeader">Use sample data</h2>
-            <p id = "sampleDefaultText"><em>These are examples of city-level datasets that can be evaluated with the tool. Choose a dataset to explore how the tool works or download the data to see what a compatible file looks like.</em></p>
-            <p class = "hiddenSection hideOption sample"><em>You can filter or weight this sample dataset by choosing an advanced option or run the analysis with our preset options. </em></p>
+            <p id = "sampleDefaultText"><em>These are examples of <span class = "geographyLevelText lowercase"></span>-level datasets that can be evaluated with the tool. Choose a dataset to explore how the tool works or download the data to see what a compatible file looks like.</em></p>
+            <p class = "hiddenSection hideOption sample"><em>You can run the analysis on the sample dataset with our preset options, or you can add custom filters and weights by selecting advanced options below.</em></p>
 
 
             <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
 
             <div id = "sampleCardContainer">
                 <div class = "mobileOnlyHeader">Choose one</div>
-                <div class = "sampleCard hotspots">
-                    <div class = "sampleRect red hotspots draw-border">
-                        <div class = "sampleName sampleInner">Public wi-fi hotspots</div>
+                <div class = "sampleCard hotspots city">
+                    <div class = "sampleRect blue hotspots draw-border">
+                        <div class = "sampleName sampleInner">Public Wi-Fi hotspots<br>(2020)</div>
                         <div class = "sampleCity sampleInner">New York, NY</div>
-                        <img class = "sampleImg sampleInner wifi bg" src = "images/sample-hotspots-bg.png">
-                        <img class = "sampleImg sampleInner wifi fg" src = "images/sample-hotspots.png">
+                        <img class = "sampleImg sampleInner hotspots bg" src = "images/sample-hotspots-bg.png">
+                        <img class = "sampleImg sampleInner hotspots fg" src = "images/sample-hotspots.png">
                     </div>
                 </div>
-                <div class = "sampleCard three11">
+                <div class = "sampleCard three11 city">
                     <div class = "sampleRect blue three11 draw-border">
-                        <div class = "sampleName sampleInner">311 requests</div>
+                        <div class = "sampleName sampleInner">311 requests<br>(2012–2018)</div>
                         <div class = "sampleCity sampleInner">New Orleans, LA</div>
-                        <img class = "sampleImg sampleInner three11 fg" src = "images/sample-311.png">
+                        <img class = "sampleImg sampleInner three11 fg" src = "images/sample-three11.png">
                     </div>
                 </div>
-                <div class = "sampleCard bike">
-                    <div class = "sampleRect green bike draw-border">
-                        <div class = "sampleName sampleInner">Bike share stations</div>
+                <div class = "sampleCard bike city">
+                    <div class = "sampleRect blue bike draw-border">
+                        <div class = "sampleName sampleInner">Bike share stations<br>(2021)</div>
                         <div class = "sampleCity sampleInner">Minneapolis, MN</div>
                         <img class = "sampleImg sampleInner bike bg" src = "images/sample-bike-bg.png">
                         <img class = "sampleImg sampleInner bike fg" src = "images/sample-bike.png">
                     </div>
                 </div>
+
+
+
+                <div class = "sampleCard playgrounds county">
+                    <div class = "sampleRect orange playgrounds draw-border">
+                        <div class = "sampleName sampleInner">Playgrounds<br>(2020)</div>
+                        <div class = "sampleCity sampleInner">Miami-Dade County, FL</div>
+                        <img class = "sampleImg sampleInner playgrounds fg" src = "images/sample-playgrounds.png">
+                    </div>
+                </div>
+                <div class = "sampleCard polling county">
+                    <div class = "sampleRect orange polling draw-border">
+                        <div class = "sampleName sampleInner">Polling places<br>(2021)</div>
+                        <div class = "sampleCity sampleInner">Bucks County, PA</div>
+                        <img class = "sampleImg sampleInner polling fg" src = "images/sample-polling.png">
+                    </div>
+                </div>
+
+
+
+                <div class = "sampleCard health state">
+                    <div class = "sampleRect green health draw-border">
+                        <div class = "sampleName sampleInner">Substance use and mental health facilities (2021)</div>
+                        <div class = "sampleCity sampleInner">Washington</div>
+                        <img class = "sampleImg sampleInner health fg" src = "images/sample-health.png">
+                    </div>
+                </div>
+                <div class = "sampleCard housing state">
+                    <div class = "sampleRect green housing draw-border">
+                        <div class = "sampleName sampleInner">Low-Income Housing Tax Credit projects (2019)</div>
+                        <div class = "sampleCity sampleInner">Alabama</div>
+                        <img class = "sampleImg sampleInner housing fg" src = "images/sample-housing.png">
+                    </div>
+                </div>
+
+
+
+                <div class = "sampleCard electric national">
+                    <div class = "sampleRect red electric draw-border">
+                        <div class = "sampleName sampleInner">Electric vehicle charging stations (2021)</div>
+                        <div class = "sampleCity sampleInner">United States</div>
+                        <img class = "sampleImg sampleInner electric bg" src = "images/sample-electric-bg.png">
+                        <img class = "sampleImg sampleInner electric fg" src = "images/sample-electric.png">
+                    </div>
+                </div>
+                <div class = "sampleCard libraries national">
+                    <div class = "sampleRect red libraries draw-border">
+                        <div class = "sampleName sampleInner">Public libraries<br>(2019)</div>
+                        <div class = "sampleCity sampleInner">United States</div>
+                        <img class = "sampleImg sampleInner libraries fg" src = "images/sample-libraries.png">
+                    </div>
+                </div>
+
                 <div id = "sampleDownloadContainer">
-                  <a href = "" class = "sampleDownload hotspots">Download the data</a>
-                  <a href = "" class = "sampleDownload three11">Download the data</a>
-                  <a href = "" class = "sampleDownload bike">Download the data</a>
+                  <a href = "" class = "sampleDownload hotspots city">Download the data</a>
+                  <a href = "" class = "sampleDownload three11 city">Download the data</a>
+                  <a href = "" class = "sampleDownload bike city">Download the data</a>
+
+                  <a href = "" class = "sampleDownload playgrounds county">Download the data</a>
+                  <a href = "" class = "sampleDownload polling county">Download the data</a>
+
+                  <a href = "" class = "sampleDownload health state">Download the data</a>
+                  <a href = "" class = "sampleDownload housing state">Download the data</a>
+
+                  <a href = "" class = "sampleDownload electric national">Download the data</a>
+                  <a href = "" class = "sampleDownload libraries national">Download the data</a>
+
+
                 </div>
 
                 <div class = "sampleDetails">
                   <div class = "sampleDeetHeader">Preset advanced options</div>
                   <div class = "sampleDeetContainer"></div>
-                  <div class = "appliedDeetHeader appliedDeets">Your applied advanced options</div>
+                  <div class = "appliedDeetHeader appliedDeets">Your advanced options</div>
                   <div class = "appliedDeetContainer appliedDeets"></div>
                 </div>                
             </div>
@@ -371,7 +471,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
             <h2 class = "loaderHeader">Upload your data</h2>
-            <p><em>Upload a CSV of geographic point data to see how well your dataset represents your city’s population. </em></p>
+            <p><em>Upload a CSV file of geographic point data to see how well your dataset represents <span class = "geographyLevelText possessive"></span> population.</em></p>
             <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
             <div id = "uploadInstructionContainer">
                 <div id = "dropbox">
@@ -385,11 +485,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                 <div id = "uploadInstructions">
                     <h3 class = "loaderHeader">Instructions</h3>
-                    <div class = "instructionRow"><img src = "images/check.png"><span>Your CSV must have unique column headers.</span></div>
+                    <div class = "instructionRow"><img src = "images/check.png"><span>Your CSV file must have unique column headers.</span></div>
                     <div class = "instructionRow"><img src = "images/check.png"><span>Two columns must correspond to longitude and latitude.</span></div>
-                    <div class = "instructionRow"><img src = "images/check.png"><span>Your file size must not exceed 2GB</span></div>
+                    <div class = "instructionRow"><img src = "images/check.png"><span>Your file size must not exceed 2 GB</span></div>
 
-                    <div class = "instructionNote"><em><strong>Note:</strong> The tool can only analyze data for US cities and for one city at a time. If your file contains data from multiple cities, only the city most frequently appearing in the data will be analyzed.</em></div>
+                    <div class = "instructionNote national"><em><strong>Note:</strong> The national tool can only analyze data from the entire US (50 states plus the District of Columbia). If your file contains data for only a subset of the US (e.g., a few states) it will be compared against the entire US, so results may not be accurate. Instead, you may want to choose a different geography from the <span class = "inlineHome">home page</span> to analyze the state, county, or city that appears most frequently in your data.</em></div>
+
+                    <div class = "instructionNote state"><em><strong>Note:</strong> The state tool can only analyze data for US states (the 50 states plus the District of Columbia) and for one state at a time.
+                    <ul>
+                      <li>If your file contains data from multiple states, only the state that appears most frequently in the data will be analyzed. </li>
+                      <li>If your file contains data for a subset of the state (e.g., a few counties or a few cities), it will be compared against the entire state, so results may not be accurate. Instead, you may want to choose a different geography from the <span class = "inlineHome">home page</span> to analyze the county or city that appears most frequently in your data.</li>
+                    </ul>
+                    </em></div>
+
+                    <div class = "instructionNote county"><em><strong>Note:</strong> The county tool can only analyze data for US counties (within the 50 states and the District of Columbia) and for one county at a time. If your file contains data from multiple counties, only the county that appears most frequently in the data will be analyzed.</em></div>
+
+                    <div class = "instructionNote city"><em><strong>Note:</strong> The city tool can only analyze data for US cities with populations above 50,000 and for one city at a time. If your file contains data from multiple cities, only the city that appears most frequently in the data will be analyzed.</em></div>
+
+
                 </div>
             </div>
             <div id = "uploadErrors">
@@ -399,7 +512,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </div>
             <div id = "uploadLatLonContainer" class="hiddenSection hideOption user">
-                <h4 class = "loaderHeader">Which columns in your file represent latitude and longitude?</h4>
+                <h4 class = "loaderHeader">Which columns in your file represent longitude and latitude?</h4>
                 <div id = "lonContainer">
                     <div class = "inputLabel">Longitude</div>
                     <select id = "lonSelect"></select>
@@ -532,7 +645,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Weight data</span></h2>
-            <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of public parks, if you choose “square footage” as your weight column, higher-square-footage parks will be given more weight in assessing representativeness.</em></p>
+            <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of library locations, if you choose &ldquo;sq_ft&rdquo; as your weight column, higher–square footage libraries will be given more weight in assessing representativeness.</em></p>
             <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
             <div id = "weightContainer">
               <div id = "weightMenuContainer">
@@ -621,27 +734,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <a href = "spatial_equity_technical_appendix.pdf" target = "_blank">
                       <div class = "button clear footer readResearchButton">TECHNICAL APPENDIX</div>
                     </a>
-                    <a href = "https://apps.urban.org/features/how-to-create-equitable-technology-programs" target = "_blank">
-                      <div class = "button clear footer readResearchButton">READ THE RESEARCH</div>
-                    </a>
                     <a href = "https://medium.com/@urban_institute/introducing-a-spatial-equity-data-tool-b959c40298cf" target = "_blank">
                       <div class = "button clear footer readResearchButton">CASE STUDY</div>
                     </a>
-                    <p>This tool uses data from the five-year (2014–18) American Community Survey to assess spatial and demographic disparities in your data. Once a user uploads data, the tool geocodes the dataset to a US city and compares the distribution of the uploaded data with the distribution of baseline variables from the ACS. For more information about the specific methodology and variables used, please see the technical appendix.</p>
-                    <p>For the demographic disparity chart, we use &ldquo;Latinx&rdquo; to refer to people of Latino or Hispanic origin as asked by the Census. We recognize that this gender-neutral term may not be the preferred identifier for many, but we use it to remain inclusive of gender non-conforming and non-binary people. We use White, Black, and Asian to refer to non-Hispanic White, Black, and Asian populations.</p>
-                    <p>This tool is part of a larger project to <a href = "https://www.urban.org/policy-centers/research-action-lab/projects/accelerating-innovation-inclusion" target = "_blank">help cities more equitably use data and technology</a>. Through 40 interviews and a roundtable with city leaders, we identified key questions cities should ask to center equity in technology programs and best practices to answer those questions, which we have documented in <a href = "https://apps.urban.org/features/how-to-create-equitable-technology-programs" target = "_blank"><em>Creating Equitable Technology Programs: A Guide for Cities</em></a>. Our research identified the <a href = "https://www.urban.org/urban-wire/make-smart-cities-more-inclusive-leaders-need-better-tools-and-data" target = "_blank">need for resources</a> to facilitate regular and rigorous examination of the representativeness of data powering city decisionmaking and the distribution of technology, and other, programs. That need was a driving force behind this tool.</p>
+                    <p>This tool uses data from the five-year (2015–19) American Community Survey to assess demographic and spatial disparities in your data. Once you upload data, the tool compares the distribution of the uploaded data with the distribution of baseline variables from the ACS.</p>
+                    <p>For the map, we construct geographic disparity scores by taking the difference between the percentage of the data and the percentage of the selected baseline population that falls into each state (national-level tool), county (state-level tool), or tract (county- and city-level tool).</p>
+                    <p>For the demographic disparity chart, we first estimate the demographic groups your data depicts by taking a weighted average of the demographics across all the tracts your data come from. We compare that average with the overall demographics of the selected baseline population and report the difference as the demographic disparity score.</p>
+                    <p>We use the <a href = "https://www.census.gov/programs-surveys/acs/guidance/handbooks/general.html" target = "_blank">ACS formulas</a> to calculate 95 percent confidence intervals for both the geographic and the demographic disparity scores. If the interval contains zero, we mark that disparity as not statistically significant. For more information about the specific methodology and variables used and how they vary by geography, please see the <a href = "https://apps.urban.org/features/equity-data-tool/spatial_equity_technical_appendix.pdf" target = "_blank">technical appendix</a>.</p>
+                    <p>For the demographic disparity chart, we use “Latinx” to refer to people of Latino or Hispanic origin as asked by the census. We recognize that this gender-neutral term may not be the preferred identifier for many, but we use it to remain inclusive of gender nonconforming and nonbinary people. The regions users may select on the chart correspond to US <a href = "https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf" target = "_blank">census regions</a>.</p>
+                    <p>For the national-level tool, we use “national” to refer to the 50 states plus the District of Columbia. We realize this excludes US territories from analysis and hope to include them in future iterations of this tool.</p>
 
                     <p>For more information about our sample datasets, see our entry in Urban Institute’s <a href = "https://datacatalog.urban.org/dataset/spatial-equity-data-tool-sample-datasets" target = "_blank">Data Catalog</a>.</p>
 
-                    <p>For help using this tool or for guidance designing and implementing equitable technology programs, contact  <a href = "mailto:anarayanan@urban.org">anarayanan@urban.org</a>.</p>
-
-                    <p>Before you upload data to this tool, you should review our <a href = "spatial_equity_faq.pdf#page=7" target = "_blank">terms of use</a>.</p>
+                    <p>For help using this tool, contact <a href = "mailto:anarayanan@urban.org">anarayanan@urban.org</a>.</p>
                    
                     <h5>Project credits</h5>
-                    <div class="urbanstatement">This feature was funded in collaboration with the <a href = "https://www.mastercardcenter.org/" target = "_blank">Mastercard Center for Inclusive Growth</a>. We are grateful to them and to all our funders, who make it possible for Urban to advance its mission. The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of our experts. More information on our funding principles is available <a href = "https://www.urban.org/support" target = "_blank">here</a>. Read our terms of service <a href = "https://www.urban.org/terms-service" target = "_blank">here</a>.</div>
+                    <div class="urbanstatement">This feature was originally funded in collaboration with the <a href = "https://www.mastercardcenter.org/" target = "_blank">Mastercard Center for Inclusive Growth</a>. The <a href = "https://www.gatesfoundation.org/" target = "_blank">Bill & Melinda Gates Foundation</a> funded the tool’s expansion from city-level analysis to national-, state-, and county-level analysis. We are grateful to them both and to all our funders, who make it possible for Urban to advance its mission. The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of our experts. More information on our funding principles is available <a href = "https://www.urban.org/support/funding-principles" target = "_blank">here</a>. Read our terms of service <a href = "https://www.urban.org/terms-service" target = "_blank">here</a>.</div>
 
                     <h3 class="job">Research</h3>
-                    <a href = "https://www.urban.org/author/ajjit-narayanan" target = "_blank">Ajjit Narayanan</a>, <a href = "https://www.urban.org/author/alena-stern" target = "_blank">Alena Stern</a>, and <a href = "https://www.urban.org/author/graham-macdonald" target = "_blank">Graham MacDonald</a>
+                    <a href = "https://www.urban.org/author/ajjit-narayanan" target = "_blank">Ajjit Narayanan</a>, <a href = "https://www.urban.org/author/alena-stern" target = "_blank">Alena Stern</a>, <a href = "https://www.urban.org/author/graham-macdonald" target = "_blank">Graham MacDonald</a>, and <a href = "https://www.urban.org/author/amy-rogin" target = "_blank">Amy Rogin</a>
 
                     <h3 class="job">Design</h3>
                     Allison Feldman
@@ -650,7 +761,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     Ajjit Narayanan, Ben Chartoff, and Dave D’Orio
 
                     <h3 class="job">Editing</h3>
-                    Fiona Blackshaw
+                    Fiona Blackshaw and Devlan O’Connor
 
                     <h3 class="job">Writing</h3>
                     Serena Lei
@@ -674,8 +785,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <div id = "mobileTT">
-  <div id = "ttHead">Cost-burdened renter households</div>
-  <div id = "ttBody">Households that pay more than 35 percent of their income on rent.</div>
+  <div id = "ttHead"></div>
+  <div id = "ttBody"></div>
 </div>
 
 
@@ -697,6 +808,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="js/vendor/d3-dispatch.v1.min.js"></script>
 <script src="js/vendor/d3.5.15.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+
 
 <script src="js/vendor/file-wrapper.min.js"></script>
 <script src="js/vendor/line-navigator.min.js"></script> 

@@ -1,0 +1,10 @@
+{
+    "job_id": "us_alt_fuel_stations",
+    "file_size": 100,
+    "filters": [],
+    "weight": "",
+    "baseline": "total_pop",
+    "lat_column": "Latitude",
+    "lon_column": "Longitude",
+    "geo": "national"
+}

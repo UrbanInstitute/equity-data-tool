@@ -82,6 +82,10 @@ function runAnalysis() {
 
     }
     if(callFullApi){
+        params["geo"] = getGeographyLevel()
+        console.log(params)
+
+
         for(var k in params){
             if(params.hasOwnProperty(k)){
                 if(k != "filters"){
@@ -92,6 +96,11 @@ function runAnalysis() {
                 
             }
         }
+
+        for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]);
+        }
+
 
         $.ajax({
             url: postURL,
@@ -128,9 +137,11 @@ function runAnalysis() {
             },
 
             error: function(e){
+                console.log(e)
                 throwError(["upload"])
             },
             success: function(msg, status, jqXHR){
+                console.log(msg, status)
                 statusIntervId = setInterval(loopStatus, PROCESSING_INTERVAL, msg);
             }
         }); 
@@ -144,7 +155,7 @@ function showLoadingScreen(){
     d3.selectAll(".loaderSectionStatus").style("display","none")
     d3.select("#statusLoading").style("display","block")
 
-    showLoaderSection("loading")
+    showLoaderSection("loading", getGeographyLevel())
     loopBuildings();
 }
 
@@ -177,7 +188,9 @@ function drawResultsData(fileId){
         success: function(msg, status, xhr){
             var params = getParams()
 
-            drawBarChart(msg.results.result.demographic_bias_data, "dynamic", function(){})
+            console.log(msg)
+
+            drawBarChart(msg.results.result.demographic_bias_data, "dynamic", "total_pop", function(){})
             drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
             populateSummaries(msg.results.result.messages, params)
             populateDownloadLinks(msg.results.result.download_links)
@@ -191,7 +204,7 @@ function throwError(errorKeys){
     showErrorScreen(errorKeys);
 }
 function showErrorScreen(errorKeys){
-    showLoaderSection("loading")
+    showLoaderSection("loading", getGeographyLevel())
 
     d3.select(".loaderSection.loading .loaderHeader")
         .html("Oops! Something went wrong. <span class = 'errorLight'>For help, see our <a href = 'spatial_equity_faq.pdf' target = '_blank'> FAQ</a>.</span>")
@@ -252,24 +265,30 @@ function loopStatus(msg){
 
 var loopCount = 0;
 function checkStatus(status){
+    // console.log(status, loopCount)
     if(loopCount >= MAX_PROCESSING_TIME/PROCESSING_INTERVAL){
+        // console.log("a")
         throwError(["processing_time_out"])
     }
     if(!status.file_exists){
+        // console.log("b")
         loopCount += 1;
         return false
     }
     else if(status.formdata.updates.started_processing == false){
+        // console.log("c")
         loopCount += 1;
         return false;
     }
     else if(status["formdata"]["updates"]["error-messages"]){
+        // console.log("d")
         Object.keys(status["formdata"]["error-messages"]).forEach(function(key){
             if (!status["formdata"]["error-messages"][key]) delete status["formdata"]["error-messages"][key];
         });
         throwError(Object.keys(status["formdata"]["error-messages"]))
     }
     else if(status.formdata.updates.finished){
+        // console.log("e")
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusDone").style("display","block")
 
@@ -281,10 +300,12 @@ function checkStatus(status){
         clearInterval(statusIntervId);
     }
     else if(status.formdata.updates.num_rows_for_processing == status.formdata.updates.num_rows_processed && status.formdata.updates.num_rows_for_processing != null && status.formdata.updates.num_rows_processed != null){
+        // console.log("f")
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusDone").style("display","block")
     }
     else{
+        // console.log("g", status)
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusProcessing").style("display","block")
         var processed = (status.formdata.updates.num_rows_processed == null) ? 0 : status.formdata.updates.num_rows_processed

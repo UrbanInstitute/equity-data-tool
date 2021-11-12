@@ -2,6 +2,14 @@ function getDatasetType(){
   // return "sample" or "user"
   return (d3.select(".activeDatasetType").node() == null || d3.select(".activeDatasetType").classed("user") ) ? "user" : "sample"
 }
+function getGeographyLevel(){
+  if(d3.select(".activeDatasetType").node() == null){
+    return "city"
+  }
+  else{
+    return d3.select(".activeDatasetType").attr("data-geo")
+  }
+}
 function getParams(){
   return  d3.select("#paramsData").datum()
 }
@@ -67,29 +75,27 @@ function getBarWidth(containerType){
         if(widthBelow(1000) || widthBelow(768) || widthBelow(500)){
             w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width + pad
         }else{
-            w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width - 365
+            w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width
         }
     }
-    return w - margin.left - margin.right;
+    return w;
 }
-function getBarHeight(containerType, data){
+function getBarHeight(containerType, baseline){
     var margin = getBarMargins(containerType);
-    // var h = (typeof(data) == "undefined") ? 500 : (500/21) * data.length
     var h;
     if(containerType == "static") h = 700;
     else h = 700
-    
-    var scalar = (typeof(data) == "undefined") ? 19 : data.length
-    return ((700 - margin.top - margin.bottom)/19) * scalar;
+    return h
+    // var scalar = (typeof(data) == "undefined") ? 19 : data.length
+    // return ((700 - margin.top - margin.bottom)/19) * scalar;
 }
 function getBarMargins(containerType){
     return (containerType == "dynamic") ? {top: 50, right: 60, bottom: 0, left: 60} : {top: 50, right: 30, bottom: 20, left: 20}
 }
-function getBarX(containerType, data){
-    var width = getBarWidth(containerType)
-    var max = d3.max(data, function(d){ return d.diff_data_city; }),
-        min = Math.abs(d3.min(data, function(d){ return d.diff_data_city; })),
+function getBarX(containerType, max, min){
+    var width = getBarWidth(containerType) - 410 - 10,
         bound = Math.max(max, min)
+    
     return d3.scaleLinear()
         .range([0,width])
         .domain([-bound, bound]);
@@ -103,7 +109,34 @@ function getBarY(containerType, data){
         .padding(.2)
         .domain(data.map(function(d) { return d.census_var; }));
 }
+function getBarTooltipText(geo, baseline, isSubGeo,fullName, shortName, d_score, fips){
+    console.log(geo, baseline, isSubGeo, fullName, shortName, d_score, fips)
+    var sign = (d_score < 0) ? "fewer" : "more"
+    var pplLabel;
+    var comparisonGeo;
 
+    if(baseline == "total_pop") pplLabel = "residents"
+    else if(baseline == "under18_pop") pplLabel = "children"
+    else if(baseline == "pov_pop") pplLabel = "residents with extremely low incomes"
+    else pplLabel = "residents" //should be unreachable
+
+    if(geo == "national"){
+        comparisonGeo = (isSubGeo) ? "state" : "country"
+    }
+    else if(geo == "state"){
+        comparisonGeo = (isSubGeo) ? "county" : "state"
+    }else{
+        comparisonGeo = geo;
+    }
+
+
+
+    return "Across " + fullName + ", your data come from neighborhoods that, on average, have " + globalPercent(Math.abs(d_score/100)).replace("%","")+ " percent " + sign + " " + pplLabel + " in this demographic group than the whole " + comparisonGeo
+}
+function getSelectedSubgeo(){
+    return ""
+    // return {"level": "county", "id": ""}
+}
 function getMapHeight(){
     return 500;
 }
@@ -114,15 +147,20 @@ function getLegendWidth(){
     return widthBelow(500) ? d3.select("#mapControls").node().getBoundingClientRect().width : 380;   
 }
 function getSampleDatasetId(){
-    if (d3.select(".sampleRect.active").classed("three11"))return "new_orleans_311.csv"
-    else if (d3.select(".sampleRect.active").classed("hotspots")) return "new_york_wifi.csv"
-    else if (d3.select(".sampleRect.active").classed("bike")) return "minneapolis_bikes.csv"
-    else return ""
+    var sampleId = ""
+    for(var prop in sampleParams){
+        if(d3.select(".sampleRect.active").classed(prop)) sampleId = sampleParams[prop]["job_id"] + ".csv"
+    }
+
+    return sampleId
 }
 function getSampleDatasetSlug(){
     if(d3.select(".sampleRect.active").node() == null) return ""
-    else if (d3.select(".sampleRect.active").classed("three11"))return "three11"
-    else if (d3.select(".sampleRect.active").classed("hotspots")) return "hotspots"
-    else if (d3.select(".sampleRect.active").classed("bike")) return "bike"
-    else return ""
+
+    var sampleSlug = ""
+    for(var prop in sampleParams){
+        if(d3.select(".sampleRect.active").classed(prop)) sampleSlug = prop
+    }
+
+    return sampleSlug
 }

@@ -1,12 +1,12 @@
 function populateDownloadLinks(){
-  d3.select(".sampleDownload.hotspots").attr("href", baseDownloadUrl + "new_york_wifi.csv")
-  d3.select(".sampleDownload.three11").attr("href", baseDownloadUrl + "new_orleans_311.csv")
-  d3.select(".sampleDownload.bike").attr("href", baseDownloadUrl + "minneapolis_bikes.csv")
+  for(var prop in sampleParams){
+    d3.select(".sampleDownload." + prop).attr("href", baseDownloadUrl +  sampleParams[prop]["job_id"] + ".csv")
+  }
 }
 
-function setDatasetType(datasetType){
+function setDatasetType(datasetType, geographyLevel){
   d3.selectAll(".activeDatasetType").classed("activeDatasetType", false)
-  d3.select("#" + datasetType + "Button").classed("activeDatasetType", true)
+  d3.select("." + datasetType + "." + geographyLevel + ".homeButton").classed("activeDatasetType", true)
 }
 function updateParams(param, value){
   var params = getParams();
@@ -165,7 +165,9 @@ function addToFilterList(filter){
     })
     resizeLoader()
 }
-function showLoaderSection(loaderSection){
+function showLoaderSection(loaderSection, geographyLevel){
+  populateGeographyElements(geographyLevel)
+
   var params = getParams()
   d3.selectAll(".resultsContainer").style("display", "none")
   d3.selectAll(".loadingError").style("display","none")
@@ -199,7 +201,7 @@ function showLoaderSection(loaderSection){
   d3.selectAll(".loaderSection").classed("active", false)
   
   if(loaderSection == "user"){
-    window.location.hash = "#" + loaderSection
+    window.location.hash = "#" + loaderSection + "-" + geographyLevel
     d3.selectAll(".mobileTabSample").classed("active", false)
     d3.selectAll(".mobileTabUser").classed("active", true)
   }
@@ -208,7 +210,7 @@ function showLoaderSection(loaderSection){
     d3.selectAll(".mobileTabUser").classed("active", false)
     var slug = (getSampleDatasetSlug() == "") ? "sample" : getSampleDatasetSlug()
     if(slug == "sample") d3.selectAll(".sampleDownload").style("display","none")
-    window.location.hash = "#" + slug
+    window.location.hash = "#" + slug + "-" + geographyLevel
   }else{
     window.location.hash = ""
   }
@@ -230,6 +232,32 @@ function showLoaderSection(loaderSection){
   // d3.select("")
 
 }
+function populateGeographyElements(geographyLevel){
+  d3.selectAll(".geographyLevelText.lowercase").text(geographyLevel)
+  d3.selectAll(".geographyLevelText.sentencecase").text(geographyLevel[0].toUpperCase() + geographyLevel.slice(1))
+  d3.selectAll(".geographyLevelText.possessive").html(function(){
+    if(geographyLevel == "national") return "the US"
+    else return "your " + geographyLevel + "&rsquo;s"
+  })
+  d3.selectAll(".geographyLevelText.resultsIntro").html(function(){
+    if(geographyLevel == "national") return "across the United States"
+    else return "in your " + geographyLevel
+  })
+  d3.selectAll(".geographyLevelText.US").text(function(){
+    return (geographyLevel == "national") ? "US" : geographyLevel
+  })
+  d3.selectAll(".geographyLevelText.subgeo").html(function(){
+    if(geographyLevel == "national") return "states"
+    else if(geographyLevel == "state") return "counties"
+    else return "census tracts"
+  })
+  d3.selectAll(".instructionNote").style("display", "none")
+  d3.selectAll(".instructionNote." + geographyLevel).style("display","block") 
+
+  d3.selectAll(".sampleCard").classed("hidden", true)
+  d3.selectAll(".sampleCard." + geographyLevel).classed("hidden",false)   
+
+}
 
 function resizeLoader(){
   if(d3.select(".loaderSection.active").node() == null) return false
@@ -239,7 +267,7 @@ function resizeLoader(){
 }
 
 function selectSampleData(sample){
-    window.location.hash = "#" + sample
+    window.location.hash = "#" + sample + "-" + getGeographyLevel()
 
     d3.select("#sampleCardContainer").classed("single", true)
 
@@ -426,45 +454,64 @@ function updateSampleParams(paramType){
 
 }
 
-function startOver(slug){
-  var hash = (typeof(slug) == "undefined") ? "" : "#" + slug
-  if(hash == ""){
+function startOver(slug, geographyLevel){
+  if(typeof(geographyLevel) == "undefined") geographyLevel = getGeographyLevel()
+  if(typeof(slug) == "undefined") slug = ""
+  if(slug == ""){
     window.location = "index.html"
   }else{
-    showLoaderSection(slug)
+    showLoaderSection(slug, geographyLevel)
     setTimeout(function(){location.reload()}, 10);
   }
 
 }
 function init(){
-  var slug = window.location.hash.replace("#","")
+  var fullSlugList = window.location.hash.replace("#","").split("-"),
+      loaderSection,
+      geographyLevel;
+
+  if(fullSlugList.length == 1){
+    loaderSection = ""
+    geographyLevel = "city"
+  }
+  else if((["city","county","state","national"].indexOf(fullSlugList[1]) == -1)){
+    loaderSection = ""
+    geographyLevel = "city"  
+  }else{
+    loaderSection = fullSlugList[0]
+    geographyLevel = fullSlugList[1]
+  }
+
   populateDownloadLinks();
-  if(slug == "three11" || slug == "hotspots" || slug == "bike"){
-    setDatasetType("sample")
-    const p = Object.assign({}, sampleParams[slug]["defaultParams"])
+
+  if(sampleParams.hasOwnProperty(loaderSection) ){
+    geographyLevel = sampleParams[loaderSection]["geographyLevel"]
+
+    setDatasetType("sample", geographyLevel)
+    const p = Object.assign({}, sampleParams[loaderSection]["defaultParams"])
     d3.select("#paramsData").datum(p)
 
-    showLoaderSection("sample")
-    selectSampleData(slug)
+    showLoaderSection("sample", geographyLevel)
+    selectSampleData(loaderSection)
   }else{
     const p = Object.assign({}, defaultParams)
     d3.select("#paramsData").datum(p)
 
-    if(slug == ""){
-      setDatasetType("user")
-      showLoaderSection("home")
+    if(loaderSection == ""){
+      setDatasetType("user", "city")
+      showLoaderSection("home", "city")
     }
-    else if(slug == "user"){
-      setDatasetType("user")
-      showLoaderSection("user")
+    else if(loaderSection == "user"){
+      setDatasetType("user", geographyLevel)
+      showLoaderSection("user", geographyLevel)
     }
-    else if(slug == "sample"){
-      setDatasetType("sample")
-      showLoaderSection("sample")
+    else if(loaderSection == "sample"){
+      setDatasetType("sample", geographyLevel)
+      showLoaderSection("sample", geographyLevel)
     }
     else{
-      setDatasetType("user")
-      showLoaderSection("home")
+      setDatasetType("user", "city")
+      showLoaderSection("home", "city")
     }
   }
 
