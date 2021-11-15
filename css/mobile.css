@@ -57,9 +57,9 @@
         margin-right: 16px;
     }
     .sampleName {
-        top: 22px;
+/*        top: 22px;
         left: 15px;
-        font-size: 16px;
+        font-size: 16px;*/
     }
     .sampleCiity{
         left: 14px;
@@ -179,6 +179,9 @@
 
     .ui-selectmenu-button.ui-button{
         max-width: unset;
+    }
+    .headerLinks{
+        display: none;
     }
     #boorgerContainer{
         width: 20px;
@@ -416,7 +419,9 @@
         width: 100%;
     }
     .sampleRect, .sampleCard{
-        width: 100%;
+        /*width: 100%;*/
+        /*margin: 0 auto;*/
+        margin-left: calc(50% - 115px);
     }
     #sampleCardContainer.single .mobileOnlyHeader{
         display: none;
@@ -435,16 +440,16 @@
         left: 0px;
     }
     .sampleName{
-        position: absolute;
+/*        position: absolute;
         top: 19px;
         left: 16px;
         font-size: 18px;
-        font-weight: bold;
+        font-weight: bold;*/
     }
     .sampleCity{
-        left: 16px;
+/*        left: 16px;
         position: absolute;
-        top: 45px;
+        top: 45px;*/
     }
     .sampleImg.hotspots{
         height: 67px;

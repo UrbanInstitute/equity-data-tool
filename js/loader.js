@@ -229,7 +229,7 @@ function showLoaderSection(loaderSection, geographyLevel){
   }
   d3.select("#resultsSubnav")
     .transition()
-    .style("top", "0px")
+    .style("top", "-200px")
 
   resizeLoader()
   // d3.select("")
