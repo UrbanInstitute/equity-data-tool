@@ -106,6 +106,7 @@ h4.datePublished{
     top: 0px;
     left: calc(50% - 440px);
     z-index: 6;
+    margin-top: 40px;
 }
 .loaderSection.loading{
     padding-bottom: 200%;
@@ -1024,17 +1025,70 @@ input[type=date]{
     position: relative;
     margin: 0 auto;
     margin-top: 50px;
+    height: 187px;
 }
 .loadingErrorImg{
     display: none;
 }
-.loadingImg{
+.loadingImg, .loadingErrorImg{
     position: absolute;
     top: 0px;
     left: 0px;
-    opacity: 0;
+    /*opacity: 0;*/
     width: 100%;
+    width: 100%;
+    box-sizing: border-box;    
+    background-size: contain;
+    padding-bottom: 29.5%;
 }
+
+.loadingImg.l1{
+    z-index: 1;
+    background-image: url(../images/loadingTrees.png);
+    animation: trees 1.5s infinite;
+    animation-timing-function: linear;
+}
+.loadingImg.l2{
+    z-index: 2;
+    background-image: url(../images/loadingCar.png);
+}
+.loadingErrorImg{
+    z-index: 4;
+    background-image: url(../images/errorCows.png);
+}
+.loadingImgTire{
+    position: absolute;
+    z-index: 3;
+    width: 36px;
+    top: 80px;
+    left: 75px;
+    animation: tires .1s infinite;
+    animation-timing-function: linear;
+    /*background-image: url(../images/loadingTires.png);*/
+}
+.loadingImgTire.front{
+    left: 182px;
+}
+
+
+@keyframes trees {
+  0% {
+    background-position-x: 0px 
+  }
+  100% {
+    background-position-x: -544px;
+  }
+}
+@keyframes tires {
+  0% {
+    transform: rotate(0deg) 
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+
 .loaderSectionStatus{
     display: none;
 }
@@ -1118,4 +1172,7 @@ input[type=date]{
 }
 #errorStartOver img{
     margin-left: 5px;
+}
+#errorYesContinue{
+    margin-right: 50px;
 }

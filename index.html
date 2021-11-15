@@ -67,13 +67,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id = "widthBelow500"></div>
 
 <div id = "paramsData"></div>
+<div id = "rawBarData"></div>
 <div id = "csvProperties"></div>
 <div id = "barChartImage"></div>
 
 <!-- START HEADER -->
 <div id="header-pinned" class="no-touch">
    <a target="_blank" href="https://www.urban.org" title="Home" rel="home" class="site-logo"></a>
-<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features</a></span>
+<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features</a><span>: :</span> </span>Spatial Equity Data Tool</span>
+</div>
+<div class = "headerLinks">
+<div class = "startOverInline header">Home</div>
+<div class = "FAQ header"><a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a></div>
 </div>
 <div class="share-icons">
     <div class="shareThisP">
@@ -103,22 +108,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START MAIN CONTENT -->
 <div class="container">
+<div id = "resultsSubnav">
+  <div class = "resultsHeaderSubnav dataName">
+    <div id = "resultsHeaderSubName">
+      <span class = "geographyLevelText sentencecase"></span>&nbsp;Level:&nbsp;
+    </div><span id = "resultsNavDataName"></span>
+  </div>
+  <div class = "resultsHeaderSubnav filters">Filter data</div>
+  <div class = "resultsHeaderSubnav weight">Weight data</div>
+</div>
 
 <div class = "resultsContainer wrapper">
-    <div id = "resultsNav">
-      <div class = "resultsNav faq"><a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a></div>
-      <div class = "resultsNav startOverResults">Start over</div>
-      <div id = "advancedTextOverlayNav">Advanced options <img class = "navNohoverImg" src = "images/menuArrowNav.png"><img class = "navHoveImgr" src = "images/menuArrow.png"></div>
-      <select id = "advancedOptionsHeader" class = "resultsNav">
-          <option value = "filters">Filter data</option>
-          <option value = "weight">Weight data</option>
-          <!-- <option value = "baseline">Set baseline</option> -->
-      </select>  
-    </div>
     <div id = "resultsHeader">
         <h2 class = "loaderHeader">Spatial Equity Data Tool: <span class = "resultsHeaderLevel"><span class = "geographyLevelText sentencecase"></span> Level</span></h2>
         <h3 class = "loaderSubHeader">Measure Disparities in Your Data</h3>
-        <p class = "results intro">Assess <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> disparities <span class = "geographyLevelText resultsIntro"></span> to see if resources are equitably distributed.</p>
+        <p class = "results intro">Assess <span class = "iconContainer">demographic<img class = "inlineIcon" src = "images/bar-icon.png"></span> and <span class = "iconContainer">spatial<img class = "inlineIcon" src = "images/map-icon.png"></span> disparities <span class = "geographyLevelText resultsIntro"></span> to see if resources are equitably distributed.</p>
      <div class = "summaryContainer visible">
      </div>
      <div class = "summaryContainer clone">
@@ -127,7 +131,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 
     <div id = "resultsFiguresBottom">
-        <div class = "resultsHeader bars"><img class = "headerIcon" src = "images/bar-icon.png"> Demographic distribution of your data compared with the city’s total population</div>
+        <div class = "resultsHeader bars rh1"><img class = "headerIcon" src = "images/bar-icon.png">Demographic distribution of your data compared with the </div>
+        <select id = "baselineSelectBar">
+            <option value = "total_pop">total population</option> 
+            <option value = "pov_pop">population with extremely low incomes</option> 
+            <option value = "under18_pop">child (&lt; 18) population</option> 
+        </select>
+
+         <div class = "resultsHeader bars rh2">in the <span class ="geographyLevelText US"></span></div>
+
 
         <div id = "barChartContainer">
             <div id = "barLegendContainer">
@@ -150,6 +162,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class = "barButton barImg active">Download chart image (.PNG)</div>
               <a class = "barLink csv" href = ""><div class = "barButton csv active">Download chart data (.CSV)</div></a>
             </div>
+            <div id = "barChartNotes"><span>Notes:</span> Demographic categories for Asian, Black, White, and all other races and ethnicities include Latinx and non-Latinx residents, unless noted otherwise. When using “children under 18” as a baseline, the “uninsured” category includes 18-year-olds (i.e., children under 19).</div>
         </div>
 
     </div>
@@ -163,7 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class = "resultsContainer wrapper">
     <div id = "resultsFiguresTop">
         <div class = "resultsHeader maps"><img class = "headerIcon" src = "images/map-icon.png">Geographic distribution of your data compared with the</div>
-        <select id = "baselineSelect">
+        <select id = "baselineSelectMap">
             <option value = "pop">total population</option> 
             <option value = "pov2">population with low incomes</option> 
             <option value = "pov">population with extremely low incomes</option> 
@@ -172,8 +185,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <option value = "sen">senior (&ge; 65) population</option> 
             <option value = "chi">child (&lt; 18) population</option> 
         </select>
-
-
 
          <div class = "resultsHeader maps">in the <span class ="geographyLevelText US"></span></div>
 
@@ -273,7 +284,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <p>Are libraries evenly located across the country? Do all residents in your state—regardless of race or income—have equitable access to polling places? Does your dataset accurately reflect your county’s or city’s population?</p>
 
-    <p>This tool can help government agencies, policymakers, and community advocates easily answer such questions by assessing <span class = "iconContainer"><img class = "inlineIcon" src = "images/bar-icon.png">demographic</span> and <span class = "iconContainer"><img class = "inlineIcon" src = "images/map-icon.png">spatial</span> disparities in their data.</p>
+    <p>This tool can help government agencies, policymakers, and community advocates easily answer such questions by assessing <span class = "iconContainer">demographic<img class = "inlineIcon" src = "images/bar-icon.png"></span> and <span class = "iconContainer">spatial<img class = "inlineIcon" src = "images/map-icon.png"></span> disparities in their data.</p>
 
     <p class = "homeInstructions">Choose a geography below to get started. Then check out our sample datasets or upload your own data.</p>
 
@@ -324,17 +335,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img src = "images/backArrow.png">
                   <div><span class = "mobilearrow"></span>Back</div>
               </div>
-              <div class = "startOver">
-                  <div>Start over</div>
-                  <img src = "images/startOver.png">
-              </div>
+
             </div>
             <h2 class = "loaderHeader">Use sample data</h2>
             <p id = "sampleDefaultText"><em>These are examples of <span class = "geographyLevelText lowercase"></span>-level datasets that can be evaluated with the tool. Choose a dataset to explore how the tool works or download the data to see what a compatible file looks like.</em></p>
             <p class = "hiddenSection hideOption sample"><em>You can run the analysis on the sample dataset with our preset options, or you can add custom filters and weights by selecting advanced options below.</em></p>
 
 
-            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
 
             <div id = "sampleCardContainer">
                 <div class = "mobileOnlyHeader">Choose one</div>
@@ -465,14 +473,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img src = "images/backArrow.png">
                   <div><span class = "mobilearrow"></span>Back</div>
               </div>
-              <div class = "startOver">
-                  <div>Start over</div>
-                  <img src = "images/startOver.png">
-              </div>
+
             </div>
             <h2 class = "loaderHeader">Upload your data</h2>
             <p><em>Upload a CSV file of geographic point data to see how well your dataset represents <span class = "geographyLevelText possessive"></span> population.</em></p>
-            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
             <div id = "uploadInstructionContainer">
                 <div id = "dropbox">
                     <div id = "innerDropbox">
@@ -546,16 +551,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img src = "images/backArrow.png">
                   <div><span class = "mobilearrow"></span>Back</div>
               </div>
-              <div class = "startOver">
-                  <div>Start over</div>
-                  <img src = "images/startOver.png">
-              </div>
+
             </div>
             <div class = "mobileOnlyHeader">Choose a column</div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Filter data</span></h2>
             <p>Choose a column to filter by and the tool will detect which values—text, numbers, or dates—are in that column. The filters will allow you to focus on data you want to use and hide data you don’t. Columns with both text and numbers will be treated as text fields.</a></p>
 
-            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
 
             <div id = "filterColumnContainer">
                 <div id = "filterControls">
@@ -569,12 +571,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                     <div class = "filterContainer number">
                         <select class = "numeric compareSelect" id = "numComSel">
+                            <option value = "==">=</option>
+                            <option value = "!=">&ne;</option>
                             <option value = "<">&lt;</option>
                             <option value = "<=">&le;</option>
                             <option value = ">">&gt;</option>
                             <option value = ">=">&ge;</option>
-                            <option value = "==">=</option>
-                            <option value = "!=">&ne;</option>
                         </select>
                         <input id = "numericSelect" type="number" placeholder = "Enter number">
                     </div>
@@ -639,14 +641,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img src = "images/backArrow.png">
                   <div><span class = "mobilearrow"></span>Back</div>
               </div>
-              <div class = "startOver">
-                  <div>Start over</div>
-                  <img src = "images/startOver.png">
-              </div>
+
             </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Weight data</span></h2>
             <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of library locations, if you choose &ldquo;sq_ft&rdquo; as your weight column, higher–square footage libraries will be given more weight in assessing representativeness.</em></p>
-            <p class = "faqP"><em>For help, see our <a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
             <div id = "weightContainer">
               <div id = "weightMenuContainer">
                   <h3 class = "loaderHeader">Choose a weight column</h3>
@@ -684,33 +683,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
 
             <div id = "loadingContainer">
-                <img class = "loadingImg l1" src = "images/loading1.png">
-                <img class = "loadingImg l2" src = "images/loading2.png">
-                <img class = "loadingImg l3" src = "images/loading3.png">
-                <img class = "loadingImg l4" src = "images/loading4.png">
-                <img class = "loadingImg l5" src = "images/loading5.png">
-                <img class = "loadingImg l6" src = "images/loading6.png">
-                <img class = "loadingImg l7" src = "images/loading7.png">
-                <img class = "loadingImg l8" src = "images/loading8.png">
-                <img class = "loadingImg l9" src = "images/loading9.png">
-                <img class = "loadingImg l10" src = "images/loading10.png">
-
-                <img class = "loadingErrorImg loadingError" src = "images/errorBuildings.png">
+                <div class = "loadingImg l1"></div>
+                <div class = "loadingImg l2"></div>
+                <img class = "loadingImgTire back" src = "images/loadingTire.png">
+                <img class = "loadingImgTire front" src="images/loadingTire.png">
+                <div class = "loadingErrorImg loadingError"></div>
             </div>
             <div id = "loadingErrorContainer" class = "loadingError"></div>
 
             <div id = "errorNavContainer" class = "loadingError">
-              <div id = "errorNavBack" class = "errorNavComponent">
+              <div id = "errorNavBack" class = "errorNavComponent errorNavStandard">
                 <img src = "images/backArrow.png">
                 <div>Back to<span></span></div>
               </div>
-              <div id = "errorNavBackFilter" class = "errorNavComponent">
+              <div id = "errorNavBackFilter" class = "errorNavComponent errorNavStandard">
                 <img src = "images/backArrow.png">
                 <div>Back to filter data</div>
               </div>
-              <div id = "errorStartOver" class = "errorNavComponent">
+              <div id = "errorStartOver" class = "errorNavComponent errorNavStandard">
                 <div>Start over</div>
                 <img src = "images/startOverBlue.png">
+              </div>
+              <div id = "errorYesContinue" class = "errorNavComponent errorNavSubgeo">
+                <div>Yes, continue</div>
+              </div>
+              <div id = "theHoleIsYourHome" class = "errorNavComponent errorNavSubgeo">
+                <div>No, return to home</div>
               </div>
             </div>
 
@@ -728,10 +726,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
                     <h5>ABOUT</h5>
-                    <a href = "spatial_equity_faq.pdf" target = "_blank">
+                    <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">
                       <div class = "button clear footer readResearchButton">FAQ</div>
                     </a>
-                    <a href = "spatial_equity_technical_appendix.pdf" target = "_blank">
+                    <a href = "Spatial_Equity_Tool_Technical_Appendix.pdf" target = "_blank">
                       <div class = "button clear footer readResearchButton">TECHNICAL APPENDIX</div>
                     </a>
                     <a href = "https://medium.com/@urban_institute/introducing-a-spatial-equity-data-tool-b959c40298cf" target = "_blank">
@@ -740,7 +738,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p>This tool uses data from the five-year (2015–19) American Community Survey to assess demographic and spatial disparities in your data. Once you upload data, the tool compares the distribution of the uploaded data with the distribution of baseline variables from the ACS.</p>
                     <p>For the map, we construct geographic disparity scores by taking the difference between the percentage of the data and the percentage of the selected baseline population that falls into each state (national-level tool), county (state-level tool), or tract (county- and city-level tool).</p>
                     <p>For the demographic disparity chart, we first estimate the demographic groups your data depicts by taking a weighted average of the demographics across all the tracts your data come from. We compare that average with the overall demographics of the selected baseline population and report the difference as the demographic disparity score.</p>
-                    <p>We use the <a href = "https://www.census.gov/programs-surveys/acs/guidance/handbooks/general.html" target = "_blank">ACS formulas</a> to calculate 95 percent confidence intervals for both the geographic and the demographic disparity scores. If the interval contains zero, we mark that disparity as not statistically significant. For more information about the specific methodology and variables used and how they vary by geography, please see the <a href = "https://apps.urban.org/features/equity-data-tool/spatial_equity_technical_appendix.pdf" target = "_blank">technical appendix</a>.</p>
+                    <p>We use the <a href = "https://www.census.gov/programs-surveys/acs/guidance/handbooks/general.html" target = "_blank">ACS formulas</a> to calculate 95 percent confidence intervals for both the geographic and the demographic disparity scores. If the interval contains zero, we mark that disparity as not statistically significant. For more information about the specific methodology and variables used and how they vary by geography, please see the <a href = "https://apps.urban.org/features/equity-data-tool/Spatial_Equity_Tool_Technical_Appendix.pdf" target = "_blank">technical appendix</a>.</p>
                     <p>For the demographic disparity chart, we use “Latinx” to refer to people of Latino or Hispanic origin as asked by the census. We recognize that this gender-neutral term may not be the preferred identifier for many, but we use it to remain inclusive of gender nonconforming and nonbinary people. The regions users may select on the chart correspond to US <a href = "https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf" target = "_blank">census regions</a>.</p>
                     <p>For the national-level tool, we use “national” to refer to the 50 states plus the District of Columbia. We realize this excludes US territories from analysis and hope to include them in future iterations of this tool.</p>
 
@@ -774,7 +772,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div id = "mobileMainMenu">
   <div id = "mobileHome">Home</div>
-  <div id = "mobileFaq"><a href = "spatial_equity_faq.pdf" target = "_blank">FAQ</a></div>
+  <div id = "mobileFaq"><a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a></div>
   <div id = "mobileAdvanced" class = "hidden">Advanced options<span></span></div>
 </div>
 
@@ -807,6 +805,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="js/vendor/mapbox-gl.1.7.0.js"></script>
 
 <script src="js/vendor/d3-dispatch.v1.min.js"></script>
+<script src="js/vendor/d3-voronoi.min.js"></script>
 <script src="js/vendor/d3.5.15.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
 

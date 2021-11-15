@@ -83,8 +83,6 @@ function runAnalysis() {
     }
     if(callFullApi){
         params["geo"] = getGeographyLevel()
-        console.log(params)
-
 
         for(var k in params){
             if(params.hasOwnProperty(k)){
@@ -96,11 +94,6 @@ function runAnalysis() {
                 
             }
         }
-
-        for (var pair of formData.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]);
-        }
-
 
         $.ajax({
             url: postURL,
@@ -141,7 +134,6 @@ function runAnalysis() {
                 throwError(["upload"])
             },
             success: function(msg, status, jqXHR){
-                console.log(msg, status)
                 statusIntervId = setInterval(loopStatus, PROCESSING_INTERVAL, msg);
             }
         }); 
@@ -188,28 +180,38 @@ function drawResultsData(fileId){
         success: function(msg, status, xhr){
             var params = getParams()
 
-            console.log(msg)
+            var barBaseline;
+            if(params.baseline == "pop") barBaseline = "total_pop"
+            else if(params.baseline == "chi") barBaseline = "under18_pop"
+            else if(params.baseline == "pov") barBaseline = "pov_pop"
+            else barBaseline = "total_pop"
 
-            drawBarChart(msg.results.result.demographic_bias_data, "dynamic", "total_pop", function(){})
-            drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, msg.results.result.bounds)
+    // if(baseline == "total_pop") pplLabel = "residents"
+    // else if(baseline == "under18_pop") pplLabel = "children"
+    // else if(baseline == "pov_pop") pplLabel = "residents with extremely low incomes"
+            drawBarChart(msg.results.result.demographic_bias_data, "dynamic", barBaseline, "", function(){})
+            drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, params.baseline, msg.results.result.bounds)
             populateSummaries(msg.results.result.messages, params)
             populateDownloadLinks(msg.results.result.download_links)
         }
     }); 
 }
 
-function throwError(errorKeys){
+function throwError(errorKeys, fullStateName, fileid){
     clearInterval(buildingIntervId);
     clearInterval(statusIntervId);
-    showErrorScreen(errorKeys);
+    showErrorScreen(errorKeys, fullStateName, fileid);
 }
-function showErrorScreen(errorKeys){
+function showErrorScreen(errorKeys, fullStateName, fileid){
     showLoaderSection("loading", getGeographyLevel())
 
     d3.select(".loaderSection.loading .loaderHeader")
-        .html("Oops! Something went wrong. <span class = 'errorLight'>For help, see our <a href = 'spatial_equity_faq.pdf' target = '_blank'> FAQ</a>.</span>")
+        .html("Oops! Something went wrong. <span class = 'errorLight'>For help, see our <a href = 'Spatial_Equity_Tool_FAQs.pdf' target = '_blank'> FAQ</a>.</span>")
     
     d3.selectAll(".loadingError").style("display","block")
+    d3.selectAll(".loadingImg").style("animation-play-state","paused")
+    d3.selectAll(".loadingImgTire").style("animation-play-state","paused")
+    
     if(errorKeys.indexOf("all_rows_filtered") != -1){
         d3.select("#errorNavBackFilter").style("display", "inline-block")
     }else{
@@ -219,8 +221,21 @@ function showErrorScreen(errorKeys){
         return (getDatasetType() == "user") ? " upload your data" : " select sample data"
     })
 
+    if(errorKeys.indexOf("few_sub_geos_flag_state") != -1 || errorKeys.indexOf("few_sub_geos_flag_national") != -1){
+        d3.selectAll(".errorNavStandard").style("display","none")
+        d3.selectAll(".errorNavSubgeo").style("display","block")
+        d3.select("#errorYesContinue").on("click", function(){
+            showResults(fileid)
+        })
+        d3.select("#theHoleIsYourHome").on("click", function(){
+            startOver()
+        })
+    }else{
+        d3.selectAll(".errorNavStandard").style("display","block")
+        d3.selectAll(".errorNavSubgeo").style("display","none")
+    }
+
     d3.selectAll(".loadingErrorRow").remove()
-    d3.selectAll(".loadingImg").style("opacity", 0)
     d3.selectAll(".loaderSectionStatus").style("display","none")
 
     var row = d3.select("#loadingErrorContainer").selectAll(".loadingErrorRow")
@@ -236,7 +251,7 @@ function showErrorScreen(errorKeys){
     row.append("div")
         .attr("class", "loadingErrorText")
         .html(function(d){
-            return errorMessages[d]
+            return errorMessages[d].replace("{FULL_STATE_NAME}",fullStateName)
         })
 
 
@@ -265,47 +280,45 @@ function loopStatus(msg){
 
 var loopCount = 0;
 function checkStatus(status){
-    // console.log(status, loopCount)
     if(loopCount >= MAX_PROCESSING_TIME/PROCESSING_INTERVAL){
-        // console.log("a")
         throwError(["processing_time_out"])
     }
     if(!status.file_exists){
-        // console.log("b")
         loopCount += 1;
         return false
     }
     else if(status.formdata.updates.started_processing == false){
-        // console.log("c")
         loopCount += 1;
         return false;
     }
     else if(status["formdata"]["updates"]["error-messages"]){
-        // console.log("d")
         Object.keys(status["formdata"]["error-messages"]).forEach(function(key){
             if (!status["formdata"]["error-messages"][key]) delete status["formdata"]["error-messages"][key];
         });
         throwError(Object.keys(status["formdata"]["error-messages"]))
     }
     else if(status.formdata.updates.finished){
-        // console.log("e")
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusDone").style("display","block")
 
         d3.select("#num_rows_processed").text(status.formdata.updates.num_rows_processed)
         d3.select("#num_rows_file").text(status.formdata.updates.num_rows_file)
 
-        showResults(status.fileid);
-        clearInterval(buildingIntervId);
-        clearInterval(statusIntervId);
+        if(status.formdata.warnings.few_sub_geos_flag){
+            throwError(["few_sub_geos_flag_" + getGeographyLevel()], status.formdata.updates.g_disp, status.fileid)
+            clearInterval(buildingIntervId);
+            clearInterval(statusIntervId);
+        }else{
+            showResults(status.fileid);
+            clearInterval(buildingIntervId);
+            clearInterval(statusIntervId);
+        }
     }
     else if(status.formdata.updates.num_rows_for_processing == status.formdata.updates.num_rows_processed && status.formdata.updates.num_rows_for_processing != null && status.formdata.updates.num_rows_processed != null){
-        // console.log("f")
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusDone").style("display","block")
     }
     else{
-        // console.log("g", status)
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusProcessing").style("display","block")
         var processed = (status.formdata.updates.num_rows_processed == null) ? 0 : status.formdata.updates.num_rows_processed
@@ -317,14 +330,14 @@ function checkStatus(status){
 
 
 function loopBuildings() {
-    buildingIntervId = setInterval(addBuilding, 75);
+    d3.selectAll(".loadingImg").style("opacity",1).style("animation-play-state","running")
 }
 
-function addBuilding() {
-    var currentIndex = (buildingIndex%20) + 1
-    if(currentIndex == 1){
-        d3.selectAll(".loadingImg").style("opacity",0)
-    }
-    d3.select(".loadingImg.l" + currentIndex).style("opacity",1)
-    buildingIndex += 1
-}
+// function addBuilding() {
+//     var currentIndex = (buildingIndex%20) + 1
+//     if(currentIndex == 1){
+//         d3.selectAll(".loadingImg").style("opacity",0)
+//     }
+//     d3.select(".loadingImg.l" + currentIndex).style("opacity",1)
+//     buildingIndex += 1
+// }

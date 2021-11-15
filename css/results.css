@@ -11,6 +11,7 @@
     width: 860px;
     display: block;
     margin: 0 auto;
+    margin-top: 140px;
 }
 .resultsHeaderLevel{
     font-weight: normal;
@@ -28,33 +29,56 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.resultsHeader.maps{
+.resultsHeader.maps, .resultsHeader.bars{
     display: inline-block;
 }
-#baselineSelect-button{
+#baselineSelectMap-button, #baselineSelectBar-button{
     display: inline-block;
-    top: 10px;
-    margin-left: 7px;
+    top: 13px;
+    margin-left: 3px;
 }
-#baselineSelect-button .ui-selectmenu-text{
-    left: 11px;
+#baselineSelectMap-button .ui-selectmenu-text, #baselineSelectBar-button .ui-selectmenu-text{
+    width: fit-content;
+    padding-right: 2px;
+    left: 0px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
 }
-#baselineSelect-button.pop{
-    max-width: 187px;
-}
-#baselineSelect-button.under_200_poverty_line{
-    max-width: 241px;
-}
-#baselineSelect-button.no_internet{
-    max-width: 329px;
-}
-#baselineSelect-button.cb_renter_hh{
-    max-width: 423px;
-}
-#baselineSelect-button.seniors{
-    max-width: 192px;
+#baselineSelectMap-button, #baselineSelectBar-button{
+    width: fit-content;
+    border: none;
+    border-bottom: 3px solid #1696d2;
 }
 
+#subgeoSelect-button{
+    border: none;
+    border-bottom: 3px solid #FDBF11;
+    padding-top: 1px;
+    padding-left: 0px;
+    padding-right: 30px;
+    float: right;
+    width: fit-content;
+    position: relative;
+}
+#subgeoSelect-button span{
+    width: fit-content;
+    left: 0px;
+}
+#subgeoSelect-button:before{
+    content: '';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    background: #fdbf11;
+    left: -21px;
+    top: 20px;
+    border-radius: 100%;
+    opacity: 0;
+}
+#subgeoSelect-button.show:before{
+    opacity: 1;
+}
 
 /********************************************/
 /***************** TEXT *********************/
@@ -67,8 +91,8 @@
     width: 100%;
 }
 .resultsHeader{
-    font-weight: bold;
-    font-size: 22px;
+    /*font-weight: bold;*/
+    font-size: 18px;
     margin-bottom: 37px;
 }
 .resultsCopy{
@@ -109,6 +133,39 @@
     color: #1696d2;
     font-weight: bold;
 }
+#resultsSubnav{
+    width: 100%;
+    height: 50px;
+    background: #f5f5f5;
+    position: fixed;
+    top: 0px;
+    z-index: 199999;
+    font-size: 18px;
+}
+.resultsHeaderSubnav.dataName{
+    font-weight: bold;
+}
+#resultsHeaderSubName .geographyLevelText{
+    margin-left: 11px;
+}
+.resultsHeaderSubnav{
+    margin-top: 16px;
+    display: inline-block;
+}
+#resultsHeaderSubName, #resultsNavDataName{
+    display: inline-block;
+    float: left;
+}
+.resultsHeaderSubnav.weight, .resultsHeaderSubnav.filters{
+    float: right;
+    margin-right: 18px;
+    color: #1696d2;
+    font-size: 16px;
+    margin-top: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 /*<div id = "advancedTextOverlayNav">Advanced options <img class = "navNohoverImg" src = "images/menuArrowNav.png"><img class = "navHoveImgr" src = "images/dropdown-bg.png"></div>
 *//*navHover*/
@@ -240,7 +297,7 @@ width: 140px;
     height: 25px;
     position: absolute;
     top: 0px;
-    right: 0px;
+    right: -25px;
     cursor: pointer;
 }
 .headerX.tall{
@@ -379,6 +436,9 @@ width: 140px;
     margin-right: 20px;
     float: right;
     cursor: pointer;
+}
+.barButton.barImg{
+    margin-right: 0px;
 }
 .mapButton:hover, .barButton:hover{
     background: #1696d2;

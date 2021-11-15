@@ -728,18 +728,19 @@ button.ui-button::-moz-focus-inner {
     width: 100%;
     height: 45px;
     background: url(../../images/dropdown-bg.png) no-repeat right #ffffff;
-    background-size: 38px;
+    background-size: 13px;
     background-position-x: calc(100% - 3px);
+    background-position-y: 21px;
     border: 1px solid #D2D2D2;
-    max-width: 320px;
     display: block;
     margin-bottom: 30px;
     border-radius: 0px;
 }
 .ui-selectmenu-button.ui-button.ui-selectmenu-button-open{
     background: url(../../images/dropdown-bg-active.png) no-repeat right #ffffff;
-    background-size: 38px;
-    background-position-x: calc(100% - 3px);	
+    background-size: 13px;
+    background-position-x: calc(100% - 3px);
+    background-position-y: 21px;	
 }
 
 .ui-selectmenu-icon.ui-icon {
@@ -1012,8 +1013,9 @@ a.ui-button:active,
 }
 .ui-button:active, .ui-button.active{
    	background: url(../../images/dropdown-bg-active.png) no-repeat right #ffffff;
-   	background-size: 38px;
-   	background-position-x: calc(100% - 3px);	
+   	background-size: 13px;
+   	background-position-x: calc(100% - 3px);
+   	background-position-y: 21px;	
 }
 .ui-icon-background,
 .ui-state-active .ui-icon-background {

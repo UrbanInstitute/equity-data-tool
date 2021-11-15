@@ -69,7 +69,7 @@
 #barChartContainer{
     float: left;
     display: inline-block;
-    width: calc(100% - 370px);
+    width: 100%;
     position: relative;
 
 }
@@ -88,6 +88,13 @@
     display: block;
     position: relative;
 }
+.chartRow.even{
+    background: #feffff;
+}
+.chartRow.odd{
+    background: #f5f5f5;
+    cursor: pointer;
+}
 .chartToolTip{
     position: absolute;
     width: 400px;
@@ -96,12 +103,57 @@
     font-style: italic;
     top: 33px;
 }
-.chartRow.even{
+.chartToolTip.highlight .barTT-name{
+    background: #fdbf11;
+}
+.dotToolTip{
+    position: absolute;
+    top: 0px;
+    left: 400px;
+    z-index: 3;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    pointer-events: none;
+}
+.dotToolTip:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #ffffff;
+    border-width: 6px;
+    margin-top: -6px;
+}
+.dotToolTip.flipped:after {
+    left: 100%;
+    right: 0%;
+}
+.chartRow.even .dotToolTip{
+    background: #f5f5f5;
+}
+.chartRow.even .dotToolTip:after{
+    border-right-color: #f5f5f5;
+}
+.chartRow.odd .dotToolTip{
     background: #feffff;
 }
-.chartRow.odd{
-    background: #f5f5f5;
-    cursor: pointer;
+.chartRow.odd .dotToolTip:after{
+    border-right-color: #feffff;
+}
+.chartRow.even .dotToolTip.flipped:after{
+    border-right-color: rgba(255, 255, 255, 0);
+    border-left-color: #f5f5f5;
+}
+.chartRow.odd .dotToolTip.flipped:after{
+    border-right-color: rgba(255, 255, 255, 0);
+    border-left-color: #feffff;
 }
 .chartCatLabel{
     width: 400px;
@@ -141,16 +193,49 @@
     position: fixed;
     top: -3000px;
 }
-.chartDot.hover.geo, .chartDot.hoverDrawer.geo{
+.chartDot.hover.geo, .chartDot.hoverDrawer.geo, .chartDot.clicked.geo{
     stroke: #fdbf11;
     stroke-width: 3px;
 }
-.chartDot.hover.subgeo,.chartDot.hoverDrawer.subgeo{
+.chartDot.hover.subgeo,.chartDot.hoverDrawer.subgeo, .chartDot.clicked.subgeo{
     fill: #fdbf11;
 }
+.chartDot.clicked.subgeo.hideClicked{
+    fill: rgba(255,255,255,.5);
+}
+.chartDot.clicked.geo.hideClicked{
+    stroke: #fff;
+}
+.chartDot.forceHover{
+    fill: #fdbf11 !important;
+}
+.chartLineBG{
+    opacity: 0;
+    fill: none;
+    stroke: #fdbf11;
+    stroke-width: 10;
+}
+.chartLineBG.hover{
+    opacity: 1;
+}
+.chartLineFG{
+    fill: none;
+    stroke-width: 2;
+}
+#barChartNotes{
+    display: block;
+    width: 100%;
+    clear: both;
+    font-size: 11px;
+    margin-top: 30px;
+    float: left;
+    text-align: justify;
+}
+#barChartNotes span{
+    font-weight: bold;
+}
 
-
-/********************************************/
+/*******************************************
 /********** TOP LEGEND CONTROLS *************/
 /********************************************/
 #barChartTopContainer{
@@ -168,6 +253,7 @@
     /* vertical-align: bottom; */
     position: absolute;
     bottom: 0px;
+    margin-bottom: 36px;
 }
 #barChartTopControls{
     display: inline-block;
@@ -186,9 +272,51 @@
 #barChartTopMenuContainer{
     display: inline-block;
 }
+#barChartTopMenu{
+    margin-left: 64px;
+    width: 243px;
+}
+#barChartTopMenuLabel{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    margin-top: 30px;
+    float: right;
+    width: fit-content;
+}
 #barChartTopAxisContainer{
     height: 50px;
     width: 100%;
     top: 100px;
     position: absolute;
+}
+
+
+
+
+
+/********************************************/
+/*********** STATIC BAR CHART ***************/
+/********************************************/
+.axisTop_static path{
+    /*stroke-width: 2px;*/
+    display: none;
+}
+#barTitle_static{
+    font-size: 22px;
+    font-weight: 700;
+}
+#barFootnotes_static{
+    font-size: 11px;
+}
+#barFootnotes_static tspan{
+    font-weight: 700;
+}
+#barLogo_static{
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 15px;
+}
+#barLogo_static tspan{
+    fill: #1696d2;
 }

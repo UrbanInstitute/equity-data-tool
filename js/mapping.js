@@ -83,7 +83,7 @@ function getRange(baseline, bounds, mapType){
 
 
 
-function drawMaps(bbox, geojsonData, bounds){
+function drawMaps(bbox, geojsonData, baseline, bounds){
     d3.selectAll(".mapboxgl-canvas").remove()
     d3.selectAll(".mapboxgl-canary").remove()
     d3.selectAll(".mapboxgl-control-container").remove()
@@ -165,7 +165,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 }else{
                     takeScreenshot(baselineMap).then(function(data){
                         var blob = dataURItoBlob(data)
-                        downloadBlob(blob, "spatial_equity_" + getBaseline() + "_map.png")
+                        downloadBlob(blob, "spatial_equity_" + getBaselineMap() + "_map.png")
                     })
                 }
             },
@@ -180,9 +180,6 @@ function drawMaps(bbox, geojsonData, bounds){
             }
 
         })   
-
-    var baseline = getParams().baseline
-
 
     baselineMap.on('load', function() {
 
@@ -484,10 +481,10 @@ function drawMaps(bbox, geojsonData, bounds){
             var coordinates = e.lngLat;
             var p = e.features[0].properties
 
-            if(p["s_" + getBaseline()] == "TRUE" || allSignif){
+            if(p["s_" + getBaselineMap()] == "TRUE" || allSignif){
 
-                var repText = (p["d_" + getBaseline()] < 0) ? "underrepresented" : "overrepresented",
-                    compText = (p["d_" + getBaseline()] < 0) ? "fewer" : "more",
+                var repText = (p["d_" + getBaselineMap()] < 0) ? "underrepresented" : "overrepresented",
+                    compText = (p["d_" + getBaselineMap()] < 0) ? "fewer" : "more",
                     geo1, geo2;
                 if(getGeographyLevel() == "national"){
                     geo1 = "state"
@@ -504,12 +501,12 @@ function drawMaps(bbox, geojsonData, bounds){
                 d3.select("#mtt-geo1").text(geo1)
                 d3.select("#mtt-geo2").text(geo2)
                 d3.select("#mtt-da_prop").text(ttPercent(p.da_prop))
-                d3.select("#mtt-da_baseline").text(ttPercent(p["p_" + getBaseline()]))
-                d3.selectAll(".mtt-baseline-text").html(getBaselineText(getBaseline()).toLowerCase())
-                d3.select("#mtt-da_rep").html(ttPercent(p["d_" + getBaseline()]))
+                d3.select("#mtt-da_baseline").text(ttPercent(p["p_" + getBaselineMap()]))
+                d3.selectAll(".mtt-baseline-text").html(getBaselineMapText(getBaselineMap()).toLowerCase())
+                d3.select("#mtt-da_rep").html(ttPercent(p["d_" + getBaselineMap()]))
                 d3.select("#mtt-rep_text").text(repText)
                 d3.select("#mtt-compText").text(compText)
-                d3.select("#mtt-da_takeaway").text(ttPercent(Math.abs(p["d_" + getBaseline()])).replace("%",""))
+                d3.select("#mtt-da_takeaway").text(ttPercent(Math.abs(p["d_" + getBaselineMap()])).replace("%",""))
 
                 d3.select("#mtt-data").style("display", "block")
                 d3.select("#mtt-no_sig").style("display","none")
@@ -540,7 +537,7 @@ function drawMaps(bbox, geojsonData, bounds){
             var p = e.features[0].properties
             
             var colors = e.features[0].layer.paint["fill-color"][2]
-            var diffVal = p["d_" + getBaseline()]
+            var diffVal = p["d_" + getBaselineMap()]
             var diffColor, textColor;
 
             for(var i = 3; i < colors.length; i+= 2){
@@ -562,7 +559,7 @@ function drawMaps(bbox, geojsonData, bounds){
                 }
             }
 
-            var rangeMouse = getRange(getBaseline(), bounds, "diff"),
+            var rangeMouse = getRange(getBaselineMap(), bounds, "diff"),
                 mouseMax = rangeMouse[1];
 
             d3.select("#pointUp")
@@ -601,7 +598,7 @@ function drawMaps(bbox, geojsonData, bounds){
             var p = e.features[0].properties
 
             var colors = e.features[0].layer.paint["fill-color"]
-            var baselineVal = p["p_" + getBaseline()]
+            var baselineVal = p["p_" + getBaselineMap()]
             var baselineColor;
             for(var i = 3; i <= colors.length; i+= 2){
                 if(baselineVal == colors[3]){
@@ -626,7 +623,7 @@ function drawMaps(bbox, geojsonData, bounds){
 
             d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("hoverBaseline",true)
 
-            var rangeMouseBaseline = getRange(getBaseline(), bounds, "compare"),
+            var rangeMouseBaseline = getRange(getBaselineMap(), bounds, "compare"),
                 mouseMaxBaseline = rangeMouseBaseline[1];
 
             d3.select("#pointUp")
@@ -689,7 +686,7 @@ function drawMaps(bbox, geojsonData, bounds){
             updateMapTooltip(e, true)
 
 
-            var rangeMouseData = getRange(getBaseline(), bounds, "compare"),
+            var rangeMouseData = getRange(getBaselineMap(), bounds, "compare"),
                 mouseMaxData = rangeMouseData[1];
 
             d3.select("#pointUp")
@@ -722,34 +719,29 @@ function drawMaps(bbox, geojsonData, bounds){
         d3.select(".mapboxgl-compare .compare-swiper-vertical")
             .classed(getParams().baseline, true)
 
-        $('#baselineSelect')
+        $('#baselineSelectMap')
+            .val(baseline)
             .selectmenu({
                 create: function(event, d){
-                    d3.select("#baselineSelect-button").classed(getParams().baseline, true)
+                    d3.select("#baselineSelectMap-button").classed(getParams().baseline, true)
                 },
                 change: function(event, d){
 
-                    d3.select("#controlBaselineName").text(getBaselineText(d.item.value))
-
-                    d3.select("#baselineSelect-button").classed("pop",false)
-                    d3.select("#baselineSelect-button").classed("under_200_poverty_line",false)
-                    d3.select("#baselineSelect-button").classed("no_internet",false)
-                    d3.select("#baselineSelect-button").classed("cb_renter_hh",false)
-                    d3.select("#baselineSelect-button").classed("seniors",false)
-
-                    d3.select("#baselineSelect-button").classed(d.item.value, true)
-
+                    d3.select("#controlBaselineName").text(getBaselineMapText(d.item.value))
 
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("pop",false)
-                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("under_200_poverty_line",false)
-                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("no_internet",false)
-                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("cb_renter_hh",false)
-                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("seniors",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("pov2",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("pov",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("int",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("cbr",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("sen",false)
+                    d3.select(".mapboxgl-compare .compare-swiper-vertical").classed("chi",false)
+
 
                     d3.select(".mapboxgl-compare .compare-swiper-vertical").classed(d.item.value, true)
 
 
-                    d3.select(".tt-text.baseline").html("of the city's " + getBaselineText(d.item.value))
+                    d3.select(".tt-text.baseline").html("of the city's " + getBaselineMapText(d.item.value))
                     var rangeComparison = getRange(d.item.value, bounds, "compare")
 
                     var comparisonMin = rangeComparison[0],

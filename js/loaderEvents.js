@@ -217,7 +217,7 @@ function populateDropdowns(colNames){
                 change: function(event, d){
                     if(getCSVProperties()["cols"][d.item.value] != "number" && d.item.value != ""){
                         d3.select("#weightSelected").html("none selected")
-                        loaderError("Oops&hellip; looks like our tool isn’t reading this column as numeric. Please choose another column or see our  <a href = \"spatial_equity_faq.pdf\" target = \"_blank\">FAQ</a> for help.","weight")
+                        loaderError("Oops&hellip; looks like our tool isn’t reading this column as numeric. Please choose another column or see our  <a href = \"Spatial_Equity_Tool_FAQs.pdf\" target = \"_blank\">FAQ</a> for help.","weight")
                     }else{
                         d3.select("#weightSelected").html(function(){
                           return (d.item.value == "") ? "none selected" : d.item.value

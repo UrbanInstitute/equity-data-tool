@@ -18,6 +18,7 @@ body{
     -moz-transition: top 0.25s linear;
     -o-transition: top 0.25s linear;
     transition: top 0.25s linear;
+    z-index: 200000
 }
 
 .is-visible {
@@ -326,4 +327,21 @@ ul{
 
 /*end css for header*/
 
- 
+ .headerLinks{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 300;
+    position: absolute;
+    right: 92px;
+    top: 12px;
+ }
+ .startOverInline.header{
+    display: inline-block;
+    margin-right: 24px;
+ }
+ .FAQ.header{
+    display: inline-block;
+ }
+ .headerLinks .header:hover{
+    color: #1696d2 !important;
+ }

@@ -34,7 +34,7 @@ var barCategories = {
   "pct_pov_black_alone": "Black residents",
   "pct_pov_asian_alone": "Asian residents",
   "pct_pov_hisp": "Latinx residents",
-  "pct_pov_all_other_races_alone": "",
+  "pct_pov_all_other_races_alone": "Residents of another race or ethnicity",
   "pct_pov_bach": "Residents with a bachelor&rsquo;s degree",
   "pct_pov_less_than_hs": "Residents with less than a high school diploma",
   "pct_pov_foreign_born": "TO BE REMOVED",
@@ -544,15 +544,224 @@ var errorMessages = {
   "processing_time_out" : "An unknown error occurred.",
   "upload" : "An unknown error occurred.",
   "all_rows_filtered" : "This combination of filters removes all rows from your data.",
-  "data_readin_error" : "The data file could not be read. Files should use utf-8, utf-16, or iso-8859-1 encoding. ",
-  "df_conversion_to_gdf_failed" : "A mapping error occurred. Latitude and longitude should use the  WGS 84 coordinate reference system (ie EPSG:4326)",
-  "filter_coltypes_mismatch" : "A column you selected to filter your data contains a mix of values (e.g., text, number, and/or date).",
+  "data_readin_error" : "The data file could not be read. Files should use UTF-8, UTF-16, or ISO-8859-1 encoding.",
+  "df_conversion_to_gdf_failed" : "A mapping error occurred. Latitude and longitude should use the WGS84 coordinate reference system (i.e., EPSG:4326).",
+  "filter_coltypes_mismatch" : "A column you selected to filter your data contains more than one type of value (e.g., text, number, date).",
   "form-data-parameter-validation-failed" : "An unknown error occurred.",
-  "latlon_cols_not_in_data" : "The provided latitude-longitude coordinates do not fall within a US city. Latitude and longitude should use the WGS 84 coordinate reference system (ie EPSG:4326)",
+  "pts_not_in_any_geography" : "The provided latitude-longitude coordinates do not fall within the US. Latitude and longitude should use the WGS84 coordinate reference system (i.e., EPSG:4326).",
   "pts_not_in_us_city" : "The provided latitude-longitude coordinates do not fall within a US city. Latitude and longitude should use the WGS 84 coordinate reference system (ie EPSG:4326)",
-  "sjoin_failed" : "A mapping error occurred. Latitude and longitude should use the Coordinate Reference System CRS 4326.",
-  "weight_coltypes_mismatch" : "The selected weight column contains non-numeric values."
+  "sjoin_failed" : "A mapping error occurred. Latitude and longitude should use the WGS84 coordinate reference system (i.e., EPSG:4326).",
+  "weight_coltypes_mismatch" : "The selected weight column contains nonnumeric values.",
+  "few_sub_geos_flag_national": "Your dataset is only located in a few states but will be compared against the entire US. The results may not be accurate, so you may want to choose a different geography on the home page. Are you sure you want to use the national-level tool?",
+  "few_sub_geos_flag_state": "Your dataset is only located in a few counties within <span id =\"errorStateName\"></span> but will be compared against the entire state. The results may not be accurate, so you may want to choose a different geography on the home page. Are you sure you want to use the state-level tool?"
 }
+var regions = d3.group([
+    {
+        "fips": "09",
+        "region": "ne-region"
+    },
+    {
+        "fips": "23",
+        "region": "ne-region"
+    },
+    {
+        "fips": "25",
+        "region": "ne-region"
+    },
+    {
+        "fips": "33",
+        "region": "ne-region"
+    },
+    {
+        "fips": "44",
+        "region": "ne-region"
+    },
+    {
+        "fips": "50",
+        "region": "ne-region"
+    },
+    {
+        "fips": "34",
+        "region": "ne-region"
+    },
+    {
+        "fips": "36",
+        "region": "ne-region"
+    },
+    {
+        "fips": "42",
+        "region": "ne-region"
+    },
+    {
+        "fips": "17",
+        "region": "mw-region"
+    },
+    {
+        "fips": "18",
+        "region": "mw-region"
+    },
+    {
+        "fips": "26",
+        "region": "mw-region"
+    },
+    {
+        "fips": "39",
+        "region": "mw-region"
+    },
+    {
+        "fips": "55",
+        "region": "mw-region"
+    },
+    {
+        "fips": "19",
+        "region": "mw-region"
+    },
+    {
+        "fips": "20",
+        "region": "mw-region"
+    },
+    {
+        "fips": "27",
+        "region": "mw-region"
+    },
+    {
+        "fips": "29",
+        "region": "mw-region"
+    },
+    {
+        "fips": "31",
+        "region": "mw-region"
+    },
+    {
+        "fips": "38",
+        "region": "mw-region"
+    },
+    {
+        "fips": "46",
+        "region": "mw-region"
+    },
+    {
+        "fips": "10",
+        "region": "s-region"
+    },
+    {
+        "fips": "11",
+        "region": "s-region"
+    },
+    {
+        "fips": "12",
+        "region": "s-region"
+    },
+    {
+        "fips": "13",
+        "region": "s-region"
+    },
+    {
+        "fips": "24",
+        "region": "s-region"
+    },
+    {
+        "fips": "37",
+        "region": "s-region"
+    },
+    {
+        "fips": "45",
+        "region": "s-region"
+    },
+    {
+        "fips": "51",
+        "region": "s-region"
+    },
+    {
+        "fips": "54",
+        "region": "s-region"
+    },
+    {
+        "fips": "01",
+        "region": "s-region"
+    },
+    {
+        "fips": "21",
+        "region": "s-region"
+    },
+    {
+        "fips": "28",
+        "region": "s-region"
+    },
+    {
+        "fips": "47",
+        "region": "s-region"
+    },
+    {
+        "fips": "05",
+        "region": "s-region"
+    },
+    {
+        "fips": "22",
+        "region": "s-region"
+    },
+    {
+        "fips": "40",
+        "region": "s-region"
+    },
+    {
+        "fips": "48",
+        "region": "s-region"
+    },
+    {
+        "fips": "04",
+        "region": "w-region"
+    },
+    {
+        "fips": "08",
+        "region": "w-region"
+    },
+    {
+        "fips": "16",
+        "region": "w-region"
+    },
+    {
+        "fips": "30",
+        "region": "w-region"
+    },
+    {
+        "fips": "32",
+        "region": "w-region"
+    },
+    {
+        "fips": "35",
+        "region": "w-region"
+    },
+    {
+        "fips": "49",
+        "region": "w-region"
+    },
+    {
+        "fips": "56",
+        "region": "w-region"
+    },
+    {
+        "fips": "02",
+        "region": "w-region"
+    },
+    {
+        "fips": "06",
+        "region": "w-region"
+    },
+    {
+        "fips": "15",
+        "region": "w-region"
+    },
+    {
+        "fips": "41",
+        "region": "w-region"
+    },
+    {
+        "fips": "53",
+        "region": "w-region"
+    }
+], d => d.region)
+
 var globalPercent = d3.format(".1%")
 
 var legendHeight = 20,
@@ -562,8 +771,8 @@ const BAR_DOT_RADIUS_SMALL = 6;
 const BAR_ROW_HEIGHT = 40;
 const BAR_LABEL_SCOOTCH = 9;
 const MAP_BINS = 8;
-const MAX_PROCESSING_TIME = 60000
-const PROCESSING_INTERVAL = 500
+const MAX_PROCESSING_TIME = 600000;
+const PROCESSING_INTERVAL = 500;
 const BAR_AXIS_LABEL_SCOOTCH = 13;
 
 
@@ -630,7 +839,6 @@ function dodge(X, radius) {
 
       // Remove circles from the queue that can’t intersect the new circle b.
       while (head && X[head.index] < X[bi] - radius2) head = head.next;
-  
       // Choose the minimum non-intersecting tangent.
       if (intersects(X[bi], Y[bi] = 0)) {
         let a = head;

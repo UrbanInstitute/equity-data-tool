@@ -15,7 +15,7 @@ function updateParams(param, value){
 }
 
 function setLoaderBaseline(baseline){
-    d3.selectAll(".baselineInstructionRow span.inlineBaselineText").text(getBaselineText(baseline).toLowerCase())
+    d3.selectAll(".baselineInstructionRow span.inlineBaselineText").text(getBaselineMapText(baseline).toLowerCase())
 
     d3.selectAll(".baselineRow").classed("active", false)
     d3.select(".baselineRow." + baseline).classed("active", true)
@@ -227,6 +227,9 @@ function showLoaderSection(loaderSection, geographyLevel){
     d3.select("#loaderContainer").style("display", "none")
     d3.select(".loaderHome").style("opacity",1)
   }
+  d3.select("#resultsSubnav")
+    .transition()
+    .style("top", "0px")
 
   resizeLoader()
   // d3.select("")

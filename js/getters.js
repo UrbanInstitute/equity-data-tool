@@ -16,11 +16,17 @@ function getParams(){
 function getWeight(){
     return (d3.select("#weightSelect").node().value == "") ? "" : d3.select("#weightSelect").node().value;
 }
-function getBaseline(){
-    return d3.select("#baselineSelect").node().value
+function getBaselineMap(){
+    return d3.select("#baselineSelectMap").node().value
 }
-function getBaselineText(baseline){
-    return d3.select("#baselineSelect option[value=" + baseline + "]").text()
+function getBaselineMapText(baseline){
+    return d3.select("#baselineSelectMap option[value=" + baseline + "]").text()
+}
+function getBaselineBar(){
+    return d3.select("#baselineSelectBar").node().value
+}
+function getBaselineBarText(baseline){
+    return d3.select("#baselineSelectBar option[value=" + baseline + "]").text()
 }
 function getCSVProperties(){
   return  d3.select("#csvProperties").datum()
@@ -94,10 +100,10 @@ function getBarMargins(containerType){
 }
 function getBarX(containerType, max, min){
     var width = getBarWidth(containerType) - 410 - 10,
-        bound = Math.max(max, min)
+        bound = Math.max(max, Math.abs(min))
     
     return d3.scaleLinear()
-        .range([0,width])
+        .range([10,width])
         .domain([-bound, bound]);
 
 }
@@ -109,8 +115,7 @@ function getBarY(containerType, data){
         .padding(.2)
         .domain(data.map(function(d) { return d.census_var; }));
 }
-function getBarTooltipText(geo, baseline, isSubGeo,fullName, shortName, d_score, fips){
-    console.log(geo, baseline, isSubGeo, fullName, shortName, d_score, fips)
+function getBarTooltipText(geo, baseline, isSubGeo,fullName, shortName, d_score, fips, s_diff){
     var sign = (d_score < 0) ? "fewer" : "more"
     var pplLabel;
     var comparisonGeo;
@@ -128,14 +133,26 @@ function getBarTooltipText(geo, baseline, isSubGeo,fullName, shortName, d_score,
     }else{
         comparisonGeo = geo;
     }
+    if (fullName == "US") fullName = "the US"
 
-
-
-    return "Across " + fullName + ", your data come from neighborhoods that, on average, have " + globalPercent(Math.abs(d_score/100)).replace("%","")+ " percent " + sign + " " + pplLabel + " in this demographic group than the whole " + comparisonGeo
+    if(s_diff) return "Across <span class = \"barTT-name\">" + fullName + "</span>, your data come from neighborhoods that, on average, have " + globalPercent(Math.abs(d_score/100)).replace("%","")+ " percent " + sign + " " + pplLabel + " in this demographic group than the whole " + comparisonGeo + "."
+    else return "Across the neighborhoods your data come from, we find no statistically significant difference between the share of " + pplLabel + " in this demographic group and the whole " + comparisonGeo + "."
 }
 function getSelectedSubgeo(){
-    return ""
-    // return {"level": "county", "id": ""}
+    var geo = getGeographyLevel()
+    if(geo == "national"){
+        var selected = d3.select("#subgeoSelect").node().value
+        if(selected == "none") return ""
+        else if(selected.search("fips") != -1) return {"level" : "state", "id": selected}
+        else return {"level" : "region", "id": selected}
+    }
+    else if(geo == "state"){
+        var selected = d3.select("#subgeoSelect").node().value
+        if(selected == "none") return ""
+        else return {"level" : "county", "id": selected}
+    }else{
+        return ""
+    }
 }
 function getMapHeight(){
     return 500;

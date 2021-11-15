@@ -1,5 +1,4 @@
 function populateSummaries(messages, params){
-    console.log(messages, params)
     var datasetType = getDatasetType()
     var container = d3.selectAll(".summaryContainer")
     container.selectAll("*").remove()
@@ -21,6 +20,19 @@ function populateSummaries(messages, params){
               return "Your data on " + card.select(".sampleName").text().toLowerCase().split("(")[0].trim() + " from " + messages.updates.g_disp
             } 
         })
+    d3.select("#resultsSubnav")
+        .transition()
+        .style("top", "45px")
+    d3.select("#resultsNavDataName")
+        .html(function(){
+            if(datasetType == "user"){
+                return "Your data"
+            }else{
+              var card = d3.select(".sampleCard." + getSampleDatasetSlug())
+              var sName = card.select(".sampleName").text().toLowerCase().split("(")[0].trim()
+              return sName[0].toUpperCase() + sName.slice(1) 
+            } 
+    })
     var headOfClass = (headName.node().getBoundingClientRect().height > 30) ? "headerX closed tall" : "headerX closed"
     var headX = header.append("div")
         .attr("class", headOfClass)
@@ -28,7 +40,6 @@ function populateSummaries(messages, params){
         .attr("class", "headX vert")
     headX.append("div")
         .attr("class", "headX hor")
-console.log(messages)
 
     var comma = d3.format(",")
     var numWidth = comma(messages.updates.num_rows_file).length * 9
@@ -277,9 +288,9 @@ $('#mapDataButton')
         }
     })    
 d3.select(".barButton.barImg").on("click", function(){
-    var clone = d3.selectAll("#barChart .barDot.active").data().slice(0)
+    var clone = d3.select("#rawBarData").datum().slice(0)
 
-    drawBarChart(clone, "static", function(){
+    drawStaticBarChart(clone, getBaselineBar(), getSelectedSubgeo(), getGeographyLevel(), function(){
         saveSvgAsPng(document
             .getElementById("barChartImageSvg"), "spatial_equity_demographic_distribution", {backgroundColor: "#fff", "encoderOptions" : 1, "scale": 4 });
     })
@@ -287,6 +298,15 @@ d3.select(".barButton.barImg").on("click", function(){
 
 //TO DO, more robust for geo level
 d3.select(".resultsNav.startOverResults").on("click", startOver)
+
+// [National/State/County/City Level]: [name of dataset] or “Your data”        Filter data  Weight data
+
+d3.select(".resultsHeaderSubnav.filters").on("click", function(){
+    showLoaderSection("filters", getGeographyLevel())
+})
+d3.select(".resultsHeaderSubnav.weight").on("click", function(){
+    showLoaderSection("weight", getGeographyLevel())
+})
 
 $('#advancedOptionsHeader')
     .selectmenu({

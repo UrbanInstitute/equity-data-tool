@@ -88,13 +88,13 @@
         width: calc(100% + 67px);
         left: -30px;
     }
-        #baselineSelect-button .ui-selectmenu-text {
+        #baselineSelectMap-button .ui-selectmenu-text, #baselineSelectBar-button .ui-selectmenu-text {
         left: 11px;
         font-weight: bold;
         font-size: 16px;
         top: -3px;
     }
-    #baselineSelect-button{
+    #baselineSelectMap-button, #baselineSelectBar-button{
         height: 29px;
         margin-top: -40px;
         left: -7px;
@@ -130,7 +130,7 @@
         display: none;  
     }
 
-    #baselineSelect-button{
+    #baselineSelectMap-button, #baselineSelectBar-button{
         max-width: unset !important;
     }
     .resultsHeader{
@@ -776,7 +776,7 @@
         width: calc(100% - 60px);
         margin-left: 30px;
     }
-    #baselineSelect-button{
+    #baselineSelectMap-button, #baselineSelectBar-button{
         height: 29px;
         margin-top: -49px;
         left: -7px;

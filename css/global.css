@@ -8,6 +8,9 @@ body.hideScroll {
     overflow-y: hidden;
     position: fixed;
 }
+.container{
+    margin-top: 100px;
+}
 
 body.hideScroll::-webkit-scrollbar {
     width: 0px; /* For Chrome, Safari, and Opera */
@@ -76,8 +79,8 @@ select{
 }
 .backButton{
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 30px;
+    right: -50px;
     cursor: pointer;
     background: white;
     border-top: 30px solid white;
@@ -294,7 +297,7 @@ form{
     width: 30px;
     margin-right: 7px;
     position: relative;
-    margin-left: 7px;
+    margin-left: 3px;
     top: 7px;
 }
 .headerIcon{
@@ -306,4 +309,22 @@ form{
 }
 .resultsHeader.maps .headerIcon{
     margin-left: -53px;
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../Lato-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../Lato-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    src: url(../Lato-Black.ttf) format('truetype');
 }
