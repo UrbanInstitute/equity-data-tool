@@ -116,6 +116,7 @@
     font-weight: bold;
     white-space: nowrap;
     pointer-events: none;
+    opacity: 0;
 }
 .dotToolTip:after {
     right: 100%;

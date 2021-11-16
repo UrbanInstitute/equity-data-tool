@@ -159,8 +159,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
             <div id = "barButtonContainer">
-              <div class = "barButton barImg active">Download chart image (.PNG)</div>
-              <a class = "barLink csv" href = ""><div class = "barButton csv active">Download chart data (.CSV)</div></a>
+              <div class = "barButton barImg active">Download chart image (PNG)</div>
+              <a class = "barLink csv" href = ""><div class = "barButton csv active">Download chart data (CSV)</div></a>
             </div>
             <div id = "barChartNotes"><span>Notes:</span> Demographic categories for Asian, Black, White, and all other races and ethnicities include Latinx and non-Latinx residents, unless noted otherwise. When using “children under 18” as a baseline, the “uninsured” category includes 18-year-olds (i.e., children under 19).</div>
         </div>
@@ -178,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class = "resultsHeader maps"><img class = "headerIcon" src = "images/map-icon.png">Geographic distribution of your data compared with the</div>
         <select id = "baselineSelectMap">
             <option value = "pop">total population</option> 
-            <option value = "pov2">population with low incomes</option> 
+            <option value = "pov2">population with Housing Tax Credits</option> 
             <option value = "pov">population with extremely low incomes</option> 
             <option value = "int">population without internet access</option> 
             <option value = "cbr">population of cost-burdened renter households</option> 
@@ -738,7 +738,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p>This tool uses data from the five-year (2015–19) American Community Survey to assess demographic and spatial disparities in your data. Once you upload data, the tool compares the distribution of the uploaded data with the distribution of baseline variables from the ACS.</p>
                     <p>For the map, we construct geographic disparity scores by taking the difference between the percentage of the data and the percentage of the selected baseline population that falls into each state (national-level tool), county (state-level tool), or tract (county- and city-level tool).</p>
                     <p>For the demographic disparity chart, we first estimate the demographic groups your data depicts by taking a weighted average of the demographics across all the tracts your data come from. We compare that average with the overall demographics of the selected baseline population and report the difference as the demographic disparity score.</p>
-                    <p>We use the <a href = "https://www.census.gov/programs-surveys/acs/guidance/handbooks/general.html" target = "_blank">ACS formulas</a> to calculate 95 percent confidence intervals for both the geographic and the demographic disparity scores. If the interval contains zero, we mark that disparity as not statistically significant. For more information about the specific methodology and variables used and how they vary by geography, please see the <a href = "https://apps.urban.org/features/equity-data-tool/Spatial_Equity_Tool_Technical_Appendix.pdf" target = "_blank">technical appendix</a>.</p>
+                    <p>We use the <a href = "https://www.census.gov/programs-surveys/acs/guidance/handbooks/general.html" target = "_blank">ACS formulas</a> to calculate 95 percent confidence intervals for both the geographic and the demographic disparity scores. If the interval contains zero, we mark that disparity as not statistically significant. For more information about the specific methodology and variables used and how they vary by geography, please see the <a href = "Spatial_Equity_Tool_Technical_Appendix.pdf" target = "_blank">technical appendix</a>.</p>
                     <p>For the demographic disparity chart, we use “Latinx” to refer to people of Latino or Hispanic origin as asked by the census. We recognize that this gender-neutral term may not be the preferred identifier for many, but we use it to remain inclusive of gender nonconforming and nonbinary people. The regions users may select on the chart correspond to US <a href = "https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf" target = "_blank">census regions</a>.</p>
                     <p>For the national-level tool, we use “national” to refer to the 50 states plus the District of Columbia. We realize this excludes US territories from analysis and hope to include them in future iterations of this tool.</p>
 

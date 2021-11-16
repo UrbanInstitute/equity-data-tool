@@ -366,7 +366,7 @@ d3.selectAll(".inlineHome").on("click", function(){
 })
 d3.selectAll(".backButton.sample.data").on("click", function(){
     if(d3.selectAll(".sampleCard.inactive").nodes().length == 0){
-        startOver()    
+        startOver()
     }else{
         deselectSampleData()
     }
@@ -664,4 +664,44 @@ d3.selectAll(".mobileTabFilterList").on("click", function(){
     d3.select("#filterColumnContainer .advancedButtonRow").style("display", "none")
     resizeLoader()
 })
+
+
+document.onmouseover = function() {
+    //User's mouse is inside the page.
+    window.innerDocClick = true;
+}
+
+document.onmouseleave = function() {
+    //User's mouse has left the page.
+    window.innerDocClick = false;
+}
+
+window.onhashchange = function() {
+    if (window.innerDocClick) {
+        //Your own in-page mechanism triggered the hash change
+        // console.log("asdf")
+    } else {
+        //Browser back button was clicked
+        // console.log("ddd")
+        var hash = window.location.hash
+        console.log(hash)
+        if(hash == ""){
+            startOver()
+        }
+        else if(hash.search("sample") != -1){
+            // var geo = hash.split("-")[1]
+            // setDatasetType("sample", geo)
+            // showLoaderSection("sample", geo)
+            deselectSampleData()
+
+        }
+        else if(hash.search("user") != -1){
+            var geo = hash.split("-")[1]
+            setDatasetType("user", geo)
+            showLoaderSection("user", geo)
+
+        }
+    }
+}
+
 

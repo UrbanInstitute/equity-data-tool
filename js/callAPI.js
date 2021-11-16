@@ -189,15 +189,22 @@ function drawResultsData(fileId){
     // if(baseline == "total_pop") pplLabel = "residents"
     // else if(baseline == "under18_pop") pplLabel = "children"
     // else if(baseline == "pov_pop") pplLabel = "residents with extremely low incomes"
+            window.location.hash = "#results-" + getGeographyLevel()
+
             drawBarChart(msg.results.result.demographic_bias_data, "dynamic", barBaseline, "", function(){})
             drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, params.baseline, msg.results.result.bounds)
             populateSummaries(msg.results.result.messages, params)
             populateDownloadLinks(msg.results.result.download_links)
+            var animateTime = (widthBelow(768) || widthBelow(500)) ? 10 : 1200
+            $('html, body').animate({ scrollTop: 0 }, animateTime);
+
         }
     }); 
 }
 
 function throwError(errorKeys, fullStateName, fileid){
+    window.location.hash = "#error"
+
     clearInterval(buildingIntervId);
     clearInterval(statusIntervId);
     showErrorScreen(errorKeys, fullStateName, fileid);

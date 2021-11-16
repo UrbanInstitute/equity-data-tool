@@ -17,7 +17,7 @@ function populateSummaries(messages, params){
                 return "Your data in " + messages.updates.g_disp
             }else{
               var card = d3.select(".sampleCard." + getSampleDatasetSlug())
-              return "Your data on " + card.select(".sampleName").text().toLowerCase().split("(")[0].trim() + " from " + messages.updates.g_disp
+              return "Your data on " + card.select(".sampleName").text().toLowerCase().split("(")[0].trim().replace("low-income housing tax credit","Low-Income Housing Tax Credit").replace("wi-fi","Wi-Fi") + " from " + messages.updates.g_disp
             } 
         })
     d3.select("#resultsSubnav")
@@ -30,7 +30,7 @@ function populateSummaries(messages, params){
             }else{
               var card = d3.select(".sampleCard." + getSampleDatasetSlug())
               var sName = card.select(".sampleName").text().toLowerCase().split("(")[0].trim()
-              return sName[0].toUpperCase() + sName.slice(1) 
+              return (sName[0].toUpperCase() + sName.slice(1)).replace("wi-fi","Wi-Fi").replace("Low-income housing tax credit","Low-Income Housing Tax Credit")
             } 
     })
     var headOfClass = (headName.node().getBoundingClientRect().height > 30) ? "headerX closed tall" : "headerX closed"
@@ -135,7 +135,7 @@ function populateSummaries(messages, params){
         .attr("src", "images/check.png")
     summaryRow4.append("div")
         .attr("class", "deetText")
-        .text(function(d){
+        .html(function(d){
             return getTagText(d)
         })
     if(params.filters.length == 0){
@@ -352,7 +352,7 @@ d3.selectAll(".tt-icon")
             else if(geo == "state") gtt = "Counties"
             else gtt = "Census tracts"
 
-            ttText = gtt + " with positive disparity scores have more data points than we’d expect if resources were equitably distributed in accordance with your baseline. " + gtt + " with negative disparity scores have fewer"
+            ttText = gtt + " with positive disparity scores have more data points than we’d expect if resources were equitably distributed in accordance with your baseline. " + gtt + " with negative disparity scores have fewer."
             ttTitle = "Disparity score"
         }
         else if(dtt=="demographic"){

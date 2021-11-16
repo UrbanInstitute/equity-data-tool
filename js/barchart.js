@@ -224,7 +224,7 @@ d3.selectAll(".tt-icon")
             else if(geo == "state") gtt = "Counties"
             else gtt = "Census tracts"
 
-            ttText = gtt + " with positive disparity scores have more data points than we’d expect if resources were equitably distributed in accordance with your baseline. " + gtt + " with negative disparity scores have fewer"
+            ttText = gtt + " with positive disparity scores have more data points than we’d expect if resources were equitably distributed in accordance with your baseline. " + gtt + " with negative disparity scores have fewer."
             ttTitle = "Disparity score"
         }
         else if(dtt=="demographic"){
@@ -333,9 +333,11 @@ d3.selectAll(".chartRow")
         d3.select(row).select(".chartToolTip")
             .transition()
             .style("opacity",1)
-        d3.select(row).select(".dotToolTip")
-            .transition()
-            .style("opacity",1)
+        if(geo == "national" || geo == "state"){
+            d3.select(row).select(".dotToolTip")
+                .transition()
+                .style("opacity",1)
+        }
         d3.select(this)
             .transition()
             .duration(1000)
@@ -600,7 +602,7 @@ function highlightSubgeo(element){
             return(pos > rowW)
         })
 
-    d3.selectAll(".chartDot.clicked").classed("hideClicked", true)
+    // d3.selectAll(".chartDot.clicked").classed("hideClicked", true)
     if(isSubGeo){
         d3.selectAll(".chartDot.subgeo.fips-" + fips).classed("hover", true).raise()
         d3.selectAll(".chartDot.geo").classed("hover", false)
@@ -862,6 +864,10 @@ function initSubgeoMenu(geo, values, defaultVal){
             }else{
                 clickSubgeo(d.item.value)
             }
+        },
+        open: function(event, d){
+            var mh = window.innerHeight - d3.select("#subgeoSelect-button").node().getBoundingClientRect().bottom
+            d3.select("#subgeoSelect-menu").style("max-height", (mh - 40) + "px")
         }
     })
     if(defaultVal != ""){

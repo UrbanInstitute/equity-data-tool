@@ -61,6 +61,7 @@
         left: 15px;
         font-size: 16px;*/
     }
+
     .sampleCiity{
         left: 14px;
         position: absolute;
@@ -101,7 +102,6 @@
         width: 100%;
         max-width: 400px !important;
     }
-
     #mapControls .controlContainer{
         width: 50%;
         display: inline-block;
@@ -112,6 +112,10 @@
     }
     #resultsHeader{
         width: calc(100% - 60px);
+    }
+    #homeButtonRow{
+        width: 552px;
+        margin-left: 169px;
     }
 
 

@@ -812,9 +812,11 @@ input[type=date]{
 .sampleCard.singleCard{
     margin-right: 0px !important;
     margin-left: 0px !important;
+    cursor: default !important;
 }
 .sampleCard.singleCard .sampleRect{
     /*margin-left: 10px;*/
+    cursor: default !important;
 }
 .sampleCard.three11.singleCard{
     margin-left: 64px;

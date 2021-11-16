@@ -1,5 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoidXJiYW5pbnN0aXR1dGUiLCJhIjoiTEJUbmNDcyJ9.mbuZTy4hI_PWXw3C3UFbDQ';
-var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckvtyaa3m1cds14ph2lowc45t/draft"
+var mapboxStyleUrl = "mapbox://styles/urbaninstitute/ckvtyaa3m1cds14ph2lowc45t/"
 
 d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".controlContainer").classed("active", false)
@@ -488,7 +488,7 @@ function drawMaps(bbox, geojsonData, baseline, bounds){
                     geo1, geo2;
                 if(getGeographyLevel() == "national"){
                     geo1 = "state"
-                    geo2 = p.m_disp
+                    geo2 = (p.m_disp == "District of Columbia") ? "The District of Columbia" : p.m_disp
                 }
                 else if(getGeographyLevel() == "state"){
                     geo1 = "county",
@@ -571,7 +571,8 @@ function drawMaps(bbox, geojsonData, baseline, bounds){
             d3.select("#pointUpText").text(ttPercent(diffVal))
 
             updateMapTooltip(e, false)
-            d3.transition().select("#mtt-background").style("background", diffColor).style("top","77px")
+            
+            d3.transition().select("#mtt-background").style("background", diffColor).style("top",(60 + d3.select(".mtt-baseline-text").node().getBoundingClientRect().height) + "px").style("height", "34px")
             d3.transition().selectAll(".mtt-data-row").style("color", "#353535")
             d3.transition().select(".mtt-data-row.r3").style("color", textColor)
 
@@ -634,7 +635,8 @@ function drawMaps(bbox, geojsonData, baseline, bounds){
                 })
             d3.select("#pointUpText").text(ttPercent(baselineVal))
 
-            d3.transition().select("#mtt-background").style("background", baselineColor).style("top","47px")
+            var hB = (d3.select(".mtt-baseline-text").node().getBoundingClientRect().height > 30) ? "50px" : "34px"
+            d3.transition().select("#mtt-background").style("background", baselineColor).style("top","47px").style("height", hB)
             d3.transition().selectAll(".mtt-data-row").style("color", "#353535")
             d3.transition().select(".mtt-data-row.r2").style("color", textColor)
 
@@ -697,7 +699,7 @@ function drawMaps(bbox, geojsonData, baseline, bounds){
                 })
             d3.select("#pointUpText").text(ttPercent(dataVal))
             
-            d3.transition().select("#mtt-background").style("background", dataColor).style("top","17px")
+            d3.transition().select("#mtt-background").style("background", dataColor).style("top","17px").style("height", "34px")
             d3.transition().selectAll(".mtt-data-row").style("color", "#353535")
             d3.transition().select(".mtt-data-row.r1").style("color", textColor)
 
