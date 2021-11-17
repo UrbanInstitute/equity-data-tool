@@ -246,7 +246,7 @@
 #barChartTopContainer{
     display: block;
     position: relative;
-    height: 140px;
+    height: 90px;
     border-bottom: 2px solid black;
 }
 #barChartInstruction{
@@ -265,7 +265,7 @@
     width: calc(100% - 410px);
     left: 410px;
     position: absolute;
-    top: 0px;
+    top: -50px;
 }
 #barChartTopLegend{
 display: inline-block;
