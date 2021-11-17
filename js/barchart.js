@@ -739,13 +739,13 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("x",0)
         .attr("y", 22)
         .style("font-weight", 700)
-        .text("Overrepresented")
+        .text("Underrepresented")
 
     svg.append("circle")
         .attr("cx", 10)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_LARGE)
-        .style("fill", "#1696d2")
+        .style("fill", "#ca5800")
         .style("stroke","none")
 
     svg.append("text")
@@ -757,7 +757,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("cx", 110)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_SMALL)
-        .style("stroke", "#1696d2")
+        .style("stroke", "#ca5800")
         .style("fill","none")
         .style("opacity", smallOpacity)
 
@@ -777,13 +777,13 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("x",230-15)
         .attr("y", 22)
         .style("font-weight", 700)
-        .text("Underrepresented")
-
+        .text("No significant difference")
+        
     svg.append("circle")
         .attr("cx", 240-15)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_LARGE)
-        .style("fill", "#ca5800")
+        .style("fill", "#9d9d9d")
         .style("stroke","none")
 
     svg.append("text")
@@ -795,7 +795,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("cx", 340-15)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_SMALL)
-        .style("stroke", "#ca5800")
+        .style("stroke", "#9d9d9d")
         .style("fill","none")
         .style("opacity", smallOpacity)
 
@@ -814,13 +814,13 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("x",430)
         .attr("y", 22)
         .style("font-weight", 700)
-        .text("No significant difference")
+        .text("Underrepresented")
 
     svg.append("circle")
         .attr("cx", 440)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_LARGE)
-        .style("fill", "#9d9d9d")
+        .style("fill", "#1696d2")
         .style("stroke","none")
 
     svg.append("text")
@@ -832,7 +832,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("cx", 540)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_SMALL)
-        .style("stroke", "#9d9d9d")
+        .style("stroke", "#1696d2")
         .style("fill","none")
         .style("opacity", smallOpacity)
 
