@@ -190,6 +190,19 @@
 
 
 }
+@media(max-width: 900px){
+    #barChartTopContainer {
+        height: 220px;
+    }
+    #barChartTopLegend{
+        width: 557px;
+        bottom: -55px;
+        position: absolute;
+    }
+    #barChartTopAxisContainer{
+        top: 189px;
+    }
+}
 @media(max-width: 768px){
     #widthBelow1000{
         display: none;
