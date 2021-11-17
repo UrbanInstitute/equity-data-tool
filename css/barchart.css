@@ -76,6 +76,7 @@
 #barChart{
     display: inline-block;    
     position: relative;
+    margin-left: 10px;
 }
 .mobileLeg{
     display: none;
@@ -193,6 +194,8 @@
 #barChartImage{
     position: fixed;
     top: -3000px;
+    /*top: 300px;*/
+    /*z-index: 99999999999999999;*/
 }
 .chartDot.hover.geo, .chartDot.hoverDrawer.geo, .chartDot.clicked.geo{
     stroke: #fdbf11;
@@ -227,10 +230,11 @@
     display: block;
     width: 100%;
     clear: both;
-    font-size: 11px;
-    margin-top: 30px;
+    font-size: 13px;
+    margin-top: 0px;
     float: left;
     text-align: justify;
+    margin-bottom: 35px;
 }
 #barChartNotes span{
     font-weight: bold;
@@ -264,32 +268,99 @@
     top: 0px;
 }
 #barChartTopLegend{
-    display: inline-block;
+display: inline-block;
     float: left;
-    width: 300px;
-    font-size: 14px;
-    font-weight: bold;
+    width: 557px;
+    margin-top: 46px;
+    left: 0px;
+    position: relative;
 }
 #barChartTopMenuContainer{
     display: inline-block;
+    float: left;
+    width: calc(100% - 557px);
 }
 #barChartTopMenu{
-    margin-left: 64px;
-    width: 243px;
+    margin: 0 auto;
+    display: flow-root;
+    width: fit-content;
 }
 #barChartTopMenuLabel{
-    font-weight: bold;
-    text-transform: uppercase;
+font-weight: bold; */
+    /* text-transform: uppercase; */
     margin-bottom: 0px;
-    margin-top: 30px;
-    float: right;
+    margin-top: 48px;
+    /* float: right; */
     width: fit-content;
+    /* margin: 0 auto; */
+    font-size: 16px;
 }
 #barChartTopAxisContainer{
     height: 50px;
     width: 100%;
     top: 100px;
     position: absolute;
+}
+.barChartTopLegendCol{
+    display: inline-block;
+    float: left;
+    margin-right: 39px;
+    font-size: 16px;
+}
+.barChartTopLegendCol.insig{
+    margin-right: 0px;
+}
+.barChartTopLegendHead{
+    font-weight: bold;
+    display: block;
+    margin-bottom: 16px;
+}
+.barKeyDotGeo{
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    display: inline-block;
+    float: left;
+    margin-right: 4px;
+    top: 2.5px;
+    position: relative;
+}
+.barKeyDotGeo.under{
+    background: #BC5F23;
+}
+.barKeyDotGeo.over{
+    background: #1696d2;
+}
+.barKeyDotGeo.insig{
+    background: #9d9d9d;
+}
+.barKeyLabelGeo{
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+}
+.barKeyDotSubgeo{
+display: inline-block;
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 4px;
+    top: 4px;
+    position: relative;
+}
+.barKeyDotSubgeo.under{
+    border: 1px solid #BC5F23;
+}
+.barKeyDotSubgeo.over{
+    border: 1px solid #1696d2;
+}
+.barKeyDotSubgeo.insig{
+    border: 1px solid #9d9d9d;
+}
+.barKeyLabelSubgeo{
+    display: inline-block;
+    float: left;
 }
 
 

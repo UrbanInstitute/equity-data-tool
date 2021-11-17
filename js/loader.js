@@ -201,7 +201,7 @@ function showLoaderSection(loaderSection, geographyLevel){
   d3.selectAll(".loaderSection").classed("active", false)
   
   if(loaderSection == "user"){
-    window.location.hash = "#" + loaderSection + "-" + geographyLevel
+    setHash(loaderSection + "-" + geographyLevel)
     d3.selectAll(".mobileTabSample").classed("active", false)
     d3.selectAll(".mobileTabUser").classed("active", true)
   }
@@ -210,9 +210,10 @@ function showLoaderSection(loaderSection, geographyLevel){
     d3.selectAll(".mobileTabUser").classed("active", false)
     var slug = (getSampleDatasetSlug() == "") ? "sample" : getSampleDatasetSlug()
     if(slug == "sample") d3.selectAll(".sampleDownload").style("display","none")
-    window.location.hash = "#" + slug + "-" + geographyLevel
-  }else{
-    window.location.hash = ""
+    setHash(slug + "-" + geographyLevel)
+  }
+  else if(loaderSection != "home"){
+    setHash(loaderSection)
   }
 
   if(loaderSection != "home"){
@@ -230,6 +231,9 @@ function showLoaderSection(loaderSection, geographyLevel){
   d3.select("#resultsSubnav")
     .transition()
     .style("top", "-200px")
+  if(loaderSection != "home" && loaderSection != "loading"){
+    d3.select("#header-pinned").classed("loading", true) 
+  }
 
   resizeLoader()
   // d3.select("")
@@ -267,10 +271,17 @@ function resizeLoader(){
   var sectionHeight = d3.select(".loaderSection.active").node().getBoundingClientRect().height
   var homeHeight = (widthBelow(768) || widthBelow(500)) ? sectionHeight + 10 : sectionHeight + 130;
   d3.select(".loaderHome").style("height", homeHeight + "px")
+  if(d3.select(".sampleDetails.active").node() != null && d3.select(".sampleCard.singleCard").node() != null){
+    var rightCol = d3.select(".sampleDetails.active").node().getBoundingClientRect().height,
+        leftCol = d3.select(".sampleCard.singleCard").node().getBoundingClientRect().height,
+        h;
+    if(rightCol > leftCol) d3.select("#sampleButtonContainer").style("top", (rightCol - leftCol + 188) + "px")
+    else d3.select("#sampleButtonContainer").style("top", (188) + "px")
+  }
 }
 
 function selectSampleData(sample){
-    window.location.hash = "#" + sample + "-" + getGeographyLevel()
+    setHash(sample + "-" + getGeographyLevel())
 
     d3.select("#sampleCardContainer").classed("single", true)
 
@@ -409,9 +420,11 @@ function updateSampleParams(paramType){
 
   d3.selectAll(".strike.filter").classed("strike", false)
   d3.selectAll(".filter.strikethrough").classed("hidden",true)
-  d3.selectAll(".deetRow.filter")
+  d3.selectAll(".deetRow.filter:not(.none)")
     .each(function(d){
+      // console.log("d",d)
       if(currentP.filters.filter(function(o){
+        // console.log("o",o)
         return o.filter_column == d.filter_column && o.filter_comparison == d.filter_comparison && o.filter_val == d.filter_val
       }).length == 0){
         var strikeRow = d3.select(".deetRow[data-comparison='" + d.filter_comparison + "'][data-column='" + d.filter_column + "'][data-val='" + d.filter_val + "']")
@@ -472,6 +485,7 @@ function init(){
   var fullSlugList = window.location.hash.replace("#","").split("-"),
       loaderSection,
       geographyLevel;
+  setHash(window.location.hash.replace("#",""), true)
 
   if(fullSlugList.length == 1){
     loaderSection = ""

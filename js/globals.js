@@ -553,7 +553,8 @@ var errorMessages = {
   "sjoin_failed" : "A mapping error occurred. Latitude and longitude should use the WGS84 coordinate reference system (i.e., EPSG:4326).",
   "weight_coltypes_mismatch" : "The selected weight column contains nonnumeric values.",
   "few_sub_geos_flag_national": "Your dataset is only located in a few states but will be compared against the entire US. The results may not be accurate, so you may want to choose a different geography on the home page. Are you sure you want to use the national-level tool?",
-  "few_sub_geos_flag_state": "Your dataset is only located in a few counties within <span id =\"errorStateName\"></span> but will be compared against the entire state. The results may not be accurate, so you may want to choose a different geography on the home page. Are you sure you want to use the state-level tool?"
+  "few_sub_geos_flag_state": "Your dataset is only located in a few counties within {FULL_STATE_NAME} but will be compared against the entire state. The results may not be accurate, so you may want to choose a different geography on the home page. Are you sure you want to use the state-level tool?",
+  "dc_treated_as_state": "Your dataset is located in Washington, DC, so we recommend using the city- or county-level tool. Because the state and county boundaries for DC are the same, the geographic disparity map in the state-level tool will only show a single value. Are you sure you want to use the state-level tool?"
 }
 var regions = d3.group([
     {
@@ -858,4 +859,9 @@ function dodge(X, radius) {
     }
   
     return Y;
+}
+
+
+function arrayOverlap(arr1, arr2) {
+    return arr1.some(item => arr2.includes(item))
 }

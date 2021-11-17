@@ -1,7 +1,7 @@
 .mobileOnly, #boorgerContainer, .mobileOnlyHeader, .mobileTabs, .dropboxDrag.mobile{
     display: none;
 }
-#widthBelow1000, #widthBelow1200, #widthBelow768, #widthBelow500{
+#widthBelow1000, #widthBelow1200, #widthBelow1100, #widthBelow768, #widthBelow500{
     display: none;
     position: fixed;
     top: 0px;
@@ -17,6 +17,22 @@
     .headerIcon, .resultsHeader.maps .headerIcon {
         margin-right: 6px;
         margin-left: -43px;
+    }
+}
+@media(max-width: 1100px){
+    #widthBelow1100{
+        display: block;
+    }
+    #homeButtonRow{
+        width: 505px;
+        margin: 0 auto;
+        height: 380px;
+    }
+    .homeButtonContainer.state, .homeButtonContainer.city{
+        margin-right: 0px;
+    }
+    .homeButtonContainer{
+        height: 148px;
     }
 }
 @media(max-width: 1200px){
@@ -68,15 +84,15 @@
         top: 42px;
     }
     .sampleImg.bike {
-        position: absolute;
+/*        position: absolute;
         height: 69px;
         right: 14px;
-        top: -6px;
+        top: -6px;*/
     }
     .sampleImg.three11 {
-        height: 50px;
+/*        height: 50px;
         top: 18px;
-        right: 10px;
+        right: 10px;*/
     }
     #mapControls{
         margin-right: 0px;
@@ -114,8 +130,8 @@
         width: calc(100% - 60px);
     }
     #homeButtonRow{
-        width: 552px;
-        margin-left: 169px;
+        /*width: 552px;*/
+        /*margin-left: 169px;*/
     }
 
 
@@ -123,6 +139,17 @@
 @media(max-width: 768px){
     #widthBelow1000{
         display: none;
+    }
+    .resultsHeaderSubnav.weight, .resultsHeaderSubnav.filters{
+        display: none;
+    }
+    .loadingImgTire{
+        width: 28px;
+        top: 66px;
+        left: 60px;
+    }
+    .loadingImgTire.front{
+        left: 149px;
     }
     #widthBelow1200{
         display: none;
@@ -212,6 +239,9 @@
         width: 20px;
         transform: rotate(0deg);
     }
+    #resultsSubnav{
+        z-index: 998;
+    }
     #header-pinned{
         z-index: 998;
         width: 100%;
@@ -275,9 +305,7 @@
         max-width: 350px;
     }
     #homeButtonRow{
-        margin-left: 0px;
-        margin-right: 0px;
-        width: calc(100% - 40px);
+        margin: 0 auto;
         font-size: 16px;
     }
     h3.loaderSubHeader{
@@ -420,7 +448,7 @@
     }
 
     #sampleCardContainer{
-        width: 100%;
+        width: 231px;
     }
     .sampleRect, .sampleCard{
         /*width: 100%;*/
@@ -456,20 +484,20 @@
         top: 45px;*/
     }
     .sampleImg.hotspots{
-        height: 67px;
-        right: -12px;
-        top: 13px;
+        /*height: 67px;*/
+        /*right: -12px;*/
+        /*top: 13px;*/
     }
     .sampleImg.three11{
-        height: 60px;
+/*        height: 60px;
         top: 14px;
-        right: 10px;
+        right: 10px;*/
     }
     .sampleImg.bike{
-        position: absolute;
+/*        position: absolute;
         height: 85px;
         right: 15px;
-        top: -15px;
+        top: -15px;*/
     }
     .sampleDetails.active{
         width: 100%;
@@ -931,7 +959,17 @@
 }
 @media(max-width: 550px){
     #homeButtonRow .button{
+        /*width: 100%;*/
+    }
+    .homeButton{
+        width: calc(100% - 4px);
+        font-size: 18px;    
+    }
+    #homeButtonRow{
         width: 100%;
+    }
+    .homeButtonContainer{
+        width: calc(50% - 22px);
     }
     .mobileOnly.or{
         display: block;
@@ -962,6 +1000,18 @@
 
 }
 @media(max-width: 500px){
+    .homeButtonContainer{
+        width: 100%;
+    }
+    .loadingImgTire{
+        display: none;
+    }
+    #mobileLoadingTires{
+        display: block;
+    }
+    .homeButton{
+        margin-right: 0px;
+    }
     #uploadLatLonContainer h4 {
         margin-bottom: 28px;
         margin-top: 30px;
@@ -1019,8 +1069,27 @@
         top: 6px;
     }
 }
+@media(max-width: 440px){
+    #resultsHeaderSubName{
+        margin-top: -6px;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #1696d2;
+    }
+    #resultsSubnav{
+        height: 60px;
+    }
+    #resultsNavDataName{
+        display: block;
+        clear: both;
+        margin-left: 10px;
+    }
+}
 @media(max-width: 400px){
     #filterControls{
         margin-top: -30px;
+    }
+    .errorNavComponent div{
+        font-size: 18px;
     }
 }

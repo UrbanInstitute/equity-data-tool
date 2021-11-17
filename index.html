@@ -62,6 +62,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <div id = "widthBelow1200"></div>
+<div id = "widthBelow1100"></div>
 <div id = "widthBelow1000"></div>
 <div id = "widthBelow768"></div>
 <div id = "widthBelow500"></div>
@@ -72,9 +73,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id = "barChartImage"></div>
 
 <!-- START HEADER -->
-<div id="header-pinned" class="no-touch">
+<div id="header-pinned" class="no-touch loading">
    <a target="_blank" href="https://www.urban.org" title="Home" rel="home" class="site-logo"></a>
-<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features</a><span>: :</span> </span>Spatial Equity Data Tool</span>
+<div class="title"><span class="feature-link"><a href="https://www.urban.org/features" class="title-linkback" alt="Urban Institute logo">Features </a><span>: :</span> </span>Spatial Equity Data Tool</span>
 </div>
 <div class = "headerLinks">
 <div class = "startOverInline header">Home</div>
@@ -104,6 +105,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="wrapper headerwrapper">
   </div>
 </div>
+
+
+<div id = "headerBack" class = "header backButton">
+    <img src = "images/backArrow.png">
+    <div><span class = "mobilearrow"></span>Back</div>
+</div>
+
 <!-- END HEADER -->
 
 <!-- START MAIN CONTENT -->
@@ -120,7 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class = "resultsContainer wrapper">
     <div id = "resultsHeader">
-        <h2 class = "loaderHeader">Spatial Equity Data Tool: <span class = "resultsHeaderLevel"><span class = "geographyLevelText sentencecase"></span> Level</span></h2>
+        <h2 class = "loaderHeader titleHeader">Spatial Equity Data Tool: <span class = "resultsHeaderLevel"><span class = "geographyLevelText sentencecase"></span> Level</span></h2>
         <h3 class = "loaderSubHeader">Measure Disparities in Your Data</h3>
         <p class = "results intro">Assess <span class = "iconContainer">demographic<img class = "inlineIcon" src = "images/bar-icon.png"></span> and <span class = "iconContainer">spatial<img class = "inlineIcon" src = "images/map-icon.png"></span> disparities <span class = "geographyLevelText resultsIntro"></span> to see if resources are equitably distributed.</p>
      <div class = "summaryContainer visible">
@@ -149,9 +157,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div id = "barChartInstruction">Hover over the dots to see how demographic groups are over- and underrepresented in your data<i data-tt="demographic" class = "tt-icon">?</i></div>
 
                 <div id = "barChartTopControls">
-                  <div id = "barChartTopLegend">
-                  </div>
                   <div id = "barChartTopMenuContainer">
+                  </div>
+                  <div id = "barChartTopLegend">
+                    <div class = "barChartTopLegendCol over">
+                      <div class = "barChartTopLegendHead">Overrepresented</div>
+                      <div class = "barKeyRow">
+                        <div class = "barKeyDotGeo over"></div>
+                        <div class = "barKeyLabelGeo over"></div>
+                        <div class = "barKeyDotSubgeo over"></div>
+                        <div class = "barKeyLabelSubgeo over"></div>
+                      </div>
+                    </div>
+                    <div class = "barChartTopLegendCol under">
+                      <div class = "barChartTopLegendHead">Underrepresented</div>
+                      <div class = "barKeyRow">
+                        <div class = "barKeyDotGeo under"></div>
+                        <div class = "barKeyLabelGeo under"></div>
+                        <div class = "barKeyDotSubgeo under"></div>
+                        <div class = "barKeyLabelSubgeo under"></div>
+                      </div>
+                    </div>
+                    <div class = "barChartTopLegendCol insig">
+                      <div class = "barChartTopLegendHead">No significant difference</div>
+                      <div class = "barKeyRow">
+                        <div class = "barKeyDotGeo insig"></div>
+                        <div class = "barKeyLabelGeo insig"></div>
+                        <div class = "barKeyDotSubgeo insig"></div>
+                        <div class = "barKeyLabelSubgeo insig"></div>
+                      </div>
+                    </div>
                   </div>
                   <div id = "barChartTopAxisContainer">
                   </div>
@@ -178,7 +213,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class = "resultsHeader maps"><img class = "headerIcon" src = "images/map-icon.png">Geographic distribution of your data compared with the</div>
         <select id = "baselineSelectMap">
             <option value = "pop">total population</option> 
-            <option value = "pov2">population with Housing Tax Credits</option> 
+            <option value = "pov2">population with low incomes</option> 
             <option value = "pov">population with extremely low incomes</option> 
             <option value = "int">population without internet access</option> 
             <option value = "cbr">population of cost-burdened renter households</option> 
@@ -263,7 +298,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </select>
 
             </div>
-            <div id = "exploreMore">Want to explore more? Analyze disparities at the <span class="startOverInline">national, state, county, or city</span> level.</div>
         </div>
     </div>
 
@@ -278,7 +312,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- START LOADER HOME CARD -->
 <div class = "loaderHome">
-    <h2 class = "loaderHeader">Spatial Equity Data Tool</h2>
+    <h2 class = "loaderHeader titleHeader">Spatial Equity Data Tool</h2>
     <h3 class = "loaderSubHeader">Measure Disparities in Your Data</h3>
     <h4 class = "datePublished">Last updated November 18, 2021</h4>
 
@@ -330,19 +364,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <form name = "sampleDataForm" id = "sampleDataForm">
                 <input type="file" id="sampleInput">
             </form>
-            <div class = "loaderFixedHeader">
-              <div class = "sample data backButton">
-                  <img src = "images/backArrow.png">
-                  <div><span class = "mobilearrow"></span>Back</div>
-              </div>
 
-            </div>
             <h2 class = "loaderHeader">Use sample data</h2>
-            <p id = "sampleDefaultText"><em>These are examples of <span class = "geographyLevelText lowercase"></span>-level datasets that can be evaluated with the tool. Choose a dataset to explore how the tool works or download the data to see what a compatible file looks like.</em></p>
-            <p class = "hiddenSection hideOption sample"><em>You can run the analysis on the sample dataset with our preset options, or you can add custom filters and weights by selecting advanced options below.</em></p>
+            <p id = "sampleDefaultText">These are examples of <span class = "geographyLevelText lowercase"></span>-level datasets that can be evaluated with the tool. Choose a dataset to explore how the tool works or download the data to see what a compatible file looks like.</p>
+            <p class = "hiddenSection hideOption sample">You can run the analysis on the sample dataset with our preset options, or you can add custom filters and weights by selecting advanced options below.</p>
 
 
-            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP">For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</p>
 
             <div id = "sampleCardContainer">
                 <div class = "mobileOnlyHeader">Choose one</div>
@@ -422,38 +450,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                 </div>
 
-                <div id = "sampleDownloadContainer">
-                  <a href = "" class = "sampleDownload hotspots city">Download the data</a>
-                  <a href = "" class = "sampleDownload three11 city">Download the data</a>
-                  <a href = "" class = "sampleDownload bike city">Download the data</a>
-
-                  <a href = "" class = "sampleDownload playgrounds county">Download the data</a>
-                  <a href = "" class = "sampleDownload polling county">Download the data</a>
-
-                  <a href = "" class = "sampleDownload health state">Download the data</a>
-                  <a href = "" class = "sampleDownload housing state">Download the data</a>
-
-                  <a href = "" class = "sampleDownload electric national">Download the data</a>
-                  <a href = "" class = "sampleDownload libraries national">Download the data</a>
-
-
-                </div>
-
                 <div class = "sampleDetails">
                   <div class = "sampleDeetHeader">Preset advanced options</div>
                   <div class = "sampleDeetContainer"></div>
                   <div class = "appliedDeetHeader appliedDeets">Your advanced options</div>
                   <div class = "appliedDeetContainer appliedDeets"></div>
+                  <div id = "sampleDownloadContainer">
+                    <a href = "" class = "sampleDownload hotspots city">Download the data</a>
+                    <a href = "" class = "sampleDownload three11 city">Download the data</a>
+                    <a href = "" class = "sampleDownload bike city">Download the data</a>
+
+                    <a href = "" class = "sampleDownload playgrounds county">Download the data</a>
+                    <a href = "" class = "sampleDownload polling county">Download the data</a>
+
+                    <a href = "" class = "sampleDownload health state">Download the data</a>
+                    <a href = "" class = "sampleDownload housing state">Download the data</a>
+
+                    <a href = "" class = "sampleDownload electric national">Download the data</a>
+                    <a href = "" class = "sampleDownload libraries national">Download the data</a>
+                  </div>
+                <div id = "sampleButtonContainer" class = "hiddenSection hideOption sample">
+                    <div id = "advancedTextOverlaySample">Advanced options <img src = "images/menuArrow.png"></div>
+                    <select id = "advancedOptionsSample">
+                        <option value = "filters">Filter data</option>
+                        <option value = "weight">Weight data</option>
+                        <!-- <option value = "baseline">Set baseline</option> -->
+                    </select>
+                    <div class = "runButton user button blue">Run analysis</div>
+                </div>
                 </div>                
-            </div>
-            <div id = "sampleButtonContainer" class = "hiddenSection hideOption sample">
-                <div id = "advancedTextOverlaySample">Advanced options <img src = "images/menuArrow.png"></div>
-                <select id = "advancedOptionsSample">
-                    <option value = "filters">Filter data</option>
-                    <option value = "weight">Weight data</option>
-                    <!-- <option value = "baseline">Set baseline</option> -->
-                </select>
-                <div class = "runButton user button blue">Run analysis</div>
             </div>
         </div>
 <!-- END LOADER SAMPLE DATA CARD -->
@@ -468,16 +493,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <form name = "userDataForm" id = "userDataForm">
                 <input type="file" id="fileInput">
             </form>
-            <div class = "loaderFixedHeader">
-              <div class = "user data backButton">
-                  <img src = "images/backArrow.png">
-                  <div><span class = "mobilearrow"></span>Back</div>
-              </div>
 
-            </div>
             <h2 class = "loaderHeader">Upload your data</h2>
-            <p><em>Upload a CSV file of geographic point data to see how well your dataset represents <span class = "geographyLevelText possessive"></span> population.</em></p>
-            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p>Upload a CSV file of geographic point data to see how well your dataset represents <span class = "geographyLevelText possessive"></span> population.</p>
+            <p class = "faqP">For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</p>
             <div id = "uploadInstructionContainer">
                 <div id = "dropbox">
                     <div id = "innerDropbox">
@@ -546,18 +565,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class = "mobileTabFilterList disabled">Filters applied (<span>0</span>)</div>
           </div>
 
-            <div class = "loaderFixedHeader">
-              <div class = "filter advanced backButton">
-                  <img src = "images/backArrow.png">
-                  <div><span class = "mobilearrow"></span>Back</div>
-              </div>
 
-            </div>
             <div class = "mobileOnlyHeader">Choose a column</div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Filter data</span></h2>
             <p>Choose a column to filter by and the tool will detect which values—text, numbers, or dates—are in that column. The filters will allow you to focus on data you want to use and hide data you don’t. Columns with both text and numbers will be treated as text fields.</a></p>
 
-            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p class = "faqP">For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</p>
 
             <div id = "filterColumnContainer">
                 <div id = "filterControls">
@@ -636,16 +649,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class = "mobileTabs">
             <div class = "mobileWeightTab active">Weight data</div>
           </div>          
-            <div class = "loaderFixedHeader">
-              <div class = "weight advanced backButton">
-                  <img src = "images/backArrow.png">
-                  <div><span class = "mobilearrow"></span>Back</div>
-              </div>
 
-            </div>
             <h2 class = "loaderHeader">Advanced options: <span class = "weak">Weight data</span></h2>
-            <p><em>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of library locations, if you choose &ldquo;sq_ft&rdquo; as your weight column, higher–square footage libraries will be given more weight in assessing representativeness.</em></p>
-            <p class = "faqP"><em>For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</em></p>
+            <p>You can weight the rows by a numeric column in your data when calculating representativeness. For example, in a dataset of library locations, if you choose &ldquo;sq_ft&rdquo; as your weight column, higher–square footage libraries will be given more weight in assessing representativeness.</p>
+            <p class = "faqP">For help, see our <a href = "Spatial_Equity_Tool_FAQs.pdf" target = "_blank">FAQ</a>.</p>
             <div id = "weightContainer">
               <div id = "weightMenuContainer">
                   <h3 class = "loaderHeader">Choose a weight column</h3>
@@ -687,23 +694,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class = "loadingImg l2"></div>
                 <img class = "loadingImgTire back" src = "images/loadingTire.png">
                 <img class = "loadingImgTire front" src="images/loadingTire.png">
+                <div id = "mobileLoadingTires"></div>
                 <div class = "loadingErrorImg loadingError"></div>
             </div>
             <div id = "loadingErrorContainer" class = "loadingError"></div>
 
             <div id = "errorNavContainer" class = "loadingError">
+              <div id = "errorStartOver" class = "errorNavComponent errorNavStandard">
+                <img src = "images/backArrow.png">
+                <div>Home</div>
+              </div>
               <div id = "errorNavBack" class = "errorNavComponent errorNavStandard">
                 <img src = "images/backArrow.png">
                 <div>Back to<span></span></div>
               </div>
-              <div id = "errorNavBackFilter" class = "errorNavComponent errorNavStandard">
+              <div id = "errorNavBackAdvanced" class = "errorNavComponent errorNavStandard">
                 <img src = "images/backArrow.png">
-                <div>Back to filter data</div>
+                <div>Advanced options</div>
               </div>
-              <div id = "errorStartOver" class = "errorNavComponent errorNavStandard">
-                <div>Start over</div>
-                <img src = "images/startOverBlue.png">
-              </div>
+
               <div id = "errorYesContinue" class = "errorNavComponent errorNavSubgeo">
                 <div>Yes, continue</div>
               </div>
@@ -732,9 +741,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <a href = "Spatial_Equity_Tool_Technical_Appendix.pdf" target = "_blank">
                       <div class = "button clear footer readResearchButton">TECHNICAL APPENDIX</div>
                     </a>
-                    <a href = "https://medium.com/@urban_institute/introducing-a-spatial-equity-data-tool-b959c40298cf" target = "_blank">
-                      <div class = "button clear footer readResearchButton">CASE STUDY</div>
-                    </a>
+                    <!-- <a href = "https://medium.com/@urban_institute/introducing-a-spatial-equity-data-tool-b959c40298cf" target = "_blank"> -->
+                    <div id = "caseStudyWrapper">
+                      <div class = "button clear footer readResearchButton caseStudyButton">CASE STUDIES</div>
+                      <div id = "caseStudyContainer">
+                        <a href = "https://urban-institute.medium.com/introducing-a-spatial-equity-data-tool-b959c40298cf" target = "_blank">
+                          <div class = "caseStudyLink top">Public Wi-Fi hotspots (New York)</div>
+                        </a>
+                        <a href = "https://medium.com/@urban-institute/introducing-the-spatial-equity-data-tool-version-2-f2a8e900f84" target = "_blank">
+                          <div class = "caseStudyLink bottom">Electric vehicle charging stations (US)</div>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- </a> -->
                     <p>This tool uses data from the five-year (2015–19) American Community Survey to assess demographic and spatial disparities in your data. Once you upload data, the tool compares the distribution of the uploaded data with the distribution of baseline variables from the ACS.</p>
                     <p>For the map, we construct geographic disparity scores by taking the difference between the percentage of the data and the percentage of the selected baseline population that falls into each state (national-level tool), county (state-level tool), or tract (county- and city-level tool).</p>
                     <p>For the demographic disparity chart, we first estimate the demographic groups your data depicts by taking a weighted average of the demographics across all the tracts your data come from. We compare that average with the overall demographics of the selected baseline population and report the difference as the demographic disparity score.</p>

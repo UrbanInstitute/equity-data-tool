@@ -7,7 +7,6 @@ d3.selectAll(".controlContainer").on("click", function(){
     d3.selectAll(".mapDownloadComponent").classed("active", false)
 
 
-
     if(d3.select(this).classed("diff")){
         d3.select("#diffMap")
             .transition()
@@ -73,11 +72,11 @@ function getRange(baseline, bounds, mapType){
             comparisonMin = Math.min(baselineMin, dataMin),
             comparisonMax = Math.max(baselineMax, dataMax),
             diffBound = Math.max(Math.abs(diffMin), diffMax)
-        
+        // console.log(comparisonMin, comparisonMax, diffBound)
         if(mapType == "compare"){
-            return [comparisonMin, comparisonMax]
+            return (comparisonMin != comparisonMax) ? [comparisonMin, comparisonMax] : [0,1]
         }else{
-            return [-diffBound, diffBound]
+            return (diffBound != 0) ? [-diffBound, diffBound] : [-.1, .1]
         }
 }
 

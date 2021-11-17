@@ -708,7 +708,7 @@ button.ui-button::-moz-focus-inner {
 	display: block;
 }
 .ui-selectmenu-text {
-	font-size: 18px;
+	font-size: 16px;
     font-weight: normal;
     color: #353535;
     top: 5px;
@@ -735,6 +735,9 @@ button.ui-button::-moz-focus-inner {
     display: block;
     margin-bottom: 30px;
     border-radius: 0px;
+}
+.ui-selectmenu-button.ui-button#columnSelect-button{
+	background-position-x: calc(100% - 20px);
 }
 .ui-selectmenu-button.ui-button.ui-selectmenu-button-open{
     background: url(../../images/dropdown-bg-active.png) no-repeat right #ffffff;

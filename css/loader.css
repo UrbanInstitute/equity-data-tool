@@ -18,10 +18,14 @@
     font-weight: bold;
 }
 h2.loaderHeader{
-    font-size: 40px;
-    margin-top: 52px;
-    margin-bottom: 25px;
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 40px;
     text-align: center;
+}
+h2.loaderHeader.titleHeader{
+    font-size: 36px;
+    font-weight: bold;
 }
 h3.loaderSubHeader{
     font-size: 30px;
@@ -30,12 +34,13 @@ h3.loaderSubHeader{
     margin-top: -10px;
 }
 h4.datePublished{
-    font-size: 18px;
+    font-size: 14px;
     font-weight: normal;
-    font-style: italic;
+    font-style: normal;
     margin: 0;
     padding: 0;
     margin-top: -20px;
+    color: #696969;
 }
 .loaderHeader span.weak{
     font-weight: normal;
@@ -45,10 +50,10 @@ h4.datePublished{
     line-height: 146%;
     text-align: center;
     font-weight: 300;
-    width: 650px;
+    width: 870px;
     margin: 0 auto;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 20px;
+    margin-bottom: -2px;
 }
 .inputLabel{
     font-size: 18px;
@@ -112,7 +117,7 @@ h4.datePublished{
     padding-bottom: 200%;
 }
 .loaderSection.filters p{
-    font-style: italic;
+    font-style: normal;
 }
 .loaderSection.active{
     display: block;
@@ -193,41 +198,41 @@ h4.datePublished{
     margin-right: 46px;
 }
 .homeInstructions{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     margin-top: 50px;
 }
 #homeButtonRow{
     display: block;
     margin: 0 auto;
-    margin-top: 45px;
-    width: 1052px;
-    margin-left: -107px;
+    margin-top: 24px;
+    width: 939px;
+    margin-left: -29px;
     margin-bottom: 300px;
 }
 .homeButtonContainer{
     position: relative;
     float: left;
     display: block;
-    width: 230px;
+    width: 204px;
     height: 173px;
     background: white;
-    margin-right: 44px;
+    margin-right: 40px;
 }
 .homeButtonContainer.city{
     margin-right: 0px;
 }
 .homeButton{
-    position: absolute; 
+position: absolute;
     left: 0px;
     top: 0px;
-    width: 226px;
-    font-size: 20px;
+    width: 200px;
+    font-size: 18px;
     font-weight: bold;
     border-width: 2px;
     border-style: solid;
-    padding-top: 18px;
-    padding-bottom: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 0px;
     padding-right: 0px;
     background: white;
@@ -269,7 +274,7 @@ h4.datePublished{
     background: #12719E;
 }
 .loaderHome{
-    max-width: 837px;
+    max-width: 870px;
     margin: 0 auto;
     line-height: 146%;
     text-align: center;
@@ -796,7 +801,9 @@ input[type=date]{
     left: calc(50% - 472.5px);
 }
 #sampleButtonContainer {
-    margin-top: 71px;
+    top: 188px;
+    left: -268px;
+    position: absolute;
 }
 #sampleCardContainer{
     width: fit-content;
@@ -813,6 +820,8 @@ input[type=date]{
     margin-right: 0px !important;
     margin-left: 0px !important;
     cursor: default !important;
+    left: -137px;
+    position: relative;
 }
 .sampleCard.singleCard .sampleRect{
     /*margin-left: 10px;*/
@@ -920,12 +929,12 @@ input[type=date]{
 }
 .sampleDownload{
     color: #1696d2;
-    font-style: italic;
     font-weight: 400;
     position: relative;
-    font-weight: bold;
-    text-decoration: underline;
+    font-weight: normal;
     padding-bottom: 2px;
+    text-transform: uppercase;
+    font-size: 16px;
     display: none;
 }
 .sampleDetails{
@@ -937,8 +946,10 @@ input[type=date]{
     float: left;
     clear: both;
     margin-top: 44px;
-    margin-bottom: 34px;
+    margin-bottom: 0px;
     width: 240px;
+    top: -310px;
+    right: -170px;
 }
 .sampleDeetHeader, .appliedDeetHeader{
     font-weight: bold;
@@ -968,9 +979,9 @@ input[type=date]{
     clear: both;
     /*width: fit-content;*/
     margin: 0 auto;
-    padding-top: 18px;
+    padding-top: 6px;
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
 .appliedDeetHeader{
     margin-top: 33px;
@@ -1032,7 +1043,12 @@ input[type=date]{
 .loadingErrorImg{
     display: none;
 }
-.loadingImg, .loadingErrorImg{
+#mobileLoadingTires{
+    display: none;
+    z-index: 3;
+    background-image: url(../images/mobileLoadingTires.png);
+}
+.loadingImg, .loadingErrorImg, #mobileLoadingTires{
     position: absolute;
     top: 0px;
     left: 0px;
@@ -1166,10 +1182,10 @@ input[type=date]{
 .errorNavComponent:hover div{
     font-weight: 700;
 }
-#errorNavBack, #errorNavBackFilter{
+#errorNavBack, #errorNavBackFilter, #errorStartOver{
     margin-right: 40px;
 }
-#errorNavBack img, #errorNavBackFilter img{
+#errorNavBack img, #errorNavBackFilter img, #errorStartOver img, #errorNavBackAdvanced img{
     margin-right: 5px;
 }
 #errorStartOver img{

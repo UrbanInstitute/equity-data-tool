@@ -52,10 +52,16 @@ body{
     width: 34px;
     height: 34px;
     position: absolute; 
-    left: 10px;
+    left: 20px;
     margin-top: 7px;
     background: url(https://www.urban.org/sites/all/themes/urban/images/logo-mini-dark.png) no-repeat;
     background-size: 34px 34px;
+}
+#header-pinned.loading .site-logo{
+    left: calc(50% - 178px);
+}
+#header-pinned.loading .title{
+    margin-left: calc(50% - 127px);
 }
 
 #header-pinned .title {
@@ -87,12 +93,11 @@ body{
 }*/
 #header-pinned .share-icons {
     background-color: transparent;
-    width: 69px;
     height: 50px;
     margin: 0;
     padding: 0;
     top: 0;
-    width: 60px;
+    width: 73px;
     position: absolute;
     right: 0;
 }
@@ -337,10 +342,11 @@ ul{
  }
  .startOverInline.header{
     display: inline-block;
-    margin-right: 24px;
+    margin-right: 35px;
  }
  .FAQ.header{
     display: inline-block;
+    margin-right: -1px;
  }
  .headerLinks .header:hover{
     color: #1696d2 !important;

@@ -94,7 +94,7 @@ function handleFiles(inputFiles){
 }
 
 function deselectSampleData(){
-    window.location.hash = "#" + "sample-" + getGeographyLevel()
+    setHash("sample-" + getGeographyLevel())
 
     d3.selectAll(".sampleRect").classed("active", false)
 
@@ -334,10 +334,11 @@ d3.selectAll(".homeButton.user").on("click", function(){
 
 
 d3.selectAll(".homeButtonContainer")
-    .on("mouseover", function(){
+    .on("click", function(){
+        var scootch = (widthBelow(1100)) ? "66px" : "72px"
         d3.select(this).select(".homeButton.user")
             .transition()
-            .style("top", "97px")
+            .style("top", scootch)
         d3.select(this).select(".homeButton.sample")
             .transition()
             .style("opacity",1)
@@ -345,25 +346,42 @@ d3.selectAll(".homeButtonContainer")
             .style("opacity", 0)
             .style("z-index",-1)
     })
-    .on("mouseout", function(){
-        d3.select(this).select(".homeButton.user")
-            .transition()
-            .style("top", "0px")
-        d3.select(this).select(".homeButton.sample")
-            .transition()
-            .style("opacity",0)
-        d3.select(this).select(".homeButton.geographyLevel")
-            .style("opacity", 1)
-            .style("z-index",1)
-    })
+    // .on("mouseout", function(){
+    //     d3.select(this).select(".homeButton.user")
+    //         .transition()
+    //         .style("top", "0px")
+    //     d3.select(this).select(".homeButton.sample")
+    //         .transition()
+    //         .style("opacity",0)
+    //     d3.select(this).select(".homeButton.geographyLevel")
+    //         .style("opacity", 1)
+    //         .style("z-index",1)
+    // })
 
 
-d3.selectAll(".backButton.user.data").on("click", function(){
-    startOver()
+d3.selectAll(".backButton").on("click", function(){
+    if(d3.select(this).classed("user") || d3.select(this).classed("sample")){
+        startOver()
+    }
+    else if(d3.select(this).classed("filters") || d3.select(this).classed("weight")){
+        showLoaderSection(getDatasetType(), getGeographyLevel())
+        hideLoaderError("weight") 
+    }
+    else{
+        deselectSampleData()
+    }
+    // startOver()
 })
 d3.selectAll(".inlineHome").on("click", function(){
     startOver()
 })
+d3.selectAll(".startOverInline").on("click", function(){
+    startOver()
+})
+d3.selectAll(".startOver").on("click", function(){
+    startOver()
+})
+
 d3.selectAll(".backButton.sample.data").on("click", function(){
     if(d3.selectAll(".sampleCard.inactive").nodes().length == 0){
         startOver()
@@ -374,12 +392,8 @@ d3.selectAll(".backButton.sample.data").on("click", function(){
 d3.selectAll(".backButton.advanced").on("click", function(){
     showLoaderSection(getDatasetType(), getGeographyLevel())
 })
-d3.selectAll(".startOver").on("click", function(){
-    startOver()
-})
-d3.selectAll(".startOverInline").on("click", function(){
-    startOver()
-})
+
+
 
 
 /******** start drag and drop handlers *************/
@@ -431,6 +445,23 @@ d3.selectAll(".sampleCard").on("click", function(){
             .style("opacity",.8)
     }
 })
+
+
+d3.select("#caseStudyWrapper")
+    .on("mouseenter", function(){
+        d3.select("#caseStudyContainer")
+            .style("opacity",1)
+            .transition()
+            .style("height", "107px")
+    })
+    .on("mouseleave", function(){
+        d3.select("#caseStudyContainer")
+            .transition()
+            .style("height", "0px")
+            .on("end", function(){
+                d3.select(this).style("opacity",0)
+            })
+    })
 
 
 $('#advancedOptionsUser')
@@ -554,8 +585,13 @@ d3.select("#errorNavBack")
         d3.select(".loaderSection.loading .loaderHeader")
             .html("Sit tight! We’re analyzing your data.")
         showLoaderSection(getDatasetType(), getGeographyLevel())
+        if(getDatasetType() == "sample"){
+            deselectSampleData()
+        }else{
+            startOver("user", getGeographyLevel())
+        }
     })
-d3.select("#errorNavBackFilter")
+d3.select("#errorNavBackAdvanced")
     .on("mouseover", function(){
         d3.select(this).select("img").attr("src", "images/backArrowBold.png")
     })
@@ -565,14 +601,14 @@ d3.select("#errorNavBackFilter")
     .on("click", function(){
         d3.select(".loaderSection.loading .loaderHeader")
             .html("Sit tight! We’re analyzing your data.")
-        showLoaderSection("filters", getGeographyLevel())
+        showLoaderSection(getDatasetType(), getGeographyLevel())
     })
 d3.select("#errorStartOver")
     .on("mouseover", function(){
-        d3.select(this).select("img").attr("src", "images/startOverBlueBold.png")
+        d3.select(this).select("img").attr("src", "images/backArrowBold.png")
     })
     .on("mouseout", function(){
-      d3.select(this).select("img").attr("src", "images/startOverBlue.png")  
+      d3.select(this).select("img").attr("src", "images/backArrow.png")  
     })
     .on("click", function(){
         startOver()
@@ -677,31 +713,75 @@ document.onmouseleave = function() {
 }
 
 window.onhashchange = function() {
-    if (window.innerDocClick) {
+    var hash = window.location.hash.replace("#","")
+    // console.log(hash)
+    if (window.innerDocClick || keyNav) {
         //Your own in-page mechanism triggered the hash change
         // console.log("asdf")
     } else {
         //Browser back button was clicked
-        // console.log("ddd")
-        var hash = window.location.hash
-        console.log(hash)
-        if(hash == ""){
-            startOver()
-        }
-        else if(hash.search("sample") != -1){
-            // var geo = hash.split("-")[1]
-            // setDatasetType("sample", geo)
-            // showLoaderSection("sample", geo)
-            deselectSampleData()
+        hashNav(hash)
 
-        }
-        else if(hash.search("user") != -1){
-            var geo = hash.split("-")[1]
-            setDatasetType("user", geo)
-            showLoaderSection("user", geo)
-
-        }
     }
 }
+
+
+function setHash(hash, skipURL){
+    if(typeof(skipURL) == "undefined"){ window.location.hash = "#" + hash }
+    d3.select("#headerBack").attr("class", "header backButton " + hash.replace("-"," "))
+}
+
+function hashNav(hash){
+    if(hash == ""){
+        startOver()
+    }
+    else if(hash.search("sample") != -1){
+        deselectSampleData()
+    }
+    else if(hash.search("user") != -1){
+        var geo = hash.split("-")[1]
+        setDatasetType("user", geo)
+        showLoaderSection("user", geo)
+
+    }
+    else if(hash.search(getGeographyLevel())  != -1 && hash.search("results") == -1){
+        showLoaderSection(getDatasetType(), getGeographyLevel())
+    }
+    else if(hash == "loading"){
+        showLoaderSection(getDatasetType(), getGeographyLevel())   
+    }
+    else if(hash == "filters" || hash == "weight"){
+        showLoaderSection(hash, getGeographyLevel())
+    }
+    else if(hash == "error"){
+        // startOver()
+    }
+    else if(hash.indexOf("results") != -1){
+        return false;
+    }
+}
+
+// 91 command
+// 18 alt
+// 37 arrow left
+// 39 arrow right
+// 8 backspace
+// detect if alt key or command key (on mac) is being held down
+var altDown = false;
+var keyNav = false;
+document.addEventListener("keydown", function(e){
+    if(e.keyCode == 91 || e.keyCode == 18) altDown = true
+    if(altDown){
+        if(e.keyCode == 37 || e.keyCode == 39){
+            keyNav = true;
+            setTimeout(() => {hashNav(window.location.hash.replace("#",""))}, 500)
+            setTimeout(() => { keyNav = false}, 1000)
+        }
+    }
+})
+document.addEventListener("keyup", function(e){
+    if(e.keyCode == 91 || e.keyCode == 18) altDown = false
+})
+
 
 

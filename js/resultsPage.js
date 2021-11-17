@@ -23,6 +23,7 @@ function populateSummaries(messages, params){
     d3.select("#resultsSubnav")
         .transition()
         .style("top", "45px")
+    d3.select("#header-pinned").classed("loading", false)
     d3.select("#resultsNavDataName")
         .html(function(){
             if(datasetType == "user"){

@@ -181,7 +181,35 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
         .delay(function(d,i){return i*20})
         .attr("cx", function(d){return x(d.d_score)})
 
-    drawBarLegend("dynamic", false);
+    var barKeyLabelGeo, barKeyLabelSubgeo, subgeOpacity, barLegendWidth;
+    if(geo == "national"){
+        barKeyLabelGeo = "National";
+        barKeyLabelSubgeo = "State";
+        subgeOpacity = 1;
+        barLegendWidth = "557px";
+    }
+    else if(geo == "state"){
+        barKeyLabelGeo = "State";
+        barKeyLabelSubgeo = "County";
+        subgeOpacity = 1;
+        barLegendWidth = "534px";
+    }
+    else if(geo == "county"){
+        barKeyLabelGeo = "County";
+        barKeyLabelSubgeo = "";
+        subgeOpacity = 0;
+    }
+    else if(geo == "city"){
+        barKeyLabelGeo = "City";
+        barKeyLabelSubgeo = "";
+        subgeOpacity = 0;
+    }
+    d3.selectAll(".barKeyLabelGeo").text(barKeyLabelGeo)
+    d3.selectAll(".barKeyLabelSubgeo").text(barKeyLabelSubgeo)
+    d3.selectAll(".barKeyDotSubgeo").style("opacity", subgeOpacity)
+    d3.selectAll(".barKeyLabelSubgeo").style("opacity", subgeOpacity)
+    d3.select("#barChartTopLegend").style("width", barLegendWidth)
+    d3.select("#barChartTopMenuContainer").style("width", "calc(100% - " + barLegendWidth + ")")
     initBarMenu(baseline);
 
     if(geo == "national"){
@@ -642,8 +670,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
 
     if(geo == "national"){
         geoLabel = "National";
-        subGeoLabel = "States";
-        avgLabel = "average";
+        subGeoLabel = "State";
         p1 = 233;
         p2 = 165;
         p3 = 197;
@@ -653,8 +680,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
     }
     else if(geo == "state"){
         geoLabel = "State"
-        subGeoLabel = "Counties"
-        avgLabel = "average";
+        subGeoLabel = "County"
         p1 = 224;
         p2 = 175;
         p3 = 192;
@@ -663,18 +689,18 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         smallOpacity = 1;
     }
     else if(geo == "county"){
-        geoLabel = ""
+        geoLabel = "County"
         subGeoLabel = ""
-        avgLabel = "County average";
+        avgLabel = "";
         p3 = 215;
         p4 = 25;
         p5 = 167;
         smallOpacity = 0;
     }
     else if(geo == "city"){
-        geoLabel = ""
+        geoLabel = "City"
         subGeoLabel = ""
-        avgLabel = "City average";
+        avgLabel = "";
         p3 = 215;
         p4 = 25;
         p5 = 177;
@@ -694,97 +720,172 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         if(subgeo != ""){
             var subgeoText = $("#subgeoSelect option:selected" ).text()
             svg.append("circle")
-                .attr("cx", 293)
+                .attr("cx", 655)
                 .attr("cy", 47)
                 .attr("r", BAR_DOT_RADIUS_SMALL)
                 .style("stroke", "none")
                 .style("fill","#fdbf11")
                 .style("opacity", smallOpacity)
             svg.append("text")
-                .attr("x", 310)
-                .attr("y", 51)
+                .attr("x", 670)
+                .attr("y", 53)
                 .text(subgeoText)
         }
     }
-
-    svg.append("text")
-        .attr("x", p2)
-        .attr("y", 15)
-        .text(geoLabel)
     
-    svg.append("text")
-        .attr("x", p5)
-        .attr("y", p4)
-        .text(avgLabel)
-
 
     svg.append("text")
-        .attr("x", p1)
-        .attr("y", p4)
-        .text(subGeoLabel)
-
-    svg.append("text")
-        .attr("text-anchor","end")
-        .attr("x",160)
-        .attr("y", 50)
+        // .attr("text-anchor","end")
+        .attr("x",0)
+        .attr("y", 22)
+        .style("font-weight", 700)
         .text("Overrepresented")
 
-    svg.append("text")
-        .attr("text-anchor","end")
-        .attr("x",160)
-        .attr("y", 73)
-        .text("Underrepresented")
-
-    svg.append("text")
-        .attr("text-anchor","end")
-        .attr("x",160)
-        .attr("y", 96)
-        .text("No significant difference")
-
     svg.append("circle")
-        .attr("cx", p3)
+        .attr("cx", 10)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_LARGE)
         .style("fill", "#1696d2")
         .style("stroke","none")
 
-    svg.append("circle")
-        .attr("cx", p3)
-        .attr("cy", 69)
-        .attr("r", BAR_DOT_RADIUS_LARGE)
-        .style("fill", "#ca5800")
-        .style("stroke","none")
+    svg.append("text")
+        .attr("x", 25)
+        .attr("y", 53)
+        .text(geoLabel)
 
     svg.append("circle")
-        .attr("cx", p3)
-        .attr("cy", 91)
-        .attr("r", BAR_DOT_RADIUS_LARGE)
-        .style("fill", "#9d9d9d")
-        .style("stroke","none")
-
-    svg.append("circle")
-        .attr("cx", 253)
+        .attr("cx", 110)
         .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_SMALL)
         .style("stroke", "#1696d2")
         .style("fill","none")
         .style("opacity", smallOpacity)
 
+    svg.append("text")
+        .attr("x", 125)
+        .attr("y", 53)
+        .text(subGeoLabel)
+        .style("opacity", smallOpacity)
+
+
+
+
+
+
+    svg.append("text")
+        // .attr("text-anchor","end")
+        .attr("x",230-15)
+        .attr("y", 22)
+        .style("font-weight", 700)
+        .text("Underrepresented")
+
     svg.append("circle")
-        .attr("cx", 253)
-        .attr("cy", 69)
+        .attr("cx", 240-15)
+        .attr("cy", 47)
+        .attr("r", BAR_DOT_RADIUS_LARGE)
+        .style("fill", "#ca5800")
+        .style("stroke","none")
+
+    svg.append("text")
+        .attr("x", 255-15)
+        .attr("y", 53)
+        .text(geoLabel)
+
+    svg.append("circle")
+        .attr("cx", 340-15)
+        .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_SMALL)
         .style("stroke", "#ca5800")
         .style("fill","none")
         .style("opacity", smallOpacity)
 
+    svg.append("text")
+        .attr("x", 355-15)
+        .attr("y", 53)
+        .text(subGeoLabel)
+        .style("opacity", smallOpacity)
+
+
+
+
+
+    svg.append("text")
+        // .attr("text-anchor","end")
+        .attr("x",430)
+        .attr("y", 22)
+        .style("font-weight", 700)
+        .text("No significant difference")
+
     svg.append("circle")
-        .attr("cx", 253)
-        .attr("cy", 91)
+        .attr("cx", 440)
+        .attr("cy", 47)
+        .attr("r", BAR_DOT_RADIUS_LARGE)
+        .style("fill", "#9d9d9d")
+        .style("stroke","none")
+
+    svg.append("text")
+        .attr("x", 455)
+        .attr("y", 53)
+        .text(geoLabel)
+
+    svg.append("circle")
+        .attr("cx", 540)
+        .attr("cy", 47)
         .attr("r", BAR_DOT_RADIUS_SMALL)
         .style("stroke", "#9d9d9d")
         .style("fill","none")
         .style("opacity", smallOpacity)
+
+    svg.append("text")
+        .attr("x", 555)
+        .attr("y", 53)
+        .text(subGeoLabel)
+        .style("opacity", smallOpacity)
+
+    // svg.append("circle")
+    //     .attr("cx", p3)
+    //     .attr("cy", 47)
+    //     .attr("r", BAR_DOT_RADIUS_LARGE)
+    //     .style("fill", "#1696d2")
+    //     .style("stroke","none")
+
+    // svg.append("circle")
+    //     .attr("cx", p3)
+    //     .attr("cy", 69)
+    //     .attr("r", BAR_DOT_RADIUS_LARGE)
+    //     .style("fill", "#ca5800")
+    //     .style("stroke","none")
+
+    // svg.append("circle")
+    //     .attr("cx", p3)
+    //     .attr("cy", 91)
+    //     .attr("r", BAR_DOT_RADIUS_LARGE)
+    //     .style("fill", "#9d9d9d")
+    //     .style("stroke","none")
+
+    // svg.append("circle")
+    //     .attr("cx", 253)
+    //     .attr("cy", 47)
+    //     .attr("r", BAR_DOT_RADIUS_SMALL)
+    //     .style("stroke", "#1696d2")
+    //     .style("fill","none")
+    //     .style("opacity", smallOpacity)
+
+    // svg.append("circle")
+    //     .attr("cx", 253)
+    //     .attr("cy", 69)
+    //     .attr("r", BAR_DOT_RADIUS_SMALL)
+    //     .style("stroke", "#ca5800")
+    //     .style("fill","none")
+    //     .style("opacity", smallOpacity)
+
+    // svg.append("circle")
+    //     .attr("cx", 253)
+    //     .attr("cy", 91)
+    //     .attr("r", BAR_DOT_RADIUS_SMALL)
+    //     .style("stroke", "#9d9d9d")
+    //     .style("fill","none")
+    //     .style("opacity", smallOpacity)
 
 }
 
@@ -835,15 +936,22 @@ function initSubgeoMenu(geo, values, defaultVal){
 
         containerLabel.text("Highlight a state or region")
 
-        var regions = select.append("optgroup").attr("label", "Regions")
-        regions.append("option").attr("value", "ne-region").text("Northeast region")
-        regions.append("option").attr("value", "mw-region").text("Midwest region")
-        regions.append("option").attr("value", "s-region").text("South region")
-        regions.append("option").attr("value", "w-region").text("West region")
+        var regionsGroup = select.append("optgroup").attr("label", "Regions"),
+            ne = regionsGroup.append("option").attr("value", "ne-region").text("Northeast region"),
+            mw = regionsGroup.append("option").attr("value", "mw-region").text("Midwest region"),
+            s = regionsGroup.append("option").attr("value", "s-region").text("South region"),
+            w = regionsGroup.append("option").attr("value", "w-region").text("West region"),
+            vs = values.map(v => v[0])
+
+
+        if(! arrayOverlap(vs, regions.get("ne-region").map(d => "fips-" + d.fips))) ne.attr("disabled", "disabled")
+        if(! arrayOverlap(vs, regions.get("mw-region").map(d => "fips-" + d.fips))) mw.attr("disabled", "disabled")
+        if(! arrayOverlap(vs, regions.get("s-region").map(d => "fips-" + d.fips))) s.attr("disabled", "disabled")
+        if(! arrayOverlap(vs, regions.get("w-region").map(d => "fips-" + d.fips))) w.attr("disabled", "disabled")
 
         var states = select.append("optgroup").attr("label", "States")
         for(var i = 0; i < values.length; i++){
-            states.append("option").attr("value", values[i][0]).html(values[i][1])
+            states.append("option").attr("value", values[i][0]).html(values[i][1].replace("the District of Columbia", "District of Columbia"))
         }
 
     }

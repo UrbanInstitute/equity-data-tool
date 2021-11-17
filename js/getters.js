@@ -81,7 +81,7 @@ function getBarWidth(containerType){
         if(widthBelow(1000) || widthBelow(768) || widthBelow(500)){
             w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width + pad
         }else{
-            w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width
+            w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width - 20
         }
     }
     return w;
