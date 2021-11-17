@@ -27,6 +27,10 @@
         display: block;
         margin-bottom: 10px;
     }
+    #geo{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 </style>
 </head>
 <body>
@@ -34,6 +38,12 @@
     <div id = "instructions">Upload a file</div>
     <input type="file" id = "fileInput">
     <div id = "run" >Test POST</div>
+    <select id = "geo">
+        <option value = "national">national</option>
+        <option value = "state">state</option>
+        <option value = "county">county</option>
+        <option value = "city">city</option>
+    </select>
     <div id = "postResponse">
         <div>POST response:</div>
         <textarea>
@@ -54,14 +64,15 @@
 <script>
 const TOKEN = "4b7aa32e17731af9e97d0d2edd061f1b46d7d117"
 
-function runAnalysis() {
+function runAnalysis(geo) {
 
     var defaultParams = {
         "filters":[],
         "weight": "",
         "lat_column": "lat",
         "lon_column": "lon",
-        "year": 2018
+        "year": 2018,
+        "geo": geo
       }
 
     var params = defaultParams,
@@ -142,7 +153,10 @@ function testGet(fileId){
     }); 
 }
 
-$("#run").click(runAnalysis)
+$("#run").click(function(){
+    var get = $("#geo").val()
+    runAnalysis(geo)
+})
 $("#get").click(function(){
     var f = $("#fileId").val()
     testGet(f)
