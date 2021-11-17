@@ -23,6 +23,10 @@
         width: 300px;
         height: 300px;
     }
+    #fileId{
+        display: block;
+        margin-bottom: 10px;
+    }
 </style>
 </head>
 <body>
@@ -39,6 +43,7 @@
     <div id = "get">Test GET</div>
     <div id = "getResponse">
         <div>GET response:</div>
+        <input id = "fileId" placeholder="fileId">
         <textarea>
         </textarea>
     </div>
@@ -117,9 +122,9 @@ function runAnalysis() {
     }); 
 }
 
-function testGet(){
+function testGet(fileId){
         $.ajax({
-        url: "https://equity-tool-api.urban.org/api/v1/get-equity-status/1600733434-294555",
+        url: "https://equity-tool-api.urban.org/api/v1/get-equity-status/" + fileId,
         method: "GET",
         crossDomain: true,
         beforeSend: function (xhr) {
@@ -138,7 +143,10 @@ function testGet(){
 }
 
 $("#run").click(runAnalysis)
-$("#get").click(testGet)
+$("#get").click(function(){
+    var f = $("#fileId").val()
+    testGet(f)
+})
 
 </script>
 </body>

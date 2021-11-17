@@ -34,9 +34,9 @@
 }
 #baselineSelectMap-button, #baselineSelectBar-button{
     display: inline-block;
-    top: 13px;
+    top: 9px;
     margin-left: 3px;
-    height: 42px;
+    height: 36px;
 }
 #baselineSelectMap-button .ui-selectmenu-text, #baselineSelectBar-button .ui-selectmenu-text{
     width: fit-content;
@@ -54,6 +54,7 @@
     width: -moz-fit-content;
     border: none;
     border-bottom: 3px solid #1696d2;
+    z-index: 2;
 }
 
 #subgeoSelect-button{
@@ -67,7 +68,7 @@
     width: -webkit-fit-content;
     width: -moz-fit-content;
     position: relative;
-    height: 42px;
+    height: 36px;
     min-width: 150px;
 }
 #subgeoSelect-button span{

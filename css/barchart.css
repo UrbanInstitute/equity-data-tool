@@ -53,6 +53,7 @@
     border-bottom-color: #f3f3f3;
     border-width: 10px;
     margin-left: -10px;
+    z-index: 2;
 }
 .tt-container:before {
     border-color: rgba(210, 210, 210, 0);
@@ -266,6 +267,7 @@
     left: 410px;
     position: absolute;
     top: -50px;
+    z-index: 1;
 }
 #barChartTopLegend{
 display: inline-block;
@@ -293,7 +295,6 @@ font-weight: bold; */
     margin-bottom: 0px;
     margin-top: 48px;
     /* float: right; */
-    width: fit-content;
     width: fit-content;
     width: -webkit-fit-content;
     width: -moz-fit-content;

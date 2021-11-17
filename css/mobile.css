@@ -20,7 +20,41 @@
     }
 }
 
+@media(max-width: 1300px){
+    #barChartInstruction{
+            width: 240px;
+    }
+    #barChartTopControls{
+        width: calc(100% - 220px);
+        left: 210px;
+    }
+    #barChartTopAxisContainer{
+        margin-left: 203px;
+    }
+}
+
 @media(max-width: 1200px){
+#barChartInstruction {
+    width: 100%;
+    top: -15px;
+    font-style: italic;
+}
+#barChartTopContainer{
+    height: 130px;
+}
+#barChartTopControls{
+    margin-top: 40px;
+}
+#barChartTopMenu{
+    margin: 0px;
+}
+#barChartTopControls{
+    left: 0px;
+    width: 100%;
+}
+#barChartTopAxisContainer{
+    margin-left: 413px;
+}
     #widthBelow1200{
         display: block;
     }
@@ -113,17 +147,10 @@
         left: -30px;
     }
         #baselineSelectMap-button .ui-selectmenu-text, #baselineSelectBar-button .ui-selectmenu-text {
-        left: 11px;
+/*        left: 11px;
         font-weight: bold;
         font-size: 16px;
-        top: -3px;
-    }
-    #baselineSelectMap-button, #baselineSelectBar-button{
-        height: 29px;
-        margin-top: -40px;
-        left: -7px;
-        width: 100%;
-        max-width: 400px !important;
+        top: -3px;*/
     }
     #mapControls .controlContainer{
         width: 50%;
@@ -139,6 +166,26 @@
     #homeButtonRow{
         /*width: 552px;*/
         /*margin-left: 169px;*/
+    }
+    #baselineSelectMap-button, #baselineSelectBar-button{
+    display: block;
+    margin-top: -54px;
+    float: left;
+    clear: left;
+    }
+    .resultsHeader.maps, .resultsHeader.bars {
+        display: inline-block;
+        float: left;
+    }
+    .resultsHeader.afterMenu{
+        display: block;
+        float: left;
+        width: fit-content;
+        margin-top: -29px;
+        margin-left: 6px;
+    }
+    .headerIcon{
+        top: 31px;
     }
 
 
@@ -191,7 +238,7 @@
     }
 
     #baselineSelectMap-button, #baselineSelectBar-button{
-        max-width: unset !important;
+        /*max-width: unset !important;*/
     }
     .resultsHeader{
         margin-bottom: 40px;
@@ -846,9 +893,9 @@
         margin-left: 30px;
     }
     #baselineSelectMap-button, #baselineSelectBar-button{
-        height: 29px;
+/*        height: 29px;
         margin-top: -49px;
-        left: -7px;
+        left: -7px;*/
     }
     #mapControls{
         margin-right: 0px;
@@ -1048,6 +1095,9 @@
         text-align: center;
         margin: 0 auto;
     }
+
+
+
 
 }
 @media(max-width: 500px){

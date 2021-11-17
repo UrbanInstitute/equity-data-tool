@@ -727,7 +727,7 @@ button.ui-button::-moz-focus-inner {
     white-space: nowrap;
     width: 100%;
     height: 45px;
-    background: url(../../images/dropdown-bg.png) no-repeat right #ffffff;
+    background: url(../../images/dropdown-bg.png) no-repeat right transparent;
     background-size: 13px;
     background-position-x: calc(100% - 3px);
     background-position-y: 21px;
@@ -740,7 +740,7 @@ button.ui-button::-moz-focus-inner {
 	background-position-x: calc(100% - 20px);
 }
 .ui-selectmenu-button.ui-button.ui-selectmenu-button-open{
-    background: url(../../images/dropdown-bg-active.png) no-repeat right #ffffff;
+    background: url(../../images/dropdown-bg-active.png) no-repeat right transparent;
     background-size: 13px;
     background-position-x: calc(100% - 3px);
     background-position-y: 21px;	
@@ -1015,7 +1015,7 @@ a.ui-button:active,
 	color: #fff;
 }
 .ui-button:active, .ui-button.active{
-   	background: url(../../images/dropdown-bg-active.png) no-repeat right #ffffff;
+   	background: url(../../images/dropdown-bg-active.png) no-repeat right transparent;
    	background-size: 13px;
    	background-position-x: calc(100% - 3px);
    	background-position-y: 21px;	
