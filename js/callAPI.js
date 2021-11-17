@@ -175,6 +175,7 @@ function drawResultsData(fileId){
             }
         }, 
         error: function(e){
+            console.log(e)
             throwError(["api"])
         },
         success: function(msg, status, xhr){
@@ -305,13 +306,14 @@ function checkStatus(status){
         Object.keys(status["formdata"]["error-messages"]).forEach(function(key){
             if (!status["formdata"]["error-messages"][key]) delete status["formdata"]["error-messages"][key];
         });
+        console.log(status)
         throwError(Object.keys(status["formdata"]["error-messages"]))
     }
     else if(status.formdata.updates.finished){
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusDone").style("display","block")
 
-        d3.select("#num_rows_processed").text(status.formdata.updates.num_rows_processed)
+        // d3.select("#num_rows_processed").text(status.formdata.updates.num_rows_processed)
         d3.select("#num_rows_file").text(status.formdata.updates.num_rows_file)
 
         if(status.formdata.warnings.few_sub_geos_flag){
@@ -338,7 +340,7 @@ function checkStatus(status){
         d3.selectAll(".loaderSectionStatus").style("display","none")
         d3.select("#statusProcessing").style("display","block")
         var processed = (status.formdata.updates.num_rows_processed == null) ? 0 : status.formdata.updates.num_rows_processed
-        d3.select("#num_rows_processed").text(d3.format(",")(processed))
+        // d3.select("#num_rows_processed").text(d3.format(",")(processed))
         d3.select("#num_rows_file").text(d3.format(",")(status.formdata.updates.num_rows_file))
     }
 
