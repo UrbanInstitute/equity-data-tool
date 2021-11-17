@@ -239,11 +239,11 @@ function populateSummaries(messages, params){
 
 }
 function scootchHeaderX(){
-    if(d3.select(".summaryHeader").node().getBoundingClientRect().height > 30){
-        d3.select(".headerX").classed("tall", true)
-    }else{
-        d3.select(".headerX").classed("tall", false)
-    }
+    // if(d3.select(".summaryHeader").node().getBoundingClientRect().height > 30){
+    //     d3.select(".headerX").classed("tall", true)
+    // }else{
+    //     d3.select(".headerX").classed("tall", false)
+    // }
 }
 function populateDownloadLinks(links){
     d3.select("#mapDataCsv").attr("data-link", links.geo_bias_csv)

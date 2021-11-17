@@ -190,7 +190,7 @@ function drawResultsData(fileId){
     // else if(baseline == "under18_pop") pplLabel = "children"
     // else if(baseline == "pov_pop") pplLabel = "residents with extremely low incomes"
             setHash("results-" + getGeographyLevel())
-
+console.log(msg)
             drawBarChart(msg.results.result.demographic_bias_data, "dynamic", barBaseline, "", function(){})
             drawMaps(msg.results.result.bbox, msg.results.result.geo_bias_data.features, params.baseline, msg.results.result.bounds)
             populateSummaries(msg.results.result.messages, params)

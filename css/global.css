@@ -81,10 +81,14 @@ select{
     width: 150px;
     text-align: center;
 }
+#caseStudyWrapper{
+    position: relative;
+    display: inline-block;
+}
 #caseStudyContainer{
     position: absolute;
-    left: 311px;
-    top: 154px;
+    top: 43px;
+    left: 0px;
     /* padding: 10px; */
     width: 190px;
     font-size: 16px;
@@ -139,7 +143,7 @@ select{
 .backButton.user, .backButton.sample, .backButton.city, .backButton.county, .backButton.national, .backButton.state, .backButton.filters, .backButton.weight{
     display: block;
 }
-.backButton.results{
+.backButton.results, .backButton.mobileHide{
     display: none !important;
 }
 .startOver{

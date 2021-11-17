@@ -275,8 +275,13 @@ function resizeLoader(){
     var rightCol = d3.select(".sampleDetails.active").node().getBoundingClientRect().height,
         leftCol = d3.select(".sampleCard.singleCard").node().getBoundingClientRect().height,
         h;
-    if(rightCol > leftCol) d3.select("#sampleButtonContainer").style("top", (rightCol - leftCol + 188) + "px")
-    else d3.select("#sampleButtonContainer").style("top", (188) + "px")
+    if(widthBelow(768) || widthBelow(500)){
+      d3.select("#sampleButtonContainer").style("top", (-40) + "px")
+    }else{
+      if(rightCol > leftCol) d3.select("#sampleButtonContainer").style("top", (rightCol - leftCol + 188) + "px")
+      else d3.select("#sampleButtonContainer").style("top", (188) + "px")     
+    }
+
   }
 }
 

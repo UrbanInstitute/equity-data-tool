@@ -452,7 +452,7 @@ d3.select("#caseStudyWrapper")
         d3.select("#caseStudyContainer")
             .style("opacity",1)
             .transition()
-            .style("height", "107px")
+            .style("height", (d3.select(".caseStudyLink.top").node().getBoundingClientRect().height + d3.select(".caseStudyLink.bottom").node().getBoundingClientRect().height) + "px")
     })
     .on("mouseleave", function(){
         d3.select("#caseStudyContainer")

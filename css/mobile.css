@@ -19,22 +19,7 @@
         margin-left: -43px;
     }
 }
-@media(max-width: 1100px){
-    #widthBelow1100{
-        display: block;
-    }
-    #homeButtonRow{
-        width: 505px;
-        margin: 0 auto;
-        height: 380px;
-    }
-    .homeButtonContainer.state, .homeButtonContainer.city{
-        margin-right: 0px;
-    }
-    .homeButtonContainer{
-        height: 148px;
-    }
-}
+
 @media(max-width: 1200px){
     #widthBelow1200{
         display: block;
@@ -55,12 +40,34 @@
         height: 111px;
     }
 }
+@media(max-width: 1100px){
+    #widthBelow1200{
+        display: none;
+    }
+    #widthBelow1100{
+        display: block;
+    }
+    #homeButtonRow{
+        width: 449px;
+        margin: 0 auto;
+        height: 380px;
+    }
+    .homeButtonContainer.state, .homeButtonContainer.city{
+        margin-right: 0px;
+    }
+    .homeButtonContainer{
+        height: 148px;
+    }
+}
 @media(max-width: 1000px){
     #widthBelow1000{
         display: block;
     }
     #widthBelow1200{
         display: none;
+    }
+    #widthBelow1100{
+        /*display: none;*/
     }
     .sampleCard, .sampleRect{
         width: 230px;
@@ -140,6 +147,12 @@
     #widthBelow1000{
         display: none;
     }
+        #widthBelow1100{
+        /*display: none;*/
+    }
+    .homeInstructions{
+        font-size: 16px;
+    }
     .resultsHeaderSubnav.weight, .resultsHeaderSubnav.filters{
         display: none;
     }
@@ -157,8 +170,24 @@
     #widthBelow768{
         display: block;
     }
-    .startOver, #header-pinned .title, #advancedOptionsSample-button, #advancedOptionsUser-button, #sampleDefaultText, .faqP, .loaderSection.user p, .dropboxDrag.desktop, .loaderSection.filters p, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer{
-        display: none;  
+    .startOver, #advancedOptionsSample-button, #advancedOptionsUser-button, #sampleDefaultText, .faqP, .loaderSection.user p, .dropboxDrag.desktop, .loaderSection.filters p, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer, #header-pinned .feature-link{
+        display: none !important;  
+    }
+    #headerBack{
+        width: 60px;
+    }
+    .runButton.user{
+        width: 100%;
+        margin: 0 auto;
+        display: inline-block;
+        position: initial;
+        margin-top: 20px;
+    }
+    #sampleButtonContainer {
+        /*top: -100px !important;*/
+        position: relative;
+        margin-bottom: -19px;
+        left: 0px;
     }
 
     #baselineSelectMap-button, #baselineSelectBar-button{
@@ -175,6 +204,7 @@
     }
     .backButton{
         top: -11px;
+        z-index: 999;
     }
     .backButton div{
         text-transform: uppercase;
@@ -198,13 +228,13 @@
         position: relative;
     }
     #header-pinned.sample, #header-pinned.user, #header-pinned.filters, #header-pinned.weight{
-        width: calc(100% - 110px);
+        /*width: calc(100% - 110px);*/
         right: 0px;
         background: white;
         left: inherit;
     }
     #header-pinned.sample .site-logo, #header-pinned.user .site-logo, #header-pinned.filters .site-logo, #header-pinned.weight .site-logo{
-        display: none;
+        /*display: none;*/
     }
 
 
@@ -253,8 +283,8 @@
         position: relative;
     }
     .mobileTabs{
-        top: 55px;
-        padding-top: 5px;        
+        top: 45px;
+        padding-top: 15px;        
         display: block;
         position: fixed;
         z-index: 999;
@@ -524,7 +554,7 @@
         border: 2px solid #1696d2;
         background: #fff;
         padding: 12px 20px;
-        width: calc(50% - 60px);
+        width: calc(100% - 44px);
         text-align: center;
         right: 0px;
         left: initial;
@@ -535,9 +565,10 @@
         display: none;
     }
     .runButton.user{
-        width: calc(50% - 60px);
-        margin: 0 auto;
-        display: inline-block;
+    width: calc(100% - 44px);
+    margin: 0 auto;
+    display: inline-block;
+    margin-top: 58px;
     }
 /*    .loaderSection.user .runButton.user{
         width: calc(50% - 60px);
@@ -777,6 +808,7 @@
         margin-bottom: 20px !important;
         float: initial;
         width: fit-content;
+        width: -webkit-fit-content;
         width: -moz-fit-content;
     }
     .summaryColumn{
@@ -955,7 +987,26 @@
         position: relative;
         float: initial;
     }
-
+    #caseStudyWrapper{
+        width: 100%;
+    }
+    #caseStudyContainer{
+        width: calc(100% - 20px);
+        text-align: center;
+    }
+    #header-pinned.loading .site-logo {
+        left: calc(50% - 138px);
+    }
+    #header-pinned.loading .title {
+        margin-left: calc(50% - 93px);
+    }
+    .sampleCard.singleCard {
+        left: 0px;
+    }
+    .sampleDetails.active{
+        top: 0px;
+        right: 0px;
+    }
 }
 @media(max-width: 550px){
     #homeButtonRow .button{
@@ -1000,6 +1051,12 @@
 
 }
 @media(max-width: 500px){
+    #header-pinned .title{
+        display: none;
+    }
+    #header-pinned.loading .site-logo {
+        left: calc(50% - 44px);
+    }
     .homeButtonContainer{
         width: 100%;
     }
@@ -1025,6 +1082,9 @@
     #widthBelow1000{
         display: none;
     }
+    #widthBelow1100{
+        /*display: none;*/
+    }
     #widthBelow1200{
         display: none;
     }
@@ -1041,30 +1101,7 @@
 /*        left: 30px;
         width: calc(100% - 60px);*/
     }
-    #advancedTextOverlaySample, #advancedTextOverlayUser{
-        top: 67px;
-        pointer-events: auto;
-        cursor: pointer;
-        border: 2px solid #1696d2;
-        background: #fff;
-        padding: 12px 20px;
-        width: calc(100% - 44px);
-        text-align: center;
-        left: 0px;
-        position: initial;
-    }
-    .runButton.user{
-        width: calc(100% - 44px);
-        margin: 0 auto;
-        display: inline-block;
-        position: initial;
-        margin-top: 20px;
-    }
-    #sampleButtonContainer {
-        top: -20px;
-        position: relative;
-        margin-bottom: -19px;
-    }
+
     .headerX{
         top: 6px;
     }

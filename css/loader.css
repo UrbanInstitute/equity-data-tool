@@ -454,6 +454,7 @@ position: absolute;
     width: 583px;
     margin: 0 auto;
     margin-bottom: 18px;
+    margin-top: 25px;
 }
 #weightMenuContainer{
     width: 334px;
@@ -542,7 +543,9 @@ position: absolute;
 #filterColumnContainer{
     width: fit-content;
     width: -moz-fit-content;
+    width: -webkit-fit-content;
     margin: 0 auto;
+    margin-top: 25px;
 }
 #filterListContainer{
     margin-top: 17px;    
@@ -808,6 +811,7 @@ input[type=date]{
 #sampleCardContainer{
     width: fit-content;
     width: -moz-fit-content;
+    width: -webkit-fit-content;
     margin: 0 auto;
     margin-top: 44px;
 }
@@ -1006,6 +1010,7 @@ input[type=date]{
 .deetText{
     width: fit-content;
     width: -moz-fit-content;
+    width: -webkit-fit-content;    
     padding-left: 35px;
 }
 .strikethrough{
@@ -1151,11 +1156,13 @@ input[type=date]{
     display: block;
     margin-bottom: 50px;
     width: fit-content;
+    width: -webkit-fit-content;
     width: -moz-fit-content;
 }
 #errorNavContainer{
     display: block;
     width: fit-content;
+    width: -webkit-fit-content;
     width: -moz-fit-content;
     margin: 0 auto;
     margin-top: -6px;
@@ -1166,8 +1173,8 @@ input[type=date]{
     cursor: pointer;
 }
 .errorNavComponent img{
-    height: 23px;
-    top: -4px;
+    height: 17px;
+    top: -6px;
     display: inline-block;
     position: relative;
 }
@@ -1175,7 +1182,7 @@ input[type=date]{
     display: inline-block;
     color: #1696d2;
     font-weight: 500;
-    font-size: 21px;
+    font-size: 20px;
     position: relative;
     top: -8px;
 }
