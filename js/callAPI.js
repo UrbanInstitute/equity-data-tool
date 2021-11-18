@@ -52,10 +52,13 @@ function runAnalysis() {
         var params = getParams(),
             defaultParams = sampleParams[getSampleDatasetSlug()]["defaultParams"]
         var sameFilters = true;
+        console.log(params, defaultParams)
         if(params.filters.length != defaultParams.filters.length){
             sameFilters = false;
         }else{
-            for(var i = 0; i < params.length; i++){
+            for(var i = 0; i < params.filters.length; i++){
+                console.log("p", params["filters"][i]["filter_val"])
+                console.log("dp", params["filters"][i]["filter_val"])
                 if(
                     params["filters"][i]["filter_column"] != defaultParams["filters"][i]["filter_column"] ||
                     params["filters"][i]["filter_comparison"] != defaultParams["filters"][i]["filter_comparison"] ||
@@ -235,6 +238,7 @@ function showErrorScreen(errorKeys, fullStateName, fileid){
         d3.selectAll(".errorNavStandard").style("display","none")
         d3.selectAll(".errorNavSubgeo").style("display","block")
         d3.select("#errorYesContinue").on("click", function(){
+            restartAnimations()
             showResults(fileid)
         })
         d3.select("#theHoleIsYourHome").on("click", function(){

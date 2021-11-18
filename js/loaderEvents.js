@@ -574,6 +574,14 @@ d3.select(".saveButton.filter").on("click", function(){
     showLoaderSection(getDatasetType(), getGeographyLevel())    
 })
 
+function restartAnimations(){
+    d3.select(".loaderSection.loading .loaderHeader")
+        .html("Sit tight! We’re analyzing your data.")
+    d3.select(".loadingImg.l1").style("animation","trees 1.5s infinite")
+    d3.select(".loadingImg.l1").style("animation-timing-function","linear")
+    d3.selectAll(".loadingImgTire").style("animation-play-state","running")
+}
+
 d3.select("#errorNavBack")
     .on("mouseover", function(){
         d3.select(this).select("img").attr("src", "images/backArrowBold.png")
@@ -582,8 +590,7 @@ d3.select("#errorNavBack")
       d3.select(this).select("img").attr("src", "images/backArrow.png")  
     })
     .on("click", function(){
-        d3.select(".loaderSection.loading .loaderHeader")
-            .html("Sit tight! We’re analyzing your data.")
+        restartAnimations()
         showLoaderSection(getDatasetType(), getGeographyLevel())
         if(getDatasetType() == "sample"){
             deselectSampleData()
@@ -599,8 +606,7 @@ d3.select("#errorNavBackAdvanced")
       d3.select(this).select("img").attr("src", "images/backArrow.png")  
     })
     .on("click", function(){
-        d3.select(".loaderSection.loading .loaderHeader")
-            .html("Sit tight! We’re analyzing your data.")
+        restartAnimations()
         showLoaderSection(getDatasetType(), getGeographyLevel())
     })
 d3.select("#errorStartOver")
