@@ -31,6 +31,9 @@
     #barChartTopAxisContainer{
         margin-left: 203px;
     }
+    #barchart.city #barChartTopLegend, #barchart.county #barChartTopLegend{
+        margin-left: 100px;
+    }
 }
 
 @media(max-width: 1200px){
@@ -63,8 +66,11 @@
         margin-top: 0;
         height: 10px;
         position: relative;
-        top: -37px;
+        top: -27px;
         left: -4px;
+    }
+    #mapSlideContainer{
+        top: 20px;
     }
     #legendSlideContainer{
         height: 105px;
@@ -197,6 +203,9 @@
     #barChartTopContainer {
         height: 220px;
     }
+    #barChart.county #barChartTopLegend, #barChart.city #barChartTopLegend{
+        bottom: -133px;
+    }
     #barChartTopLegend{
         width: 557px;
         bottom: -55px;
@@ -249,10 +258,10 @@
 .loaderSection.filters p {
     font-style: normal;
     width: 100%;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     /*text-align: justify;*/
-    line-height: 1.2;
+    line-height: 1.5;
 }
     #headerBack{
         width: 60px;
@@ -624,10 +633,10 @@
     }
     .loaderSection.sample p, .loaderSection.user p{
         width: 100%;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 400;
         /*text-align: justify;*/
-        line-height: 1.2;
+        line-height: 1.5;
     }
     .loaderHome, .loaderSection p, #loadingStatusContainer {
 /*        max-width: 650px;
@@ -852,10 +861,10 @@
     .loaderSection.weight p{
     font-style: normal;
     width: 100%;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     /*text-align: justify;*/
-    line-height: 1.2;
+    line-height: 1.5;
     }
     #weightContainer{
         width: 100%;
@@ -908,7 +917,13 @@
         margin-bottom: 0px;
     }
 
-
+.summaryContainer{
+    left: -30px;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc(100% + 20px);
+}
 
 
 /************ RESULTS ****************/
@@ -1020,6 +1035,7 @@
         display: block;
         position: relative;
         margin: 0px;
+        margin-bottom: 48px;
     }
     #mapDataButtonOverlay{
     clear: both;    
@@ -1036,7 +1052,7 @@
     }
     #mapImageButtonOverlay{
         display: none;
-        width: calc(100% - 30px);
+        width: calc(100% - 33px);
         left: -1px;
         top: 72px;
         text-align: center;
@@ -1133,6 +1149,52 @@
     .chartRow.odd .chartCatLabel{
         background: rgba(245,245,245,.7);
     }
+
+
+    footer .content {
+        width: calc(100% - 60px);
+    }
+    h2.loaderHeader.titleHeader{
+        font-size: 40px;
+    }
+    h3.loaderSubHeader{
+        font-size: 30px;
+    }
+    .homeInstructions{
+        font-size: 20px; line-height: 1.5; margin-bottom: 40px;
+    }
+    #header-pinned .site-logo{
+        left: 16px;
+    }
+    .loaderSection.sample p
+    {
+        font-size: 20px; line-height: 1.5;
+    }
+    #baselineSelectMap-button , #baselineSelectBar-button{
+        width: 100%;
+    }
+    #baselineSelectMap-button .ui-selectmenu-text, #baselineSelectBar-button .ui-selectmenu-text {
+            width: calc(100% - 20px);
+/*        left: 11px;
+        font-weight: bold;
+        font-size: 16px;
+        top: -3px;*/
+    }
+    .resultsHeader.afterMenu{
+        margin-left: 4px;
+        margin-top: -5px;
+        width: 100%;
+    }
+    .resultsHeader{
+        margin-left: 4px;
+    }
+
+    #barChartTopAxisContainer {
+        top: 192px;
+        margin-left: 0px;
+    }
+
+
 }
 @media(max-width: 600px){
     #barChartTopContainer{
@@ -1147,7 +1209,7 @@
         margin-bottom: 30px;
     }
     #barChartTopAxisContainer {
-        top: 390px;
+        top: 420px;
         margin-left: 0px;
     }
 }

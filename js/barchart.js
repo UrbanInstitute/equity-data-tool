@@ -25,7 +25,7 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
 
     var containerSelector = (containerType == "dynamic") ? "#barChart" : "#barChartImage"
     d3.selectAll(containerSelector + " .chartRow").remove()
-
+    d3.select(containerSelector).classed(geo, true)
     // var padder = (containerType == "dynamic") ? BAR_ROW_HEIGHT : 80;
 //     var svg = d3.select(containerSelector).append("svg")
 //         .attr("id", containerSelector.replace("#","") + "Svg")
