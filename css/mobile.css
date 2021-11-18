@@ -1209,8 +1209,11 @@
         margin-bottom: 30px;
     }
     #barChartTopAxisContainer {
-        top: 420px;
+        top: 400px;
         margin-left: 0px;
+    }
+    #barChart.county #barChartTopLegend, #barChart.city #barChartTopLegend{
+        top: 47px;
     }
 }
 @media(max-width: 550px){

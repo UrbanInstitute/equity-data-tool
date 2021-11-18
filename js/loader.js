@@ -271,6 +271,14 @@ function resizeLoader(){
   var sectionHeight = d3.select(".loaderSection.active").node().getBoundingClientRect().height
   var homeHeight = (widthBelow(768) || widthBelow(500)) ? sectionHeight + 10 : sectionHeight + 130;
   d3.select(".loaderHome").style("height", homeHeight + "px")
+  console.log(homeHeight)
+  // if(homeHeight){
+  //   d3.select("footer").style("position", "absolute").style("top", (homeHeight + 48) + "px")
+  // }else{
+  //   d3.select("footer").style("position", "relative")
+  // }
+
+
   if(d3.select(".sampleDetails.active").node() != null && d3.select(".sampleCard.singleCard").node() != null){
     var rightCol = d3.select(".sampleDetails.active").node().getBoundingClientRect().height,
         leftCol = d3.select(".sampleCard.singleCard").node().getBoundingClientRect().height,
