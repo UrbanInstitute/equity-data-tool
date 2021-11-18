@@ -351,3 +351,9 @@ ul{
  .headerLinks .header:hover{
     color: #1696d2 !important;
  }
+
+
+
+ #header-pinned a:hover{
+    color: #1696d2;
+ }

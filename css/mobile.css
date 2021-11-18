@@ -943,8 +943,9 @@
         width: calc(100% - 20px);
     }
     .results.intro{
-        font-size: 16px;
-        line-height: 2;
+        font-size: 24px;
+        line-height: 1.5;
+        font-weight: 300;
     }
     .resultsHeader{
         font-size: 18px;
@@ -982,7 +983,7 @@
         left: -30px;
     }
     .warningIcon{
-        left: -46px;
+        left: -39px;
     }
     .summaryRows span {
         /*text-align: left;*/

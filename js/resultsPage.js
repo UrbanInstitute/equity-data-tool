@@ -220,7 +220,7 @@ function populateSummaries(messages, params){
             d3.select(".summaryContainer.visible")
                 .transition()
                 .style("height", function(){
-                    var dePadder = (widthBelow(768) || widthBelow(500)) ? 50 : 50;
+                    var dePadder = (widthBelow(768) || widthBelow(500)) ? 0 : 50;
                     return (d3.select(".summaryContainer.clone").node().getBoundingClientRect().height - dePadder) + "px"
                 })
         }else{
