@@ -166,6 +166,7 @@ function showResults(fileId){
 }
 
 function drawResultsData(fileId){
+    console.log(fileId)
     var resultsUrl = baseApiUrl + "get-equity-file/" + fileId
     $.ajax({
         url: resultsUrl,

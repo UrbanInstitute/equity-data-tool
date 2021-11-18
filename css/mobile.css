@@ -202,6 +202,10 @@
     #barChartTopAxisContainer{
         top: 189px;
     }
+    .loaderHome{
+        margin: 0px 20px;
+        width: 100%;
+    }
 }
 @media(max-width: 768px){
     #widthBelow1000{
@@ -211,7 +215,8 @@
         /*display: none;*/
     }
     .homeInstructions{
-        font-size: 16px;
+        font-size: 18px;
+        line-height: 1.2;
     }
     .resultsHeaderSubnav.weight, .resultsHeaderSubnav.filters{
         display: none;
@@ -230,9 +235,19 @@
     #widthBelow768{
         display: block;
     }
-    .startOver, #advancedOptionsSample-button, #advancedOptionsUser-button, #sampleDefaultText, .faqP, .loaderSection.user p, .dropboxDrag.desktop, .loaderSection.filters p, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer, #header-pinned .feature-link{
+    /*.startOver, #advancedOptionsSample-button, #advancedOptionsUser-button, #sampleDefaultText, .loaderSection.user p, .dropboxDrag.desktop, .loaderSection.filters p, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer, #header-pinned .feature-link{*/
+    .startOver, #advancedOptionsSample-button, #advancedOptionsUser-button, .dropboxDrag.desktop, #appliedHeader, #weightShowContainer, #resultsNav, .sumSectionImgContainer, #header-pinned .feature-link{
+
         display: none !important;  
     }
+.loaderSection.filters p {
+    font-style: normal;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    /*text-align: justify;*/
+    line-height: 1.2;
+}
     #headerBack{
         width: 60px;
     }
@@ -260,7 +275,12 @@
         margin-bottom: 50px;
     }
     .resultsHeader.bars{
-        margin-bottom: 27px;
+        /*margin-bottom: 27px;*/
+        top: -23px;
+        position: relative;
+    }
+    #barChartTopMenuContainer{
+        width: 100% !important;
     }
     .backButton{
         top: -11px;
@@ -308,7 +328,7 @@
         width: 20px;
         height: 16px;
         position: fixed;
-        right: 12px;
+        right: 20px;
         top: 18px;
         display: block;
         z-index: 998;
@@ -382,7 +402,7 @@
     }
     .loaderHome, .loaderSection p, #loadingStatusContainer{
         max-width: 650px;
-        width: calc(100% - 60px);
+        width: calc(100% - 40px);
         line-height: 182%;
 
     }
@@ -399,18 +419,19 @@
         font-size: 16px;
     }
     h3.loaderSubHeader{
-        font-size: 24px;
-        font-weight: 100;
+        font-size: 28px;
+        font-weight: 300;
     }
     h2.loaderHeader{
         font-size: 26px;
     }
     .loaderHome{
-        font-size: 16px;
+        font-size: 24px;
+        line-height: 1.5;
     }
 
     .loaderSection{
-        width: calc(100% - 60px) !important;
+        width: calc(100% - 40px) !important;
         /*left: 30px !important;*/
         left: calc(50% - 220px) !important;
         max-width: 440px;
@@ -473,13 +494,14 @@
         left: 0px;
     }
     #dropboxClick{
-        font-weight: 100;
+        font-weight: 300;
         font-size: 24px;
         color: #353535;
         top: -158px;
         position: relative;
         /*left: -66px;*/
         text-align: left;
+        display: none;
     }
     .dropboxDrag.mobile{
         display: block;
@@ -516,7 +538,7 @@
     #uploadLatLonContainer .loaderHeader{
         visibility: inherit;
         font-size: 24px;
-        font-weight: 100;
+        font-weight: 300;
     }
     #latContainer, #lonContainer{
         width: 100%;
@@ -554,8 +576,9 @@
     .mobileOnlyHeader{
         display: block;
         font-size: 24px;
-        font-weight: 100;
+        font-weight: 300;
         margin-bottom: 20px;
+        /*text-align: justify;*/
     }
     .sampleCard{
         margin-bottom: 30px;
@@ -592,11 +615,11 @@
     .sampleDetails.active{
         width: 100%;
     }
-    .loaderSection.sample p{
+    .loaderSection.sample p, .loaderSection.user p{
         width: 100%;
-        font-size: 24px;
-        font-weight: 100;
-        text-align: left;
+        font-size: 18px;
+        font-weight: 400;
+        /*text-align: justify;*/
         line-height: 1.2;
     }
     .loaderHome, .loaderSection p, #loadingStatusContainer {
@@ -664,7 +687,7 @@
     }
     #ttHead{
         font-size: 24px;
-        font-weight: 100;
+        font-weight: 300;
         margin-bottom: 20px;
         width: calc(100% - 60px);
         margin-left: 30px;
@@ -679,7 +702,7 @@
         z-index: 999998;
     }
     #mobileAdvancedMenu div, #mobileMainMenu div{
-        font-weight: 100;
+        font-weight: 300;
         font-size: 2em;
         margin-bottom: 30px;
         width: 100%;
@@ -805,7 +828,7 @@
     }
     .loaderSection.loading .loaderHeader{
         visibility: initial;
-        font-weight: 100;
+        font-weight: 300;
         font-size: 30px;
     }
     #loadingContainer{
@@ -820,12 +843,12 @@
         width: 100%;
     }
     .loaderSection.weight p{
-        width: 100%;
-        margin: 0 auto;
-        line-height: 18px;
-        text-align: left;
-        margin-bottom: 0px;
-        font-size: 16px;
+    font-style: normal;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    /*text-align: justify;*/
+    line-height: 1.2;
     }
     #weightContainer{
         width: 100%;
@@ -882,6 +905,9 @@
 
 
 /************ RESULTS ****************/
+    #barChartInstruction{
+        display: none;
+    }
     #resultsHeader{
         padding-right: 30px;
         padding-left: 30px;
@@ -909,6 +935,9 @@
 /*        height: 29px;
         margin-top: -49px;
         left: -7px;*/
+    }
+    #baselineSelectBar-button{
+        top: -12px;
     }
     #mapControls{
         margin-right: 0px;
@@ -939,7 +968,7 @@
     }
     .summaryColumn .deetSubHed{
         font-size: 24px;
-        font-weight: 100;
+        font-weight: 300;
     }
     .summaryHeader, .summaryHeadName{
         font-size: 16px;
@@ -1032,6 +1061,7 @@
     }
     #barChart{
         top: -70px;
+        left: 50px;
     }
     #barButtonContainer{
         top: -50px;
@@ -1158,7 +1188,7 @@
         display: block;
     }
     .loaderSection{
-        left: 30px !important;
+        left: 20px !important;
     }
     #uploadErrors{
 /*        left: 30px;

@@ -77,10 +77,14 @@ function getBarWidth(containerType){
     var w;
     if(containerType == "static") w = 800
     else{
-        var pad = (widthBelow(768) || widthBelow(500)) ? 120 : 0;
-        if(widthBelow(1000) || widthBelow(768) || widthBelow(500)){
+        // var pad = (widthBelow(768) || widthBelow(500)) ? 120 : 0;
+        if(widthBelow(1000)){
             w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width + pad
-        }else{
+        }
+        if(widthBelow(768) || widthBelow(500)){
+            w = window.innerWidth - 40;
+        }
+        else{
             w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width - 20
         }
     }

@@ -7,6 +7,7 @@ function updateBarChart(baseline){
 
 
 function drawBarChart(rawData, containerType, baseline, subgeo, callback){
+    console.log(rawData)
     let clone = JSON.parse(JSON.stringify(rawData))
     d3.select("#rawBarData").datum(clone)
 
@@ -279,6 +280,7 @@ d3.selectAll(".tt-icon")
 
 d3.selectAll(".chartRow")
     .on("mouseenter", function(rD){
+        if(widthBelow(768) || widthBelow(500)) return false
         var geo = getGeographyLevel();
         var row = this;
         var H;
@@ -388,6 +390,7 @@ d3.selectAll(".chartRow")
 
     })
     .on("mouseleave", function(){
+        if(widthBelow(768) || widthBelow(500)) return false
         var row = this;
         d3.select(this).selectAll(".chartDot.subgeo")
             .transition()

@@ -316,7 +316,7 @@ width: 140px;
     cursor: pointer;
 }
 .headerX.tall{
-    top: 6px;
+    /*top: 6px;*/
 }
 .headX.vert{
 width: 2px;
