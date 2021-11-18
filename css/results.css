@@ -55,6 +55,7 @@
     border: none;
     border-bottom: 3px solid #1696d2;
     z-index: 2;
+    background-position-x: 100%;
 }
 
 #subgeoSelect-button{
@@ -70,6 +71,7 @@
     position: relative;
     height: 36px;
     min-width: 150px;
+    background-position-x: 100%;
 }
 #subgeoSelect-button span{
     width: fit-content;

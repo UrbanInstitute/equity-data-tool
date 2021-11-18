@@ -77,7 +77,7 @@ function getBarWidth(containerType){
     var w;
     if(containerType == "static") w = 800
     else{
-        // var pad = (widthBelow(768) || widthBelow(500)) ? 120 : 0;
+        var pad = 0;
         if(widthBelow(1000)){
             w = d3.select("#resultsFiguresBottom").node().getBoundingClientRect().width + pad
         }
@@ -103,7 +103,8 @@ function getBarMargins(containerType){
     return (containerType == "dynamic") ? {top: 50, right: 60, bottom: 0, left: 60} : {top: 50, right: 30, bottom: 20, left: 20}
 }
 function getBarX(containerType, max, min){
-    var width = getBarWidth(containerType) - 410 - 10,
+    var leftColW = (widthBelow(768) || widthBelow(500)) ? 0 : 410;
+    var width = getBarWidth(containerType) - leftColW - 10,
         bound = Math.max(max, Math.abs(min))
     
     return d3.scaleLinear()

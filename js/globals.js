@@ -770,6 +770,7 @@ var legendHeight = 20,
 const BAR_DOT_RADIUS_LARGE = 10;
 const BAR_DOT_RADIUS_SMALL = 6;
 const BAR_ROW_HEIGHT = (widthBelow(768) || widthBelow(500)) ? 80 : 40;
+const HALF_ROW_HEIGHT = (widthBelow(768) || widthBelow(500)) ? 55 : 20;
 const BAR_LABEL_SCOOTCH = 9;
 const MAP_BINS = 8;
 const MAX_PROCESSING_TIME = 480000; //8 mins

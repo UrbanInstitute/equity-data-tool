@@ -7,7 +7,6 @@ function updateBarChart(baseline){
 
 
 function drawBarChart(rawData, containerType, baseline, subgeo, callback){
-    console.log(rawData)
     let clone = JSON.parse(JSON.stringify(rawData))
     d3.select("#rawBarData").datum(clone)
 
@@ -39,16 +38,19 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
     data.sort(function(a,b){
         return b[1][0]["d_score"] - a[1][0]["d_score"];
     });
-
+    var leftColW = (widthBelow(768) || widthBelow(500)) ? 0 : 410;
     d3.select("#barChartTopAxisContainer").selectAll("svg").remove()
     d3.select("#barChartTopAxisContainer")
         .append("svg")
-        .attr("width", width - 410)
+        .attr("width", width - leftColW)
         .attr("height", 50)
         .append("g")
         .append("g")
         .attr("class","x axisTop")
-        .attr("transform", "translate(0," + BAR_ROW_HEIGHT + ")")  
+        .attr("transform", function(){
+            var scalar = (widthBelow(768) || widthBelow(500)) ? 2 : 1
+            return "translate(0," + (BAR_ROW_HEIGHT/scalar) + ")"
+        })  
         .call(d3.axisTop(x).tickSize(-1*BAR_ROW_HEIGHT).tickSizeOuter(10).tickFormat(function(t){
             return t + "%"
         }));
@@ -79,7 +81,7 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
         .html("")
 
     var svg = row.append("svg")
-        .attr("width", width - 410)
+        .attr("width", width - leftColW)
         .attr("height", BAR_ROW_HEIGHT)
         .append("g")
         // .data(function(rD, i){
@@ -113,8 +115,8 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
             })
             .attr("x1", x(0))
             .attr("x2", function(d){return x(d.d_score)})
-            .attr("y1", BAR_ROW_HEIGHT/2)
-            .attr("y2", BAR_ROW_HEIGHT/2)
+            .attr("y1", HALF_ROW_HEIGHT)
+            .attr("y2", HALF_ROW_HEIGHT)
 
         svg.selectAll(".chartLineFG")
             .data(function(rD){ return rD[1]})
@@ -129,8 +131,8 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
             })
             .attr("x1", x(0))
             .attr("x2", x(0))
-            .attr("y1", BAR_ROW_HEIGHT/2)
-            .attr("y2", BAR_ROW_HEIGHT/2)
+            .attr("y1", HALF_ROW_HEIGHT)
+            .attr("y2", HALF_ROW_HEIGHT)
             .attr("stroke", function(d){
                 if(!d.s_diff) return "#9d9d9d"
                 else return (d.d_score < 0) ? "#ca5800" : "#1696d2"
@@ -163,7 +165,7 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
             return "chartDot " + d.c_var + " " + d.b_pop + " " + d.g + " " + "fips-" + d.g_fips + sigClass + subClass + repClass
         })
         .attr("cx", x(0))
-        .attr("cy", BAR_ROW_HEIGHT/2)
+        .attr("cy", HALF_ROW_HEIGHT)
         .attr("r", function(d){
             return (d.g == getGeographyLevel()) ? BAR_DOT_RADIUS_LARGE : BAR_DOT_RADIUS_SMALL
         })
@@ -307,7 +309,7 @@ d3.selectAll(".chartRow")
 
 
             var ymax = d3.max(Y)
-            H = Math.max(ttH, ymax + BAR_ROW_HEIGHT/2 + BAR_DOT_RADIUS_SMALL * 6)
+            H = Math.max(ttH, ymax + HALF_ROW_HEIGHT + BAR_DOT_RADIUS_SMALL * 6)
 
             var svgV = d3.select(this).select("svg")
             var dt = d3.select(this).select(".dotToolTip")
@@ -395,7 +397,7 @@ d3.selectAll(".chartRow")
         d3.select(this).selectAll(".chartDot.subgeo")
             .transition()
             .duration(1000)
-            .attr("cy", BAR_ROW_HEIGHT/2)
+            .attr("cy", HALF_ROW_HEIGHT)
 
         d3.select(this).select("svg").selectAll(".voronoi").remove()
         d3.select(row).select(".chartToolTip")
@@ -610,7 +612,7 @@ function highlightSubgeo(element){
         d_score = d.d_score,
         fips = d.g_fips,
         s_diff = d.s_diff
-// console.log(fips, d)
+
     var ttText = getBarTooltipText(geo, baseline, isSubGeo,fullName, shortName, d_score, fips, s_diff)
 
     tt.html(ttText)
@@ -1068,7 +1070,7 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
     row.append("text")
         .attr("x", 400)
         .attr("text-anchor","end")
-        .attr("y", BAR_ROW_HEIGHT/2)
+        .attr("y", HALF_ROW_HEIGHT)
         .html(function(d){
             return barCategories[d[0]].split("<i")[0]
         })
@@ -1088,8 +1090,8 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
             .append("line")
             .attr("x1", x(0))
             .attr("x2", function(d){return x(d.d_score)})
-            .attr("y1", BAR_ROW_HEIGHT/2)
-            .attr("y2", BAR_ROW_HEIGHT/2)
+            .attr("y1", HALF_ROW_HEIGHT)
+            .attr("y2", HALF_ROW_HEIGHT)
             .attr("stroke", function(d){
                 if(!d.s_diff) return "#9d9d9d"
                 else return (d.d_score < 0) ? "#ca5800" : "#1696d2"
@@ -1118,7 +1120,7 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
             return "chartDot " + d.c_var + " " + d.b_pop + " " + d.g + " " + "fips-" + d.g_fips + sigClass + subClass + repClass
         })
         .attr("cx", function(d){return x(d.d_score)})
-        .attr("cy", BAR_ROW_HEIGHT/2)
+        .attr("cy", HALF_ROW_HEIGHT)
         .attr("r", function(d){
             return (d.g == getGeographyLevel()) ? BAR_DOT_RADIUS_LARGE : BAR_DOT_RADIUS_SMALL
         })
@@ -1140,10 +1142,9 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
         d3.selectAll(".chartDot.geo").raise()
         d3.selectAll(".chartDot.clicked").raise()
     }
-console.log(baseline, getBaselineBarText(baseline))
 
     drawBarLegend("static", svg, subgeo);
-// console.log(subgeo)
+
     if(subgeo != ""){
         var fips = subgeo.id
         if(fips.search("region") != -1){
