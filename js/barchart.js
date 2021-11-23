@@ -19,7 +19,7 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
 
     var margin = getBarMargins(containerType),
         width = getBarWidth(containerType)
-    
+
     var geo = getGeographyLevel()
     // var height = (containerType == "dynamic") ? getBarHeight("dynamic") : getBarHeight("static", baseline)
 
@@ -50,7 +50,7 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
         .attr("transform", function(){
             var scalar = (widthBelow(768) || widthBelow(500)) ? 2 : 1
             return "translate(0," + (BAR_ROW_HEIGHT/scalar) + ")"
-        })  
+        })
         .call(d3.axisTop(x).tickSize(-1*BAR_ROW_HEIGHT).tickSizeOuter(10).tickFormat(function(t){
             return t + "%"
         }));
@@ -85,18 +85,18 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
         .attr("height", BAR_ROW_HEIGHT)
         .append("g")
         // .data(function(rD, i){
-        // 
+        //
         //         return rD[1]
         // })
 
     svg
         .append("g")
         .attr("class","x axis")
-        // .attr("transform", "translate(0,50)")      
+        // .attr("transform", "translate(0,50)")
         .call(d3.axisTop(x).tickSize(-1*BAR_ROW_HEIGHT).tickSizeOuter(0).tickFormat(function(t){
             return ""
         }));
-    
+
 
 
     if(geo == "county" || geo == "city"){
@@ -156,7 +156,7 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
         })
         .enter()
         .append("circle")
-    
+
     chartDot.attr("data-fips", function(d){ return d.g_fips })
         .attr("class", function(d){
             var sigClass = (d.s_diff) ? " sig" : " insig",
@@ -228,7 +228,7 @@ function drawBarChart(rawData, containerType, baseline, subgeo, callback){
         d3.selectAll(".chartDot.geo").raise()
         d3.selectAll(".chartDot.clicked").raise()
     }
-    
+
 
 
 
@@ -298,7 +298,7 @@ d3.selectAll(".chartRow")
 
                 return x(d["d_score"])
             })
-            // 
+            //
 
             var Y = dodge(X, 2*BAR_DOT_RADIUS_SMALL + 1)
             var fipsList = d3.select(row).select("svg").selectAll(".chartDot.subgeo").nodes().map(
@@ -313,7 +313,7 @@ d3.selectAll(".chartRow")
 
             var svgV = d3.select(this).select("svg")
             var dt = d3.select(this).select(".dotToolTip")
-            
+
             let vYA = []
             var gX = +x(rD[1][0]["d_score"])
             d3.select(this).select("svg").selectAll(".chartDot.subgeo")
@@ -321,7 +321,7 @@ d3.selectAll(".chartRow")
                 .duration(1000)
                 .attr("cy", function(d,i){
                     var sgX = +(x(d.d_score))
-                    
+
                     if( (sgX > gX && gX + BAR_DOT_RADIUS_LARGE + 2*BAR_DOT_RADIUS_SMALL > sgX) ||
                         (sgX < gX && gX - BAR_DOT_RADIUS_LARGE - 2*BAR_DOT_RADIUS_SMALL < sgX)
                     ){
@@ -356,7 +356,7 @@ d3.selectAll(".chartRow")
         }else{
             H = ttH;
         }
-        
+
         d3.select(this).select("svg")
             .transition()
             .duration(1000)
@@ -480,7 +480,7 @@ d3.selectAll(".chartRow")
             if(d3.select(el).classed("clicked")){
                 if(getSelectedSubgeo().hasOwnProperty("level") && getSelectedSubgeo().level == "region"){
                     d3.select(el).classed("forceHover", true)
-                    highlightSubgeo(el, d)       
+                    highlightSubgeo(el, d)
                 }else return false
             }
             if(geo == "state" || geo == "national") highlightSubgeo(el, d)
@@ -524,7 +524,7 @@ d3.selectAll(".chartRow")
             if(d3.select(el).classed("clicked")) deClickSubgeo()
             else clickSubgeo(fips)
         })
-        
+
     }
 
 function highlightDefaultBarTooltip(element, moveTT){
@@ -569,7 +569,7 @@ function highlightDefaultBarTooltip(element, moveTT){
                 var pos = cx + 400 + BAR_DOT_RADIUS_SMALL*2 + scootch + w
                 var rowW = this.parentNode.getBoundingClientRect().width
                 return(pos > rowW) ? (cx + 400 - w - 5 ) + "px" : (cx + 400 + BAR_DOT_RADIUS_SMALL*2 + scootch) + "px"
-                
+
             })
             .classed("flipped", function(){
                 var w = this.getBoundingClientRect().width
@@ -586,14 +586,14 @@ function highlightDefaultBarTooltip(element, moveTT){
     }
 
 
-    
+
     if(geo == "county" || geo == "city"){
         d3.select(element.parentNode.parentNode.parentNode).select(".chartLineBG").classed("hover", true)
     }
     el.classed("hover", true)
 }
 function highlightSubgeo(element){
-    
+
     var d = d3.select(element).datum()
     if(d.length == 2){
         d = d[1].filter(function(o){
@@ -624,7 +624,7 @@ function highlightSubgeo(element){
             var pos = cx + 400 + BAR_DOT_RADIUS_SMALL*2 + scootch + w
             var rowW = this.parentNode.getBoundingClientRect().width
             return(pos > rowW) ? (cx + 400 - w -5 ) + "px" : (cx + 400 + BAR_DOT_RADIUS_SMALL*2 + scootch) + "px"
-            
+
         })
         .style("top", (cy - 11) + "px")
         .classed("flipped", function(){
@@ -671,7 +671,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         h = (geo == "state" || geo == "national") ? 110 : 110,
         geoLabel, subGeoLabel, avgLabel, smallOpacity;
 
-    var p1, p2, p3, p4, p5;    
+    var p1, p2, p3, p4, p5;
 
     if(geo == "national"){
         geoLabel = "National";
@@ -737,7 +737,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
                 .text(subgeoText)
         }
     }
-    
+
 
     svg.append("text")
         // .attr("text-anchor","end")
@@ -783,7 +783,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("y", 22)
         .style("font-weight", 700)
         .text("No significant difference")
-        
+
     svg.append("circle")
         .attr("cx", 240-15)
         .attr("cy", 47)
@@ -819,7 +819,7 @@ function drawBarLegend(containerType, svgStatic, subgeo){
         .attr("x",430)
         .attr("y", 22)
         .style("font-weight", 700)
-        .text("Underrepresented")
+        .text("Overrepresented")
 
     svg.append("circle")
         .attr("cx", 440)
@@ -919,7 +919,7 @@ function initSubgeoMenu(geo, values, defaultVal){
     if(geo == "city" || geo == "county") return false
 
     d3.selectAll("#barChartTopMenu").remove()
-    
+
     var container = d3.select("#barChartTopMenuContainer")
         .append("div")
         .attr("id", "barChartTopMenu")
@@ -1008,7 +1008,7 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
     var x = d3.scaleLinear()
         .range([420,width - 30])
         .domain([-bound, bound]);
-    
+
     d3.selectAll("#barChartImage svg").remove()
 
     data.sort(function(a,b){
@@ -1039,7 +1039,7 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
     svg
         .append("g")
         .attr("class","x axisTop_static")
-        .attr("transform", "translate(0," + (margin.top-2) + ")")  
+        .attr("transform", "translate(0," + (margin.top-2) + ")")
         .call(d3.axisTop(x).tickSize(-1*height).tickSizeOuter(0).tickSizeInner(10).tickFormat(function(t){
             return t + "%"
         }));
@@ -1077,7 +1077,7 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
 
     row.append("g")
         .attr("class","x axis")
-        // .attr("transform", "translate(0,50)")      
+        // .attr("transform", "translate(0,50)")
         .call(d3.axisTop(x).tickSize(-1*BAR_ROW_HEIGHT).tickSizeOuter(0).tickFormat(function(t){
             return ""
         }));
@@ -1111,7 +1111,7 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
         })
         .enter()
         .append("circle")
-    
+
     chartDot.attr("data-fips", function(d){ return d.g_fips })
         .attr("class", function(d){
             var sigClass = (d.s_diff) ? " sig" : " insig",
@@ -1183,10 +1183,7 @@ function drawStaticBarChart(rawData, baseline, subgeo, geo, callback){
         .html("<tspan>URBAN</tspan> INSTITUTE")
 
 
-         
+
 
     callback()
 }
-
-
-
